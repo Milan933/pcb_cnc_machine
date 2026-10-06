@@ -70,6 +70,25 @@ reviewed and promoted by an engineering decision record.
 | REQ-VAL-002 | Build-volume validation shall consider at least one realistic print orientation, not only the default bounding box. | Known requirement | Implemented as an explicit candidate-orientation interface in cad/validation. |
 | REQ-VAL-003 | Missing geometry or evidence shall produce an explicit not-ready or error result rather than a silent pass. | Preliminary choice | Adopt as validation policy; review during Phase 8. |
 
+## Phase 1 quantitative baseline
+
+The following requirement groups are proposed by the Phase 1 review and remain
+preliminary until EDR-005 is accepted:
+
+| Requirement group | Detail |
+| --- | --- |
+| REQ-PCB-* | [PCB process requirements](phase-1-process-requirements.md) for copper, tool families, isolation depth, drilling, outline cutting, spindle envelope, workholding, probing, and mapping. |
+| REQ-MOT-* | [Motion and structure requirements](phase-1-motion-structure.md) for travel, command increments, accuracy, repeatability, backlash, straightness, squareness, deflection, overhang, and homing. |
+| REQ-Z-* | [Z error budget](phase-1-z-error-budget.md), with separate mechanical and map residual limits. |
+| REQ-ENV-006 through REQ-ENV-008 | [Envelope trade study](phase-1-envelope-trade.md) for 160 x 100, 200 x 150, and 250 x 180 mm PCB areas. |
+| REQ-ARCH-* | [Architecture-comparison requirements](phase-1-architecture-comparison.md) for moving-bed and moving-gantry studies; no architecture is selected here. |
+| REQ-PETG-* | [PETG manufacturing constraints](phase-1-petg-manufacturing.md) for printing, joints, tolerances, and rail seats. |
+| AT-* | [Acceptance-test plan](phase-1-acceptance-tests.md) for future physical validation. |
+
+These documents distinguish calculated screening values from requirements
+that need a physical coupon or machine test. They do not select a spindle,
+rail, screw, motor, controller, or axis architecture.
+
 ## Scope exclusions for this iteration
 
 - No detailed CNC part geometry.

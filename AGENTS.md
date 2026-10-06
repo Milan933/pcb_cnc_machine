@@ -2,14 +2,14 @@
 
 ## Current boundary
 
-The repository is in the foundation stage. Work in this stage may improve
-requirements, architecture rules, decision records, parameter schemas, and
-validation infrastructure. It must not silently turn an unresolved choice into
-an engineering fact.
+The repository is in Phase 1: Requirements. Work in this phase may improve
+quantitative requirements, calculations, acceptance-test definitions, decision
+records, parameter schemas, and validation infrastructure. It must not
+silently turn an unresolved choice into an engineering fact.
 
-Do not generate production STL, STEP, or drawing files in the foundation stage.
-Do not start detailed machine-part modeling until the workflow gate says that
-architecture and motion-system selection are approved.
+Do not begin Phase 2 architecture selection, detailed CAD, structural CNC
+parts, component selection, or production STL/STEP/drawing generation until
+the Phase 1 decision record has been reviewed and the workflow gate is passed.
 
 ## Canonical public repository
 
@@ -34,10 +34,11 @@ personal files. Use the repository audit before a commit intended for push.
 Use the following order when resolving project intent:
 
 1. explicit user requirements in requirements/requirements.md;
-2. approved engineering decision records in docs/decisions;
-3. centralized values in cad/parameters.py;
-4. the project skills in .agents/skills;
-5. implementation details in part and assembly modules.
+2. the quantitative Phase 1 requirements in requirements/phase-1-*.md;
+3. approved engineering decision records in docs/decisions;
+4. centralized values in cad/parameters.py;
+5. the project skills in .agents/skills;
+6. implementation details in part and assembly modules.
 
 If two sources disagree, stop and record the conflict in a decision record.
 Never repair a contradiction by changing a lower-level file silently.

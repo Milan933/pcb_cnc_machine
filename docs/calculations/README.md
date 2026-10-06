@@ -47,3 +47,6 @@ Separate short-term stiffness from creep and long-term preload retention.
 Do not add more significant figures than the inputs justify. Label values as
 known, assumed, preliminary, calculated, or verified. If a result changes an
 architecture decision, create or update an engineering decision record.
+
+The current Phase 1 equations and screening calculations are in
+[phase-1-calculations.md](phase-1-calculations.md).

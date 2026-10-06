@@ -5,10 +5,10 @@ isolation routing, drilling, and outline cutting.
 
 ## Project status
 
-This repository is at the foundation stage. The current deliverable establishes
-requirements, engineering rules, decision records, CAD conventions, and a
-validation scaffold. It intentionally contains no detailed CNC geometry and no
-production STEP or STL files.
+This repository is in Phase 1: Requirements review. The current deliverable
+adds a quantitative PCB-process baseline, error budgets, envelope trade study,
+acceptance-test plan, and executable consistency checks. It intentionally
+contains no detailed CNC geometry and no production STEP or STL files.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -52,6 +52,20 @@ printer.
 
 - [requirements](requirements/requirements.md): tagged requirements,
   constraints, and traceability.
+- [Phase 1 process requirements](requirements/phase-1-process-requirements.md):
+  PCB tools, isolation, drilling, outline, spindle, workholding, and probing.
+- [Phase 1 motion and structure](requirements/phase-1-motion-structure.md):
+  XY targets, tool-point deflection, and overhang screening limits.
+- [Phase 1 architecture comparison](requirements/phase-1-architecture-comparison.md):
+  objective moving-bed versus moving-gantry criteria for Phase 2.
+- [Phase 1 PETG manufacturing](requirements/phase-1-petg-manufacturing.md):
+  print-volume, orientation, tolerance, joint, and rail-seat constraints.
+- [Phase 1 Z budget](requirements/phase-1-z-error-budget.md): compensatable
+  versus non-compensatable height error.
+- [Phase 1 envelope trade](requirements/phase-1-envelope-trade.md): A/B/C
+  working-area comparison.
+- [Phase 1 acceptance tests](requirements/phase-1-acceptance-tests.md):
+  future physical test definitions.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture before
@@ -82,10 +96,10 @@ Every important value or decision must be marked as one of:
 
 ## Near-term next step
 
-Review this foundation, resolve the open questions in
-[requirements/open-questions.md](requirements/open-questions.md), then execute
-the motion-system selection phase. Do not begin detailed structural CAD until
-the architecture and motion candidates have an approved decision record.
+Review the Phase 1 proposal, resolve or assign the remaining questions in
+[requirements/open-questions.md](requirements/open-questions.md), and approve
+[EDR-005](docs/decisions/005-phase-1-requirements.md). Phase 2 architecture
+must not begin automatically after this commit.
 
 ## Development interface
 

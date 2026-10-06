@@ -9,6 +9,8 @@ foundation stage. It currently provides:
 - centralized-parameter consistency checks;
 - planning-envelope checks;
 - an explicit printable-part orientation contract;
+- Phase 1 V-bit geometry, target, map-grid, envelope, and Z-budget
+  consistency checks;
 - standard-library tests that run before a CAD dependency is selected.
 
 ## Future CAD adapter

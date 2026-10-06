@@ -10,6 +10,7 @@ Current records:
 - [EDR-002: preliminary CAD technology](002-cad-technology.md)
 - [EDR-003: initial skill-set review](003-skill-set-review.md)
 - [EDR-004: public repository and publication boundary](004-repository-publication.md)
+- [EDR-005: Phase 1 quantitative requirements](005-phase-1-requirements.md)
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.

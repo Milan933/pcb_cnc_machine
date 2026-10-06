@@ -57,3 +57,26 @@ downstream CAD must not silently choose values.
 Each answer must be added to a requirement baseline or an engineering
 decision record. If a question remains open, its consequence must remain
 visible in the architecture and validation report.
+
+## Phase 1 disposition
+
+Phase 1 proposes option B, a nominal 200 x 150 mm PCB working area, as the
+best screening baseline. This is not a frozen machine travel or architecture
+decision. The quantitative process, motion, Z-budget, and acceptance values
+are provisional and are recorded in the linked Phase 1 documents.
+
+The following items remain open and block an automatic Phase 1 gate pass until
+they have an owner and a review disposition:
+
+18. Which exact PCB stock supplier, copper weight, board thicknesses, and
+    surface finish define the first physical coupon?
+19. Are 0.30-1.00 mm drill tests and 0.15-0.25 mm isolation trace/space the
+    intended first acceptance range, or should the process target be narrowed?
+20. Is a 5 N tool-point static test load suitable for the selected tool and
+    spindle, or should a measured cutting-force test replace it?
+21. Which acceptance limits are release requirements and which are stretch
+    targets for a first prototype?
+22. Which exact controller, GRBL variant, motor models, driver current, and
+    supply voltage determine achievable step rate and torque margin?
+23. Which spindle supplier can document ER11 collet compatibility, runout,
+    speed, mass, diameter, and thermal behavior inside the screening envelope?

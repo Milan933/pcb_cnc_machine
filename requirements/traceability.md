@@ -10,6 +10,15 @@ already validated.
 | REQ-HW | motion-system-design skill; open-questions.md | Motor and component data sheets plus motion decision record. |
 | REQ-CAD | cad-conventions skill; cad/parameters.py | Deterministic generation and STEP/STL export tests. |
 | REQ-VAL | design-validation skill; cad/validation | Automated report plus reviewed geometry evidence. |
+| REQ-PCB | requirements/phase-1-process-requirements.md; pcb-cnc-architecture skill | Tool/depth/feed coupon, drilling coupon, outline coupon, and process records. |
+| REQ-SPN | requirements/phase-1-process-requirements.md; motion-system-design skill | Spindle speed, runout, mass, diameter, and collet measurements. |
+| REQ-WHL, REQ-PROBE | requirements/phase-1-process-requirements.md; pcb-cnc-architecture skill | Workholding distortion, conductive probe, map residual, and datum tests. |
+| REQ-MOT | requirements/phase-1-motion-structure.md; motion-system-design skill | Axis calibration, repeatability, backlash, straightness, squareness, homing, and deflection tests. |
+| REQ-Z | requirements/phase-1-z-error-budget.md; design-validation skill | Separate mechanical, probing, map, thermal, and board-surface evidence. |
+| REQ-ENV-006 through REQ-ENV-008 | requirements/phase-1-envelope-trade.md | Reviewed A/B/C trade study and Phase 2 architecture EDR. |
+| REQ-ARCH-* | requirements/phase-1-architecture-comparison.md | Phase 2 objective architecture comparison and architecture EDR. |
+| REQ-PETG-* | requirements/phase-1-petg-manufacturing.md; printed-structural-design skill | Printer calibration coupons, print orientation, joint tests, and rail-seat inspection. |
+| AT-* | requirements/phase-1-acceptance-tests.md | Physical test records; not satisfied by code alone. |
 
 ## Evidence rule
 

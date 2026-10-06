@@ -35,6 +35,9 @@ collection step is named.
 
 ## Current phase
 
-The repository has completed a foundation pass that prepares Phase 1 and
-documents the workflow. Phase 1 itself is not closed: acceptance values and
-hardware records remain open as listed in requirements/open-questions.md.
+The repository has completed the foundation pass and now contains a proposed
+Phase 1 quantitative requirements baseline. Phase 1 is ready for engineering
+review but is not closed: the provisional values, stock/process scope, exact
+hardware inputs, and acceptance dispositions remain open as listed in
+requirements/open-questions.md. Phase 2 architecture must not begin
+automatically.

@@ -19,6 +19,11 @@ from .model import (
     ValidationStatus,
     WorkingEnvelopeRequirement,
 )
+from .phase1 import (
+    check_phase1_requirements,
+    v_bit_isolation_width_mm,
+    v_bit_width_sensitivity,
+)
 
 __all__ = [
     "AxisCapacity",
@@ -30,6 +35,9 @@ __all__ = [
     "ValidationReport",
     "ValidationStatus",
     "WorkingEnvelopeRequirement",
+    "check_phase1_requirements",
+    "v_bit_isolation_width_mm",
+    "v_bit_width_sensitivity",
     "RULE_CATALOG",
     "check_printable_part",
     "check_project_parameters",

@@ -9,7 +9,7 @@
 
 ## Decision
 
-The five initial skills are internally consistent enough to guide the next
+The six initial skills are internally consistent enough to guide the next
 engineering phase. Their boundaries are retained, with the missing
 engineering inputs below tracked as unresolved rather than filled with
 invented dimensions.
@@ -21,7 +21,7 @@ invented dimensions.
 | PCB-specific priorities vs printed PETG frame | No contradiction. The architecture skill sets process priorities; the structural skill defines how the required frame is made. | Keep both. Tool-point stiffness and datum stability drive structural geometry. |
 | Metal components vs predominantly printed structure | No contradiction. Metal is allowed at rails, bearings, screws, spindle, and fastener interfaces when the load path justifies it. | Require a load-path reason in the relevant decision record. |
 | build123d recommendation vs CadQuery fallback | No contradiction. The CAD convention is backend-independent until the implementation spike. | Keep build123d as preliminary and CadQuery as fallback. |
-| Coordinate convention | The five skills and AGENTS.md agree on X right, Y rear, and Z up. | Physical origin and homing datum remain explicitly unresolved. |
+| Coordinate convention | The six skills and AGENTS.md agree on X right, Y rear, and Z up. | Physical origin and homing datum remain explicitly unresolved. |
 | Validation strictness vs early-stage geometry absence | No contradiction. Validation marks missing evidence not-ready; it does not claim detailed geometry is validated. | Keep foundation checks separate from future CAD-adapter checks. |
 
 ## Missing or controlled constraints
@@ -55,7 +55,7 @@ future evidence in the workflow. They are not missing by accident.
 
 ## Validation and review
 
-- [x] All five SKILL.md files pass the skill-authoring validator.
+- [x] All six SKILL.md files pass the skill-authoring validator.
 - [x] Coordinate and status conventions cross-checked.
 - [x] Missing inputs recorded as unresolved.
 - [x] Foundation tests pass.
