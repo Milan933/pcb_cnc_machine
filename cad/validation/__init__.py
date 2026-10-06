@@ -26,6 +26,12 @@ from .phase1 import (
 )
 from .phase2 import check_phase2_skeleton_parameters, check_phase2a_parameters
 from .phase3 import check_phase3_motion_parameters, phase3_gate_report
+from .phase3a import (
+    check_phase3a_all_variants,
+    check_phase3a_model_containment,
+    check_phase3a_packaging_variant,
+    phase3a_gate_report,
+)
 
 __all__ = [
     "AxisCapacity",
@@ -44,6 +50,10 @@ __all__ = [
     "check_phase2a_parameters",
     "check_phase3_motion_parameters",
     "phase3_gate_report",
+    "check_phase3a_all_variants",
+    "check_phase3a_model_containment",
+    "check_phase3a_packaging_variant",
+    "phase3a_gate_report",
     "RULE_CATALOG",
     "check_printable_part",
     "check_project_parameters",

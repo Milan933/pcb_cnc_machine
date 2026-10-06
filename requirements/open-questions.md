@@ -112,3 +112,24 @@ structural CAD:
     response and homing repeatability?
 30. Do the Phase 2A PETG joints and the 1.24 kg moving-bed estimate survive
     conditioning, workholding load, and repeated motion tests?
+
+## Phase 3A packaging disposition boundary
+
+Phase 3A keeps the motion classes as the current technical baseline but does
+not accept the packaging gate. The following packaging questions are now
+explicit:
+
+31. Does the owner select P1, P2, or P3 after reviewing full travel, assembly,
+    service access, and the P3 reduced XY margin?
+32. Do the corrected P1/P2/P3 rail lengths physically clear both carriage
+    blocks at every end of travel with measured supplier tolerances?
+33. Does the P2 front Y motor pocket retain the calculated bed underside gap
+    after the actual motor, coupler, wiring, and guard are installed?
+34. Can fixed-end paired axial/angular-contact bearing cartridges be installed,
+    preloaded, replaced, and kept aligned in the proposed PETG pockets?
+35. Is 230 x 180 mm sufficient for the first workholding method and a future
+    vacuum perimeter, or must the 240 x 190 mm P1 bed be retained?
+36. Does a one-piece or near-one-piece fixed-gantry torsion box fit the Voron
+    350 with its actual orientation, brim, insert, and rail-seat requirements?
+37. Do exact spindle, switch, cable, and motor envelopes invalidate any P2
+    clearance before detailed structural CAD is authorized?

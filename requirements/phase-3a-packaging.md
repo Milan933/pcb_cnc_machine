@@ -1,0 +1,42 @@
+# Phase 3A - compact packaging optimization
+
+**Status:** proposed owner review; Phase 3 gate remains open
+
+Phase 3A is a packaging review around the technically accepted Phase 3 motion
+classes. It does not authorize Phase 4, detailed PETG parts, production
+STEP/STL, exact hardware purchase, or motion-system class changes.
+
+## Requirements
+
+| ID | Requirement | Evidence status |
+| --- | --- | --- |
+| REQ-PKG-001 | Preserve Architecture A: fixed gantry with moving Y bed, 200 x 150 mm PCB area, dual rails, two carriages per rail, 60 mm X/Z guide spacing, 220 mm Y guide spacing, T8x4 X/Y, T8x2 Z, and nominal 40 mm Z travel. | Known baseline; calculated packaging variants |
+| REQ-PKG-002 | Cover the required working area with a documented tool-point travel allowance. P1/P2 retain 220 x 170 x 40 mm; P3 is conditional at 210 x 160 x 40 mm. | Calculated; P3 needs owner confirmation |
+| REQ-PKG-003 | Size every rail from tool travel, the two-block swept group, and both end margins. | Automated calculation and review skeleton |
+| REQ-PKG-004 | Keep X/Y/Z screw leads and fixed/floating bearing topology unchanged. Nominal screw lengths may grow to cover the corrected rail/support stack. | Preliminary choice; physical fit remains open |
+| REQ-PKG-005 | Keep direct screw drive. X/Y/Z motor pockets may be recessed or inverted only when shaft alignment, cooling, fastener access, and service removal remain possible. No belt drive is introduced. | Review envelope; assembly mock-up required |
+| REQ-PKG-006 | Provide a bed study for 240 x 190, 230 x 180, and 220 x 170 mm supports, including PCB margin, guide overhang, full Y sweep, workholding, and future vacuum implications. | Calculated review |
+| REQ-PKG-007 | Review compact fixed/floating 8 mm bearing cartridges. The fixed end must react axial screw load; the remote end must float axially. | Packaging study; bearing and PETG coupons required |
+| REQ-PKG-008 | Minimize Z height without tall-workpiece capability. Include the bed, spoilboard, PCB, tool/spindle envelope, mount, Z guide/screw supports, motor, Y motor, and gantry references. | Calculated Z stack |
+| REQ-PKG-009 | Keep future major PETG packaging prints within the nominal 350 mm Voron volume on paper and document orientation/access risks. | Dimensional screen; print evidence not ready |
+| REQ-PKG-010 | Validate all variants for rail sweep, full bed sweep, motor/bearing/bed/spindle/tool/limit containment, unexpected reference collisions, and non-empty review exports. | Automated checks and build123d runner |
+| REQ-PKG-011 | Record the current envelope cause, P1/P2/P3 trade, recommendation, forced motion corrections, risks, and open owner decisions in EDR-009. | Proposed decision record |
+
+## Frozen versus variable inputs
+
+The frozen Phase 3 class baseline is MGN12H dual X/Y, MGN9H dual Z,
+two carriages per rail, approximately 60/220/60 mm guide spacing,
+T8x4/T8x4/T8x2 screws, direct drive, and fixed/floating supports. Phase 3A
+varies rail length, carriage pitch, bearing envelope, motor recess, bed
+support, end margin, service access, and package bounds only.
+
+The exact motor, spindle, controller, rail supplier/preload, screw straightness,
+nut, switch, workholding, and PETG interface remain unresolved. All dimensions
+in the Phase 3A model are review envelopes or calculated packaging choices,
+not measured manufacturing facts.
+
+## Gate boundary
+
+Phase 3A may be accepted only after owner selection of a variant and a full
+travel/service mock-up. Phase 4 BOM finalization, detailed structural CAD, and
+manufacturing exports remain blocked.

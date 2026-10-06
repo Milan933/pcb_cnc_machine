@@ -17,6 +17,9 @@ Current records:
   - accepted as the Phase 2A boundary and baseline; physical evidence remains open
 - [EDR-008: Phase 3 motion system](008-phase-3-motion-system.md) - proposed;
   owner review required; does not accept Phase 3 or authorize Phase 4
+- [EDR-009: Phase 3A compact packaging](009-phase-3a-compact-packaging.md) -
+  proposed; P2 is recommended for owner review; does not accept the Phase 3A
+  gate or authorize Phase 4
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.

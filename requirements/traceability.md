@@ -25,6 +25,7 @@ already validated.
 | Phase 2A A/B structural evidence | cad/phase2a.py; cad/parameters.py; docs/architecture/phase-2a-structural-comparison.md; docs/calculations/phase-2a-structural-calculations.md; docs/architecture/phase-2a-physical-validation.md; EDR-007 | Reproducible analytical model, 22 automated tests, optimized review skeleton, and coupon/test plan; physical stiffness and creep remain not-ready. |
 | Phase 3 motion classes | requirements/phase-3-motion-system.md; cad/parameters.py; cad/motion_phase3.py; docs/architecture/phase-3-motion-system.md; docs/calculations/phase-3-motion-calculations.md; EDR-008 | Centralized component-class inputs, dependency-light calculations, parameter checks, review-only motion skeleton, and proposed physical tests; exact hardware and motion evidence remain not-ready. |
 | Phase 3 review BOM | bom/phase-3-motion-bom.md; EDR-008 | Quantity/class/sample boundary and safe-purchase guidance; production BOM remains a Phase 4 gate. |
+| Phase 3A compact packaging | requirements/phase-3a-packaging.md; cad/parameters.py; cad/packaging_phase3a.py; cad/assembly/packaging_skeleton.py; cad/validation/phase3a.py; docs/architecture/phase-3a-compact-packaging.md; docs/calculations/phase-3a-packaging-calculations.md; EDR-009 | P1/P2/P3 dimensional stacks, swept rail/bed/spindle/limit envelopes, dependency-light checks, pinned build123d review exports, and no unexpected reference interferences; owner selection, full-travel service mock-up, exact hardware, and PETG evidence remain not-ready. |
 
 ## Evidence rule
 

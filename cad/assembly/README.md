@@ -8,3 +8,8 @@ envelopes, centerlines, carriage boxes, and structural bounds. The Phase 3
 supports, couplers, motors, spindle, and bed envelopes, but remains review
 geometry only. Neither module is a source of production printable-part
 geometry.
+
+The Phase 3A `packaging_skeleton.py` module builds the P1/P2/P3 compact
+packaging variants. It adds swept-bed, swept-spindle, motor, bearing, and
+home-limit reference envelopes for clearance review, but it also remains
+review geometry only and must not be exported to a manufacturing release.

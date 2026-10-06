@@ -38,11 +38,14 @@ collection step is named.
 The repository has completed the foundation pass and Phase 1. The owner has
 reviewed EDR-006 with EDR-007 and accepted **A: fixed gantry with moving Y
 bed** as the mechanical architecture baseline; B remains the documented
-primary rejected alternative. The repository is now in Phase 3 motion-system
-selection review under proposed EDR-008.
+primary rejected alternative. The repository is now in Phase 3A compact
+packaging review under proposed EDR-009, with EDR-008's motion classes serving
+as the current technical baseline.
 
-Phase 3 may select and dimension component classes, document interfaces and
-calculations, and build the review-only motion skeleton. Exact hardware
-identity, supplier/preload, spindle, PETG rail-seat evidence, and physical
-motion tests remain open. Phase 4 BOM finalization, detailed structural CAD,
-and manufacturing exports do not begin from the proposed Phase 3 record alone.
+Phase 3/3A may select and dimension component classes, document interfaces and
+calculations, compare compact packaging variants, and build review-only
+motion/packaging skeletons. Exact hardware identity, supplier/preload,
+spindle, PETG rail-seat/bearing-pocket evidence, full-travel service access,
+and physical motion tests remain open. Phase 4 BOM finalization, detailed
+structural CAD, and manufacturing exports do not begin from the proposed
+Phase 3/3A records alone.

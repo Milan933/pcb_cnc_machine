@@ -5,12 +5,13 @@ isolation routing, drilling, and outline cutting.
 
 ## Project status
 
-This repository is in Phase 3: Motion-system selection review. Phase 1 and the
-Architecture A baseline are accepted by the project owner; the current
-deliverable contains the Phase 2A structural comparison, motion component
-trade, preliminary calculations, and a review-only motion-layout skeleton. It
-still contains no detailed printable CNC parts or production STEP or STL
-files.
+This repository is in Phase 3A: compact packaging review. Phase 1 and the
+Architecture A baseline are accepted by the project owner, and the Phase 3
+motion classes are the current technical baseline. The current deliverable
+contains the Phase 2A structural comparison, motion component trade, P1/P2/P3
+packaging study, preliminary calculations, and review-only motion/packaging
+skeletons. It still contains no detailed printable CNC parts or production
+STEP or STL files.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -71,18 +72,23 @@ printer.
   future physical test definitions.
 - [Phase 3 motion system](requirements/phase-3-motion-system.md):
   owner-authorized motion-system screening requirements and evidence boundary.
+- [Phase 3A packaging](requirements/phase-3a-packaging.md): compact packaging
+  requirements, swept-travel rule, and gate boundary.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture, Phase 2
   trade study, Phase 2A structural comparison and physical-validation plan,
-  Phase 3 motion selection, force loops, skeleton spike, and review views.
+  Phase 3 motion selection, Phase 3A compact packaging, force loops, skeleton
+  spike, and review views.
 - [docs/decisions](docs/decisions): engineering decision records.
 - [bom/phase-3-motion-bom.md](bom/phase-3-motion-bom.md): sample-only motion
   class BOM and purchase boundary.
+- [bom/phase-3a-packaging-study.md](bom/phase-3a-packaging-study.md):
+  sample-characterization boundary for compact packaging.
 - [.agents/skills](.agents/skills): project-specific engineering skills.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
-  set, including Phase 2 and Phase 3 review-layout inputs; it contains no
-  detailed part geometry.
+  set, including Phase 2, Phase 3, and Phase 3A review-layout inputs; it
+  contains no detailed part geometry.
 - [cad/validation](cad/validation): dependency-light validation interfaces and
   foundation checks.
 - [generated](generated): reserved for reviewed manufacturing outputs.
@@ -105,10 +111,12 @@ Every important value or decision must be marked as one of:
 
 ## Near-term next step
 
-Review proposed [EDR-008](docs/decisions/008-phase-3-motion-system.md). The
-unresolved spindle, controller, motor, exact rail/screw, probing, workholding,
-and physical-test questions remain visible. Phase 4 BOM finalization and
-detailed structural CAD do not begin automatically.
+Review proposed
+[EDR-009](docs/decisions/009-phase-3a-compact-packaging.md), select a
+packaging variant, and perform the full-travel/service mock-up. The unresolved
+spindle, controller, motor, exact rail/screw, probing, workholding, and
+physical-test questions remain visible. Phase 4 BOM finalization and detailed
+structural CAD do not begin automatically.
 
 ## Development interface
 
@@ -133,3 +141,8 @@ The focused A/B study uses the same external environment and is run with:
 The Phase 3 motion study uses the same external environment and is run with:
 
     python -m tools.run_phase3_motion_study --output-dir <temporary-directory>
+
+The Phase 3A packaging study uses the same external environment and is run
+with:
+
+    python -m tools.run_phase3a_packaging_study --output-dir <temporary-directory>

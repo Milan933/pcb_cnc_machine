@@ -8,16 +8,19 @@ fixed gantry with moving Y bed** baseline. B, moving gantry/fixed bed, remains
 the documented primary rejected alternative and must not be physically built
 unless the owner reopens the architecture.
 
-Phase 3 motion-system selection is authorized. Work may select and dimension
-component classes, document rail/screw/bearing/motor/controller interfaces,
-add preliminary calculations, and build the deterministic review-only motion
-layout skeleton. It must not silently turn a preliminary or calculated value
-into a measured engineering fact.
+Phase 3 motion-system selection is authorized. Phase 3A compact packaging
+optimization is also authorized around the current motion-class baseline. Work
+may select and dimension component classes, document rail/screw/bearing/
+motor/controller interfaces, add preliminary calculations, compare packaging
+variants, and build deterministic review-only motion/packaging skeletons. It
+must not silently turn a preliminary or calculated value into a measured
+engineering fact.
 
-The current Phase 3 boundary does not authorize detailed printable structural
-parts, production CAD, manufacturing STL/STEP/drawing generation, Phase 4 BOM
-finalization, or acceptance of EDR-008. PETG coupons, joint/rail-seat tests,
-and representative force-loop evidence remain required.
+The current Phase 3/3A boundary does not authorize detailed printable
+structural parts, production CAD, manufacturing STL/STEP/drawing generation,
+Phase 4 BOM finalization, or acceptance of EDR-008/EDR-009. Review-only CAD
+exports must remain temporary. PETG coupons, joint/rail-seat/bearing-pocket
+tests, and representative force-loop evidence remain required.
 
 ## Canonical public repository
 

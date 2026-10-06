@@ -871,3 +871,262 @@ PHASE3_MOTION_PARAMETERS = Phase3MotionParameters(
         "https://github.com/gnea/grbl/blob/master/doc/markdown/interface.md",
     ),
 )
+
+
+@dataclass(frozen=True)
+class Phase3APackagingVariant:
+    """Review-only packaging inputs for the Phase 3A compacting study.
+
+    The Phase 3 axis classes remain the source of truth for rail family,
+    guide count, screw lead, bearing topology, and motor class.  This record
+    contains only packaging alternatives around that baseline.  It is not a
+    production-part definition.
+    """
+
+    variant_id: str
+    title: str
+    design_intent: str
+    working_area_mm: tuple[float, float]
+    tool_travel_mm: tuple[float, float, float]
+    bed_support_mm: tuple[float, float, float]
+    spoilboard_mm: tuple[float, float, float]
+    pcb_edge_margin_mm: tuple[float, float]
+    rail_lengths_mm: tuple[float, float, float]
+    screw_lengths_mm: tuple[float, float, float]
+    screw_unsupported_lengths_mm: tuple[float, float, float]
+    rail_end_margin_mm: tuple[float, float, float]
+    x_carriage_center_offsets_mm: tuple[float, float]
+    y_carriage_center_offsets_mm: tuple[float, float]
+    z_carriage_center_offsets_mm: tuple[float, float]
+    commissioning_feeds_mm_min: tuple[float, float, float]
+    body_envelope_mm: tuple[float, float, float]
+    body_min_z_mm: float
+    body_max_z_mm: float
+    service_footprint_mm: tuple[float, float, float]
+    x_rail_center_y_mm: float
+    x_rail_center_z_mm: float
+    y_rail_center_z_mm: float
+    z_rail_center_y_mm: float
+    z_screw_center_z_mm: float
+    z_screw_center_offset_y_mm: float
+    y_motor_center_z_mm: float
+    bed_sweep_end_clearance_mm: float
+    bed_to_y_motor_clearance_mm: float
+    x_motor_recess_mm: float
+    y_motor_protrusion_mm: float
+    gantry_outer_width_mm: float
+    gantry_side_width_mm: float
+    gantry_depth_mm: float
+    gantry_bottom_z_mm: float
+    gantry_height_mm: float
+    bearing_fixed_envelopes_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    bearing_floating_envelopes_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    bearing_strategy: str
+    motor_strategies: tuple[tuple[str, str], ...]
+    home_limit_clearance_mm: float
+    largest_future_petg_print_mm: tuple[float, float, float]
+    largest_future_petg_print_notes: str
+    evidence_status: ParameterStatus = ParameterStatus.PRELIMINARY
+
+
+PHASE3A_PACKAGING_VARIANTS = (
+    Phase3APackagingVariant(
+        variant_id="P1",
+        title="conservative serviceable",
+        design_intent=(
+            "Retain generous PCB and carriage margins, conventional external access, "
+            "and the least aggressive motor recessing."
+        ),
+        working_area_mm=(200.0, 150.0),
+        tool_travel_mm=(220.0, 170.0, 40.0),
+        bed_support_mm=(240.0, 190.0, 8.0),
+        spoilboard_mm=(240.0, 190.0, 12.0),
+        pcb_edge_margin_mm=(20.0, 20.0),
+        rail_lengths_mm=(370.0, 340.0, 145.0),
+        screw_lengths_mm=(390.0, 360.0, 160.0),
+        screw_unsupported_lengths_mm=(370.0, 340.0, 145.0),
+        rail_end_margin_mm=(10.0, 10.0, 5.0),
+        x_carriage_center_offsets_mm=(-40.0, 40.0),
+        y_carriage_center_offsets_mm=(-50.0, 50.0),
+        z_carriage_center_offsets_mm=(-25.0, 25.0),
+        commissioning_feeds_mm_min=(450.0, 550.0, 1200.0),
+        body_envelope_mm=(394.0, 385.0, 296.0),
+        body_min_z_mm=-56.0,
+        body_max_z_mm=240.0,
+        service_footprint_mm=(474.0, 465.0, 344.0),
+        x_rail_center_y_mm=-36.0,
+        x_rail_center_z_mm=96.0,
+        y_rail_center_z_mm=-14.0,
+        z_rail_center_y_mm=-20.0,
+        z_screw_center_z_mm=96.0,
+        z_screw_center_offset_y_mm=-12.0,
+        y_motor_center_z_mm=-34.0,
+        bed_sweep_end_clearance_mm=12.5,
+        bed_to_y_motor_clearance_mm=4.0,
+        x_motor_recess_mm=12.0,
+        y_motor_protrusion_mm=22.0,
+        gantry_outer_width_mm=370.0,
+        gantry_side_width_mm=18.0,
+        gantry_depth_mm=76.0,
+        gantry_bottom_z_mm=58.0,
+        gantry_height_mm=58.0,
+        bearing_fixed_envelopes_mm=(
+            ("X", (22.0, 42.0, 30.0)),
+            ("Y", (42.0, 22.0, 30.0)),
+            ("Z", (42.0, 42.0, 26.0)),
+        ),
+        bearing_floating_envelopes_mm=(
+            ("X", (18.0, 30.0, 18.0)),
+            ("Y", (30.0, 18.0, 18.0)),
+            ("Z", (30.0, 30.0, 16.0)),
+        ),
+        bearing_strategy=(
+            "BK08/BF08-class service envelopes retained as a conservative screen; "
+            "fixed end reacts axial load and floating end is radial-only."
+        ),
+        motor_strategies=(
+            ("X", "direct axial motor in a shallow side pocket with removable outer cover"),
+            ("Y", "direct axial motor at the front, partly recessed into the front cross-member"),
+            ("Z", "direct axial motor above the upper fixed support with top access"),
+        ),
+        home_limit_clearance_mm=10.0,
+        largest_future_petg_print_mm=(340.0, 80.0, 170.0),
+        largest_future_petg_print_notes=(
+            "One-piece fixed-gantry torsion-box bound is printable in a 350 mm class "
+            "machine only with measured diagonal and brim clearance; split side interfaces remain the fallback."
+        ),
+    ),
+    Phase3APackagingVariant(
+        variant_id="P2",
+        title="balanced compact/serviceable",
+        design_intent=(
+            "Reduce footprint through controlled carriage pitch, recessed direct-drive motors, "
+            "shorter bearing envelopes, and a 15 mm PCB perimeter while retaining full Phase 3 travel."
+        ),
+        working_area_mm=(200.0, 150.0),
+        tool_travel_mm=(220.0, 170.0, 40.0),
+        bed_support_mm=(230.0, 180.0, 8.0),
+        spoilboard_mm=(230.0, 180.0, 12.0),
+        pcb_edge_margin_mm=(15.0, 15.0),
+        rail_lengths_mm=(340.0, 310.0, 130.0),
+        screw_lengths_mm=(360.0, 330.0, 145.0),
+        screw_unsupported_lengths_mm=(340.0, 310.0, 130.0),
+        rail_end_margin_mm=(6.0, 6.0, 5.0),
+        x_carriage_center_offsets_mm=(-30.0, 30.0),
+        y_carriage_center_offsets_mm=(-40.0, 40.0),
+        z_carriage_center_offsets_mm=(-20.0, 20.0),
+        commissioning_feeds_mm_min=(520.0, 650.0, 1100.0),
+        body_envelope_mm=(364.0, 356.0, 276.0),
+        body_min_z_mm=-56.0,
+        body_max_z_mm=220.0,
+        service_footprint_mm=(444.0, 428.0, 322.0),
+        x_rail_center_y_mm=-32.0,
+        x_rail_center_z_mm=84.0,
+        y_rail_center_z_mm=-14.0,
+        z_rail_center_y_mm=-20.0,
+        z_screw_center_z_mm=84.0,
+        z_screw_center_offset_y_mm=-10.0,
+        y_motor_center_z_mm=-34.0,
+        bed_sweep_end_clearance_mm=3.0,
+        bed_to_y_motor_clearance_mm=4.0,
+        x_motor_recess_mm=12.0,
+        y_motor_protrusion_mm=19.0,
+        gantry_outer_width_mm=344.0,
+        gantry_side_width_mm=16.0,
+        gantry_depth_mm=68.0,
+        gantry_bottom_z_mm=52.0,
+        gantry_height_mm=58.0,
+        bearing_fixed_envelopes_mm=(
+            ("X", (18.0, 30.0, 24.0)),
+            ("Y", (30.0, 18.0, 24.0)),
+            ("Z", (34.0, 34.0, 24.0)),
+        ),
+        bearing_floating_envelopes_mm=(
+            ("X", (16.0, 24.0, 14.0)),
+            ("Y", (24.0, 16.0, 14.0)),
+            ("Z", (26.0, 26.0, 14.0)),
+        ),
+        bearing_strategy=(
+            "Use replaceable standardized 8 mm bearing cartridges in printed pockets: "
+            "paired axial bearings or a compact angular-contact pair at the fixed end, "
+            "single radial bearing with axial float at the far end; housing is not yet production geometry."
+        ),
+        motor_strategies=(
+            ("X", "direct axial motor recessed into the left gantry side with an accessible cover"),
+            ("Y", "direct axial motor recessed into the front cross-member; no belt drive"),
+            ("Z", "direct axial motor inside an upper pocket with a removable top service plate"),
+        ),
+        home_limit_clearance_mm=8.0,
+        largest_future_petg_print_mm=(330.0, 72.0, 155.0),
+        largest_future_petg_print_notes=(
+            "A fixed-gantry torsion-box bound can fit the 350 mm Voron class in its long axis; "
+            "print orientation, diagonal clearance, inserts, and rail-seat coupons remain to be proven."
+        ),
+    ),
+    Phase3APackagingVariant(
+        variant_id="P3",
+        title="aggressive minimum practical",
+        design_intent=(
+            "Approach the minimum practical package with reduced PCB margin, shorter carriage pitch, "
+            "tight rail-end margins, and integrated service pockets; use only if P2 evidence is favorable."
+        ),
+        working_area_mm=(200.0, 150.0),
+        tool_travel_mm=(210.0, 160.0, 40.0),
+        bed_support_mm=(220.0, 170.0, 8.0),
+        spoilboard_mm=(220.0, 170.0, 10.0),
+        pcb_edge_margin_mm=(10.0, 10.0),
+        rail_lengths_mm=(320.0, 280.0, 125.0),
+        screw_lengths_mm=(340.0, 300.0, 140.0),
+        screw_unsupported_lengths_mm=(320.0, 280.0, 125.0),
+        rail_end_margin_mm=(5.0, 4.0, 2.0),
+        x_carriage_center_offsets_mm=(-24.0, 24.0),
+        y_carriage_center_offsets_mm=(-30.0, 30.0),
+        z_carriage_center_offsets_mm=(-20.0, 20.0),
+        commissioning_feeds_mm_min=(580.0, 700.0, 1100.0),
+        body_envelope_mm=(344.0, 334.0, 268.0),
+        body_min_z_mm=-54.0,
+        body_max_z_mm=214.0,
+        service_footprint_mm=(414.0, 404.0, 318.0),
+        x_rail_center_y_mm=-30.0,
+        x_rail_center_z_mm=80.0,
+        y_rail_center_z_mm=-13.0,
+        z_rail_center_y_mm=-20.0,
+        z_screw_center_z_mm=80.0,
+        z_screw_center_offset_y_mm=-8.0,
+        y_motor_center_z_mm=-32.0,
+        bed_sweep_end_clearance_mm=2.0,
+        bed_to_y_motor_clearance_mm=2.5,
+        x_motor_recess_mm=12.0,
+        y_motor_protrusion_mm=16.0,
+        gantry_outer_width_mm=324.0,
+        gantry_side_width_mm=14.0,
+        gantry_depth_mm=64.0,
+        gantry_bottom_z_mm=48.0,
+        gantry_height_mm=54.0,
+        bearing_fixed_envelopes_mm=(
+            ("X", (18.0, 26.0, 22.0)),
+            ("Y", (26.0, 18.0, 22.0)),
+            ("Z", (30.0, 30.0, 22.0)),
+        ),
+        bearing_floating_envelopes_mm=(
+            ("X", (14.0, 22.0, 12.0)),
+            ("Y", (22.0, 14.0, 12.0)),
+            ("Z", (24.0, 24.0, 12.0)),
+        ),
+        bearing_strategy=(
+            "Printed end pockets use replaceable 8 mm radial/axial bearing cartridges with minimal "
+            "external envelope; PETG creep, preload retention, and tool access make this conditional."
+        ),
+        motor_strategies=(
+            ("X", "direct axial motor deeply recessed into the side structure; cover removal is mandatory"),
+            ("Y", "direct axial motor inside the front structure; front panel and screw access are constrained"),
+            ("Z", "direct axial motor in the smallest upper pocket with top-only service access"),
+        ),
+        home_limit_clearance_mm=5.0,
+        largest_future_petg_print_mm=(320.0, 68.0, 145.0),
+        largest_future_petg_print_notes=(
+            "Fits the nominal Voron volume on paper, but the tight rail-seat and fastener access make "
+            "a split or near-one-piece print more likely until an assembly mock-up passes."
+        ),
+    ),
+)
