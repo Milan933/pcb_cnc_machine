@@ -1,6 +1,7 @@
-# Phase 5 - first manufacturing-CAD batch
+# Phase 5 - first manufacturing-CAD batch (historical sub-gate)
 
-**Status:** owner-authorized for the first base pair; candidate output only
+**Status:** historical first-base-pair sub-gate; superseded for active scope by
+[phase-5-complete-machine.md](phase-5-complete-machine.md)
 **Decision record:** [EDR-014](../docs/decisions/014-phase-5-base-pair-manufacturing-cad.md)
 **Current maturity target:** `PROTOTYPE-STL`
 
@@ -13,8 +14,9 @@ to:
 - `base_left_integrated`
 - `base_right_integrated`
 
-The remaining 17 O2 parts must not be generated until the owner reviews this
-batch.
+The remaining 17 O2 parts were initially held at this sub-gate. The owner’s
+later explicit Phase 5 authorization supersedes that stop and is recorded in
+EDR-015; the complete-machine requirements now control active work.
 
 ## Manufacturing-CAD requirements
 
@@ -93,6 +95,6 @@ representative Y rails, fasteners, feet, and the center tie. Rail datum
 parallelism, post-processing, insert/fastener strategy, and service access must
 be recorded as evidence rather than inferred from the mesh.
 
-The first-print review does not authorize the remaining structural parts. It
-only provides the owner decision needed to continue the manufacturing-CAD
-convention to the next controlled batch.
+The first-print review did not authorize the remaining structural parts under
+the original sub-gate. EDR-015 now authorizes the complete virtual candidate
+pass, while physical evidence, measured interfaces, and release remain open.

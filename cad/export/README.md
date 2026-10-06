@@ -21,3 +21,9 @@ and refuses to complete when candidate geometry or export validation has
 blocking errors. It preserves the distinction between source geometry,
 development artifacts, candidate review artifacts, and reviewed release
 artifacts.
+
+The active complete-machine generator is
+`tools/generate_phase5_complete_machine.py`. It exports 19 local printable
+STEP/STL pairs, `pcb_cnc_complete_assembly.step`, a visualization STL, a
+tracked manifest, and twelve ignored local review images. The complete pass is
+still `PROTOTYPE-STL`; no generated file is placed in a release directory.

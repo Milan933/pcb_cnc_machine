@@ -7,12 +7,14 @@ isolation routing, drilling, and outline cutting.
 
 The owner accepted Phase 4 and Phase 4A as the preliminary structural
 architecture baseline on 2026-10-06, selecting the balanced 19-part O2 review
-architecture. The owner has now authorized the first Phase 5 manufacturing-CAD
-batch: real `base_left_integrated` and `base_right_integrated` source geometry
-with local candidate STEP/STL derivatives. Phase 1, the Architecture A
+architecture. The owner has now authorized complete Phase 5 virtual-machine
+manufacturing CAD: all 19 O2 structural part identities have real source
+geometry, a named complete assembly, and local candidate STEP/STL derivatives.
+Phase 1, the Architecture A
 baseline, the Phase 3 motion baseline, and the P2 Phase 3A packaging baseline
-are also accepted. The first batch is `PROTOTYPE-STL` only; it contains no
-released or hardware-validated parts and does not start the remaining O2 parts.
+are also accepted. The complete candidate is `PROTOTYPE-STL` only; it contains
+no released or hardware-validated parts. Physical review follows the coherent
+virtual-machine review rather than an isolated base-pair stop.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -33,8 +35,8 @@ boundaries are documented in
 The preliminary CAD recommendation is build123d. That recommendation is
 recorded in [the CAD technology decision](docs/decisions/002-cad-technology.md)
 and was exercised by the Phase 2 architecture-only spike. Phase 5 uses the
-pinned build123d environment for the controlled first base-pair manufacturing
-batch; the exact hardware-dependent interfaces remain provisional.
+pinned build123d environment for the controlled complete-machine manufacturing
+pass; the exact hardware-dependent interfaces remain provisional.
 
 ## Design intent
 
@@ -89,6 +91,9 @@ installed driver modules remain identification items.
 - [Phase 5 manufacturing CAD](requirements/phase-5-manufacturing-cad.md):
   first real integrated-base pair, candidate export boundary, and owner-review
   stop gate.
+- [Phase 5 complete-machine manufacturing CAD](requirements/phase-5-complete-machine.md):
+  complete 19-part virtual machine, travel/interference checks, export and
+  review-package contract.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture, Phase 2
@@ -111,6 +116,10 @@ installed driver modules remain identification items.
 - [cad/parts/phase5_structural.py](cad/parts/phase5_structural.py): the first
   fused, parametric integrated-base pair with explicitly provisional hardware
   openings.
+- [cad/parts/phase5_complete_structural.py](cad/parts/phase5_complete_structural.py):
+  all 19 local fused PETG candidate solids.
+- [cad/assembly/phase5_complete_assembly.py](cad/assembly/phase5_complete_assembly.py):
+  complete named structural, motion, process, control, and service assembly.
 - [cad/fastening.py](cad/fastening.py): dependency-light PETG interface checks
   for boss material, edge distance, access, geometric shear transfer, M5, and
   through-bolt justification.
@@ -136,13 +145,13 @@ Every important value or decision must be marked as one of:
 
 ## Near-term next step
 
-Review the [Phase 5 base-pair manufacturing-CAD batch](requirements/phase-5-manufacturing-cad.md)
-and its [EDR-014](docs/decisions/014-phase-5-base-pair-manufacturing-cad.md),
-open the two local STL files in OrcaSlicer, and perform the first-print and
-measured-interface review. Continue the hardware identification and coupon
-work under [EDR-013](docs/decisions/013-hardware-procurement-measurement-freeze.md).
-Do not generate the remaining O2 parts or release artifacts until the owner
-reviews this batch.
+Review the [complete Phase 5 virtual-machine package](requirements/phase-5-complete-machine.md),
+the [owner review report](docs/manufacturing/phase5-complete-machine-review.md),
+and the local STL files in OrcaSlicer. Then identify/measure the owner
+controller, drivers, motors, motion hardware, spindle, fasteners, and inserts
+before controlled first prints and coupons. Continue hardware identification
+under [EDR-013](requirements/hardware-procurement-measurement-freeze.md); do
+not publish release artifacts from this candidate pass.
 
 ## Development interface
 

@@ -95,6 +95,23 @@ RULE_CATALOG: tuple[RuleDefinition, ...] = (
     RuleDefinition("VAL-PHASE5-AUTHORIZATION", "Phase 5 owner authorization", 5, False),
     RuleDefinition("VAL-PHASE5-BATCH-SCOPE", "Phase 5 controlled batch scope", 5, False),
     RuleDefinition("VAL-PHASE5-RELEASE-BOUNDARY", "Phase 5 release evidence boundary", 5, False),
+    RuleDefinition("VAL-PHASE5-COMPLETE-PART-IDS", "Complete Phase 5 stable structural part identity", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-SOLID-VALID", "Complete Phase 5 candidate solid validity", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-SINGLE-SOLID", "Complete Phase 5 fused single-solid contract", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-PRINT-BOUND", "Complete Phase 5 candidate print bound", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-PROVISIONAL", "Complete Phase 5 provisional interface boundary", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-ASSEMBLY", "Complete Phase 5 assembly completeness", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-STRUCTURAL-COUNT", "Complete Phase 5 structural component count", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-UNIQUE-NAMES", "Complete Phase 5 unique component names", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-MASTER", "Complete Phase 5 master assembly validity", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-INTERFERENCE", "Complete Phase 5 classified structural interference", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-TRAVEL", "Complete Phase 5 usable travel extremes", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-SWEPT-INTERFACES", "Complete Phase 5 exact swept interface evidence", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-EXPORT-FILE", "Complete Phase 5 export file presence", 5, True),
+    RuleDefinition("VAL-PHASE5-COMPLETE-AUTHORIZATION", "Complete Phase 5 owner authorization", 5, False),
+    RuleDefinition("VAL-PHASE5-COMPLETE-SCOPE", "Complete Phase 5 scope", 5, False),
+    RuleDefinition("VAL-PHASE5-COMPLETE-MATURITY", "Complete Phase 5 maturity boundary", 5, False),
+    RuleDefinition("VAL-PHASE5-COMPLETE-PHYSICAL-EVIDENCE", "Complete Phase 5 physical evidence boundary", 5, False),
 )
 
 

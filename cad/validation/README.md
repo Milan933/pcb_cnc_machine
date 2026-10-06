@@ -69,7 +69,9 @@ automated runner may pass geometry, containment, interference, and export
 checks while the overall report remains `not-ready` for measured hardware,
 print/joint/rail-seat coupons, service mock-up, and physical 5 N force-loop
 evidence. The preliminary architecture is owner-accepted; manufacturing
-release remains blocked. Phase 5 now adds only the owner-authorized first
-base-pair candidate batch; its overall status remains not-ready for release
-because hardware dimensions, physical first-print evidence, and process
-validation are open.
+release remains blocked. Phase 5 adds the owner-authorized complete virtual
+machine: 19 valid local single-solid candidates, a named 70-component
+assembly, classified nominal structural interference, and an eight-corner
+travel screen. Its overall status remains not-ready for release because
+hardware dimensions, physical first-print evidence, exact swept/cable
+evidence, electrical identification, and process validation are open.

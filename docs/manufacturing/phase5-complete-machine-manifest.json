@@ -1,0 +1,2546 @@
+{
+  "phase": "5-manufacturing-cad",
+  "phase_state": "phase-5-complete-virtual-machine",
+  "batch": "phase5-complete-machine",
+  "status": "complete-virtual-machine-candidate-owner-review",
+  "maturity": "PROTOTYPE-STL",
+  "units": "mm",
+  "owner_authorization": {
+    "authorized": true,
+    "baseline_commit": "afe2e14089467321b323d74f928a7ab4c5ffdc1f",
+    "scope": "complete virtual machine, all printable structural candidates, local derivatives, and owner review package"
+  },
+  "source": {
+    "module_structural": "cad/parts/phase5_complete_structural.py",
+    "module_assembly": "cad/assembly/phase5_complete_assembly.py",
+    "revision": "7759f74d9f63453fe48bfceb87132847ef8300de",
+    "working_tree_dirty_at_generation": true
+  },
+  "coordinate_system": {
+    "convention": [
+      "X: left to right, positive right",
+      "Y: front to rear, positive rear",
+      "Z: work datum upward, positive up"
+    ],
+    "machine_origin": "MCS at the centre of the nominal PCB top surface: (0, 0, 0)",
+    "work_origin": "G54/front-left PCB datum at (-100, -75, 0); probing may refine Z",
+    "work_area_mm": [
+      200.0,
+      150.0
+    ],
+    "usable_travel_mm": [
+      220.0,
+      170.0,
+      40.0
+    ],
+    "travel_min_tool_point_mm": [
+      -110.0,
+      -85.0,
+      -25.0
+    ],
+    "travel_max_tool_point_mm": [
+      110.0,
+      85.0,
+      15.0
+    ]
+  },
+  "parameters": {
+    "units": "mm",
+    "coordinate_convention": [
+      "X: left to right, positive right",
+      "Y: front to rear, positive rear",
+      "Z: work datum upward, positive up"
+    ],
+    "machine_origin": "MCS at the centre of the nominal PCB top surface: (0, 0, 0)",
+    "work_origin": "G54/front-left PCB datum at (-100, -75, 0); probing may refine Z",
+    "pcb_top_datum_z_mm": 0.0,
+    "work_area_mm": [
+      200.0,
+      150.0
+    ],
+    "pcb_nominal_thickness_mm": 1.6,
+    "usable_travel_mm": [
+      220.0,
+      170.0,
+      40.0
+    ],
+    "travel_min_mm": [
+      -110.0,
+      -85.0,
+      -25.0
+    ],
+    "travel_max_mm": [
+      110.0,
+      85.0,
+      15.0
+    ],
+    "base_pair_placements_mm": [
+      [
+        "base_left_integrated",
+        [
+          -174.0,
+          -150.0,
+          -56.0
+        ]
+      ],
+      [
+        "base_right_integrated",
+        [
+          24.0,
+          -150.0,
+          -56.0
+        ]
+      ]
+    ],
+    "center_tie_placement_mm": [
+      -126.0,
+      -12.0,
+      -50.0
+    ],
+    "gantry_placements_mm": [
+      [
+        "gantry_left_integrated",
+        [
+          -180.0,
+          -100.0,
+          -12.0
+        ]
+      ],
+      [
+        "gantry_right_integrated",
+        [
+          0.0,
+          -100.0,
+          -12.0
+        ]
+      ]
+    ],
+    "x_z_backbone_placement_mm": [
+      -45.0,
+      -105.0,
+      8.0
+    ],
+    "z_carriage_placement_mm": [
+      -45.0,
+      -100.0,
+      0.0
+    ],
+    "spindle_mount_placement_mm": [
+      -45.0,
+      -25.0,
+      0.0
+    ],
+    "moving_bed_placement_mm": [
+      -120.0,
+      -90.0,
+      -32.0
+    ],
+    "y_service_placements_mm": [
+      [
+        "y_motor_service_pocket",
+        [
+          -35.0,
+          -178.0,
+          -65.0
+        ]
+      ],
+      [
+        "y_fixed_bearing_cartridge",
+        [
+          -26.0,
+          -176.0,
+          -53.0
+        ]
+      ],
+      [
+        "y_floating_bearing_cartridge",
+        [
+          -26.0,
+          136.0,
+          -53.0
+        ]
+      ]
+    ],
+    "x_bearing_placements_mm": [
+      [
+        "x_fixed_bearing_cartridge",
+        [
+          -205.0,
+          -100.0,
+          73.0
+        ]
+      ],
+      [
+        "x_floating_bearing_cartridge",
+        [
+          155.0,
+          -100.0,
+          73.0
+        ]
+      ]
+    ],
+    "foot_placements_mm": [
+      [
+        "machine_foot_front_left",
+        [
+          -169.0,
+          -145.0,
+          -76.0
+        ]
+      ],
+      [
+        "machine_foot_front_right",
+        [
+          119.0,
+          -145.0,
+          -76.0
+        ]
+      ],
+      [
+        "machine_foot_rear_left",
+        [
+          -169.0,
+          95.0,
+          -76.0
+        ]
+      ],
+      [
+        "machine_foot_rear_right",
+        [
+          119.0,
+          95.0,
+          -76.0
+        ]
+      ]
+    ],
+    "electronics_rail_placement_mm": [
+      -110.0,
+      155.0,
+      -5.0
+    ],
+    "spoilboard_size_mm": [
+      230.0,
+      180.0,
+      12.0
+    ],
+    "mgn12_x_rail_length_mm": 340.0,
+    "mgn12_x_rail_center_spacing_mm": 60.0,
+    "mgn12_y_rail_length_mm": 310.0,
+    "mgn12_y_rail_center_spacing_mm": 220.0,
+    "mgn9_z_rail_length_mm": 130.0,
+    "mgn9_z_rail_center_spacing_mm": 60.0,
+    "x_screw_length_mm": 360.0,
+    "y_screw_length_mm": 330.0,
+    "z_screw_length_mm": 145.0,
+    "nema17_frame_mm": 42.3,
+    "nema17_shaft_diameter_mm": 5.0,
+    "nema17_body_length_range_mm": [
+      40.0,
+      48.0
+    ],
+    "spindle_diameter_classes_mm": [
+      25.0,
+      40.0,
+      52.0
+    ],
+    "spindle_body_length_range_mm": [
+      80.0,
+      140.0
+    ],
+    "spindle_mass_range_kg": [
+      0.3,
+      0.8
+    ],
+    "preferred_printed_dimension_mm": 300.0,
+    "conservative_printed_dimension_mm": 320.0,
+    "petg_density_kg_per_mm3": 1.27e-06,
+    "provisional_interfaces": [
+      "MGN rail hole pattern, rail height, and shim datum",
+      "T8 screw, nut, bearing, coupler, and motor mounting dimensions",
+      "heat-set insert and through-fastener dimensions",
+      "NEMA17 motor connector and exact body/shaft details",
+      "Arduino Mega + CNC Shield revision, drivers, pins, and spindle interface",
+      "spindle body diameter, length, mounting and cable exit"
+    ]
+  },
+  "part_count": 19,
+  "part_ids": [
+    "base_left_integrated",
+    "base_right_integrated",
+    "base_center_tie",
+    "y_motor_service_pocket",
+    "y_fixed_bearing_cartridge",
+    "y_floating_bearing_cartridge",
+    "machine_foot_front_left",
+    "machine_foot_front_right",
+    "machine_foot_rear_left",
+    "machine_foot_rear_right",
+    "electronics_mount_rail",
+    "gantry_left_integrated",
+    "gantry_right_integrated",
+    "x_fixed_bearing_cartridge",
+    "x_floating_bearing_cartridge",
+    "x_z_backbone",
+    "z_carriage_plate",
+    "spindle_mount_concept",
+    "moving_bed_frame"
+  ],
+  "parts": [
+    {
+      "part_number": "PCNC-P001",
+      "part_id": "base_left_integrated",
+      "description": "left integrated base, Y rail and tower load path",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          150.0,
+          300.0,
+          43.75
+        ],
+        "size": [
+          150.0,
+          300.0,
+          43.75
+        ]
+      },
+      "volume_mm3": 514011.2430154608,
+      "estimated_mass_kg": 0.6527942786296351,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/base_left_integrated.stl",
+      "step": "generated/step/phase5-complete-machine/base_left_integrated.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P002",
+      "part_id": "base_right_integrated",
+      "description": "right integrated base, Y rail and tower load path",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          150.0,
+          300.0,
+          43.75
+        ],
+        "size": [
+          150.0,
+          300.0,
+          43.75
+        ]
+      },
+      "volume_mm3": 514011.2430154608,
+      "estimated_mass_kg": 0.6527942786296351,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/base_right_integrated.stl",
+      "step": "generated/step/phase5-complete-machine/base_right_integrated.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P003",
+      "part_id": "base_center_tie",
+      "description": "transverse base shear tie",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          252.0,
+          24.0,
+          30.0
+        ],
+        "size": [
+          252.0,
+          24.0,
+          30.0
+        ]
+      },
+      "volume_mm3": 180485.7412314721,
+      "estimated_mass_kg": 0.22921689136396953,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/base_center_tie.stl",
+      "step": "generated/step/phase5-complete-machine/base_center_tie.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P004",
+      "part_id": "y_motor_service_pocket",
+      "description": "removable Y motor and coupler service mount",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          70.0,
+          45.0,
+          62.0
+        ],
+        "size": [
+          70.0,
+          45.0,
+          62.0
+        ]
+      },
+      "volume_mm3": 90703.62872246502,
+      "estimated_mass_kg": 0.11519360847753056,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/y_motor_service_pocket.stl",
+      "step": "generated/step/phase5-complete-machine/y_motor_service_pocket.step",
+      "notes": "NEMA17 face and shaft opening are screening geometry."
+    },
+    {
+      "part_number": "PCNC-P005",
+      "part_id": "y_fixed_bearing_cartridge",
+      "description": "Y fixed-end bearing cartridge",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          -2.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          54.0,
+          50.0,
+          38.0
+        ],
+        "size": [
+          56.0,
+          50.0,
+          38.0
+        ]
+      },
+      "volume_mm3": 77204.53289415348,
+      "estimated_mass_kg": 0.09804975677557491,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/y_fixed_bearing_cartridge.stl",
+      "step": "generated/step/phase5-complete-machine/y_fixed_bearing_cartridge.step",
+      "notes": "Bearing bore and axial stack remain provisional."
+    },
+    {
+      "part_number": "PCNC-P006",
+      "part_id": "y_floating_bearing_cartridge",
+      "description": "Y floating-end bearing cartridge",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          -2.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          54.0,
+          50.0,
+          34.0
+        ],
+        "size": [
+          56.0,
+          50.0,
+          34.0
+        ]
+      },
+      "volume_mm3": 66676.5328941535,
+      "estimated_mass_kg": 0.08467919677557494,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/y_floating_bearing_cartridge.stl",
+      "step": "generated/step/phase5-complete-machine/y_floating_bearing_cartridge.step",
+      "notes": "Radial-only support; axial float is intentional."
+    },
+    {
+      "part_number": "PCNC-P007",
+      "part_id": "machine_foot_front_left",
+      "description": "front-left leveling foot interface",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          50.0,
+          50.0,
+          24.0
+        ],
+        "size": [
+          50.0,
+          50.0,
+          24.0
+        ]
+      },
+      "volume_mm3": 56674.296492588845,
+      "estimated_mass_kg": 0.07197635654558783,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/machine_foot_front_left.stl",
+      "step": "generated/step/phase5-complete-machine/machine_foot_front_left.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P008",
+      "part_id": "machine_foot_front_right",
+      "description": "front-right leveling foot interface",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          50.0,
+          50.0,
+          24.0
+        ],
+        "size": [
+          50.0,
+          50.0,
+          24.0
+        ]
+      },
+      "volume_mm3": 56674.296492588845,
+      "estimated_mass_kg": 0.07197635654558783,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/machine_foot_front_right.stl",
+      "step": "generated/step/phase5-complete-machine/machine_foot_front_right.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P009",
+      "part_id": "machine_foot_rear_left",
+      "description": "rear-left leveling foot interface",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          50.0,
+          50.0,
+          24.0
+        ],
+        "size": [
+          50.0,
+          50.0,
+          24.0
+        ]
+      },
+      "volume_mm3": 56674.296492588845,
+      "estimated_mass_kg": 0.07197635654558783,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/machine_foot_rear_left.stl",
+      "step": "generated/step/phase5-complete-machine/machine_foot_rear_left.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P010",
+      "part_id": "machine_foot_rear_right",
+      "description": "rear-right leveling foot interface",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          50.0,
+          50.0,
+          24.0
+        ],
+        "size": [
+          50.0,
+          50.0,
+          24.0
+        ]
+      },
+      "volume_mm3": 56674.296492588845,
+      "estimated_mass_kg": 0.07197635654558783,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/machine_foot_rear_right.stl",
+      "step": "generated/step/phase5-complete-machine/machine_foot_rear_right.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P011",
+      "part_id": "electronics_mount_rail",
+      "description": "rear electronics and cable-service mounting rail",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          220.0,
+          40.0,
+          20.0
+        ],
+        "size": [
+          220.0,
+          40.0,
+          20.0
+        ]
+      },
+      "volume_mm3": 143363.82748764806,
+      "estimated_mass_kg": 0.18207206090931302,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/electronics_mount_rail.stl",
+      "step": "generated/step/phase5-complete-machine/electronics_mount_rail.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P012",
+      "part_id": "gantry_left_integrated",
+      "description": "left fixed gantry tower and X beam segment",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "flat on beam side or broad XY face; inspect tower-to-base datum",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          200.0,
+          70.0,
+          150.0
+        ],
+        "size": [
+          200.0,
+          70.0,
+          150.0
+        ]
+      },
+      "volume_mm3": 539280.0000000002,
+      "estimated_mass_kg": 0.6848856000000002,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/gantry_left_integrated.stl",
+      "step": "generated/step/phase5-complete-machine/gantry_left_integrated.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P013",
+      "part_id": "gantry_right_integrated",
+      "description": "right fixed gantry tower and X beam socket segment",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "flat on beam side or broad XY face; inspect socket and tower datum",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          8.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          180.0,
+          70.0,
+          150.0
+        ],
+        "size": [
+          172.0,
+          70.0,
+          150.0
+        ]
+      },
+      "volume_mm3": 496639.99999999977,
+      "estimated_mass_kg": 0.6307327999999996,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/gantry_right_integrated.stl",
+      "step": "generated/step/phase5-complete-machine/gantry_right_integrated.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P014",
+      "part_id": "x_fixed_bearing_cartridge",
+      "description": "X fixed-end bearing cartridge",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          -5.0,
+          0.0
+        ],
+        "max": [
+          50.0,
+          75.0,
+          50.0
+        ],
+        "size": [
+          50.0,
+          80.0,
+          50.0
+        ]
+      },
+      "volume_mm3": 155740.53289415347,
+      "estimated_mass_kg": 0.1977904767755749,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/x_fixed_bearing_cartridge.stl",
+      "step": "generated/step/phase5-complete-machine/x_fixed_bearing_cartridge.step",
+      "notes": "T8 bearing pocket remains provisional."
+    },
+    {
+      "part_number": "PCNC-P015",
+      "part_id": "x_floating_bearing_cartridge",
+      "description": "X floating-end bearing cartridge",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": false,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          -5.0,
+          0.0
+        ],
+        "max": [
+          50.0,
+          75.0,
+          50.0
+        ],
+        "size": [
+          50.0,
+          80.0,
+          50.0
+        ]
+      },
+      "volume_mm3": 155740.53289415347,
+      "estimated_mass_kg": 0.1977904767755749,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/x_floating_bearing_cartridge.stl",
+      "step": "generated/step/phase5-complete-machine/x_floating_bearing_cartridge.step",
+      "notes": "Radial-only support; axial float is intentional."
+    },
+    {
+      "part_number": "PCNC-P016",
+      "part_id": "x_z_backbone",
+      "description": "X carriage and dual Z rail backplate",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "upright or on the back datum; condition the rail seats",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          90.0,
+          48.0,
+          130.0
+        ],
+        "size": [
+          90.0,
+          48.0,
+          130.0
+        ]
+      },
+      "volume_mm3": 281672.00000000006,
+      "estimated_mass_kg": 0.35772344000000006,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/x_z_backbone.stl",
+      "step": "generated/step/phase5-complete-machine/x_z_backbone.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P017",
+      "part_id": "z_carriage_plate",
+      "description": "moving Z carriage and spindle force-loop plate",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "upright on the back datum; keep spindle interface face accessible",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          90.0,
+          80.0,
+          100.0
+        ],
+        "size": [
+          90.0,
+          80.0,
+          100.0
+        ]
+      },
+      "volume_mm3": 461280.0,
+      "estimated_mass_kg": 0.5858256,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/z_carriage_plate.stl",
+      "step": "generated/step/phase5-complete-machine/z_carriage_plate.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P018",
+      "part_id": "spindle_mount_concept",
+      "description": "modular parametric spindle clamp mount",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "upright on the rear plate; ring axes remain vertical",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          90.0,
+          67.0,
+          70.0
+        ],
+        "size": [
+          90.0,
+          67.0,
+          70.0
+        ]
+      },
+      "volume_mm3": 101885.19564646028,
+      "estimated_mass_kg": 0.12939419847100456,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/spindle_mount_concept.stl",
+      "step": "generated/step/phase5-complete-machine/spindle_mount_concept.step",
+      "notes": ""
+    },
+    {
+      "part_number": "PCNC-P019",
+      "part_id": "moving_bed_frame",
+      "description": "ribbed moving Y bed with screw nut and carriage pads",
+      "quantity": 1,
+      "material": "PETG",
+      "maturity": "PROTOTYPE-STL",
+      "interface_status": "PROVISIONAL_HARDWARE_DIMENSION",
+      "critical_force_loop_part": true,
+      "print_orientation": "flat on the broad XY datum; Z is print-up",
+      "support_strategy": "No support preferred; validate bridges and use brim only if required",
+      "bbox_mm": {
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          240.0,
+          180.0,
+          26.0
+        ],
+        "size": [
+          240.0,
+          180.0,
+          26.0
+        ]
+      },
+      "volume_mm3": 498814.7930707665,
+      "estimated_mass_kg": 0.6334947871998734,
+      "shape_valid": true,
+      "solid_count": 1,
+      "stl": "generated/stl/phase5-complete-machine/moving_bed_frame.stl",
+      "step": "generated/step/phase5-complete-machine/moving_bed_frame.step",
+      "notes": ""
+    }
+  ],
+  "complete_assembly": {
+    "component_count": 70,
+    "printed_structural_count": 19,
+    "hardware_envelope_count": 51,
+    "bbox_mm": {
+      "min": [
+        -274.0,
+        -220.0,
+        -80.0
+      ],
+      "max": [
+        205.0,
+        255.0,
+        193.0
+      ],
+      "size": [
+        479.0,
+        475.0,
+        273.0
+      ]
+    },
+    "nominal_travel_state": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "master_step": "generated/step/phase5-complete-machine/pcb_cnc_complete_assembly.step",
+    "master_stl_visualization": "generated/stl/phase5-complete-machine/pcb_cnc_complete_assembly.stl",
+    "expected_interference_pairs": [
+      [
+        "base_center_tie",
+        "base_left_integrated"
+      ],
+      [
+        "base_center_tie",
+        "base_right_integrated"
+      ],
+      [
+        "base_left_integrated",
+        "gantry_left_integrated"
+      ],
+      [
+        "base_right_integrated",
+        "gantry_right_integrated"
+      ],
+      [
+        "gantry_left_integrated",
+        "gantry_right_integrated"
+      ],
+      [
+        "moving_bed_frame",
+        "spoilboard"
+      ],
+      [
+        "pcb_envelope",
+        "spoilboard"
+      ],
+      [
+        "spindle_mount_concept",
+        "z_carriage_plate"
+      ],
+      [
+        "x_z_backbone",
+        "z_carriage_plate"
+      ]
+    ],
+    "component_names": [
+      "base_left_integrated",
+      "base_right_integrated",
+      "base_center_tie",
+      "y_motor_service_pocket",
+      "y_fixed_bearing_cartridge",
+      "y_floating_bearing_cartridge",
+      "machine_foot_front_left",
+      "machine_foot_front_right",
+      "machine_foot_rear_left",
+      "machine_foot_rear_right",
+      "electronics_mount_rail",
+      "gantry_left_integrated",
+      "gantry_right_integrated",
+      "x_fixed_bearing_cartridge",
+      "x_floating_bearing_cartridge",
+      "x_z_backbone",
+      "z_carriage_plate",
+      "spindle_mount_concept",
+      "moving_bed_frame",
+      "x_rail_lower",
+      "x_rail_upper",
+      "x_carriage_lower_1",
+      "x_carriage_lower_2",
+      "x_carriage_upper_1",
+      "x_carriage_upper_2",
+      "x_lead_screw",
+      "x_lead_nut",
+      "x_motor_nema17",
+      "x_motor_connector_clearance",
+      "x_coupler",
+      "y_rail_left",
+      "y_rail_right",
+      "y_carriage_left_1",
+      "y_carriage_left_2",
+      "y_carriage_right_1",
+      "y_carriage_right_2",
+      "y_lead_screw",
+      "y_lead_nut",
+      "y_motor_nema17",
+      "y_motor_connector_clearance",
+      "y_coupler",
+      "z_rail_left",
+      "z_rail_right",
+      "z_carriage_left_1",
+      "z_carriage_left_2",
+      "z_carriage_right_1",
+      "z_carriage_right_2",
+      "z_lead_screw",
+      "z_lead_nut",
+      "z_motor_nema17",
+      "z_coupler",
+      "spindle_envelope",
+      "tool_envelope",
+      "spoilboard",
+      "pcb_envelope",
+      "workholding_clamp_front",
+      "workholding_clamp_rear",
+      "workholding_clamp_right",
+      "conductive_probe",
+      "probe_cable_route",
+      "arduino_mega_owner_hardware",
+      "cnc_shield_owner_hardware",
+      "driver_cooling_clearance",
+      "controller_cable_service_loop",
+      "x_home_limit",
+      "y_home_limit",
+      "z_home_limit",
+      "motor_cable_route",
+      "moving_bed_cable_loop",
+      "machine_feet_hardware"
+    ]
+  },
+  "exports": {
+    "base_left_integrated_stl": "generated/stl/phase5-complete-machine/base_left_integrated.stl",
+    "base_left_integrated_step": "generated/step/phase5-complete-machine/base_left_integrated.step",
+    "base_right_integrated_stl": "generated/stl/phase5-complete-machine/base_right_integrated.stl",
+    "base_right_integrated_step": "generated/step/phase5-complete-machine/base_right_integrated.step",
+    "base_center_tie_stl": "generated/stl/phase5-complete-machine/base_center_tie.stl",
+    "base_center_tie_step": "generated/step/phase5-complete-machine/base_center_tie.step",
+    "y_motor_service_pocket_stl": "generated/stl/phase5-complete-machine/y_motor_service_pocket.stl",
+    "y_motor_service_pocket_step": "generated/step/phase5-complete-machine/y_motor_service_pocket.step",
+    "y_fixed_bearing_cartridge_stl": "generated/stl/phase5-complete-machine/y_fixed_bearing_cartridge.stl",
+    "y_fixed_bearing_cartridge_step": "generated/step/phase5-complete-machine/y_fixed_bearing_cartridge.step",
+    "y_floating_bearing_cartridge_stl": "generated/stl/phase5-complete-machine/y_floating_bearing_cartridge.stl",
+    "y_floating_bearing_cartridge_step": "generated/step/phase5-complete-machine/y_floating_bearing_cartridge.step",
+    "machine_foot_front_left_stl": "generated/stl/phase5-complete-machine/machine_foot_front_left.stl",
+    "machine_foot_front_left_step": "generated/step/phase5-complete-machine/machine_foot_front_left.step",
+    "machine_foot_front_right_stl": "generated/stl/phase5-complete-machine/machine_foot_front_right.stl",
+    "machine_foot_front_right_step": "generated/step/phase5-complete-machine/machine_foot_front_right.step",
+    "machine_foot_rear_left_stl": "generated/stl/phase5-complete-machine/machine_foot_rear_left.stl",
+    "machine_foot_rear_left_step": "generated/step/phase5-complete-machine/machine_foot_rear_left.step",
+    "machine_foot_rear_right_stl": "generated/stl/phase5-complete-machine/machine_foot_rear_right.stl",
+    "machine_foot_rear_right_step": "generated/step/phase5-complete-machine/machine_foot_rear_right.step",
+    "electronics_mount_rail_stl": "generated/stl/phase5-complete-machine/electronics_mount_rail.stl",
+    "electronics_mount_rail_step": "generated/step/phase5-complete-machine/electronics_mount_rail.step",
+    "gantry_left_integrated_stl": "generated/stl/phase5-complete-machine/gantry_left_integrated.stl",
+    "gantry_left_integrated_step": "generated/step/phase5-complete-machine/gantry_left_integrated.step",
+    "gantry_right_integrated_stl": "generated/stl/phase5-complete-machine/gantry_right_integrated.stl",
+    "gantry_right_integrated_step": "generated/step/phase5-complete-machine/gantry_right_integrated.step",
+    "x_fixed_bearing_cartridge_stl": "generated/stl/phase5-complete-machine/x_fixed_bearing_cartridge.stl",
+    "x_fixed_bearing_cartridge_step": "generated/step/phase5-complete-machine/x_fixed_bearing_cartridge.step",
+    "x_floating_bearing_cartridge_stl": "generated/stl/phase5-complete-machine/x_floating_bearing_cartridge.stl",
+    "x_floating_bearing_cartridge_step": "generated/step/phase5-complete-machine/x_floating_bearing_cartridge.step",
+    "x_z_backbone_stl": "generated/stl/phase5-complete-machine/x_z_backbone.stl",
+    "x_z_backbone_step": "generated/step/phase5-complete-machine/x_z_backbone.step",
+    "z_carriage_plate_stl": "generated/stl/phase5-complete-machine/z_carriage_plate.stl",
+    "z_carriage_plate_step": "generated/step/phase5-complete-machine/z_carriage_plate.step",
+    "spindle_mount_concept_stl": "generated/stl/phase5-complete-machine/spindle_mount_concept.stl",
+    "spindle_mount_concept_step": "generated/step/phase5-complete-machine/spindle_mount_concept.step",
+    "moving_bed_frame_stl": "generated/stl/phase5-complete-machine/moving_bed_frame.stl",
+    "moving_bed_frame_step": "generated/step/phase5-complete-machine/moving_bed_frame.step",
+    "complete_assembly_step": "generated/step/phase5-complete-machine/pcb_cnc_complete_assembly.step",
+    "complete_assembly_stl_visualization": "generated/stl/phase5-complete-machine/pcb_cnc_complete_assembly.stl"
+  },
+  "scene_components": [
+    {
+      "name": "base_left_integrated",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/base_left_integrated.stl",
+      "provisional": true
+    },
+    {
+      "name": "base_right_integrated",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/base_right_integrated.stl",
+      "provisional": true
+    },
+    {
+      "name": "base_center_tie",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/base_center_tie.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_motor_service_pocket",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_motor_service_pocket.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_fixed_bearing_cartridge",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_fixed_bearing_cartridge.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_floating_bearing_cartridge",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_floating_bearing_cartridge.stl",
+      "provisional": true
+    },
+    {
+      "name": "machine_foot_front_left",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/machine_foot_front_left.stl",
+      "provisional": true
+    },
+    {
+      "name": "machine_foot_front_right",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/machine_foot_front_right.stl",
+      "provisional": true
+    },
+    {
+      "name": "machine_foot_rear_left",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/machine_foot_rear_left.stl",
+      "provisional": true
+    },
+    {
+      "name": "machine_foot_rear_right",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/machine_foot_rear_right.stl",
+      "provisional": true
+    },
+    {
+      "name": "electronics_mount_rail",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/electronics_mount_rail.stl",
+      "provisional": true
+    },
+    {
+      "name": "gantry_left_integrated",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/gantry_left_integrated.stl",
+      "provisional": true
+    },
+    {
+      "name": "gantry_right_integrated",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/gantry_right_integrated.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_fixed_bearing_cartridge",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_fixed_bearing_cartridge.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_floating_bearing_cartridge",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_floating_bearing_cartridge.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_z_backbone",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_z_backbone.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_carriage_plate",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_carriage_plate.stl",
+      "provisional": true
+    },
+    {
+      "name": "spindle_mount_concept",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/spindle_mount_concept.stl",
+      "provisional": true
+    },
+    {
+      "name": "moving_bed_frame",
+      "category": "printed-structural",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/moving_bed_frame.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_rail_lower",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_rail_lower.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_rail_upper",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_rail_upper.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_carriage_lower_1",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_carriage_lower_1.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_carriage_lower_2",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_carriage_lower_2.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_carriage_upper_1",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_carriage_upper_1.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_carriage_upper_2",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_carriage_upper_2.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_lead_screw",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_lead_screw.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_lead_nut",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_lead_nut.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_motor_nema17",
+      "category": "motor",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_motor_nema17.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_motor_connector_clearance",
+      "category": "cable",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_motor_connector_clearance.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_coupler",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_coupler.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_rail_left",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_rail_left.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_rail_right",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_rail_right.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_carriage_left_1",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_carriage_left_1.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_carriage_left_2",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_carriage_left_2.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_carriage_right_1",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_carriage_right_1.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_carriage_right_2",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_carriage_right_2.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_lead_screw",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_lead_screw.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_lead_nut",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_lead_nut.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_motor_nema17",
+      "category": "motor",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_motor_nema17.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_motor_connector_clearance",
+      "category": "cable",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_motor_connector_clearance.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_coupler",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_coupler.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_rail_left",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_rail_left.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_rail_right",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_rail_right.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_carriage_left_1",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_carriage_left_1.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_carriage_left_2",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_carriage_left_2.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_carriage_right_1",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_carriage_right_1.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_carriage_right_2",
+      "category": "linear-guide",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_carriage_right_2.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_lead_screw",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_lead_screw.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_lead_nut",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_lead_nut.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_motor_nema17",
+      "category": "motor",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_motor_nema17.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_coupler",
+      "category": "transmission",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_coupler.stl",
+      "provisional": true
+    },
+    {
+      "name": "spindle_envelope",
+      "category": "spindle",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/spindle_envelope.stl",
+      "provisional": true
+    },
+    {
+      "name": "tool_envelope",
+      "category": "spindle",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/tool_envelope.stl",
+      "provisional": true
+    },
+    {
+      "name": "spoilboard",
+      "category": "workholding",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/spoilboard.stl",
+      "provisional": true
+    },
+    {
+      "name": "pcb_envelope",
+      "category": "workholding",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/pcb_envelope.stl",
+      "provisional": true
+    },
+    {
+      "name": "workholding_clamp_front",
+      "category": "workholding",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/workholding_clamp_front.stl",
+      "provisional": true
+    },
+    {
+      "name": "workholding_clamp_rear",
+      "category": "workholding",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/workholding_clamp_rear.stl",
+      "provisional": true
+    },
+    {
+      "name": "workholding_clamp_right",
+      "category": "workholding",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/workholding_clamp_right.stl",
+      "provisional": true
+    },
+    {
+      "name": "conductive_probe",
+      "category": "probe",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/conductive_probe.stl",
+      "provisional": true
+    },
+    {
+      "name": "probe_cable_route",
+      "category": "cable",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/probe_cable_route.stl",
+      "provisional": true
+    },
+    {
+      "name": "arduino_mega_owner_hardware",
+      "category": "controller",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/arduino_mega_owner_hardware.stl",
+      "provisional": true
+    },
+    {
+      "name": "cnc_shield_owner_hardware",
+      "category": "controller",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/cnc_shield_owner_hardware.stl",
+      "provisional": true
+    },
+    {
+      "name": "driver_cooling_clearance",
+      "category": "controller",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/driver_cooling_clearance.stl",
+      "provisional": true
+    },
+    {
+      "name": "controller_cable_service_loop",
+      "category": "cable",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/controller_cable_service_loop.stl",
+      "provisional": true
+    },
+    {
+      "name": "x_home_limit",
+      "category": "limit",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/x_home_limit.stl",
+      "provisional": true
+    },
+    {
+      "name": "y_home_limit",
+      "category": "limit",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/y_home_limit.stl",
+      "provisional": true
+    },
+    {
+      "name": "z_home_limit",
+      "category": "limit",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/z_home_limit.stl",
+      "provisional": true
+    },
+    {
+      "name": "motor_cable_route",
+      "category": "cable",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/motor_cable_route.stl",
+      "provisional": true
+    },
+    {
+      "name": "moving_bed_cable_loop",
+      "category": "cable",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/moving_bed_cable_loop.stl",
+      "provisional": true
+    },
+    {
+      "name": "machine_feet_hardware",
+      "category": "support",
+      "stl": "generated/drawings/phase5-complete-machine/scene-stl/machine_feet_hardware.stl",
+      "provisional": true
+    }
+  ],
+  "review_images": [
+    "generated/drawings/phase5-complete-machine/01-complete-front-isometric.png",
+    "generated/drawings/phase5-complete-machine/02-complete-rear-isometric.png",
+    "generated/drawings/phase5-complete-machine/03-top.png",
+    "generated/drawings/phase5-complete-machine/04-front.png",
+    "generated/drawings/phase5-complete-machine/05-side.png",
+    "generated/drawings/phase5-complete-machine/06-exploded-machine.png",
+    "generated/drawings/phase5-complete-machine/07-exploded-base-y.png",
+    "generated/drawings/phase5-complete-machine/08-exploded-gantry-x.png",
+    "generated/drawings/phase5-complete-machine/09-exploded-z-spindle.png",
+    "generated/drawings/phase5-complete-machine/10-electronics-cable.png",
+    "generated/drawings/phase5-complete-machine/11-pcb-workholding.png",
+    "generated/drawings/phase5-complete-machine/12-motion-envelope.png"
+  ],
+  "hardware_boundary": {
+    "controller": "OWNER-SUPPLIED \u2014 ARDUINO MEGA + CNC SHIELD",
+    "motors": "OWNER-SUPPLIED \u2014 DO NOT BUY; standardized generic NEMA17 interface",
+    "motor_screening": {
+      "frame_mm": 42.3,
+      "shaft_diameter_mm": 5.0,
+      "body_length_range_mm": [
+        40.0,
+        48.0
+      ],
+      "final_assignment": "X/Y suitable owner-stock motors; strongest electrically compatible owner-stock motor for Z after characterization"
+    },
+    "unresolved_identification": [
+      "exact CNC Shield model/revision",
+      "installed stepper-driver type and microstep/current/voltage/cooling capability",
+      "limit, probe, and spindle PWM/control pin mapping after shield identification",
+      "representative final NEMA17 labels, body lengths, shafts, current, resistance, pinout, and condition",
+      "measured MGN rail, T8 screw/nut/bearing/coupler, fastener, insert, foot, and spindle interfaces"
+    ]
+  },
+  "validation": {
+    "structural_parts": {
+      "status": "not-ready",
+      "passed": true,
+      "issues": [
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PART-IDS",
+          "status": "pass",
+          "severity": "info",
+          "message": "All 19 stable PCNC structural part IDs are present exactly once.",
+          "component": null,
+          "evidence": "base_left_integrated; base_right_integrated; base_center_tie; y_motor_service_pocket; y_fixed_bearing_cartridge; y_floating_bearing_cartridge; machine_foot_front_left; machine_foot_front_right; machine_foot_rear_left; machine_foot_rear_right; electronics_mount_rail; gantry_left_integrated; gantry_right_integrated; x_fixed_bearing_cartridge; x_floating_bearing_cartridge; x_z_backbone; z_carriage_plate; spindle_mount_concept; moving_bed_frame"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "base_left_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "base_left_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "base_left_integrated",
+          "evidence": "bbox_mm=(150.0, 300.0, 43.75)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "base_right_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "base_right_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "base_right_integrated",
+          "evidence": "bbox_mm=(150.0, 300.0, 43.75)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "base_center_tie",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "base_center_tie",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "base_center_tie",
+          "evidence": "bbox_mm=(252.0, 24.0, 30.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "y_motor_service_pocket",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "y_motor_service_pocket",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "y_motor_service_pocket",
+          "evidence": "bbox_mm=(70.0, 45.0, 62.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "y_fixed_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "y_fixed_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "y_fixed_bearing_cartridge",
+          "evidence": "bbox_mm=(56.0, 50.0, 38.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "y_floating_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "y_floating_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "y_floating_bearing_cartridge",
+          "evidence": "bbox_mm=(56.0, 50.0, 34.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "machine_foot_front_left",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "machine_foot_front_left",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "machine_foot_front_left",
+          "evidence": "bbox_mm=(50.0, 50.0, 24.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "machine_foot_front_right",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "machine_foot_front_right",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "machine_foot_front_right",
+          "evidence": "bbox_mm=(50.0, 50.0, 24.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "machine_foot_rear_left",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "machine_foot_rear_left",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "machine_foot_rear_left",
+          "evidence": "bbox_mm=(50.0, 50.0, 24.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "machine_foot_rear_right",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "machine_foot_rear_right",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "machine_foot_rear_right",
+          "evidence": "bbox_mm=(50.0, 50.0, 24.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "electronics_mount_rail",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "electronics_mount_rail",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "electronics_mount_rail",
+          "evidence": "bbox_mm=(220.0, 40.0, 20.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "gantry_left_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "gantry_left_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "gantry_left_integrated",
+          "evidence": "bbox_mm=(200.0, 70.0, 150.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "gantry_right_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "gantry_right_integrated",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "gantry_right_integrated",
+          "evidence": "bbox_mm=(172.0, 70.0, 150.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "x_fixed_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "x_fixed_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "x_fixed_bearing_cartridge",
+          "evidence": "bbox_mm=(50.0, 80.0, 50.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "x_floating_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "x_floating_bearing_cartridge",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "x_floating_bearing_cartridge",
+          "evidence": "bbox_mm=(50.0, 80.0, 50.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "x_z_backbone",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "x_z_backbone",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "x_z_backbone",
+          "evidence": "bbox_mm=(90.0, 48.0, 130.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "z_carriage_plate",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "z_carriage_plate",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "z_carriage_plate",
+          "evidence": "bbox_mm=(90.0, 80.0, 100.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "spindle_mount_concept",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "spindle_mount_concept",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "spindle_mount_concept",
+          "evidence": "bbox_mm=(90.0, 67.0, 70.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SOLID-VALID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Printable candidate reports a valid CAD shape.",
+          "component": "moving_bed_frame",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SINGLE-SOLID",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate is one fused solid.",
+          "component": "moving_bed_frame",
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PRINT-BOUND",
+          "status": "pass",
+          "severity": "info",
+          "message": "Candidate remains within the conservative 320 mm envelope.",
+          "component": "moving_bed_frame",
+          "evidence": "bbox_mm=(240.0, 180.0, 26.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PROVISIONAL",
+          "status": "not-ready",
+          "severity": "warning",
+          "message": "The complete batch deliberately contains provisional hardware interfaces.",
+          "component": null,
+          "evidence": "Rail, screw, bearing, insert, spindle, and exact controller interfaces require measured hardware before fit/release claims."
+        }
+      ]
+    },
+    "assembly": {
+      "status": "pass",
+      "passed": true,
+      "issues": [
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-ASSEMBLY",
+          "status": "pass",
+          "severity": "info",
+          "message": "Complete assembly contains the 19 structural parts and required motion, process, control, limit, and probe envelopes.",
+          "component": null,
+          "evidence": "component_count=70"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-STRUCTURAL-COUNT",
+          "status": "pass",
+          "severity": "info",
+          "message": "Assembly includes exactly 19 printed structural components.",
+          "component": null,
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-UNIQUE-NAMES",
+          "status": "pass",
+          "severity": "info",
+          "message": "Assembly component names are unique and reviewable.",
+          "component": null,
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-MASTER",
+          "status": "pass",
+          "severity": "info",
+          "message": "Master assembly compound is valid.",
+          "component": null,
+          "evidence": null
+        }
+      ]
+    },
+    "structural_interference": {
+      "status": "pass",
+      "passed": true,
+      "issues": [
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-INTERFERENCE",
+          "status": "pass",
+          "severity": "info",
+          "message": "All nominal structural AABB overlaps are explicit force-loop or service interfaces.",
+          "component": null,
+          "evidence": "expected_overlap_count=27"
+        }
+      ]
+    },
+    "travel_extremes": {
+      "status": "not-ready",
+      "passed": true,
+      "issues": [
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-TRAVEL",
+          "status": "pass",
+          "severity": "info",
+          "message": "All eight X/Y/Z usable-travel corners pass the critical spindle, spoilboard, and bed-to-gantry envelope screen.",
+          "component": null,
+          "evidence": "states=8; travel_mm=(220.0, 170.0, 40.0)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SWEPT-INTERFACES",
+          "status": "not-ready",
+          "severity": "warning",
+          "message": "Exact swept BRep collision and cable bend-radius validation remain provisional until measured hardware and final harness geometry exist.",
+          "component": null,
+          "evidence": "AABB corner screening passed; exact rail/screw/spindle/controller interfaces are not hardware-validated."
+        }
+      ]
+    },
+    "phase_gate": {
+      "status": "not-ready",
+      "passed": true,
+      "issues": [
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-AUTHORIZATION",
+          "status": "pass",
+          "severity": "info",
+          "message": "Owner authorization explicitly opens complete Phase 5 manufacturing CAD from baseline afe2e14089467321b323d74f928a7ab4c5ffdc1f.",
+          "component": null,
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-SCOPE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Scope is the complete virtual machine, all 19 printable structural candidates, local STL/STEP derivatives, BOM, assembly guide, and review evidence.",
+          "component": null,
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-MATURITY",
+          "status": "not-ready",
+          "severity": "warning",
+          "message": "The machine and parts are PROTOTYPE-STL / MANUFACTURING-CANDIDATE review artifacts, not HARDWARE-VALIDATED or RELEASED.",
+          "component": null,
+          "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-PHYSICAL-EVIDENCE",
+          "status": "not-ready",
+          "severity": "warning",
+          "message": "Physical first-print, measured hardware fit, alignment, electrical identification, and commissioning evidence remain open owner actions.",
+          "component": null,
+          "evidence": null
+        }
+      ]
+    },
+    "exports": {
+      "status": "pass",
+      "passed": true,
+      "issues": [
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "base_center_tie_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\base_center_tie.step (22646 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "base_center_tie_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\base_center_tie.stl (26284 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "base_left_integrated_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\base_left_integrated.step (396215 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "base_left_integrated_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\base_left_integrated.stl (271884 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "base_right_integrated_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\base_right_integrated.step (406031 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "base_right_integrated_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\base_right_integrated.stl (271884 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "complete_assembly_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\pcb_cnc_complete_assembly.step (2819400 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "complete_assembly_stl_visualization",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\pcb_cnc_complete_assembly.stl (734084 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "electronics_mount_rail_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\electronics_mount_rail.step (36344 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "electronics_mount_rail_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\electronics_mount_rail.stl (27084 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "gantry_left_integrated_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\gantry_left_integrated.step (132626 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "gantry_left_integrated_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\gantry_left_integrated.stl (6384 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "gantry_right_integrated_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\gantry_right_integrated.step (102070 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "gantry_right_integrated_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\gantry_right_integrated.stl (5184 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_front_left_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\machine_foot_front_left.step (32668 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_front_left_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\machine_foot_front_left.stl (14284 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_front_right_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\machine_foot_front_right.step (32673 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_front_right_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\machine_foot_front_right.stl (14284 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_rear_left_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\machine_foot_rear_left.step (32662 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_rear_left_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\machine_foot_rear_left.stl (14284 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_rear_right_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\machine_foot_rear_right.step (32668 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "machine_foot_rear_right_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\machine_foot_rear_right.stl (14284 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "moving_bed_frame_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\moving_bed_frame.step (187260 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "moving_bed_frame_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\moving_bed_frame.stl (60284 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "spindle_mount_concept_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\spindle_mount_concept.step (99893 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "spindle_mount_concept_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\spindle_mount_concept.stl (56884 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "x_fixed_bearing_cartridge_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\x_fixed_bearing_cartridge.step (46539 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "x_fixed_bearing_cartridge_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\x_fixed_bearing_cartridge.stl (15084 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "x_floating_bearing_cartridge_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\x_floating_bearing_cartridge.step (46548 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "x_floating_bearing_cartridge_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\x_floating_bearing_cartridge.stl (15084 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "x_z_backbone_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\x_z_backbone.step (105167 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "x_z_backbone_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\x_z_backbone.stl (5084 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "y_fixed_bearing_cartridge_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\y_fixed_bearing_cartridge.step (46546 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "y_fixed_bearing_cartridge_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\y_fixed_bearing_cartridge.stl (15084 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "y_floating_bearing_cartridge_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\y_floating_bearing_cartridge.step (46555 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "y_floating_bearing_cartridge_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\y_floating_bearing_cartridge.stl (15084 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "y_motor_service_pocket_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\y_motor_service_pocket.step (48149 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "y_motor_service_pocket_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\y_motor_service_pocket.stl (65284 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "z_carriage_plate_step",
+          "evidence": "D:\\pcbCNC\\generated\\step\\phase5-complete-machine\\z_carriage_plate.step (73769 bytes)"
+        },
+        {
+          "rule_id": "VAL-PHASE5-COMPLETE-EXPORT-FILE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Local STEP/STL derivative exists and is non-empty.",
+          "component": "z_carriage_plate_stl",
+          "evidence": "D:\\pcbCNC\\generated\\stl\\phase5-complete-machine\\z_carriage_plate.stl (3484 bytes)"
+        }
+      ]
+    }
+  },
+  "review_package": {
+    "assembly_guide": "docs/assembly/assembly-guide.md",
+    "coordinate_system": "docs/assembly/coordinate-system.md",
+    "wiring_control": "docs/assembly/wiring-control-integration.md",
+    "fastener_schedule": "docs/assembly/fastener-schedule.md",
+    "bom": "bom/phase5-complete-machine-bom.md",
+    "review_report": "docs/manufacturing/phase5-complete-machine-review.md"
+  },
+  "open_items_before_hardware_validation": [
+    "owner reviews all STL files in OrcaSlicer and selects print profiles/orientations",
+    "physical first prints and dimensional inspection of critical force-loop parts",
+    "measure representative rails, screws, bearings, inserts, feet, spindle, and controller hardware",
+    "perform rail alignment, gantry squareness, bed leveling, spindle tram, and full service mock-up",
+    "identify exact CNC Shield revision and driver modules before final wiring/pin configuration",
+    "characterize representative owner-stock NEMA17 motors before final axis assignment",
+    "do not label any part HARDWARE-VALIDATED or RELEASED from this virtual pass"
+  ]
+}

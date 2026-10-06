@@ -1660,3 +1660,130 @@ PHASE4_STRUCTURAL_PARAMETERS = Phase4StructuralParameters(
         "install spoilboard/workholding, verify full travel, then perform datum and clearance checks",
     ),
 )
+
+
+@dataclass(frozen=True)
+class Phase5CompleteMachineParameters:
+    """Controlled layout contract for the complete Phase 5 virtual machine.
+
+    This assembly-level contract deliberately separates measured interfaces
+    from screening dimensions.  Provisional values support test-printable
+    geometry and virtual collision review, but do not support a hardware-fit
+    or production-release claim.
+    """
+
+    units: str
+    coordinate_convention: tuple[str, str, str]
+    machine_origin: str
+    work_origin: str
+    pcb_top_datum_z_mm: float
+    work_area_mm: tuple[float, float]
+    pcb_nominal_thickness_mm: float
+    usable_travel_mm: tuple[float, float, float]
+    travel_min_mm: tuple[float, float, float]
+    travel_max_mm: tuple[float, float, float]
+    base_pair_placements_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    center_tie_placement_mm: tuple[float, float, float]
+    gantry_placements_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    x_z_backbone_placement_mm: tuple[float, float, float]
+    z_carriage_placement_mm: tuple[float, float, float]
+    spindle_mount_placement_mm: tuple[float, float, float]
+    moving_bed_placement_mm: tuple[float, float, float]
+    y_service_placements_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    x_bearing_placements_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    foot_placements_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    electronics_rail_placement_mm: tuple[float, float, float]
+    spoilboard_size_mm: tuple[float, float, float]
+    mgn12_x_rail_length_mm: float
+    mgn12_x_rail_center_spacing_mm: float
+    mgn12_y_rail_length_mm: float
+    mgn12_y_rail_center_spacing_mm: float
+    mgn9_z_rail_length_mm: float
+    mgn9_z_rail_center_spacing_mm: float
+    x_screw_length_mm: float
+    y_screw_length_mm: float
+    z_screw_length_mm: float
+    nema17_frame_mm: float
+    nema17_shaft_diameter_mm: float
+    nema17_body_length_range_mm: tuple[float, float]
+    spindle_diameter_classes_mm: tuple[float, ...]
+    spindle_body_length_range_mm: tuple[float, float]
+    spindle_mass_range_kg: tuple[float, float]
+    preferred_printed_dimension_mm: float
+    conservative_printed_dimension_mm: float
+    petg_density_kg_per_mm3: float
+    provisional_interfaces: tuple[str, ...]
+
+
+PHASE5_COMPLETE_PARAMETERS = Phase5CompleteMachineParameters(
+    units="mm",
+    coordinate_convention=(
+        "X: left to right, positive right",
+        "Y: front to rear, positive rear",
+        "Z: work datum upward, positive up",
+    ),
+    machine_origin="MCS at the centre of the nominal PCB top surface: (0, 0, 0)",
+    work_origin="G54/front-left PCB datum at (-100, -75, 0); probing may refine Z",
+    pcb_top_datum_z_mm=0.0,
+    work_area_mm=(200.0, 150.0),
+    pcb_nominal_thickness_mm=1.6,
+    usable_travel_mm=(220.0, 170.0, 40.0),
+    travel_min_mm=(-110.0, -85.0, -25.0),
+    travel_max_mm=(110.0, 85.0, 15.0),
+    base_pair_placements_mm=(
+        ("base_left_integrated", (-174.0, -150.0, -56.0)),
+        ("base_right_integrated", (24.0, -150.0, -56.0)),
+    ),
+    center_tie_placement_mm=(-126.0, -12.0, -50.0),
+    gantry_placements_mm=(
+        ("gantry_left_integrated", (-180.0, -100.0, -12.0)),
+        ("gantry_right_integrated", (0.0, -100.0, -12.0)),
+    ),
+    x_z_backbone_placement_mm=(-45.0, -105.0, 8.0),
+    z_carriage_placement_mm=(-45.0, -100.0, 0.0),
+    spindle_mount_placement_mm=(-45.0, -25.0, 0.0),
+    moving_bed_placement_mm=(-120.0, -90.0, -32.0),
+    y_service_placements_mm=(
+        ("y_motor_service_pocket", (-35.0, -178.0, -65.0)),
+        ("y_fixed_bearing_cartridge", (-26.0, -176.0, -53.0)),
+        ("y_floating_bearing_cartridge", (-26.0, 136.0, -53.0)),
+    ),
+    x_bearing_placements_mm=(
+        ("x_fixed_bearing_cartridge", (-205.0, -100.0, 73.0)),
+        ("x_floating_bearing_cartridge", (155.0, -100.0, 73.0)),
+    ),
+    foot_placements_mm=(
+        ("machine_foot_front_left", (-169.0, -145.0, -76.0)),
+        ("machine_foot_front_right", (119.0, -145.0, -76.0)),
+        ("machine_foot_rear_left", (-169.0, 95.0, -76.0)),
+        ("machine_foot_rear_right", (119.0, 95.0, -76.0)),
+    ),
+    electronics_rail_placement_mm=(-110.0, 155.0, -5.0),
+    spoilboard_size_mm=(230.0, 180.0, 12.0),
+    mgn12_x_rail_length_mm=340.0,
+    mgn12_x_rail_center_spacing_mm=60.0,
+    mgn12_y_rail_length_mm=310.0,
+    mgn12_y_rail_center_spacing_mm=220.0,
+    mgn9_z_rail_length_mm=130.0,
+    mgn9_z_rail_center_spacing_mm=60.0,
+    x_screw_length_mm=360.0,
+    y_screw_length_mm=330.0,
+    z_screw_length_mm=145.0,
+    nema17_frame_mm=42.3,
+    nema17_shaft_diameter_mm=5.0,
+    nema17_body_length_range_mm=(40.0, 48.0),
+    spindle_diameter_classes_mm=(25.0, 40.0, 52.0),
+    spindle_body_length_range_mm=(80.0, 140.0),
+    spindle_mass_range_kg=(0.30, 0.80),
+    preferred_printed_dimension_mm=300.0,
+    conservative_printed_dimension_mm=320.0,
+    petg_density_kg_per_mm3=1.27e-6,
+    provisional_interfaces=(
+        "MGN rail hole pattern, rail height, and shim datum",
+        "T8 screw, nut, bearing, coupler, and motor mounting dimensions",
+        "heat-set insert and through-fastener dimensions",
+        "NEMA17 motor connector and exact body/shaft details",
+        "Arduino Mega + CNC Shield revision, drivers, pins, and spindle interface",
+        "spindle body diameter, length, mounting and cable exit",
+    ),
+)

@@ -47,6 +47,14 @@ from .phase5 import (
     check_phase5_export_files,
     phase5_gate_report,
 )
+from .phase5_complete import (
+    check_phase5_complete_export_files,
+    check_phase5_complete_assembly,
+    check_phase5_complete_structural_interference,
+    check_phase5_complete_structural_parts,
+    check_phase5_complete_travel_extremes,
+    phase5_complete_gate_report,
+)
 
 __all__ = [
     "AxisCapacity",
@@ -78,6 +86,12 @@ __all__ = [
     "check_phase5_base_pair_geometry",
     "check_phase5_export_files",
     "phase5_gate_report",
+    "check_phase5_complete_assembly",
+    "check_phase5_complete_export_files",
+    "check_phase5_complete_structural_interference",
+    "check_phase5_complete_structural_parts",
+    "check_phase5_complete_travel_extremes",
+    "phase5_complete_gate_report",
     "check_fastener_interface",
     "check_fastening_strategy",
     "check_phase3a_fastener_interfaces",

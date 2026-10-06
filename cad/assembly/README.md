@@ -20,3 +20,10 @@ motion/process/hardware references. It also builds a separated J1/J2/J3
 gantry-joint study and exports review-only assembly and individual-part files
 to a temporary directory. Expected overlaps are limited to explicit structural
 interfaces; unexpected independent-solid overlaps fail the runner.
+
+The active Phase 5 `phase5_complete_assembly.py` module places all 19 local
+printable candidates and named motion, spindle, workholding, probe, limits,
+controller, cable, and service envelopes in one complete virtual machine. It
+also builds the eight-corner travel states used by the complete-machine
+validation. The assembly remains a compound so serviceable boundaries and
+intentional interfaces remain visible; it is not a single released solid.

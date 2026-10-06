@@ -38,6 +38,10 @@ Current records:
 - [EDR-014: Phase 5 first base-pair manufacturing CAD](014-phase-5-base-pair-manufacturing-cad.md)
   - owner-authorized first real printable batch; `PROTOTYPE-STL` only, with
     provisional hardware interfaces and an explicit stop for owner review
+- [EDR-015: Phase 5 complete virtual machine](015-phase-5-complete-virtual-machine.md)
+  - owner-authorized continuation through the complete virtual machine and
+    all 19 candidate structural parts; physical evidence, measured interfaces,
+    and release remain open
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.
