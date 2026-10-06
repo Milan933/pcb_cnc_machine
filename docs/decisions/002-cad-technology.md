@@ -2,15 +2,16 @@
 
 - **Record ID:** EDR-002
 - **Phase:** 5 preparation
-- **Status:** preliminary recommendation
+- **Status:** preliminary recommendation validated by Phase 2 spike; Phase 5 approval required
 - **Date:** 2026-10-06
 - **Owner:** project team
 - **Affected requirements:** REQ-CAD-001 through REQ-CAD-004
 
 ## Decision
 
-Use build123d as the preliminary CAD technology for the project, subject to a
-small implementation spike before the parametric skeleton is approved.
+Use build123d as the preliminary CAD technology for the project. The Phase 2
+implementation spike validated the architecture-only parametric skeleton,
+placement, bounding, interference, STEP, and review-STL operations.
 CadQuery remains the documented fallback if the spike exposes a blocking
 assembly, export, or maintainability issue.
 
@@ -93,11 +94,12 @@ implementation spike must prove:
 
 - [x] Requirements and CAD conventions reflect a parametric source of truth.
 - [x] Alternative technology documented.
-- [ ] Implementation spike completed.
-- [ ] Tested version pinned.
+- [x] Implementation spike completed for the architecture-only skeleton.
+- [x] Tested version pinned as build123d 0.12.0.
 - [ ] Recommendation approved for Phase 5.
 
 ## Follow-up
 
-Run the implementation spike after the motion architecture is defined and
+The architecture spike is complete. Re-run the pinned smoke test when the
+motion architecture or CAD adapter changes, and complete the Phase 5 review
 before detailed structural components are modeled.

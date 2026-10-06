@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860">
+  <title>PCB CNC Phase 2 architecture skeleton review views</title>
+  <desc>Architecture-only schematic for the preliminary moving-gantry fixed-bed candidate B.</desc>
+  <style>
+    .panel { fill:#fbfbfb; stroke:#777; stroke-width:2; }
+    .solid { fill:#c7d9e8; stroke:#21465f; stroke-width:2; }
+    .datum { fill:#e9d7ac; stroke:#775a1f; stroke-width:2; }
+    .axis { stroke:#c33; stroke-width:3; stroke-dasharray:8 6; }
+    .screw { stroke:#7b3f98; stroke-width:3; stroke-dasharray:3 5; }
+    .guide { stroke:#168348; stroke-width:4; }
+    .force { stroke:#d36b00; stroke-width:3; marker-end:url(#arrow); fill:none; }
+    text { font-family:Segoe UI,Arial,sans-serif; fill:#1d1d1d; }
+    .title { font-size:24px; font-weight:700; }
+    .subtitle { font-size:14px; fill:#555; }
+    .heading { font-size:18px; font-weight:700; }
+    .label { font-size:13px; }
+    .small { font-size:11px; fill:#555; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d36b00"/>
+    </marker>
+  </defs>
+  <text x="30" y="34" class="title">PCB CNC Phase 2 — architecture skeleton review sheet</text>
+  <text x="30" y="57" class="subtitle">Candidate B: moving gantry / fixed bed · schematic only · millimetres · no manufacturing geometry</text>
+
+  <rect x="25" y="75" width="550" height="245" class="panel"/>
+  <text x="45" y="105" class="heading">Front / X-Z force view</text>
+  <rect x="85" y="250" width="430" height="25" class="datum"/>
+  <text x="90" y="300" class="label">fixed bed / PCB datum</text>
+  <rect x="105" y="125" width="35" height="125" class="solid"/>
+  <rect x="460" y="125" width="35" height="125" class="solid"/>
+  <rect x="140" y="125" width="320" height="40" class="solid"/>
+  <text x="220" y="115" class="label">deep closed / ribbed gantry bound</text>
+  <line x1="185" y1="128" x2="415" y2="128" class="guide"/>
+  <line x1="185" y1="157" x2="415" y2="157" class="guide"/>
+  <rect x="285" y="165" width="70" height="75" class="solid"/>
+  <line x1="302" y1="180" x2="302" y2="250" class="guide"/>
+  <line x1="338" y1="180" x2="338" y2="250" class="guide"/>
+  <line x1="320" y1="180" x2="320" y2="250" class="screw"/>
+  <ellipse cx="320" cy="214" rx="26" ry="42" fill="#e2b6b6" stroke="#7b3030" stroke-width="2"/>
+  <text x="366" y="207" class="label">spindle envelope</text>
+  <text x="366" y="224" class="small">52 mm class; unselected</text>
+  <line x1="320" y1="215" x2="320" y2="285" class="force"/>
+  <text x="328" y="283" class="small">tool point / 5 N test</text>
+
+  <rect x="600" y="75" width="575" height="245" class="panel"/>
+  <text x="620" y="105" class="heading">Side / Y-Z packaging view</text>
+  <rect x="650" y="250" width="450" height="25" class="datum"/>
+  <rect x="670" y="125" width="35" height="125" class="solid"/>
+  <rect x="1035" y="125" width="35" height="125" class="solid"/>
+  <rect x="705" y="125" width="330" height="40" class="solid"/>
+  <rect x="810" y="170" width="70" height="70" class="solid"/>
+  <ellipse cx="845" cy="220" rx="26" ry="42" fill="#e2b6b6" stroke="#7b3030" stroke-width="2"/>
+  <line x1="650" y1="235" x2="1100" y2="235" class="axis"/>
+  <line x1="845" y1="180" x2="845" y2="250" class="screw"/>
+  <line x1="730" y1="285" x2="1020" y2="285" class="guide"/>
+  <text x="720" y="305" class="small">two separated Y guides carry the moving gantry; central Y screw</text>
+  <text x="895" y="205" class="label">short Z stack</text>
+
+  <rect x="25" y="345" width="550" height="245" class="panel"/>
+  <text x="45" y="375" class="heading">Top / XY datum and guide view</text>
+  <rect x="105" y="410" width="390" height="135" class="datum"/>
+  <rect x="155" y="435" width="290" height="85" fill="#f5eecf" stroke="#775a1f" stroke-width="2"/>
+  <text x="200" y="482" class="label">200 x 150 PCB area</text>
+  <line x1="80" y1="427" x2="80" y2="528" class="guide"/>
+  <line x1="520" y1="427" x2="520" y2="528" class="guide"/>
+  <line x1="300" y1="400" x2="300" y2="555" class="screw"/>
+  <line x1="130" y1="395" x2="470" y2="395" class="guide"/>
+  <line x1="130" y1="555" x2="470" y2="555" class="guide"/>
+  <rect x="278" y="385" width="44" height="25" class="solid"/>
+  <text x="65" y="570" class="small">Y rails ~220 mm apart · central Y screw · fixed bed</text>
+  <text x="335" y="390" class="small">X carriage</text>
+
+  <rect x="600" y="345" width="575" height="245" class="panel"/>
+  <text x="620" y="375" class="heading">Pseudo-isometric envelope view</text>
+  <polygon points="700,500 980,500 1080,450 800,450" class="datum"/>
+  <polygon points="700,500 700,525 980,525 980,500" class="solid"/>
+  <polygon points="700,500 800,450 800,475 700,525" class="solid"/>
+  <polygon points="760,420 1030,420 1080,390 810,390" class="solid"/>
+  <polygon points="760,420 760,455 790,470 790,435" class="solid"/>
+  <polygon points="1030,420 1030,455 1060,470 1060,435" class="solid"/>
+  <polygon points="810,390 1080,390 1080,425 810,425" class="solid"/>
+  <rect x="885" y="425" width="60" height="75" class="solid"/>
+  <ellipse cx="915" cy="500" rx="22" ry="34" fill="#e2b6b6" stroke="#7b3030" stroke-width="2"/>
+  <text x="790" y="555" class="small">boxes and centerlines only; service/cable clearances still open</text>
+
+  <rect x="25" y="615" width="1150" height="210" class="panel"/>
+  <text x="45" y="645" class="heading">Force-loop schematic</text>
+  <text x="75" y="690" class="label">tool</text>
+  <text x="225" y="690" class="label">spindle + mount</text>
+  <text x="405" y="690" class="label">Z / X carriage</text>
+  <text x="600" y="690" class="label">deep gantry + side guides</text>
+  <text x="845" y="690" class="label">base + fixed bed</text>
+  <text x="1040" y="690" class="label">PCB datum</text>
+  <line x1="110" y1="710" x2="205" y2="710" class="force"/>
+  <line x1="290" y1="710" x2="385" y2="710" class="force"/>
+  <line x1="500" y1="710" x2="580" y2="710" class="force"/>
+  <line x1="735" y1="710" x2="825" y2="710" class="force"/>
+  <line x1="955" y1="710" x2="1025" y2="710" class="force"/>
+  <path d="M1090 730 C900 790, 600 790, 110 730" class="force"/>
+  <text x="430" y="790" class="small">return path closes through the stationary workholding datum; test X, Y, and Z separately</text>
+</svg>

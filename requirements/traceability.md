@@ -19,6 +19,9 @@ already validated.
 | REQ-ARCH-* | requirements/phase-1-architecture-comparison.md | Phase 2 objective architecture comparison and architecture EDR. |
 | REQ-PETG-* | requirements/phase-1-petg-manufacturing.md; printed-structural-design skill | Printer calibration coupons, print orientation, joint tests, and rail-seat inspection. |
 | AT-* | requirements/phase-1-acceptance-tests.md | Physical test records; not satisfied by code alone. |
+| REQ-ARCH-* | docs/architecture/phase-2-architecture.md; docs/architecture/phase-2-force-loop.md; docs/decisions/006-phase-2-architecture.md | Owner review of the A/B/C comparison, force-loop tests, workholding/probing mock-up, and the 5 N stiffness/creep evidence plan. |
+| Phase 2 skeleton interfaces | cad/parameters.py; cad/assembly/architecture_skeleton.py | Dependency-light parameter checks plus the pinned build123d spike, deterministic placement, STEP/STL review export, bounding box, and interference report. |
+| REQ-CAD-001 through REQ-CAD-004 | docs/architecture/phase-2-build123d-spike.md; requirements/cad-phase-2.txt | Pinned build123d smoke test now passes for the architecture skeleton; detailed parts and manufacturing export gates remain future work. |
 
 ## Evidence rule
 

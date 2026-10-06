@@ -2,7 +2,7 @@
 
 - **Record ID:** EDR-005
 - **Phase:** 1 - Requirements
-- **Status:** proposed / engineering review required
+- **Status:** accepted by project owner
 - **Date:** 2026-10-06
 - **Owner:** project team
 - **Affected requirements:** REQ-PCB-*, REQ-SPN-*, REQ-WHL-*, REQ-PROBE-*, REQ-MOT-*, REQ-Z-*, REQ-ENV-006 through REQ-ENV-008, AT-*
@@ -28,6 +28,11 @@ value as physically verified:
 6. Screen spindle envelopes around 10,000-30,000 rpm, 50-150 W,
    0.30-0.80 kg, approximately 25/40/52 mm body classes, and ER11-class
    tooling. Do not select a spindle.
+
+The project owner accepted this Phase 1 baseline on 2026-10-06 and authorized
+the Phase 2 architecture study. The unresolved stock, spindle, controller,
+motor, probing, and physical-acceptance questions remain carried-forward
+inputs; acceptance of this record does not turn them into verified facts.
 
 ## Alternatives considered
 
@@ -94,10 +99,10 @@ map implementation remain open.
 - [x] Automated internal-consistency checks and tests added.
 - [x] Acceptance-test plan created.
 - [x] Repository audit and existing tests run before commit.
-- [ ] Project owner reviews the provisional values.
-- [ ] Phase 1 gate is accepted.
+- [x] Project owner reviews the provisional values and accepts the Phase 1 gate.
 
 ## Follow-up
 
-Review this EDR and the linked requirements. Only after Phase 1 acceptance
-should Phase 2 compare moving-bed, moving-gantry, or another architecture.
+Phase 1 is accepted. Phase 2 may compare moving-bed, moving-gantry, and the
+credible fixed-bed moving-head alternative under proposed EDR-006. No Phase 3
+motion selection is authorized by this record.

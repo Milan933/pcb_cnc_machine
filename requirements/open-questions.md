@@ -4,7 +4,7 @@ These questions are deliberately visible. A later phase may answer them with
 analysis, a supplier data sheet, a prototype, or an experiment. Until then,
 downstream CAD must not silently choose values.
 
-## Priority 0: required before detailed architecture
+## Priority 0: required before detailed motion and structural design
 
 1. What spindle and tool family will be used first? Required inputs include
    nose geometry, collet or chuck, runout specification, mass, cable exit,
@@ -22,8 +22,9 @@ downstream CAD must not silently choose values.
 
 ## Priority 1: motion and structure
 
-6. Which axis arrangement produces the shortest Z force loop while keeping the
-   printable frame aligned and serviceable?
+6. The Phase 2 proposal is B, moving gantry / fixed bed. Does a representative
+   printed B gantry meet the 5 N tool-point target and remain serviceable, or
+   must the review reopen A, fixed gantry / moving bed?
 7. Should each axis use MGN9, MGN12, another rail family, or a different
    supported guide? Compare section stiffness, carriage capacity, preload,
    rail mounting, contamination tolerance, cost, and availability.
@@ -58,15 +59,17 @@ Each answer must be added to a requirement baseline or an engineering
 decision record. If a question remains open, its consequence must remain
 visible in the architecture and validation report.
 
-## Phase 1 disposition
+## Phase 1 owner disposition
 
-Phase 1 proposes option B, a nominal 200 x 150 mm PCB working area, as the
-best screening baseline. This is not a frozen machine travel or architecture
-decision. The quantitative process, motion, Z-budget, and acceptance values
-are provisional and are recorded in the linked Phase 1 documents.
+The owner accepted EDR-005 on 2026-10-06. The nominal 200 x 150 mm PCB area,
+0.020/0.030 mm tool-point deflection target/acceptance, 0.040 mm
+non-compensatable Z allocation, and <=0.020/0.030 mm post-map residual
+target/acceptance are now the Phase 2 screening baseline. They remain
+unverified engineering targets.
 
-The following items remain open and block an automatic Phase 1 gate pass until
-they have an owner and a review disposition:
+The following questions are carried forward. They no longer block the Phase 1
+gate, but they block detailed motion selection, structural release, or process
+claims until they have an owner and evidence:
 
 18. Which exact PCB stock supplier, copper weight, board thicknesses, and
     surface finish define the first physical coupon?
@@ -80,3 +83,10 @@ they have an owner and a review disposition:
     supply voltage determine achievable step rate and torque margin?
 23. Which spindle supplier can document ER11 collet compatibility, runout,
     speed, mass, diameter, and thermal behavior inside the screening envelope?
+
+## Phase 2 disposition
+
+The Phase 2 study proposes B, moving gantry / fixed bed, with A as the explicit
+fallback. Exact rails, screws, spindle, motors, controller, probe, workholding
+implementation, and PETG process remain open. Proposed EDR-006 is the owner
+review gate; Phase 3 must not begin until that record is accepted or reworked.

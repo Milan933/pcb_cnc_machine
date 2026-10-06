@@ -45,6 +45,17 @@ RULE_CATALOG: tuple[RuleDefinition, ...] = (
     RuleDefinition("VAL-FASTENER-EDGE", "Minimum fastener edge distance", 8, True),
     RuleDefinition("VAL-RAIL-SEAT", "Linear-rail mounting surface", 8, True),
     RuleDefinition("VAL-PRINT-VOLUME", "Realistic print orientation in build volume", 6, True),
+    RuleDefinition("VAL-PHASE2-TRAVEL-X", "Phase 2 skeleton X travel packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-TRAVEL-Y", "Phase 2 skeleton Y travel packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-TRAVEL-Z", "Phase 2 skeleton Z travel packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-BED-X", "Phase 2 bed envelope X packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-BED-Y", "Phase 2 bed envelope Y packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-GANTRY-SPAN", "Phase 2 gantry span packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-BASE-X", "Phase 2 base envelope X packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-BASE-Y", "Phase 2 base envelope Y packaging", 2, False),
+    RuleDefinition("VAL-PHASE2-Z-GUIDE-SPACING", "Phase 2 dual Z guide interface", 2, False),
+    RuleDefinition("VAL-PHASE2-Z-OVERHANG", "Phase 2 tool-point overhang", 2, False),
+    RuleDefinition("VAL-PHASE2-PRINT-BOUND", "Phase 2 skeleton print bound", 2, False),
 )
 
 

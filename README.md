@@ -5,10 +5,12 @@ isolation routing, drilling, and outline cutting.
 
 ## Project status
 
-This repository is in Phase 1: Requirements review. The current deliverable
-adds a quantitative PCB-process baseline, error budgets, envelope trade study,
-acceptance-test plan, and executable consistency checks. It intentionally
-contains no detailed CNC geometry and no production STEP or STL files.
+This repository is in Phase 2: Architecture review. Phase 1 is accepted by
+the project owner; the current deliverable compares moving-bed, moving-gantry,
+and one credible fixed-bed moving-head alternative, documents force loops and
+preliminary calculations, and adds an architecture-only parametric skeleton
+spike. It still contains no detailed printable CNC parts or production STEP
+or STL files.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -28,7 +30,8 @@ boundaries are documented in
 
 The preliminary CAD recommendation is build123d. That recommendation is
 recorded in [the CAD technology decision](docs/decisions/002-cad-technology.md)
-and remains subject to the implementation spike required before Phase 5.
+and was exercised by the Phase 2 architecture-only spike; Phase 5 approval is
+still required.
 
 ## Design intent
 
@@ -68,12 +71,13 @@ printer.
   future physical test definitions.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
-- [docs/architecture](docs/architecture): system-level architecture before
-  detailed CAD.
+- [docs/architecture](docs/architecture): system-level architecture, Phase 2
+  trade study, force loops, skeleton spike, and review views.
 - [docs/decisions](docs/decisions): engineering decision records.
 - [.agents/skills](.agents/skills): project-specific engineering skills.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
-  set; it contains no detailed part geometry.
+  set, including Phase 2 skeleton envelopes; it contains no detailed part
+  geometry.
 - [cad/validation](cad/validation): dependency-light validation interfaces and
   foundation checks.
 - [generated](generated): reserved for reviewed manufacturing outputs.
@@ -96,10 +100,11 @@ Every important value or decision must be marked as one of:
 
 ## Near-term next step
 
-Review the Phase 1 proposal, resolve or assign the remaining questions in
-[requirements/open-questions.md](requirements/open-questions.md), and approve
-[EDR-005](docs/decisions/005-phase-1-requirements.md). Phase 2 architecture
-must not begin automatically after this commit.
+Review and accept or rework proposed
+[EDR-006](docs/decisions/006-phase-2-architecture.md). The unresolved spindle,
+controller, motor, exact rail/screw, probing, workholding, and physical-test
+questions remain visible and move into the later evidence plan. Phase 3 motion
+selection and detailed structural CAD do not begin automatically.
 
 ## Development interface
 
@@ -108,6 +113,11 @@ The current foundation can be checked with:
     python -B -m unittest discover -s tests -v
     python -B tools/repository_audit.py
 
-CAD generation and manufacturing export commands are intentionally not
-available yet. They will be documented only after the CAD implementation
-spike and validation gates exist.
+The architecture-only build123d spike is run in an external virtual
+environment using the pinned dependency in
+[requirements/cad-phase-2.txt](requirements/cad-phase-2.txt):
+
+    python -m tools.run_phase2_cad_spike --output-dir <temporary-directory>
+
+The spike outputs review-only temporary STEP/STL files; it does not create
+manufacturing release files.

@@ -1,7 +1,8 @@
-"""Central project parameters for the foundation stage.
+"""Central project parameters for the requirements and architecture stages.
 
-This module contains planning inputs only. It does not define machine-part
-geometry and it does not claim that preliminary targets are final dimensions.
+This module contains controlled planning inputs only. The Phase 2 values are
+parametric skeleton inputs and do not define detailed printable parts or
+claim that preliminary targets are final dimensions.
 """
 
 from __future__ import annotations
@@ -284,3 +285,87 @@ def non_compensatable_z_budget_mm(
         for item in requirements.z_error_budget
         if not item.compensatable
     )
+
+
+@dataclass(frozen=True)
+class Phase2SkeletonParameters:
+    """Preliminary dimensions for the architecture-only CAD skeleton.
+
+    These values describe envelopes, centerlines, and clearance assumptions.
+    They are deliberately not printable-part dimensions and remain subject to
+    the Phase 2 review and later motion, BOM, and structural evidence.
+    """
+
+    # The owner accepted the B working-area baseline; tool travel is a
+    # separate preliminary packaging assumption with 10 mm nominal access on
+    # each working-area edge.
+    working_area_mm: tuple[float, float]
+    tool_travel_mm: tuple[float, float, float]
+    travel_margin_each_end_mm: float
+
+    # Envelope-only bed and base references, with the workholding reference
+    # plane at Z=0 and positive Z upward.
+    bed_envelope_mm: tuple[float, float, float]
+    base_envelope_mm: tuple[float, float, float]
+    workholding_reference_z_mm: float
+
+    # Gantry screening bounds. A closed or ribbed monocoque is evaluated at
+    # this section depth; no wall, rib, or fastener geometry is implied.
+    gantry_clear_span_mm: float
+    gantry_outer_width_mm: float
+    gantry_section_depth_mm: float
+    gantry_section_height_mm: float
+    gantry_crossbeam_bottom_z_mm: float
+    overall_envelope_mm: tuple[float, float, float]
+
+    # Reference spacing for guide and screw interfaces, not selected hardware.
+    y_rail_center_spacing_mm: float
+    x_rail_vertical_spacing_mm: float
+    z_rail_center_spacing_mm: float
+    z_carriage_envelope_mm: tuple[float, float, float]
+    rail_end_margin_mm: float
+    screw_end_margin_mm: float
+
+    # Hardware envelopes remain deliberately generic until the motion phase.
+    spindle_envelope_diameter_mm: float
+    spindle_envelope_length_mm: float
+    tool_stickout_mm: float
+    tool_point_overhang_mm: float
+    reference_axis_diameter_mm: float
+    reference_screw_diameter_mm: float
+
+    # The print-volume limits are inherited rather than silently redefined.
+    preferred_printed_dimension_mm: float
+    conditional_printed_dimension_mm: float
+
+
+PHASE2_SKELETON_PARAMETERS = Phase2SkeletonParameters(
+    working_area_mm=(200.0, 150.0),
+    tool_travel_mm=(220.0, 170.0, 40.0),
+    travel_margin_each_end_mm=10.0,
+    bed_envelope_mm=(240.0, 190.0, 12.0),
+    base_envelope_mm=(320.0, 280.0, 28.0),
+    workholding_reference_z_mm=0.0,
+    gantry_clear_span_mm=280.0,
+    gantry_outer_width_mm=320.0,
+    gantry_section_depth_mm=60.0,
+    gantry_section_height_mm=60.0,
+    gantry_crossbeam_bottom_z_mm=110.0,
+    # The machine-level skeleton includes reference screw end margins; this
+    # is a packaging envelope, not a one-piece printable-part limit.
+    overall_envelope_mm=(340.0, 290.0, 220.0),
+    y_rail_center_spacing_mm=220.0,
+    x_rail_vertical_spacing_mm=50.0,
+    z_rail_center_spacing_mm=60.0,
+    z_carriage_envelope_mm=(90.0, 40.0, 70.0),
+    rail_end_margin_mm=30.0,
+    screw_end_margin_mm=30.0,
+    spindle_envelope_diameter_mm=52.0,
+    spindle_envelope_length_mm=120.0,
+    tool_stickout_mm=15.0,
+    tool_point_overhang_mm=50.0,
+    reference_axis_diameter_mm=2.0,
+    reference_screw_diameter_mm=4.0,
+    preferred_printed_dimension_mm=320.0,
+    conditional_printed_dimension_mm=330.0,
+)

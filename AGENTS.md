@@ -2,14 +2,17 @@
 
 ## Current boundary
 
-The repository is in Phase 1: Requirements. Work in this phase may improve
-quantitative requirements, calculations, acceptance-test definitions, decision
-records, parameter schemas, and validation infrastructure. It must not
-silently turn an unresolved choice into an engineering fact.
+The repository is in Phase 2: Architecture. EDR-005 is accepted by the
+project owner and EDR-006 contains the proposed architecture for owner review.
+Work in this phase may compare complete mechanical architectures, document
+force loops and interface envelopes, add preliminary calculations, and build
+the deterministic architecture-only CAD skeleton and implementation spike.
+It must not silently turn an unresolved choice into an engineering fact.
 
-Do not begin Phase 2 architecture selection, detailed CAD, structural CNC
-parts, component selection, or production STL/STEP/drawing generation until
-the Phase 1 decision record has been reviewed and the workflow gate is passed.
+Do not begin Phase 3 motion-system selection, detailed printable structural
+parts, production CAD, or manufacturing STL/STEP/drawing generation until the
+Phase 2 decision record has been reviewed and its gate is passed. Do not begin
+Phase 3 as part of this task.
 
 ## Canonical public repository
 
@@ -65,6 +68,9 @@ Never repair a contradiction by changing a lower-level file silently.
 - Every major phase requires an engineering decision record covering the
   decision, alternatives, reasoning, risks, and unresolved questions.
 - Validation should fail closed when required evidence is absent.
+- The Phase 2 skeleton may contain only axis centerlines, envelopes,
+  carriage boxes, screw references, and structural bounding volumes. It is
+  not a manufacturing model.
 
 ## Coordinate convention
 

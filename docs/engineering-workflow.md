@@ -35,9 +35,10 @@ collection step is named.
 
 ## Current phase
 
-The repository has completed the foundation pass and now contains a proposed
-Phase 1 quantitative requirements baseline. Phase 1 is ready for engineering
-review but is not closed: the provisional values, stock/process scope, exact
-hardware inputs, and acceptance dispositions remain open as listed in
-requirements/open-questions.md. Phase 2 architecture must not begin
-automatically.
+The repository has completed the foundation pass and Phase 1 is accepted by
+the project owner through EDR-005. It is now in Phase 2 architecture review:
+the A/B/C trade, force-loop study, preliminary skeleton, and build123d spike
+are complete in proposed EDR-006. Stock/process scope, exact hardware inputs,
+and physical acceptance evidence remain open as listed in
+requirements/open-questions.md. Phase 3 motion-system selection must not
+begin until EDR-006 is accepted.

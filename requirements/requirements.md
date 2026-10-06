@@ -72,8 +72,9 @@ reviewed and promoted by an engineering decision record.
 
 ## Phase 1 quantitative baseline
 
-The following requirement groups are proposed by the Phase 1 review and remain
-preliminary until EDR-005 is accepted:
+The following requirement groups were accepted as the Phase 1 screening
+baseline through EDR-005. They remain preliminary or assumed where marked in
+their source documents and are not physically verified:
 
 | Requirement group | Detail |
 | --- | --- |
