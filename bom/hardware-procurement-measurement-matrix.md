@@ -99,5 +99,6 @@ any of these are missing:
 - full-travel/service mock-up, spoilboard/workholding datum evidence, and the
   separated 5 N physical force-loop result.
 
-No row above marks an interface manufacturing-ready. Phase 5 production CAD
-remains closed.
+No row above marks an interface manufacturing-ready. The owner-authorized
+Phase 5 base-pair candidate does not close this measurement matrix; production
+CAD and hardware-dependent fit remain not-ready.

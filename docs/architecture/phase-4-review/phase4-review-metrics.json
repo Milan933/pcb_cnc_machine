@@ -95,7 +95,10 @@
   "owner_boundary": {
     "phase4_preliminary_architecture_baseline_accepted": true,
     "phase4_manufacturing_ready": false,
-    "phase5_started": false,
+    "phase5_authorized": true,
+    "phase5_started": true,
+    "phase5_batch": "base_pair_only",
+    "phase5_remaining_parts_started": false,
     "production_release": false
   },
   "parts": [

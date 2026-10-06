@@ -1,7 +1,7 @@
 # Phase 4 - preliminary structural CAD concept
 
-**Status:** accepted as preliminary structural architecture; not accepted for
-manufacturing or Phase 5
+**Status:** accepted as preliminary structural architecture; Phase 5 is now
+authorized only for the controlled first base-pair candidate batch
 
 The owner accepted the Phase 3 motion baseline and the P2 Phase 3A packaging
 baseline on 2026-10-06. The owner also accepted the Phase 4/4A preliminary
@@ -27,16 +27,19 @@ manufacture.
 | REQ-P4-012 | Document every structural part's status, orientation, print extents, support, brim/warping, and layer/load concerns. | Preliminary process contract | Central part parameter records and print-planning report. |
 | REQ-P4-013 | Validate full XYZ travel, bed/spindle/motor/screw/coupler/bearing/fastener/rail/limit/probe clearances, assembly sequence, component containment, and unexpected solid interference. | Automated plus physical evidence | Pinned build123d runner passes review geometry; physical mock-up remains open. |
 | REQ-P4-014 | Split the BOM into safe-to-purchase measurement/coupon items and wait-for-measurement or owner-review items. Do not treat reference envelopes as vendor dimensions. | Preliminary purchasing boundary | `bom/phase-4-preliminary-structural-bom.md`. |
-| REQ-P4-015 | Keep Phase 4 geometry PRELIMINARY. Do not generate production release files, mark parts manufacturing-ready, or begin Phase 5. | Owner gate | EDR-011/012, repository audit, measured hardware, physical coupons, and explicit release review. |
+| REQ-P4-015 | Keep Phase 4 geometry PRELIMINARY. Do not generate production release files or mark parts manufacturing-ready. Phase 5 may proceed only under a separate owner authorization and must begin with the controlled base pair. | Owner gate | EDR-011/012, EDR-014, repository audit, measured hardware, physical coupons, and explicit release review. |
 
 ## Scope boundary
 
 Phase 4 includes preliminary parametric geometry and temporary review exports.
 It excludes final rail/screw/bearing/motor/spindle/controller/switch/probe/
 workholding dimensions, production insert pockets, manufacturing tolerances,
-final fastener patterns, physical structural validation, release drawings,
-release STEP/STL, and Phase 5 work.
+final fastener patterns, physical structural validation, release drawings, and
+release STEP/STL. The owner-authorized Phase 5 first batch is governed by the
+separate manufacturing-CAD requirement; it does not convert this Phase 4
+concept into a released part.
 
-The next gate is the hardware procurement / measurement freeze under proposed
-EDR-013. The gate remains not-ready for production CAD until the named
+The hardware procurement / measurement freeze under proposed EDR-013 remains
+active. The Phase 5 first batch may be generated as `PROTOTYPE-STL` for owner
+review, but production CAD and release remain not-ready until the named
 physical and measurement evidence is collected.

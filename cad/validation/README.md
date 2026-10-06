@@ -28,6 +28,9 @@ provides:
   containment, expected-versus-unexpected structural overlap, preliminary
   5 N contribution screening, and explicit service/physical-evidence
   not-ready states;
+- Phase 5 base-pair checks for valid fused single solids, declared print
+  extents, local export files, provisional hardware-interface status, and the
+  owner-authorized first-batch/release boundary;
 - standard-library tests that run without a CAD dependency, plus a pinned
   build123d spike for exact skeleton bounds and interference evidence.
 
@@ -66,4 +69,7 @@ automated runner may pass geometry, containment, interference, and export
 checks while the overall report remains `not-ready` for measured hardware,
 print/joint/rail-seat coupons, service mock-up, and physical 5 N force-loop
 evidence. The preliminary architecture is owner-accepted; manufacturing
-release and Phase 5 remain blocked.
+release remains blocked. Phase 5 now adds only the owner-authorized first
+base-pair candidate batch; its overall status remains not-ready for release
+because hardware dimensions, physical first-print evidence, and process
+validation are open.

@@ -21,4 +21,6 @@ The active transition is the [hardware procurement / measurement
 matrix](hardware-procurement-measurement-matrix.md), backed by the
 [requirements freeze](../requirements/hardware-procurement-measurement-freeze.md).
 It is the controlling A-D list for characterization purchases and owned
-hardware identification; it does not authorize manufacturing-ready CAD.
+hardware identification. EDR-014 authorizes a two-part Phase 5 candidate
+geometry batch, but it does not authorize a production BOM, purchase order, or
+manufacturing release.

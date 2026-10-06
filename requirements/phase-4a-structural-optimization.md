@@ -1,11 +1,12 @@
 # Phase 4A - structural optimization requirements
 
-**Status:** accepted as preliminary O2 architecture; not accepted for
-manufacturing or Phase 5
+**Status:** accepted as preliminary O2 architecture; Phase 5 first base-pair
+manufacturing-CAD batch authorized, with release and remaining parts closed
 
 Phase 4A records the owner-accepted O2 architecture before hardware-specific
-CAD. It does not freeze vendor hardware, mark interfaces manufacturing-ready,
-or start Phase 5.
+CAD. It does not freeze vendor hardware or mark interfaces manufacturing-ready.
+The owner has separately authorized Phase 5 to establish manufacturing-CAD
+conventions using only `base_left_integrated` and `base_right_integrated`.
 
 ## Baseline
 
@@ -93,6 +94,9 @@ foot, or electronics hardware.
 ## Evidence gate
 
 The preliminary architecture is accepted, but the following evidence remains
-required before production CAD: conditioned 300 mm PETG coupons, rail-seat and
-joint tests, actual hardware measurements, full-travel and service mock-up,
-and a separated 5 N force-loop measurement. Phase 5 remains closed.
+required before manufacturing release and before the remaining O2 parts are
+started: conditioned 300 mm PETG coupons, rail-seat and joint tests, actual
+hardware measurements, full-travel and service mock-up, and a separated 5 N
+force-loop measurement. Under EDR-014, the first base pair may be generated as
+`PROTOTYPE-STL` with explicitly marked provisional hardware dimensions; it is
+not `RELEASED` or `HARDWARE-VALIDATED`.

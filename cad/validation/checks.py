@@ -82,7 +82,19 @@ RULE_CATALOG: tuple[RuleDefinition, ...] = (
     RuleDefinition("VAL-PHASE4-INTERFERENCE", "Phase 4 unexpected solid interference", 4, True),
     RuleDefinition("VAL-PHASE4-SERVICEABILITY-EVIDENCE", "Phase 4 service-access evidence", 4, True),
     RuleDefinition("VAL-PHASE4-GATE-EVIDENCE", "Phase 4 owner-review gate evidence", 4, True),
-    RuleDefinition("VAL-PHASE4-NO-PHASE5", "Phase 5 authorization boundary", 4, False),
+    RuleDefinition("VAL-PHASE4-PHASE5-RELEASE-GATE", "Phase 5 candidate versus release boundary", 4, False),
+    RuleDefinition("VAL-PHASE4A-PHASE5-RELEASE-GATE", "Phase 5 candidate versus release boundary after Phase 4A", 4, False),
+    RuleDefinition("VAL-PHASE5-PART-PRESENT", "Phase 5 first-batch part presence", 5, True),
+    RuleDefinition("VAL-PHASE5-SOLID-VALID", "Phase 5 candidate solid validity", 5, True),
+    RuleDefinition("VAL-PHASE5-SINGLE-SOLID", "Phase 5 fused single-solid contract", 5, True),
+    RuleDefinition("VAL-PHASE5-EXTENTS", "Phase 5 candidate print extents", 5, True),
+    RuleDefinition("VAL-PHASE5-PRINT-BOUND", "Phase 5 candidate print bound", 5, True),
+    RuleDefinition("VAL-PHASE5-EXPORT-FILE", "Phase 5 candidate export file presence", 5, True),
+    RuleDefinition("VAL-PHASE5-PROVISIONAL-INTERFACES", "Phase 5 provisional hardware interface boundary", 5, True),
+    RuleDefinition("VAL-PHASE5-MATURITY", "Phase 5 candidate maturity boundary", 5, True),
+    RuleDefinition("VAL-PHASE5-AUTHORIZATION", "Phase 5 owner authorization", 5, False),
+    RuleDefinition("VAL-PHASE5-BATCH-SCOPE", "Phase 5 controlled batch scope", 5, False),
+    RuleDefinition("VAL-PHASE5-RELEASE-BOUNDARY", "Phase 5 release evidence boundary", 5, False),
 )
 
 

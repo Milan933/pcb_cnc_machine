@@ -479,7 +479,10 @@ def build_metrics(model: Any) -> dict[str, Any]:
         "owner_boundary": {
             "phase4_preliminary_architecture_baseline_accepted": True,
             "phase4_manufacturing_ready": False,
-            "phase5_started": False,
+            "phase5_authorized": True,
+            "phase5_started": True,
+            "phase5_batch": "base_pair_only",
+            "phase5_remaining_parts_started": False,
             "production_release": False,
         },
         "structural_part_count": len(rows),

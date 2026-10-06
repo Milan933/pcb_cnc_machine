@@ -42,6 +42,11 @@ from .phase4a import (
     check_phase4a_structural_parameters,
     phase4a_gate_report,
 )
+from .phase5 import (
+    check_phase5_base_pair_geometry,
+    check_phase5_export_files,
+    phase5_gate_report,
+)
 
 __all__ = [
     "AxisCapacity",
@@ -70,6 +75,9 @@ __all__ = [
     "check_phase4a_assembly",
     "check_phase4a_structural_parameters",
     "phase4a_gate_report",
+    "check_phase5_base_pair_geometry",
+    "check_phase5_export_files",
+    "phase5_gate_report",
     "check_fastener_interface",
     "check_fastening_strategy",
     "check_phase3a_fastener_interfaces",

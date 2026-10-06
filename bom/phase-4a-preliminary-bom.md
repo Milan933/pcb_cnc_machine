@@ -84,6 +84,7 @@ The earlier sample guidance below is retained as the Phase 4A audit trail.
   installation direction remain unresolved.
 
 No row in this document authorizes a production purchase order or a
-manufacturing release. Phase 4 and Phase 4A are accepted only as preliminary
-architecture; physical evidence, manufacturing interfaces, and Phase 5 remain
-closed.
+manufacturing release. Phase 4 and Phase 4A remain preliminary architecture.
+EDR-014 permits only the first two integrated-base candidates to be generated
+for owner review; physical evidence, measured manufacturing interfaces, the
+remaining O2 parts, and release remain open.

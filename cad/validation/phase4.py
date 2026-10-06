@@ -444,7 +444,7 @@ def check_phase4_assembly(model: Any) -> ValidationReport:
 
 
 def phase4_gate_report() -> ValidationReport:
-    """List evidence required before production CAD or Phase 5 can start."""
+    """List evidence required before manufacturing release or later batches."""
 
     report = ValidationReport()
     for evidence in (
@@ -461,15 +461,15 @@ def phase4_gate_report() -> ValidationReport:
             _issue(
                 "VAL-PHASE4-GATE-EVIDENCE",
                 ValidationStatus.NOT_READY,
-                f"Required before manufacturing-ready CAD or Phase 5: {evidence}.",
+                f"Required before manufacturing release or later Phase 5 batches: {evidence}.",
                 evidence="Review geometry and calculations do not replace physical evidence.",
             )
         )
     report.add(
         _issue(
-            "VAL-PHASE4-NO-PHASE5",
+            "VAL-PHASE4-PHASE5-RELEASE-GATE",
             ValidationStatus.PASS,
-            "Phase 4 preliminary architecture is owner-accepted; physical evidence, production release, and Phase 5 remain closed.",
+            "Phase 4 preliminary architecture is owner-accepted; the owner-authorized Phase 5 base-pair candidate is open, while production release and later parts remain closed.",
             severity=IssueSeverity.INFO,
         )
     )

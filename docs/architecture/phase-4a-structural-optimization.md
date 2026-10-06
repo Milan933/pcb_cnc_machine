@@ -6,14 +6,17 @@ open. The 5 N deflection value is calculated, not measured.
 **Selected preliminary candidate:** O2 balanced optimization
 **Phase 4 preliminary architecture accepted:** yes
 **Phase 4A preliminary architecture accepted:** yes
-**Phase 5 started:** no
+**Phase 5 first base-pair batch authorized:** yes
+**Phase 5 remaining parts started:** no
 **Production release:** no
 
 This package uses the completed Phase 4 owner-review package as its baseline.
 It implements and compares O1, O2, and O3 in the parametric build123d source,
 then validates the selected O2 review assembly against the accepted P2 motion
 and packaging references. It does not freeze supplier hardware or convert
-review geometry into release geometry.
+review geometry into release geometry. The first Phase 5 base-pair batch is
+documented separately under
+[EDR-014](../../docs/decisions/014-phase-5-base-pair-manufacturing-cad.md).
 
 The source implementation is [phase4a_structural.py](../../cad/parts/phase4a_structural.py),
 the assembly and overlap graph are in
@@ -303,12 +306,14 @@ and a separated 5 N tool-point test.
 
 ## 11. Gate disposition
 
-**ACCEPT O2 AS THE PRELIMINARY STRUCTURAL ARCHITECTURE BASELINE; DO NOT
-AUTHORIZE PRODUCTION CAD OR PHASE 5.**
+**ACCEPT O2 AS THE PRELIMINARY STRUCTURAL ARCHITECTURE BASELINE; AUTHORIZE
+ONLY THE CONTROLLED PHASE 5 BASE-PAIR CANDIDATE UNDER EDR-014.**
 
 O2 is the owner-selected baseline because it has the best current combination
 of force-loop simplification, critical part/joint reduction, calculated
 stiffness screen, serviceability, alignment inspectability, and Voron print
 boundary. This acceptance does not turn the calculated deflection into a
 measurement, freeze hardware interfaces, or authorize further optimization.
-EDR-013 now controls the procurement and measurement transition.
+EDR-013 continues to control the procurement and measurement transition.
+EDR-014 controls the first manufacturing-CAD batch; production release and
+the remaining O2 parts remain unauthorized.

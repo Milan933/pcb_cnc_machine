@@ -26,13 +26,18 @@ Current records:
   joint evidence remain open; does not authorize production CAD
 - [EDR-011: Phase 4 preliminary structural concept](011-phase-4-preliminary-structural-concept.md)
   - accepted 2026-10-06 as the preliminary structural architecture baseline;
-  physical evidence, production release, and Phase 5 remain blocked
+  physical evidence and production release remain blocked; the later EDR-014
+  controls the first Phase 5 candidate batch
 - [EDR-012: Phase 4A structural optimization](012-phase-4a-structural-optimization.md)
   - accepted 2026-10-06 as the preliminary O2 architecture baseline; physical
-  evidence, production release, and Phase 5 remain blocked
+  evidence and production release remain blocked; the later EDR-014 controls
+  the first Phase 5 candidate batch
 - [EDR-013: Hardware procurement / measurement freeze](013-hardware-procurement-measurement-freeze.md)
   - proposed next-stage freeze; class quantities and samples are defined, but
   measured hardware interfaces are not manufacturing-ready
+- [EDR-014: Phase 5 first base-pair manufacturing CAD](014-phase-5-base-pair-manufacturing-cad.md)
+  - owner-authorized first real printable batch; `PROTOTYPE-STL` only, with
+    provisional hardware interfaces and an explicit stop for owner review
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.

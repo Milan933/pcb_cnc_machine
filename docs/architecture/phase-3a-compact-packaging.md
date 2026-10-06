@@ -121,4 +121,5 @@ and dependency-light checks pass, but the physical full-travel/service
 evidence package remains open. Exact motors, spindle, switches, bearing fits,
 screw straightness, PETG creep/rail-seat behavior, and workholding remain
 unverified. The Phase 4/4A preliminary architecture is now owner-accepted;
-manufacturing release and Phase 5 remain blocked.
+manufacturing release and later Phase 5 batches remain outside this package.
+EDR-014 separately authorizes only the first base-pair candidate batch.

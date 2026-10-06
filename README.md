@@ -7,15 +7,12 @@ isolation routing, drilling, and outline cutting.
 
 The owner accepted Phase 4 and Phase 4A as the preliminary structural
 architecture baseline on 2026-10-06, selecting the balanced 19-part O2 review
-architecture. The repository is now in the hardware procurement / measurement
-freeze. Phase 1, the Architecture A baseline, the Phase 3 motion baseline,
-and the P2 Phase 3A packaging baseline are also accepted. The current
-deliverable contains the Phase 2A structural comparison, motion component
-trade, P1/P2/P3 packaging study, the 29-part Phase 4 baseline, the O1/O2/O3
-Phase 4A comparison, the selected O2 review assembly, preliminary calculations,
-owner-review views, and temporary STEP/STL exports generated outside the
-repository. It contains no manufacturing-ready parts or production release
-files.
+architecture. The owner has now authorized the first Phase 5 manufacturing-CAD
+batch: real `base_left_integrated` and `base_right_integrated` source geometry
+with local candidate STEP/STL derivatives. Phase 1, the Architecture A
+baseline, the Phase 3 motion baseline, and the P2 Phase 3A packaging baseline
+are also accepted. The first batch is `PROTOTYPE-STL` only; it contains no
+released or hardware-validated parts and does not start the remaining O2 parts.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -35,8 +32,9 @@ boundaries are documented in
 
 The preliminary CAD recommendation is build123d. That recommendation is
 recorded in [the CAD technology decision](docs/decisions/002-cad-technology.md)
-and was exercised by the Phase 2 architecture-only spike. Phase 4 uses the
-pinned build123d environment for review geometry only; Phase 5 has not begun.
+and was exercised by the Phase 2 architecture-only spike. Phase 5 uses the
+pinned build123d environment for the controlled first base-pair manufacturing
+batch; the exact hardware-dependent interfaces remain provisional.
 
 ## Design intent
 
@@ -88,6 +86,9 @@ installed driver modules remain identification items.
 - [Phase 4A structural optimization](requirements/phase-4a-structural-optimization.md):
   O1/O2/O3 comparison, selected O2 consolidation, print boundary, and
   physical-evidence gate.
+- [Phase 5 manufacturing CAD](requirements/phase-5-manufacturing-cad.md):
+  first real integrated-base pair, candidate export boundary, and owner-review
+  stop gate.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture, Phase 2
@@ -107,6 +108,9 @@ installed driver modules remain identification items.
   set, including Phase 2, Phase 3, Phase 3A review-layout inputs, the Phase 4
   structural part/interface contracts, and the owner-directed PETG insert
   strategy.
+- [cad/parts/phase5_structural.py](cad/parts/phase5_structural.py): the first
+  fused, parametric integrated-base pair with explicitly provisional hardware
+  openings.
 - [cad/fastening.py](cad/fastening.py): dependency-light PETG interface checks
   for boss material, edge distance, access, geometric shear transfer, M5, and
   through-bolt justification.
@@ -132,13 +136,13 @@ Every important value or decision must be marked as one of:
 
 ## Near-term next step
 
-Execute the [hardware procurement / measurement freeze](requirements/hardware-procurement-measurement-freeze.md)
-and proposed [EDR-013](docs/decisions/013-hardware-procurement-measurement-freeze.md):
-buy only the low-regret materials and characterization samples, identify the
-owned motors and controller, measure the motion and fastening interfaces, and
-run the named PETG/joint/rail-seat/service mock-ups. The spindle, final
-workholding, production fastener lengths, and manufacturing interfaces remain
-open. Phase 5 and manufacturing release do not begin automatically.
+Review the [Phase 5 base-pair manufacturing-CAD batch](requirements/phase-5-manufacturing-cad.md)
+and its [EDR-014](docs/decisions/014-phase-5-base-pair-manufacturing-cad.md),
+open the two local STL files in OrcaSlicer, and perform the first-print and
+measured-interface review. Continue the hardware identification and coupon
+work under [EDR-013](docs/decisions/013-hardware-procurement-measurement-freeze.md).
+Do not generate the remaining O2 parts or release artifacts until the owner
+reviews this batch.
 
 ## Development interface
 
@@ -173,6 +177,15 @@ The Phase 4 preliminary structural study uses the pinned environment and
 exports only to a temporary directory:
 
     python -m tools.run_phase4_preliminary_study --output-dir <temporary-directory>
+
+The authorized Phase 5 base-pair batch uses the pinned environment and writes
+candidate derivatives only under the ignored `generated/stl/` and
+`generated/step/` subdirectories:
+
+    python -m tools.generate_phase5_base_pair
+
+The generated candidates are `PROTOTYPE-STL` review artifacts, not release
+files.
 
 The Phase 4A optimization comparison uses the same pinned environment and
 exports only to a temporary directory:

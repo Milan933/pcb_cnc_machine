@@ -3,7 +3,8 @@
 **Status:** historical Phase 4 review package; EDR-011 is accepted as a
 preliminary architecture baseline. O2/EDR-012 supersedes this 29-part
 decomposition for the current review baseline. Physical evidence is open and
-Phase 5 has not started.
+At the time of this historical package Phase 5 had not started; EDR-014 later
+authorizes only the first integrated-base batch.
 
 This package reviews the current Phase 4 P2 structural concept without changing
 the CAD, optimizing parts, freezing hardware, or authorizing a manufacturing
@@ -510,10 +511,13 @@ used by the Phase 4 assembly; neither set is a supplier purchase lock.
 architecture baseline.** The remaining actions are hardware procurement,
 measurement, coupons, and physical force-loop validation; they do not reopen
 mass or part-count optimization. This historical package does not authorize
-hardware-specific production CAD or Phase 5.
+hardware-specific production CAD or the remaining Phase 5 batches. EDR-014 is
+the separate owner authorization for the first base-pair candidate batch.
 
 ### Owner gate
 
 The owner disposition was recorded on 2026-10-06. EDR-011 is **accepted as a
 preliminary architecture baseline**; production exports remain unauthorized,
-hardware interfaces remain not-ready, and Phase 5 remains unstarted.
+hardware interfaces remain not-ready. The separate EDR-014 now authorizes the
+first Phase 5 base-pair candidate batch; this historical package remains a
+review record, not a manufacturing source.

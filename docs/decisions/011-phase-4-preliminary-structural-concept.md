@@ -167,5 +167,6 @@ approved.
 EDR-011 is **accepted as a preliminary architecture baseline**. The concept
 may be used to define the hardware procurement / measurement freeze, but no
 hardware-specific interface is manufacturing-ready. Production CAD,
-manufacturing release, and Phase 5 remain unauthorized until the physical
-evidence and subsequent owner gate are closed.
+manufacturing release, and later Phase 5 batches remain unauthorized until the
+physical evidence and subsequent owner gate are closed. EDR-014 separately
+authorizes only the first base-pair candidate batch.

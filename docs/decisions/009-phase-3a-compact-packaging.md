@@ -128,4 +128,6 @@ manufacturing freeze. Exact hardware, full-travel/service mock-up, PETG
 coupons, measured spindle/motor/switch/bearing/screw dimensions, and
 workholding evidence remain open. The later Phase 4/4A preliminary
 architecture acceptance does not change this measurement boundary; production
-exports and Phase 5 remain blocked.
+exports and later Phase 5 batches remain outside this record. EDR-014 later
+authorizes only the first base-pair candidate batch; it does not change this
+measurement boundary.

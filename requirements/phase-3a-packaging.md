@@ -49,4 +49,6 @@ The owner selected and accepted P2 on 2026-10-06. Phase 3A physical evidence
 remains open, and Phase 4 is limited to preliminary structural concept CAD,
 review calculations, print planning, and a preliminary safe-to-buy/wait BOM.
 Manufacturing-ready geometry, production exports, final insert dimensions, and
-Phase 5 remain blocked.
+later Phase 5 batches remain outside this Phase 3A scope. The separately
+authorized Phase 5 base-pair candidate does not change the Phase 3A hardware
+measurement boundary.

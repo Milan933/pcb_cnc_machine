@@ -131,5 +131,6 @@ python -m tools.run_phase4_preliminary_study --output-dir <temporary-directory>
 
 The result is intentionally `not-ready` for physical evidence even when the
 automated review checks pass. The preliminary Phase 4 architecture is now
-owner-accepted, but manufacturing release and Phase 5 remain outside this
-concept document.
+owner-accepted, but manufacturing release and later Phase 5 batches remain
+outside this concept document. EDR-014 separately authorizes only the first
+base-pair candidate batch.

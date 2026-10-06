@@ -12,17 +12,20 @@ The owner accepted the Phase 3 motion baseline and the P2 Phase 3A packaging
 baseline on 2026-10-06. On the same date, the owner accepted Phase 4 and Phase
 4A as the **preliminary structural architecture baseline** under EDR-011 and
 EDR-012, selecting the balanced O2 variant. The repository is now in the
-hardware procurement / measurement freeze recorded by proposed EDR-013.
-Further mass or part-count optimization is not authorized for this transition.
-It must not silently turn a preliminary or calculated value into a measured
+owner-authorized Phase 5 first manufacturing-CAD batch under EDR-014. Further
+mass or part-count optimization is not authorized for this transition. It must
+not silently turn a preliminary or calculated value into a measured
 engineering fact.
 
-The accepted Phase 4/4A status does not authorize manufacturing-ready CAD,
-production STL/STEP/drawing generation, final insert pilot dimensions, final
-vendor dimensions, or Phase 5. Review-only CAD exports must remain temporary.
-PETG coupons, joint/rail-seat/bearing-pocket tests, actual hardware
-measurements, service mock-ups, and representative force-loop evidence remain
-required before hardware interfaces or production CAD can be released.
+Phase 5 is open only for the first real printable base pair:
+`base_left_integrated` and `base_right_integrated`. Their source geometry and
+local ignored STL/STEP candidates may be generated for owner review. The
+candidate interfaces remain explicitly provisional, and the parts must not be
+called RELEASED or HARDWARE-VALIDATED. The remaining O2 parts, manufacturing
+drawings, release exports, and production quantities remain closed. PETG
+coupons, joint/rail-seat/bearing-pocket tests, actual hardware measurements,
+service mock-ups, and representative force-loop evidence remain required
+before hardware interfaces or production CAD can be released.
 
 The owner-supplied hardware boundary is explicit: use the existing selection
 of NEMA17 motors and the Arduino Mega + CNC Shield platform; do not purchase

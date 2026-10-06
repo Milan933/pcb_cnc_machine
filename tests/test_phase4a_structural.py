@@ -37,10 +37,10 @@ class Phase4AStructuralOptimizationTests(unittest.TestCase):
             {"O1": 17, "O2": 7, "O3": 5},
         )
 
-    def test_phase4a_gate_keeps_phase5_closed(self) -> None:
+    def test_phase4a_gate_records_phase5_candidate_boundary(self) -> None:
         report = phase4a_gate_report()
         self.assertEqual(report.status, ValidationStatus.NOT_READY)
-        self.assertTrue(any(issue.rule_id == "VAL-PHASE4A-NO-PHASE5" for issue in report.issues))
+        self.assertTrue(any(issue.rule_id == "VAL-PHASE4A-PHASE5-RELEASE-GATE" for issue in report.issues))
         self.assertTrue(all(issue.severity.value == "warning" for issue in report.issues if issue.rule_id == "VAL-PHASE4A-GATE-EVIDENCE"))
 
 

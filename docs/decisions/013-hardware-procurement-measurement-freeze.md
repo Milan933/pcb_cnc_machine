@@ -140,4 +140,6 @@ screen, not a reason to buy an inferior spindle.
 
 EDR-013 remains **proposed / owner review required**. It authorizes the
 characterization purchase and measurement plan described above, not production
-quantities, manufacturing-ready interfaces, final production CAD, or Phase 5.
+quantities, manufacturing-ready interfaces, final production CAD, or the
+remaining Phase 5 parts. EDR-014 separately authorizes only the first
+base-pair candidate batch with provisional interfaces.
