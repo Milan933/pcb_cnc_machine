@@ -13,8 +13,8 @@
   "source": {
     "module_structural": "cad/parts/phase5_complete_structural.py",
     "module_assembly": "cad/assembly/phase5_complete_assembly.py",
-    "revision": "7759f74d9f63453fe48bfceb87132847ef8300de",
-    "working_tree_dirty_at_generation": true
+    "revision": "6e5a7b593c7a42d421639570b8172937f689d29e",
+    "working_tree_dirty_at_generation": false
   },
   "coordinate_system": {
     "convention": [
