@@ -90,6 +90,30 @@ An interface function must state its coordinate assumptions, clearances,
 fastener access, and which values are controlled by parameters. Avoid copying
 hole coordinates by hand across part modules.
 
+For PETG reusable joints, use a parameterized heat-set insert interface with
+fields for nominal size, insert outer diameter, insert length, pilot-hole
+range, insertion depth, surrounding boss wall, edge distance, insertion
+direction, screw clearance, and soldering-iron or insertion-tool access. The
+actual supplier dimensions may be unresolved in a review envelope, but the
+interface must report that not-ready state rather than inventing exact pilot
+values. The default size hierarchy is M3 for small/accessory hardware, M4 for
+general structural/module joints, and M5 only with a documented technical
+justification.
+
+Every important joint must separately identify the preload fastener and the
+printed geometric load-transfer feature. Use shoulders, steps,
+tongue-and-grooves, keys, pockets, bosses, registration, shear keys, mating
+faces, or interlocking ribs for location and shear. Through-bolts are a
+selective escalation for insert pull-out/creep, high preload or moment,
+cyclic loading, or high failure consequence; they still require a geometric
+shear path and must not be treated as precision locating pins by default.
+
+The fixed gantry crossmember interface must be modeled as a mechanically
+seated joint with a deep tongue-and-groove, stepped socket, keyed pocket,
+shoulder, or interlocking rib. Do not model it as a plate suspended from M5
+screws. Keep these reusable interface concepts centralized so Phase 3A
+packaging, future printed parts, and validation consume the same contract.
+
 ## Hardware representations
 
 Represent standard hardware with enough geometry for clearance, access,

@@ -133,3 +133,26 @@ explicit:
     350 with its actual orientation, brim, insert, and rail-seat requirements?
 37. Do exact spindle, switch, cable, and motor envelopes invalidate any P2
     clearance before detailed structural CAD is authorized?
+
+## PETG fastening and modularity disposition boundary
+
+The owner-directed fastening strategy is now the working rule for Phase 3A
+review interfaces. These questions remain open before any reusable interface
+is frozen for manufacture:
+
+38. Which actual M3, M4, and conditionally justified M5 heat-set insert
+    families will be selected, and what are their measured OD, length, pilot,
+    insertion-depth, screw-clearance, and installation-tool requirements?
+39. Which PETG filament, nozzle, layer orientation, perimeter count, and
+    installation-temperature procedure will be used for insert pull-out,
+    torque, cracking, creep, and repeated-assembly coupons?
+40. Which gantry, motor, bearing, rail, and spindle joints need a through-bolt
+    or metal spreader after load, preload, moment, cyclic, and failure-
+    consequence review?
+41. What boss wall, edge distance, and soldering-iron/tool-access acceptance
+    values will replace the current preliminary interface screens?
+42. Which P1/P2/P3 structural parts at or above 300 mm will be split using
+    indexed PETG interfaces, and where will selective through-bolts be used?
+43. Does the complete motor, rail, carriage, screw/nut, bearing, spindle,
+    limit, probe-wiring, and moving-bed service path remain replaceable without
+    destroying the printed structure?

@@ -44,6 +44,23 @@ The validation architecture must provide rules for:
 14. continuous, supported linear-rail mounting surfaces;
 15. realistic printable orientation within the usable Voron 2.4 350 volume.
 
+For PETG fastening specifically, the rule set must also validate:
+
+- the M3/M4/M5 standard hierarchy and intended-use mapping;
+- insert-family completeness without silently accepting an unselected supplier;
+- positive boss material around each heat-set insert;
+- edge distance and soldering-iron/insertion-tool access;
+- a printed geometric feature that carries location and shear independently of
+  screw preload;
+- explicit justification for every M5 interface and every through-bolt;
+- service access and replacement of motors, rails, carriages, screws/nuts,
+  bearings, spindle, limits, probe wiring, and moving-bed wiring.
+
+Insert outer diameter, length, pilot range, insertion depth, and screw
+clearance must return not-ready until the actual insert is selected, measured,
+and coupon-tested. Preliminary boss, edge, and tool-access screens may support
+packaging review but are not manufacturing-release evidence.
+
 The first repository iteration defines interfaces and a few geometry-free
 checks. Geometry-aware rules must be added as soon as the corresponding
 part or assembly data exists.
@@ -93,6 +110,13 @@ Validate the actual critical wall and load path, not a generic CAD shell.
 Check local thickness, edge distance, insert envelope, fastener bearing,
 rail-seat continuity, and print orientation. A part may be geometrically
 printable but structurally unready; report these separately.
+
+The core joint check is fail-closed: fasteners provide preload, while printed
+geometry provides location and shear transfer. A through-bolt without a
+pull-out, creep, preload, moment, cyclic-load, or failure-consequence
+justification is a failure, even if its hole fits. A gantry crossmember without
+a mechanical seat is not accepted as structurally located by screw preload
+alone.
 
 ## Validation architecture
 

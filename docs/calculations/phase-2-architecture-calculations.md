@@ -16,7 +16,8 @@ physical validation.
 | gantry clear span | 280 mm | Phase 2 preliminary skeleton |
 | gantry section depth | 60 mm | Phase 2 geometry-only screening bound |
 | effective PETG modulus for comparison | 2,000 N/mm² | conservative modeling assumption; must be replaced/validated |
-| nominal print preferred dimension | 320 mm | Phase 1 PETG manufacturing constraint |
+| nominal print preferred XY dimension | 300 mm | Owner-directed PETG modularity constraint |
+| nominal print conservative maximum | 320 mm | Owner-directed PETG modularity constraint |
 
 ## Tool moment and guide couple
 

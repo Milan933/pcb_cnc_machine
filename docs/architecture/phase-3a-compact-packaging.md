@@ -45,6 +45,11 @@ fixed/floating support envelopes, and the front motor/service package.
    home-limit boxes have explicit service-clearance references.
 7. Structural bounds remain printable envelopes and must not be mistaken for
    walls, ribs, insert bosses, rail seats, or fastener details.
+8. Heat-set inserts are the default reusable PETG thread using the central
+   M3/M4/M5 hierarchy. Review interfaces use fasteners for preload and
+   shoulders, keys, pockets, planar seats, or interlocking ribs for location
+   and shear. The gantry crossmember is conceptually seated rather than
+   suspended from screws; through-bolts remain conditional and justified.
 
 ## Variant comparison
 
@@ -91,13 +96,21 @@ and homing/limit wiring is protected.
 ## PETG and print-volume implications
 
 The intended additive packaging is a structural monocoque/bound with bearing
-pockets, motor recesses, embedded-nut access, rail-seat ribs, and removable
-hardware covers. The current skeleton does not model those details. The
-largest future packaging print screens are P1 340 x 80 x 170 mm, P2 330 x 72 x
-155 mm, and P3 320 x 68 x 145 mm, all within the nominal 350 mm printer volume
-on paper. A one-piece or near-one-piece fixed-gantry torsion box is the target;
-split side interfaces remain the fallback until orientation, diagonal, insert,
-and rail-seat coupon evidence exists.
+pockets, motor recesses, heat-set insert bosses connected to ribs, rail-seat
+shoulders, and removable hardware covers. The current skeleton does not model
+those details. The largest future packaging print screens are P1 340 x 80 x
+170 mm, P2 330 x 72 x 155 mm, and P3 320 x 68 x 145 mm. The practical project
+rule prefers structural-part XY dimensions at or below 300 mm and uses 320 mm
+as the conservative maximum, so P1/P2 require explicit split/orientation and
+service review before any production part decision. A one-piece or
+near-one-piece fixed-gantry torsion box remains a packaging target, not an
+approval; indexed PETG interfaces are the fallback where the print boundary or
+service path requires modularity.
+
+The review-level fastening contract is implemented in
+`cad/parameters.py` and checked by `cad/fastening.py`. Exact insert OD,
+length, pilot, insertion-depth, and screw-clearance values remain unresolved
+until the actual inserts are measured and coupon-tested.
 
 ## Gate recommendation
 

@@ -20,6 +20,9 @@ Current records:
 - [EDR-009: Phase 3A compact packaging](009-phase-3a-compact-packaging.md) -
   proposed; P2 is recommended for owner review; does not accept the Phase 3A
   gate or authorize Phase 4
+- [EDR-010: PETG fastening and structural modularity](010-petg-fastening-strategy.md)
+  - owner-directed working strategy; insert dimensions and physical joint
+  evidence remain open; does not authorize production CAD or Phase 4
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.

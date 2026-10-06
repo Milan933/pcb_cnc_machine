@@ -106,10 +106,11 @@ gantry concept is a closed/deep-ribbed monocoque or torsion-box-like section
 with large section depth, gradual fillets, gussets at the side transitions,
 and distributed metal-backed rail and fastener interfaces. The first
 crossbeam envelope is approximately 280 mm clear span and 320 mm outer width,
-so a one-piece printed primary beam remains within the preferred 320 mm
-screening limit. This does not pass printability: layer direction, bed
-contact, warping, rail-seat post-processing, and creep still require Phase 6
-evidence.
+so a one-piece printed primary beam is at the 320 mm conservative screening
+limit and requires explicit orientation, insert-access, and assembly review;
+the preferred structural-part XY dimension is 300 mm. This does not pass
+printability: layer direction, bed contact, warping, rail-seat post-processing,
+and creep still require Phase 6 evidence.
 
 The structural load path must be carried by skins, ribs, and through-bolted or
 metal-spread interfaces where preload and alignment matter. Infill percentage
@@ -121,7 +122,7 @@ preload, and local fastener bearing remain design inputs.
 | Section concept | Bending | Torsion | PETG load path | Printability / service | Phase 2 disposition |
 | --- | --- | --- | --- | --- | --- |
 | Closed rectangular box | good | good | continuous skins; local wall buckling must be checked | good if one-piece; internal access is limited | viable baseline |
-| Deep ribbed box | very good per mass | good to very good | ribs align the shear path and distribute side loads | good within 320 mm; inspectable faces | preferred concept |
+| Deep ribbed box | very good per mass | good to very good | ribs align the shear path and distribute side loads | good at or below the 320 mm conservative limit; inspectable faces | preferred concept |
 | Torsion box | good | very good | skins and internal webs close roll loads | more joints/supports and harder cleaning | reserve if B torsion test fails |
 | Double-wall monocoque | very good | good to very good | broad interfaces reduce PETG bearing/creep concentration | good if the skins remain one piece; post-process datums | combine with the preferred ribbed concept |
 
@@ -178,8 +179,10 @@ The architecture-only build123d skeleton uses the controlled values in
 `cad/parameters.py` and includes only reference geometry. Its nominal machine
 packaging bounding box is 340 x 290 x 220 mm including reference screw end
 margins; this is not a printed-part size or a service-clearance guarantee.
-The primary gantry/base bounds remain at or below the preferred 320 mm
-one-piece screening dimension.
+The primary gantry/base bounds remain at or below the 320 mm conservative
+screening dimension, but any part at or above 300 mm requires explicit
+printability and modularity review. The full machine envelope is not a
+printed-part size claim.
 
 See [the force-loop study](phase-2-force-loop.md), [the weighted trade
 matrix](phase-2-decision-matrix.md), [the Phase 2A structural comparison](phase-2a-structural-comparison.md),

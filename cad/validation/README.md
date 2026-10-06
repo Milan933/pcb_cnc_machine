@@ -18,6 +18,11 @@ provides:
   conditional print-bound checks;
 - Phase 3A swept two-carriage rail lengths, bed/motor/spindle/tool/limit
   clearance screens, compact Z-stack checks, and review-model containment;
+- PETG fastening hierarchy and interface checks for M3/M4/M5 family
+  completeness, preliminary boss material, edge distance, installation-tool
+  access, geometric location/shear transfer, M5 justification, and selective
+  through-bolt justification; unresolved supplier dimensions are explicit
+  not-ready warnings;
 - standard-library tests that run without a CAD dependency, plus a pinned
   build123d spike for exact skeleton bounds and interference evidence.
 
@@ -44,3 +49,8 @@ engineering result and is not silently converted to a pass.
 Phase 3A adds P1/P2/P3 packaging calculations and temporary build123d review
 exports. The packaging pass does not accept the gate, freeze exact hardware,
 or authorize detailed printable parts or Phase 4.
+
+The Phase 3A fastening report can pass its review-level rule checks while
+remaining `not-ready`: actual insert OD, length, pilot, insertion depth,
+screw-clearance, and PETG coupon results are required before manufacturing
+interfaces are released.

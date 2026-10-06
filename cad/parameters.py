@@ -207,8 +207,8 @@ PHASE1_REQUIREMENTS = Phase1Requirements(
     z_map_residual_acceptance_mm=0.030,
     height_map_grid_max_spacing_mm=25.0,
     height_map_refinement_spacing_mm=12.5,
-    preferred_printed_dimension_mm=320.0,
-    conditional_printed_dimension_mm=330.0,
+    preferred_printed_dimension_mm=300.0,
+    conditional_printed_dimension_mm=320.0,
     xy_packaging_allowance_total_mm=NumericRange(minimum=60.0, maximum=100.0),
     working_area_options=(
         WorkingAreaOption("A_160x100", 160.0, 100.0),
@@ -366,8 +366,8 @@ PHASE2_SKELETON_PARAMETERS = Phase2SkeletonParameters(
     tool_point_overhang_mm=50.0,
     reference_axis_diameter_mm=2.0,
     reference_screw_diameter_mm=4.0,
-    preferred_printed_dimension_mm=320.0,
-    conditional_printed_dimension_mm=330.0,
+    preferred_printed_dimension_mm=300.0,
+    conditional_printed_dimension_mm=320.0,
 )
 
 
@@ -1128,5 +1128,278 @@ PHASE3A_PACKAGING_VARIANTS = (
             "Fits the nominal Voron volume on paper, but the tight rail-seat and fastener access make "
             "a split or near-one-piece print more likely until an assembly mock-up passes."
         ),
+    ),
+)
+
+
+@dataclass(frozen=True)
+class InsertFamilyParameters:
+    """Parameterized heat-set insert family boundary for PETG interfaces.
+
+    Supplier-specific dimensions intentionally remain optional.  A screening
+    model may use the preliminary wall, edge, and installation-access values,
+    but it must not manufacture a pilot pocket until the actual insert is
+    selected, measured, and validated on a representative coupon.
+    """
+
+    nominal_size: str
+    intended_use: str
+    outer_diameter_mm: NumericRange | None
+    length_mm: NumericRange | None
+    pilot_hole_diameter_mm: NumericRange | None
+    insertion_depth_mm: NumericRange | None
+    minimum_surrounding_wall_mm: float
+    minimum_edge_distance_mm: float
+    insertion_direction: str
+    screw_clearance_diameter_mm: NumericRange | None
+    installation_tool_access_mm: tuple[float, float, float]
+    evidence_status: ParameterStatus
+    notes: str
+
+    @property
+    def exact_dimensions_resolved(self) -> bool:
+        """Whether all supplier-dependent insert dimensions are available."""
+
+        return all(
+            value is not None
+            for value in (
+                self.outer_diameter_mm,
+                self.length_mm,
+                self.pilot_hole_diameter_mm,
+                self.insertion_depth_mm,
+                self.screw_clearance_diameter_mm,
+            )
+        )
+
+
+@dataclass(frozen=True)
+class FastenerInterfaceParameter:
+    """Review-level description of one reusable printed interface."""
+
+    interface_id: str
+    function: str
+    fastening_mode: str
+    insert_size: str | None
+    boss_wall_mm: float
+    edge_distance_mm: float
+    installation_tool_access_mm: tuple[float, float, float]
+    load_transfer_features: tuple[str, ...]
+    serviceable: bool
+    requires_selected_insert: bool = True
+    size_justification: str | None = None
+    through_bolt_justification: str | None = None
+    notes: str = ""
+
+
+@dataclass(frozen=True)
+class FastenerStrategyParameters:
+    """Central PETG fastening strategy used by Phase 3A and later phases."""
+
+    allowed_insert_sizes: tuple[str, ...]
+    default_size_by_use: tuple[tuple[str, str], ...]
+    insert_families: tuple[InsertFamilyParameters, ...]
+    geometric_load_transfer_features: tuple[str, ...]
+    through_bolt_reserved_for: tuple[str, ...]
+    serviceable_components: tuple[str, ...]
+    core_principle: str
+    evidence_status: ParameterStatus
+
+
+PETG_FASTENER_CORE_PRINCIPLE = (
+    "Fasteners provide preload; printed geometry provides location and shear "
+    "transfer. Heat-set inserts are the default reusable threaded interface "
+    "in PETG. Through-bolts are reserved for structural joints where insert "
+    "pull-out, creep, preload, or joint moment capacity makes them necessary."
+)
+
+
+PHASE3A_FASTENER_STRATEGY = FastenerStrategyParameters(
+    allowed_insert_sizes=("M3", "M4", "M5"),
+    default_size_by_use=(
+        ("small covers, sensors, limits, probe hardware, and accessories", "M3"),
+        ("general structural, motor, bearing, spindle, and module joints", "M4"),
+        ("high-load structural joints only when technically justified", "M5"),
+    ),
+    insert_families=(
+        InsertFamilyParameters(
+            nominal_size="M3",
+            intended_use="Small covers, sensors, limits, probe hardware, and accessories.",
+            outer_diameter_mm=None,
+            length_mm=None,
+            pilot_hole_diameter_mm=None,
+            insertion_depth_mm=None,
+            minimum_surrounding_wall_mm=3.0,
+            minimum_edge_distance_mm=4.0,
+            insertion_direction="normal to the boss face where possible; avoid direct pull-out",
+            screw_clearance_diameter_mm=None,
+            installation_tool_access_mm=(12.0, 12.0, 12.0),
+            evidence_status=ParameterStatus.ASSUMPTION,
+            notes="Preliminary geometry screen only; replace with measured insert and coupon data.",
+        ),
+        InsertFamilyParameters(
+            nominal_size="M4",
+            intended_use="General structural, motor, bearing, spindle, and module joints.",
+            outer_diameter_mm=None,
+            length_mm=None,
+            pilot_hole_diameter_mm=None,
+            insertion_depth_mm=None,
+            minimum_surrounding_wall_mm=4.0,
+            minimum_edge_distance_mm=6.0,
+            insertion_direction="normal to the boss face where possible; avoid direct pull-out",
+            screw_clearance_diameter_mm=None,
+            installation_tool_access_mm=(14.0, 14.0, 14.0),
+            evidence_status=ParameterStatus.ASSUMPTION,
+            notes="Preliminary geometry screen only; replace with measured insert and coupon data.",
+        ),
+        InsertFamilyParameters(
+            nominal_size="M5",
+            intended_use="High-load structural joints only after an explicit load-path review.",
+            outer_diameter_mm=None,
+            length_mm=None,
+            pilot_hole_diameter_mm=None,
+            insertion_depth_mm=None,
+            minimum_surrounding_wall_mm=5.0,
+            minimum_edge_distance_mm=8.0,
+            insertion_direction="normal to the boss face where possible; avoid direct pull-out",
+            screw_clearance_diameter_mm=None,
+            installation_tool_access_mm=(16.0, 16.0, 16.0),
+            evidence_status=ParameterStatus.ASSUMPTION,
+            notes="Preliminary geometry screen only; M5 is not a default structural fastener.",
+        ),
+    ),
+    geometric_load_transfer_features=(
+        "shoulder",
+        "step",
+        "tongue-and-groove",
+        "key",
+        "boss",
+        "pocket",
+        "registration",
+        "shear key",
+        "mating planar surface",
+        "interlocking rib",
+    ),
+    through_bolt_reserved_for=(
+        "insert pull-out or PETG creep is unacceptable",
+        "high bending moment or clamping force exceeds the insert interface",
+        "cyclic loading or failure consequence requires a more robust load path",
+    ),
+    serviceable_components=(
+        "motors",
+        "rails",
+        "carriages",
+        "lead screws and nuts",
+        "bearings",
+        "spindle",
+        "limit switches",
+        "probe and moving-bed wiring",
+    ),
+    core_principle=PETG_FASTENER_CORE_PRINCIPLE,
+    evidence_status=ParameterStatus.PRELIMINARY,
+)
+
+
+PHASE3A_FASTENER_INTERFACE_SCREENS = (
+    FastenerInterfaceParameter(
+        interface_id="gantry_crossmember_joint",
+        function="Seat the fixed gantry crossmember and clamp it for preload.",
+        fastening_mode="insert",
+        insert_size="M4",
+        boss_wall_mm=5.0,
+        edge_distance_mm=8.0,
+        installation_tool_access_mm=(18.0, 18.0, 18.0),
+        load_transfer_features=("deep tongue-and-groove", "stepped shoulder", "interlocking rib"),
+        serviceable=True,
+        notes="The crossmember must be mechanically seated; it must not hang from M5 screws.",
+    ),
+    FastenerInterfaceParameter(
+        interface_id="x_motor_mount",
+        function="Removable X motor pocket and coaxial motor face.",
+        fastening_mode="insert",
+        insert_size="M4",
+        boss_wall_mm=4.5,
+        edge_distance_mm=6.0,
+        installation_tool_access_mm=(16.0, 16.0, 16.0),
+        load_transfer_features=("motor-face shoulder", "planar seat", "pocket side keys"),
+        serviceable=True,
+    ),
+    FastenerInterfaceParameter(
+        interface_id="y_motor_mount",
+        function="Removable front Y motor pocket and coaxial motor face.",
+        fastening_mode="insert",
+        insert_size="M4",
+        boss_wall_mm=4.5,
+        edge_distance_mm=6.0,
+        installation_tool_access_mm=(16.0, 16.0, 16.0),
+        load_transfer_features=("motor-face shoulder", "planar seat", "pocket side keys"),
+        serviceable=True,
+    ),
+    FastenerInterfaceParameter(
+        interface_id="z_motor_mount",
+        function="Removable upper Z motor service plate and coaxial motor face.",
+        fastening_mode="insert",
+        insert_size="M4",
+        boss_wall_mm=4.5,
+        edge_distance_mm=6.0,
+        installation_tool_access_mm=(16.0, 16.0, 16.0),
+        load_transfer_features=("motor-face shoulder", "planar seat", "removable cover step"),
+        serviceable=True,
+    ),
+    FastenerInterfaceParameter(
+        interface_id="bearing_support_mount",
+        function="Replaceable fixed/floating bearing cartridge support.",
+        fastening_mode="insert",
+        insert_size="M4",
+        boss_wall_mm=5.0,
+        edge_distance_mm=7.0,
+        installation_tool_access_mm=(18.0, 18.0, 18.0),
+        load_transfer_features=("bearing pocket", "radial shoulder", "axial seating face"),
+        serviceable=True,
+    ),
+    FastenerInterfaceParameter(
+        interface_id="rail_mount",
+        function="Serviceable rail clamp on a continuous supported rail seat.",
+        fastening_mode="insert",
+        insert_size="M3",
+        boss_wall_mm=3.5,
+        edge_distance_mm=5.0,
+        installation_tool_access_mm=(14.0, 14.0, 14.0),
+        load_transfer_features=("continuous rail shoulder", "planar rail seat", "registration keys"),
+        serviceable=True,
+    ),
+    FastenerInterfaceParameter(
+        interface_id="spindle_mount",
+        function="Replaceable spindle mount with a distributed force loop.",
+        fastening_mode="insert",
+        insert_size="M4",
+        boss_wall_mm=5.0,
+        edge_distance_mm=7.0,
+        installation_tool_access_mm=(18.0, 18.0, 18.0),
+        load_transfer_features=("spindle saddle", "clamp shoulder", "anti-rotation key"),
+        serviceable=True,
+    ),
+    FastenerInterfaceParameter(
+        interface_id="limit_probe_accessory_mount",
+        function="Replaceable limit, probe, cable, and small accessory mounts.",
+        fastening_mode="insert",
+        insert_size="M3",
+        boss_wall_mm=3.0,
+        edge_distance_mm=4.0,
+        installation_tool_access_mm=(12.0, 12.0, 12.0),
+        load_transfer_features=("registration shoulder", "keyed pocket"),
+        serviceable=True,
+    ),
+    FastenerInterfaceParameter(
+        interface_id="conditional_high_load_structural_joint",
+        function="Conditional escalation example for a joint whose measured load path exceeds M4 insert capacity.",
+        fastening_mode="insert",
+        insert_size="M5",
+        boss_wall_mm=6.0,
+        edge_distance_mm=9.0,
+        installation_tool_access_mm=(20.0, 20.0, 20.0),
+        load_transfer_features=("deep shoulder", "shear key", "large mating planar surface"),
+        serviceable=True,
+        size_justification="Use M5 only after load, creep, preload, and joint-moment evidence shows M4 is inadequate.",
+        notes="Screening example only; this is not a selected production joint.",
     ),
 )

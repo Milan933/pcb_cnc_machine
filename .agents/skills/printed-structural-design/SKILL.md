@@ -86,11 +86,35 @@ change the datum. For each joint, identify whether the load is carried by:
 - a bearing or rail seat;
 - a printed feature that is explicitly verified by a coupon.
 
-Use heat-set inserts for serviceable threads only when their installation
-temperature, boss geometry, pull-out, torque, and surrounding wall are
-controlled. Use captive nuts when they improve assembly access and prevent
-thread stripping. Use through-bolts or metal load spreaders where preload,
-rail alignment, or creep makes an insert inadequate.
+The project fastening rule is:
+
+> Fasteners provide preload; printed geometry provides location and shear
+> transfer. Heat-set inserts are the default reusable threaded interface in
+> PETG. Through-bolts are reserved for structural joints where insert
+> pull-out, creep, preload, or joint moment capacity makes them necessary.
+
+Use heat-set inserts as the primary reusable threaded interface. Standardize
+the hierarchy to M3 for small covers, sensors, limits, probe hardware, and
+accessories; M4 for general structural, motor, bearing, spindle, and module
+joints; and M5 only for a documented high-load case. Do not add another thread
+size without a technical reason. The screw supplies clamp preload; a shoulder,
+step, tongue-and-groove, key, boss, pocket, registration feature, shear key,
+mating planar surface, or interlocking rib should carry location and shear.
+Important joints must have substantial bosses connected to ribs or skins.
+
+Use through-bolts selectively when insert pull-out or PETG creep, high bending
+moment, high clamping force, cyclic loading, or failure consequence makes an
+insert inadequate. Through-bolts still require geometric shear transfer and a
+documented justification; a bolt shank is not a precision locating pin by
+default. A gantry crossmember must be mechanically seated with a deep
+tongue-and-groove, stepped socket, keyed pocket, shoulder, or interlocking rib
+and then clamped. It must not hang from M5 screws.
+
+Do not freeze an insert pocket from a generic nominal size. The centralized
+insert interface must eventually record insert OD, length, pilot range,
+insertion depth, surrounding wall, edge distance, insertion direction, screw
+clearance, and soldering-iron/tool access. Keep supplier-dependent dimensions
+unresolved until the actual insert is selected, measured, and coupon-tested.
 
 Do not make a fastener carry a bending moment through a thin printed wall
 without checking edge distance, local bearing, tear-out, and load spreading.
@@ -114,6 +138,21 @@ Provide:
 
 Do not assume printed holes are bearing fits. Decide whether holes are for
 clearance, alignment, drilling after printing, a bushing, or a metal insert.
+
+## Structural modularity and print-size boundary
+
+Treat the Voron 2.4 350 as having a materially smaller practical usable area
+than its nominal envelope. Prefer structural-part XY dimensions at or below
+300 x 300 mm; use 320 mm as a conservative maximum screening limit. Any part
+at or above 300 mm requires an explicit printability review covering orientation,
+diagonal clearance, bed adhesion, warping, datum inspection, insert access,
+and assembly access. Use indexed PETG interfaces, heat-set inserts, and
+selective through-bolts to split parts when a one-piece print would compromise
+stiffness, alignment, serviceability, or process evidence.
+
+Motors, rails, carriages, lead screws and nuts, bearings, spindle, limit
+switches, probe wiring, and moving-bed wiring must remain replaceable without
+destroying the printed structure.
 
 ## Tolerances and printability
 

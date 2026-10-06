@@ -33,6 +33,13 @@ Its packaging references are:
 - NEMA17s remain direct axial drives in removable recessed pockets;
 - no belt transmission is introduced.
 
+The owner-directed fastening strategy from EDR-010 applies to these review
+interfaces: heat-set inserts are the default reusable PETG thread, fasteners
+provide clamp preload, and seated shoulders/keys/pockets/ribs provide
+location and shear. The gantry crossmember must be mechanically seated rather
+than suspended from M5 screws. Exact insert dimensions and any through-bolt
+exceptions remain open until hardware and PETG joint evidence exist.
+
 These are packaging envelopes and preliminary cut-length screens, not exact
 purchase or production dimensions.
 
@@ -86,7 +93,7 @@ a new transmission or architecture decision.
 | --- | --- | --- |
 | P2 3 mm full-sweep end clearance is too tight after tolerances. | Bed or front/rear cover contact. | Build a full-travel mock-up; reserve P1 if needed. |
 | Y motor is only 4.85 mm below the bed support underside in the envelope screen. | Collision after hardware or fastener growth. | Measure motor, add a removable underside guard, and verify at both travel ends. |
-| Printed bearing pockets creep or lose preload. | Axial play, backlash, and screw misalignment. | Use replaceable cartridges and run PETG bearing-pocket/rail-seat coupons. |
+| Printed bearing pockets or insert bosses creep or lose preload. | Axial play, backlash, screw misalignment, or joint slip. | Use replaceable cartridges, substantial rib-connected bosses, geometric seats, and PETG bearing-pocket/rail-seat/insert coupons. |
 | P2 bed perimeter is inadequate for a future vacuum seal. | Workholding distortion or leakage. | Use tape/low-profile clamps first; treat vacuum as a separate study. |
 | P3 end margins and front service access are too small. | Impossible assembly or maintenance. | Do not select P3 without a mock-up and owner approval. |
 | Generic spindle envelope differs from hardware. | Z clearance and force loop invalid. | Identify and measure spindle before structural CAD. |
@@ -94,6 +101,10 @@ a new transmission or architecture decision.
 ## Validation and review
 
 - [x] P1/P2/P3 centralized packaging variants added.
+- [x] Owner-directed M3/M4/M5 insert hierarchy and geometric load-transfer
+      contract added to the review layer.
+- [x] Boss wall, edge distance, tool access, M5 justification, and
+      through-bolt justification checks added.
 - [x] X/Y/Z swept rail-length calculation added.
 - [x] Bed, motor, spindle, tool, limit, bearing, and Z-stack review envelopes added.
 - [x] Dependency-light tests pass.
@@ -101,6 +112,9 @@ a new transmission or architecture decision.
 - [ ] Owner selects a packaging variant.
 - [ ] Full-travel assembly and service-access mock-up passes.
 - [ ] PETG rail-seat, bearing-pocket, fastener, and motor-pocket coupons pass.
+- [ ] Actual insert family measured; pilot, insertion depth, clearance, tool
+      access, pull-out, torque, creep, and repeated-assembly values replace the
+      preliminary screen.
 - [ ] Exact spindle/motor/switch/bearing/screw hardware measured.
 
 ## Gate

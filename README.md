@@ -64,6 +64,9 @@ printer.
   objective moving-bed versus moving-gantry criteria for Phase 2.
 - [Phase 1 PETG manufacturing](requirements/phase-1-petg-manufacturing.md):
   print-volume, orientation, tolerance, joint, and rail-seat constraints.
+- [Phase 3A PETG fastening strategy](requirements/phase-3a-fastening-strategy.md):
+  M3/M4/M5 insert hierarchy, geometric load transfer, modularity, and
+  measured-insert evidence boundary.
 - [Phase 1 Z budget](requirements/phase-1-z-error-budget.md): compensatable
   versus non-compensatable height error.
 - [Phase 1 envelope trade](requirements/phase-1-envelope-trade.md): A/B/C
@@ -87,8 +90,12 @@ printer.
   sample-characterization boundary for compact packaging.
 - [.agents/skills](.agents/skills): project-specific engineering skills.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
-  set, including Phase 2, Phase 3, and Phase 3A review-layout inputs; it
-  contains no detailed part geometry.
+  set, including Phase 2, Phase 3, Phase 3A review-layout inputs, and the
+  owner-directed PETG insert/interface contract; it contains no detailed part
+  geometry.
+- [cad/fastening.py](cad/fastening.py): dependency-light PETG interface checks
+  for boss material, edge distance, access, geometric shear transfer, M5, and
+  through-bolt justification.
 - [cad/validation](cad/validation): dependency-light validation interfaces and
   foundation checks.
 - [generated](generated): reserved for reviewed manufacturing outputs.

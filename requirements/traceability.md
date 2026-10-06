@@ -7,6 +7,7 @@ already validated.
 | --- | --- | --- |
 | REQ-FN, REQ-ENV | pcb-cnc-architecture skill; docs/architecture/initial-architecture.md | Architecture review, then measured travel and process tests. |
 | REQ-STR | printed-structural-design skill | Print-orientation evidence, structural calculations, coupons, and inspection. |
+| REQ-FAST | requirements/phase-3a-fastening-strategy.md; cad/parameters.py; cad/fastening.py; printed-structural-design and design-validation skills | M3/M4/M5 hierarchy checks, boss/edge/tool-access checks, geometric shear-transfer checks, insert measurement/coupons, and joint service mock-up. |
 | REQ-HW | motion-system-design skill; requirements/phase-3-motion-system.md; open-questions.md | Motor and component data sheets plus motion decision record. |
 | REQ-CAD | cad-conventions skill; cad/parameters.py | Deterministic generation and STEP/STL export tests. |
 | REQ-VAL | design-validation skill; cad/validation | Automated report plus reviewed geometry evidence. |
@@ -26,6 +27,7 @@ already validated.
 | Phase 3 motion classes | requirements/phase-3-motion-system.md; cad/parameters.py; cad/motion_phase3.py; docs/architecture/phase-3-motion-system.md; docs/calculations/phase-3-motion-calculations.md; EDR-008 | Centralized component-class inputs, dependency-light calculations, parameter checks, review-only motion skeleton, and proposed physical tests; exact hardware and motion evidence remain not-ready. |
 | Phase 3 review BOM | bom/phase-3-motion-bom.md; EDR-008 | Quantity/class/sample boundary and safe-purchase guidance; production BOM remains a Phase 4 gate. |
 | Phase 3A compact packaging | requirements/phase-3a-packaging.md; cad/parameters.py; cad/packaging_phase3a.py; cad/assembly/packaging_skeleton.py; cad/validation/phase3a.py; docs/architecture/phase-3a-compact-packaging.md; docs/calculations/phase-3a-packaging-calculations.md; EDR-009 | P1/P2/P3 dimensional stacks, swept rail/bed/spindle/limit envelopes, dependency-light checks, pinned build123d review exports, and no unexpected reference interferences; owner selection, full-travel service mock-up, exact hardware, and PETG evidence remain not-ready. |
+| Phase 3A PETG fastening strategy | requirements/phase-3a-fastening-strategy.md; cad/parameters.py; cad/fastening.py; tests/test_fastening_strategy.py; EDR-010 | Central insert families and review interfaces, fail-closed boss/edge/access/geometric-transfer checks, and explicit not-ready supplier dimensions; measured inserts, PETG coupons, load-path evidence, and production interface geometry remain open. |
 
 ## Evidence rule
 

@@ -54,6 +54,9 @@ __all__ = [
     "check_phase3a_model_containment",
     "check_phase3a_packaging_variant",
     "phase3a_gate_report",
+    "check_fastener_interface",
+    "check_fastening_strategy",
+    "check_phase3a_fastener_interfaces",
     "RULE_CATALOG",
     "check_printable_part",
     "check_project_parameters",
@@ -61,3 +64,25 @@ __all__ = [
     "check_working_envelope",
     "run_foundation_checks",
 ]
+
+
+def __getattr__(name: str):
+    """Load fastening checks lazily to keep the validation package acyclic."""
+
+    if name in {
+        "check_fastener_interface",
+        "check_fastening_strategy",
+        "check_phase3a_fastener_interfaces",
+    }:
+        from cad.fastening import (
+            check_fastener_interface,
+            check_fastening_strategy,
+            check_phase3a_fastener_interfaces,
+        )
+
+        return {
+            "check_fastener_interface": check_fastener_interface,
+            "check_fastening_strategy": check_fastening_strategy,
+            "check_phase3a_fastener_interfaces": check_phase3a_fastener_interfaces,
+        }[name]
+    raise AttributeError(name)

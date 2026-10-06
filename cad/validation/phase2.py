@@ -232,12 +232,12 @@ def check_phase2a_parameters(
             )
 
     largest_prints = (parameters.a_largest_print_mm, parameters.b_largest_print_mm)
-    if any(min(extents) <= 0 or max(extents) > 330.0 for extents in largest_prints):
+    if any(min(extents) <= 0 or max(extents) > 320.0 for extents in largest_prints):
         report.add(
             _issue(
                 "VAL-PHASE2A-PRINT-BOUND",
                 ValidationStatus.FAIL,
-                "A Phase 2A largest-print estimate is outside the 330 mm conditional Voron 350 bound.",
+                "A Phase 2A largest-print estimate is outside the 320 mm conservative Voron 350 bound.",
             )
         )
 

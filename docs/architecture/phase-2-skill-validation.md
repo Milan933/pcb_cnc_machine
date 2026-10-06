@@ -32,3 +32,22 @@ The same six skills were applied to the focused A/B study:
 The Phase 2A implementation deliberately uses a transparent standard-library
 analytical model. No opaque or non-reproducible FEA result was substituted for
 the mandatory equations.
+
+## Phase 3A fastening-strategy supplement
+
+The owner-directed PETG fastening strategy was reviewed against the three
+affected project skills and the repository workflow:
+
+| Skill | Phase 3A application | Boundary retained |
+| --- | --- | --- |
+| `printed-structural-design` | Heat-set inserts are the default reusable PETG thread; M3/M4/M5 hierarchy, rib-connected bosses, geometric shear transfer, selective through-bolts, insert orientation, and <=300/<=320 mm print-size rules are explicit. | Exact insert dimensions, PETG pull-out/creep/repeated-assembly data, and production joint geometry remain open. |
+| `cad-conventions` | `cad/parameters.py` centralizes insert families and review interfaces; reusable interfaces declare wall, edge, direction, clearance, and tool-access fields without scattered pilot literals. | No production structural CAD or frozen supplier pocket dimensions. |
+| `design-validation` | `cad/fastening.py` checks hierarchy, family completeness, boss material, edge distance, tool access, geometric load transfer, M5 justification, and through-bolt justification; unresolved supplier dimensions return explicit `not-ready`. | Review-level screens do not replace measured inserts, coupons, load-path evidence, or service mock-up. |
+| `repository-workflow` | New source, tests, requirements, decision record, and documentation are audited before commit; temporary CAD environments and exports remain outside Git. | No generated manufacturing artifacts or final hardware BOM. |
+
+Verification for this supplement is `python -B -m unittest discover -s tests -v`
+(42 tests passing), the pinned build123d Phase 3A runner (P1/P2/P3 exports,
+containment, and zero unexpected interferences), `python -B
+tools/repository_audit.py`, and a staged-diff review. The fastening report is
+intentionally `not-ready` with zero blocking issues until actual inserts and
+PETG coupons exist; Phase 4 remains blocked.

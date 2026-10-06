@@ -43,6 +43,19 @@ reviewed and promoted by an engineering decision record.
 | REQ-STR-004 | Aluminum extrusion, aluminum plate, or welded steel shall not be substituted for the printed frame without an explicit load-path decision record. | Known requirement | User project brief. |
 | REQ-STR-005 | Stiffness shall be obtained primarily through geometry and load-path design rather than an assumed high infill percentage. | Known requirement | User project brief; verify through calculation and test coupons. |
 
+## PETG fastening and modularity requirements
+
+| ID | Requirement | Status | Evidence / next action |
+| --- | --- | --- | --- |
+| REQ-FAST-001 | Fasteners shall provide preload while printed geometry provides location and shear transfer. | Known owner direction | Central strategy in `cad/parameters.py`; interface validation and joint review. |
+| REQ-FAST-002 | Heat-set inserts shall be the default reusable threaded interface in PETG. | Known owner direction | PETG skill, Phase 3A strategy, and measured insert/coupon evidence before release. |
+| REQ-FAST-003 | The default insert hierarchy shall be M3 for small/accessory hardware, M4 for general structural/module joints, and M5 only when technically justified. | Known owner direction | `PHASE3A_FASTENER_STRATEGY`; no extra sizes without an EDR. |
+| REQ-FAST-004 | Important joints shall use geometric shoulders, steps, keys, pockets, registrations, shear keys, mating faces, or interlocking ribs in addition to clamp fasteners. | Known owner direction | Review-only interface screens; future structural CAD and joint inspection. |
+| REQ-FAST-005 | Through-bolts shall be selective, justified by insert pull-out, creep, preload, moment, cyclic loading, or failure consequence, and shall still use geometric shear transfer. | Known owner direction | Fail-closed interface validator and joint load-path review. |
+| REQ-FAST-006 | Reusable insert interfaces shall parameterize OD, length, pilot range, insertion depth, wall, edge distance, direction, screw clearance, and soldering-iron/tool access. | Preliminary owner direction | Supplier dimensions remain unresolved until actual inserts are measured and coupon-tested. |
+| REQ-FAST-007 | Structural parts shall prefer <=300 mm XY dimensions, use <=320 mm as the conservative maximum, and receive explicit review at or above 300 mm. | Preliminary owner direction | PETG manufacturing requirements, printability review, and modular interface study. |
+| REQ-FAST-008 | Motors, rails, carriages, lead screws/nuts, bearings, spindle, limits, probe wiring, and moving-bed wiring shall remain replaceable. | Preliminary owner direction | Service-access mock-up before Phase 3A acceptance. |
+
 ## Owned hardware and future purchase boundary
 
 | ID | Item | Status | Design consequence |
@@ -107,6 +120,12 @@ homing repeatability, missed-step, straightness/squareness, and controller
 interface tests. The proposed Phase 3 decision record is
 [EDR-008](../docs/decisions/008-phase-3-motion-system.md); it remains open for
 owner review.
+
+The owner-directed PETG fastening strategy is recorded in
+[phase-3a-fastening-strategy.md](phase-3a-fastening-strategy.md) and
+[EDR-010](../docs/decisions/010-petg-fastening-strategy.md). It applies to
+Phase 3A review interfaces and later structural CAD, but does not authorize
+production geometry or Phase 4.
 
 ## Scope exclusions for this iteration
 

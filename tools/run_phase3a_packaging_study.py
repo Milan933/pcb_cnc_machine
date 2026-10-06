@@ -16,6 +16,7 @@ from cad.packaging_phase3a import phase3a_packaging_study
 from cad.parameters import PHASE3A_PACKAGING_VARIANTS
 from cad.validation import (
     check_phase3a_all_variants,
+    check_phase3a_fastener_interfaces,
     check_phase3a_model_containment,
     phase3a_gate_report,
 )
@@ -49,6 +50,7 @@ def run(output_dir: Path) -> dict[str, object]:
     """Generate calculations and temporary STEP/STL review exports."""
 
     parameter_report = check_phase3a_all_variants()
+    fastening_report = check_phase3a_fastener_interfaces()
     gate_report = phase3a_gate_report()
     variants: dict[str, object] = {}
     for variant in PHASE3A_PACKAGING_VARIANTS:
@@ -99,6 +101,8 @@ def run(output_dir: Path) -> dict[str, object]:
             "largest_future_petg_print_mm": list(variant.largest_future_petg_print_mm),
             "largest_future_petg_print_notes": variant.largest_future_petg_print_notes,
             "parameter_validation_status": check_phase3a_all_variants((variant,)).status.value,
+            "fastening_interface_status": fastening_report.status.value,
+            "fastening_interface_blocking": len(fastening_report.blocking_issues),
             "model_containment_status": containment.status.value,
             "model_containment_blocking": len(containment.blocking_issues),
             "layout": {
@@ -116,6 +120,8 @@ def run(output_dir: Path) -> dict[str, object]:
         "units": "mm, mm/min, rpm unless noted",
         "parameter_validation_status": parameter_report.status.value,
         "parameter_validation_blocking": len(parameter_report.blocking_issues),
+        "fastening_interface_status": fastening_report.status.value,
+        "fastening_interface_blocking": len(fastening_report.blocking_issues),
         "gate_status": gate_report.status.value,
         "gate_blocking_evidence_items": len(gate_report.blocking_issues),
         "variants": variants,
@@ -134,7 +140,7 @@ def main() -> int:
     output_dir = args.output_dir or Path(tempfile.mkdtemp(prefix="pcbCNC-phase3a-packaging-"))
     result = run(output_dir)
     print(json.dumps(result, indent=2, sort_keys=True))
-    if result["parameter_validation_blocking"]:
+    if result["parameter_validation_blocking"] or result["fastening_interface_blocking"]:
         return 1
     for variant in result["variants"].values():
         if variant["model_containment_blocking"] or variant["layout"]["unexpected_interferences"] or not variant["exports_non_empty"]:

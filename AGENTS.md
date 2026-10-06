@@ -66,6 +66,21 @@ Never repair a contradiction by changing a lower-level file silently.
   interfaces, and short force loops over simply increasing infill.
 - Treat PETG creep, anisotropy, print orientation, fastener bearing, and
   long-term preload loss as design inputs.
+- Use heat-set inserts as the default reusable PETG threaded interface. The
+  governing joint rule is that fasteners provide preload while printed
+  geometry provides location and shear transfer. Standardize M3 for small or
+  accessory hardware, M4 for general structural/module joints, and M5 only
+  with a documented technical justification. Through-bolts remain selective,
+  require geometric shear transfer and a written reason, and are not precision
+  locating pins by default.
+- Keep insert OD, length, pilot range, insertion depth, boss wall, edge
+  distance, direction, screw clearance, and soldering-iron/tool access in the
+  central interface contract. Do not freeze pilot dimensions until actual
+  inserts are selected, measured, and coupon-tested.
+- Prefer structural-part XY dimensions at or below 300 mm and use 320 mm as a
+  conservative maximum; parts at or above 300 mm require explicit printability
+  and modularity review. Keep motors, rails, carriages, screws/nuts, bearings,
+  spindle, limits, probe wiring, and moving-bed wiring replaceable.
 - All dimensions belong in the centralized parameter model or in a documented
   calculation. Do not scatter unexplained literals through CAD code.
 - The authoritative model is parametric. Meshes are manufacturing derivatives,

@@ -21,6 +21,10 @@ STEP/STL, exact hardware purchase, or motion-system class changes.
 | REQ-PKG-009 | Keep future major PETG packaging prints within the nominal 350 mm Voron volume on paper and document orientation/access risks. | Dimensional screen; print evidence not ready |
 | REQ-PKG-010 | Validate all variants for rail sweep, full bed sweep, motor/bearing/bed/spindle/tool/limit containment, unexpected reference collisions, and non-empty review exports. | Automated checks and build123d runner |
 | REQ-PKG-011 | Record the current envelope cause, P1/P2/P3 trade, recommendation, forced motion corrections, risks, and open owner decisions in EDR-009. | Proposed decision record |
+| REQ-PKG-012 | Apply the owner-directed PETG fastening strategy: heat-set inserts by default, M3/M4/M5 hierarchy, fastener preload separated from printed geometric location/shear transfer, and selective justified through-bolts. | Central parameters, skill rules, and `cad/fastening.py` review checks |
+| REQ-PKG-013 | Seat the gantry crossmember mechanically with a tongue-and-groove, stepped socket, keyed pocket, shoulder, or interlocking rib; screws clamp the seat and do not provide sole location. | Review-only interface screen; production geometry and joint evidence remain open |
+| REQ-PKG-014 | Keep insert OD, length, pilot, insertion depth, screw clearance, boss wall, edge distance, direction, and soldering-iron/tool access explicit; do not freeze supplier-dependent pilot dimensions before measurement and coupons. | `PHASE3A_FASTENER_STRATEGY`; report remains not-ready |
+| REQ-PKG-015 | Prefer structural-part XY dimensions <=300 mm, use <=320 mm as the conservative maximum, and preserve replacement access for motion, spindle, limit, probe, and moving-bed hardware. | PETG requirements, interface screens, and service mock-up required |
 
 ## Frozen versus variable inputs
 

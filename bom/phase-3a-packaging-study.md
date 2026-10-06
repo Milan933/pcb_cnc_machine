@@ -12,9 +12,12 @@ items needed to decide whether the compact packaging envelopes are serviceable.
 | 8 mm fixed-end bearing options | 1 pair per candidate | Compare paired axial/angular-contact concepts and preload adjustment | Sample only |
 | 8 mm floating radial bearing options | 3 | Verify replaceable radial pocket and axial float | Sample only |
 | Flexible 5-to-8 mm couplers | 3 | Check coaxial fit and torque-only behavior | Sample only |
+| M3/M4 heat-set insert candidate families | Representative coupon set per candidate family | Measure OD, length, pilot, insertion depth, soldering-iron access, pull-out, torque, cracking, creep, and repeated assembly | Characterization only; exact family not selected |
+| Conditional M5 insert candidate | Only if a load-path review identifies a justified high-load joint | Compare against M4 insert capacity and selective through-bolt alternative | Do not purchase as a default size |
+| Through-bolt/load-spreader samples | Only for documented escalation candidates | Compare insert pull-out/creep/preload/moment/cyclic-load evidence with a geometric shear path | Conditional study only |
 | Owned NEMA17 motors | All available | Measure body, shaft, current, torque envelope, and service access | Identify before freeze |
 | Limit/probe switch samples | Representative set | Mock up home/limit access and fault-safe wiring | Open |
-| PETG rail-seat/bearing-pocket/motor-pocket coupons | Test set | Measure creep, insert pull-out, preload retention, and service replacement | Required evidence |
+| PETG rail-seat/bearing-pocket/motor-pocket/insert-joint coupons | Test set | Measure creep, insert pull-out, preload retention, edge damage, tool access, and service replacement | Required evidence |
 
 No item above authorizes production quantities, final supplier selection, or
 detailed printed structural parts. Production procurement remains a Phase 4
