@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from cad.parameters import (
     INITIAL_PARAMETERS,
+    PHASE2A_PARAMETERS,
     PHASE2_SKELETON_PARAMETERS,
+    Phase2AParameters,
     Phase2SkeletonParameters,
 )
 
@@ -135,4 +137,117 @@ def check_phase2_skeleton_parameters(
             )
         )
 
+    return report
+
+
+def check_phase2a_parameters(
+    parameters: Phase2AParameters = PHASE2A_PARAMETERS,
+) -> ValidationReport:
+    """Check the controlled assumptions used by the A-versus-B study.
+
+    This validates input ordering and completeness only. It does not turn the
+    analytical estimates into measured structural evidence.
+    """
+
+    report = ValidationReport()
+
+    positive_values = (
+        ("test load", parameters.test_load_n),
+        ("tool-point target", parameters.tool_point_deflection_target_mm),
+        ("tool-point acceptance", parameters.tool_point_deflection_acceptance_mm),
+        ("tool-point overhang", parameters.tool_point_overhang_mm),
+        ("effective PETG modulus", parameters.effective_petg_modulus_n_per_mm2),
+        ("torsion half-span", parameters.torsion_half_span_mm),
+        ("racking force offset", parameters.racking_force_offset_mm),
+        ("racking tool arm", parameters.racking_tool_arm_mm),
+        ("Y guide spacing", parameters.y_guide_spacing_mm),
+        ("Y acceleration", parameters.nominal_y_acceleration_m_per_s2),
+        ("screw efficiency", parameters.screw_efficiency),
+        ("A beam bottom", parameters.a_beam_bottom_z_mm),
+        ("A moving-bed support thickness", parameters.a_moving_bed_support_thickness_mm),
+    )
+    for label, value in positive_values:
+        if value <= 0:
+            report.add(
+                _issue(
+                    "VAL-PHASE2A-POSITIVE",
+                    ValidationStatus.FAIL,
+                    f"Phase 2A {label} must be positive; received {value:g}.",
+                )
+            )
+
+    if not 0.0 < parameters.effective_petg_poisson_ratio < 0.5:
+        report.add(
+            _issue(
+                "VAL-PHASE2A-POISSON",
+                ValidationStatus.FAIL,
+                "The effective Poisson ratio must be between zero and one half.",
+            )
+        )
+    if not parameters.screw_leads_mm or any(lead <= 0 for lead in parameters.screw_leads_mm):
+        report.add(
+            _issue(
+                "VAL-PHASE2A-SCREW-LEAD",
+                ValidationStatus.FAIL,
+                "At least one positive screw lead is required for the dynamic screen.",
+            )
+        )
+    if parameters.tool_point_deflection_target_mm > parameters.tool_point_deflection_acceptance_mm:
+        report.add(
+            _issue(
+                "VAL-PHASE2A-DEFLECTION-LIMITS",
+                ValidationStatus.FAIL,
+                "The Phase 2A deflection target must not exceed its prototype acceptance limit.",
+            )
+        )
+
+    sections = (
+        ("A", parameters.a_section_width_mm, parameters.a_section_depth_mm, parameters.a_section_wall_mm),
+        ("B", parameters.b_section_width_mm, parameters.b_section_depth_mm, parameters.b_section_wall_mm),
+    )
+    for candidate, width, depth, wall in sections:
+        if min(width, depth, wall) <= 0 or 2.0 * wall >= min(width, depth):
+            report.add(
+                _issue(
+                    "VAL-PHASE2A-SECTION",
+                    ValidationStatus.FAIL,
+                    f"{candidate} equivalent closed section has invalid width/depth/wall ordering.",
+                )
+            )
+
+    mass_sets = (
+        ("A moving mass", parameters.a_moving_mass_items_kg),
+        ("B moving mass", parameters.b_moving_mass_items_kg),
+        ("A printed mass", parameters.a_printed_mass_items_kg),
+        ("B printed mass", parameters.b_printed_mass_items_kg),
+    )
+    for label, items in mass_sets:
+        if not items or any(value < 0 for _, value in items) or not sum(value for _, value in items):
+            report.add(
+                _issue(
+                    "VAL-PHASE2A-MASS",
+                    ValidationStatus.FAIL,
+                    f"{label} must contain non-negative, non-zero mass items.",
+                )
+            )
+
+    largest_prints = (parameters.a_largest_print_mm, parameters.b_largest_print_mm)
+    if any(min(extents) <= 0 or max(extents) > 330.0 for extents in largest_prints):
+        report.add(
+            _issue(
+                "VAL-PHASE2A-PRINT-BOUND",
+                ValidationStatus.FAIL,
+                "A Phase 2A largest-print estimate is outside the 330 mm conditional Voron 350 bound.",
+            )
+        )
+
+    if not report.issues:
+        report.add(
+            _issue(
+                "VAL-PHASE2A-INPUTS",
+                ValidationStatus.PASS,
+                "Phase 2A analytical inputs are ordered, positive, and bounded for screening.",
+                severity=IssueSeverity.INFO,
+            )
+        )
     return report

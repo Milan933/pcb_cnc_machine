@@ -22,9 +22,9 @@ downstream CAD must not silently choose values.
 
 ## Priority 1: motion and structure
 
-6. The Phase 2 proposal is B, moving gantry / fixed bed. Does a representative
-   printed B gantry meet the 5 N tool-point target and remain serviceable, or
-   must the review reopen A, fixed gantry / moving bed?
+6. The original Phase 2 proposal was B, moving gantry / fixed bed. Phase 2A
+   reopened the A/B comparison: which optimized PETG structure survives the
+   representative tool-point, racking, creep, and datum-retention tests?
 7. Should each axis use MGN9, MGN12, another rail family, or a different
    supported guide? Compare section stiffness, carriage capacity, preload,
    rail mounting, contamination tolerance, cost, and availability.
@@ -86,7 +86,10 @@ claims until they have an owner and evidence:
 
 ## Phase 2 disposition
 
-The Phase 2 study proposes B, moving gantry / fixed bed, with A as the explicit
-fallback. Exact rails, screws, spindle, motors, controller, probe, workholding
-implementation, and PETG process remain open. Proposed EDR-006 is the owner
-review gate; Phase 3 must not begin until that record is accepted or reworked.
+The original Phase 2 study proposed B, moving gantry / fixed bed, with A as the
+explicit fallback. Phase 2A is a proposed supplement: its equivalent-section
+screen currently favors A structurally, while B retains the fixed-PCB datum,
+probing, workholding, and service advantages. Exact rails, screws, spindle,
+motors, controller, probe, workholding implementation, PETG process, and
+physical validation remain open. EDR-006 and proposed EDR-007 are owner review
+gates; Phase 3 must not begin until the disposition is recorded.

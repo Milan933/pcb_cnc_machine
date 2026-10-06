@@ -12,6 +12,11 @@ carry 8%, assembly/service/mass/spindle compatibility carry 17%, and
 travel/footprint carry 4%.
 This intentionally puts process stability ahead of cost or maximum envelope.
 
+The matrix below is the original Phase 2 three-way baseline. Its close B
+result was a screening judgment, not structural proof and not an accepted
+architecture decision. The higher-resolution A/B replacement is in
+[phase-2a-structural-comparison.md](phase-2a-structural-comparison.md).
+
 ## Base matrix
 
 | Criterion | Weight | A moving bed | B moving gantry | C moving XY head |
@@ -36,7 +41,7 @@ This intentionally puts process stability ahead of cost or maximum envelope.
 | footprint | 1 | 3 | 4 | 2 |
 | **normalized result** | **100** | **73.6** | **77.0** | **53.2** |
 
-## Interpretation
+## Interpretation of the original baseline
 
 B wins by 3.4 points over A. The margin comes from its fixed PCB datum,
 stationary workholding and probe, service access, and better alignment
@@ -69,3 +74,11 @@ height mapping.
 
 The matrix is generated and tested by `cad/architecture.py`; the integer
 scores remain review judgments, not measured performance.
+
+## Current Phase 2A disposition
+
+Phase 2A removes C from the focused structural comparison, independently
+optimizes A and B for predominantly PETG geometry, and uses a revised matrix
+without a second bending criterion that would double-count the total
+deflection result. The current result is A 78.0 and B 75.2, but this is still
+proposed evidence pending representative printed coupons and owner review.

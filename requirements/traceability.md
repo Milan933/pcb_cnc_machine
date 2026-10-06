@@ -22,6 +22,7 @@ already validated.
 | REQ-ARCH-* | docs/architecture/phase-2-architecture.md; docs/architecture/phase-2-force-loop.md; docs/decisions/006-phase-2-architecture.md | Owner review of the A/B/C comparison, force-loop tests, workholding/probing mock-up, and the 5 N stiffness/creep evidence plan. |
 | Phase 2 skeleton interfaces | cad/parameters.py; cad/assembly/architecture_skeleton.py | Dependency-light parameter checks plus the pinned build123d spike, deterministic placement, STEP/STL review export, bounding box, and interference report. |
 | REQ-CAD-001 through REQ-CAD-004 | docs/architecture/phase-2-build123d-spike.md; requirements/cad-phase-2.txt | Pinned build123d smoke test now passes for the architecture skeleton; detailed parts and manufacturing export gates remain future work. |
+| Phase 2A A/B structural evidence | cad/phase2a.py; cad/parameters.py; docs/architecture/phase-2a-structural-comparison.md; docs/calculations/phase-2a-structural-calculations.md; docs/architecture/phase-2a-physical-validation.md; EDR-007 | Reproducible analytical model, 22 automated tests, optimized review skeleton, and coupon/test plan; physical stiffness and creep remain not-ready. |
 
 ## Evidence rule
 

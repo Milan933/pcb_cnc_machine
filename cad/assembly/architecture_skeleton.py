@@ -17,7 +17,9 @@ from typing import Any
 
 from cad.architecture import ArchitectureId
 from cad.parameters import (
+    PHASE2A_PARAMETERS,
     PHASE2_SKELETON_PARAMETERS,
+    Phase2AParameters,
     Phase2SkeletonParameters,
 )
 
@@ -39,6 +41,7 @@ class SkeletonModel:
     candidate_id: ArchitectureId
     components: tuple[SkeletonComponent, ...]
     expected_interference_pairs: tuple[frozenset[str], ...]
+    variant: str = "phase2"
 
     @property
     def compound(self) -> Any:
@@ -301,25 +304,166 @@ def _moving_gantry_components(
     ]
 
 
+def _phase2a_fixed_gantry_components(
+    build123d: Any,
+    parameters: Phase2SkeletonParameters,
+    phase2a: Phase2AParameters,
+) -> list[SkeletonComponent]:
+    """Optimized A bound: one integrated deep stationary gantry concept."""
+
+    outer = parameters.gantry_outer_width_mm
+    clear = parameters.gantry_clear_span_mm
+    side_width = (outer - clear) / 2.0
+    beam_depth = phase2a.a_section_width_mm
+    beam_height = phase2a.a_section_depth_mm
+    beam_bottom = phase2a.a_beam_bottom_z_mm
+    base_top = -parameters.bed_envelope_mm[2]
+    left = _box(
+        build123d,
+        "a_fixed_gantry_left_support",
+        (side_width, beam_depth, beam_bottom - base_top),
+        (-outer / 2.0, -beam_depth / 2.0, base_top),
+    )
+    right = _box(
+        build123d,
+        "a_fixed_gantry_right_support",
+        (side_width, beam_depth, beam_bottom - base_top),
+        (outer / 2.0 - side_width, -beam_depth / 2.0, base_top),
+    )
+    beam = _box(
+        build123d,
+        "a_fixed_gantry_deep_torsion_box",
+        (clear, beam_depth, beam_height),
+        (-clear / 2.0, -beam_depth / 2.0, beam_bottom),
+    )
+    integrated = build123d.Compound(children=[left, right, beam])
+    integrated.label = "a_integrated_fixed_gantry_envelope"
+    return [
+        _component(
+            build123d,
+            "a_integrated_fixed_gantry_envelope",
+            "structural",
+            integrated,
+            "Optimized A one-piece U/monocoque bound: deep torsion box, large side supports, wide base interfaces. A multi-piece beam-plus-two-support variant remains the print-risk fallback.",
+        ),
+        _component(
+            build123d,
+            "a_moving_bed_structure",
+            "structural",
+            _box(
+                build123d,
+                "a_moving_bed_structure",
+                (
+                    parameters.bed_envelope_mm[0],
+                    parameters.bed_envelope_mm[1],
+                    phase2a.a_moving_bed_support_thickness_mm,
+                ),
+                (
+                    -parameters.bed_envelope_mm[0] / 2.0,
+                    -parameters.bed_envelope_mm[1] / 2.0,
+                    -phase2a.a_moving_bed_support_thickness_mm,
+                ),
+            ),
+            "Low-mass moving PCB/spoilboard support; thin support is optimized because the bed carries only the PCB process datum.",
+        ),
+    ]
+
+
+def _phase2a_moving_gantry_components(
+    build123d: Any,
+    parameters: Phase2SkeletonParameters,
+    phase2a: Phase2AParameters,
+) -> list[SkeletonComponent]:
+    """Optimized B bound: lighter deep beam with explicit side interfaces."""
+
+    outer = parameters.gantry_outer_width_mm
+    clear = parameters.gantry_clear_span_mm
+    side_width = (outer - clear) / 2.0
+    beam_depth = phase2a.b_section_width_mm
+    beam_height = phase2a.b_section_depth_mm
+    beam_bottom = parameters.gantry_crossbeam_bottom_z_mm
+    base_top = -parameters.bed_envelope_mm[2]
+    side_height = beam_bottom - base_top
+    return [
+        _component(
+            build123d,
+            "moving_gantry_left",
+            "structural",
+            _box(
+                build123d,
+                "moving_gantry_left",
+                (side_width, phase2a.b_support_bending_length_mm, side_height),
+                (-outer / 2.0, -phase2a.b_support_bending_length_mm / 2.0, base_top),
+            ),
+            "Optimized B left side interface with integrated gusset envelope; Y rail seat and through-bolt load spreader remain future geometry.",
+        ),
+        _component(
+            build123d,
+            "moving_gantry_right",
+            "structural",
+            _box(
+                build123d,
+                "moving_gantry_right",
+                (side_width, phase2a.b_support_bending_length_mm, side_height),
+                (outer / 2.0 - side_width, -phase2a.b_support_bending_length_mm / 2.0, base_top),
+            ),
+            "Optimized B right side interface with integrated gusset envelope; Y rail seat and through-bolt load spreader remain future geometry.",
+        ),
+        _component(
+            build123d,
+            "moving_gantry_crossbeam",
+            "structural",
+            _box(
+                build123d,
+                "moving_gantry_crossbeam",
+                (clear, beam_depth, beam_height),
+                (-clear / 2.0, -beam_depth / 2.0, beam_bottom),
+            ),
+            "Optimized B deep ribbed closed beam bound; side interfaces remain separate to expose moving-joint compliance.",
+        ),
+    ]
+
+
 def _guide_and_screw_references(
     build123d: Any,
     parameters: Phase2SkeletonParameters,
     candidate_id: ArchitectureId,
+    *,
+    beam_bottom_z_mm: float | None = None,
+    beam_height_mm: float | None = None,
+    beam_depth_mm: float | None = None,
 ) -> list[SkeletonComponent]:
     d = parameters.reference_axis_diameter_mm
     screw_d = parameters.reference_screw_diameter_mm
     x_span = parameters.gantry_clear_span_mm
     y_span = parameters.tool_travel_mm[1] + 2.0 * parameters.rail_end_margin_mm
     z_span = parameters.tool_travel_mm[2] + 2.0 * parameters.rail_end_margin_mm
-    z_center = parameters.gantry_crossbeam_bottom_z_mm + parameters.gantry_section_height_mm / 2.0
+    beam_bottom = (
+        parameters.gantry_crossbeam_bottom_z_mm
+        if beam_bottom_z_mm is None
+        else beam_bottom_z_mm
+    )
+    beam_height = (
+        parameters.gantry_section_height_mm
+        if beam_height_mm is None
+        else beam_height_mm
+    )
+    beam_depth = (
+        parameters.gantry_section_depth_mm
+        if beam_depth_mm is None
+        else beam_depth_mm
+    )
+    z_center = beam_bottom + beam_height / 2.0
+    z_axis_center = beam_bottom
+    x_rail_y = -beam_depth / 2.0 - d
     spindle_y = -20.0
     refs: list[SkeletonComponent] = []
 
     for index, z in enumerate((z_center - parameters.x_rail_vertical_spacing_mm / 2.0, z_center + parameters.x_rail_vertical_spacing_mm / 2.0), start=1):
         name = f"x_rail_centerline_{index}"
-        refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "x", x_span, (0.0, -parameters.gantry_section_depth_mm / 2.0 - d, z), d), "X rail centerline reference."))
+        refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "x", x_span, (0.0, x_rail_y, z), d), "X rail centerline reference."))
     name = "x_screw_centerline"
-    refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "x", x_span + 2.0 * parameters.screw_end_margin_mm, (0.0, -parameters.gantry_section_depth_mm / 2.0 - 2.0 * d, z_center), screw_d), "Centered X screw reference; T8x2/T8x4 remain candidates."))
+    refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "x", x_span + 2.0 * parameters.screw_end_margin_mm, (0.0, x_rail_y - d, z_center), screw_d), "Centered X screw reference; T8x2/T8x4 remain candidates."))
 
     y_x_positions = (-parameters.y_rail_center_spacing_mm / 2.0, parameters.y_rail_center_spacing_mm / 2.0)
     for index, x in enumerate(y_x_positions, start=1):
@@ -330,9 +474,9 @@ def _guide_and_screw_references(
 
     for index, x in enumerate((-parameters.z_rail_center_spacing_mm / 2.0, parameters.z_rail_center_spacing_mm / 2.0), start=1):
         name = f"z_rail_centerline_{index}"
-        refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "z", z_span, (x, spindle_y, z_center / 2.0), d), "Dual Z guide centerline; MGN9/MGN12 class remains open."))
+        refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "z", z_span, (x, spindle_y, z_axis_center), d), "Dual Z guide centerline; MGN9/MGN12 class remains open."))
     name = "z_screw_centerline"
-    refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "z", z_span, (0.0, spindle_y, z_center / 2.0), screw_d), "Centered Z screw reference; T8x2/T8x4 remain candidates."))
+    refs.append(_component(build123d, name, "reference", _reference_tube(build123d, name, "z", z_span, (0.0, spindle_y, z_axis_center), screw_d), "Centered Z screw reference; T8x2/T8x4 remain candidates."))
 
     if candidate_id == ArchitectureId.C:
         # C uses the same guide/screw count for a fair comparison, but the
@@ -344,32 +488,85 @@ def _guide_and_screw_references(
 def build_skeleton(
     candidate_id: ArchitectureId | str,
     parameters: Phase2SkeletonParameters = PHASE2_SKELETON_PARAMETERS,
+    *,
+    structural_variant: str = "phase2",
+    phase2a_parameters: Phase2AParameters = PHASE2A_PARAMETERS,
 ) -> SkeletonModel:
-    """Build one deterministic architecture-only skeleton."""
+    """Build one deterministic architecture-only skeleton.
+
+    ``structural_variant='phase2a'`` is restricted to A and B and exposes the
+    independently optimized preliminary structural bounds used by the focused
+    comparison. Neither variant is a detailed manufacturing model.
+    """
 
     build123d = _build123d()
     candidate = ArchitectureId(candidate_id)
+    if structural_variant not in {"phase2", "phase2a"}:
+        raise ValueError(f"Unknown skeleton structural variant: {structural_variant}")
+    if structural_variant == "phase2a" and candidate not in (ArchitectureId.A, ArchitectureId.B):
+        raise ValueError("The Phase 2A optimized skeleton compares only A and B.")
     components = _common_components(build123d, parameters)
 
-    if candidate in (ArchitectureId.A, ArchitectureId.C):
+    if structural_variant == "phase2a" and candidate == ArchitectureId.A:
+        components.extend(_phase2a_fixed_gantry_components(build123d, parameters, phase2a_parameters))
+        beam_bottom = phase2a_parameters.a_beam_bottom_z_mm
+        beam_height = phase2a_parameters.a_section_depth_mm
+        beam_depth = phase2a_parameters.a_section_width_mm
+    elif structural_variant == "phase2a" and candidate == ArchitectureId.B:
+        components.extend(_phase2a_moving_gantry_components(build123d, parameters, phase2a_parameters))
+        beam_bottom = parameters.gantry_crossbeam_bottom_z_mm
+        beam_height = phase2a_parameters.b_section_depth_mm
+        beam_depth = phase2a_parameters.b_section_width_mm
+    elif candidate in (ArchitectureId.A, ArchitectureId.C):
         components.extend(_fixed_gantry_components(build123d, parameters, candidate.value.lower()))
+        beam_bottom = parameters.gantry_crossbeam_bottom_z_mm
+        beam_height = parameters.gantry_section_height_mm
+        beam_depth = parameters.gantry_section_depth_mm
     else:
         components.extend(_moving_gantry_components(build123d, parameters))
-    components.extend(_guide_and_screw_references(build123d, parameters, candidate))
+        beam_bottom = parameters.gantry_crossbeam_bottom_z_mm
+        beam_height = parameters.gantry_section_height_mm
+        beam_depth = parameters.gantry_section_depth_mm
+    components.extend(
+        _guide_and_screw_references(
+            build123d,
+            parameters,
+            candidate,
+            beam_bottom_z_mm=beam_bottom,
+            beam_height_mm=beam_height,
+            beam_depth_mm=beam_depth,
+        )
+    )
 
-    gantry_prefix = "moving_gantry" if candidate == ArchitectureId.B else f"{candidate.value.lower()}_gantry"
-    expected_pairs = (
+    expected_pairs_list = [
         frozenset(("base_envelope", "pcb_bed_envelope")),
         frozenset(("z_carriage_envelope", "spindle_envelope")),
-        frozenset(("z_carriage_envelope", f"{gantry_prefix}_crossbeam")),
-        frozenset(("spindle_envelope", f"{gantry_prefix}_crossbeam")),
-        frozenset(("base_envelope", f"{gantry_prefix}_left")),
-        frozenset(("base_envelope", f"{gantry_prefix}_right")),
-    )
+    ]
+    if structural_variant == "phase2a" and candidate == ArchitectureId.A:
+        expected_pairs_list.extend(
+            (
+                frozenset(("base_envelope", "a_integrated_fixed_gantry_envelope")),
+                frozenset(("pcb_bed_envelope", "a_moving_bed_structure")),
+                frozenset(("base_envelope", "a_moving_bed_structure")),
+                frozenset(("z_carriage_envelope", "a_integrated_fixed_gantry_envelope")),
+                frozenset(("spindle_envelope", "a_integrated_fixed_gantry_envelope")),
+            )
+        )
+    else:
+        gantry_prefix = "moving_gantry" if candidate == ArchitectureId.B else f"{candidate.value.lower()}_gantry"
+        expected_pairs_list.extend(
+            (
+                frozenset(("z_carriage_envelope", f"{gantry_prefix}_crossbeam")),
+                frozenset(("spindle_envelope", f"{gantry_prefix}_crossbeam")),
+                frozenset(("base_envelope", f"{gantry_prefix}_left")),
+                frozenset(("base_envelope", f"{gantry_prefix}_right")),
+            )
+        )
     return SkeletonModel(
         candidate_id=candidate,
         components=tuple(components),
-        expected_interference_pairs=expected_pairs,
+        expected_interference_pairs=tuple(expected_pairs_list),
+        variant=structural_variant,
     )
 
 
@@ -416,7 +613,7 @@ def export_skeleton(model: SkeletonModel, output_dir: Path) -> dict[str, Path]:
 
     build123d = _build123d()
     output_dir.mkdir(parents=True, exist_ok=True)
-    stem = f"phase2-{model.candidate_id.value.lower()}-architecture-skeleton"
+    stem = f"{model.variant}-{model.candidate_id.value.lower()}-architecture-skeleton"
     step_path = output_dir / f"{stem}.step"
     stl_path = output_dir / f"{stem}.stl"
     build123d.export_step(model.compound, step_path)

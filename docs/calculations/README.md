@@ -50,3 +50,7 @@ architecture decision, create or update an engineering decision record.
 
 The current Phase 1 equations and screening calculations are in
 [phase-1-calculations.md](phase-1-calculations.md).
+
+The focused A/B equivalent-section, joint, dynamic, racking, and sensitivity
+calculations are in
+[phase-2a-structural-calculations.md](phase-2a-structural-calculations.md).

@@ -118,3 +118,13 @@ intentional interfaces. No manufacturing STL or release export was created.
 This record remains **proposed**. Owner review is the Phase 2 gate. Do not
 begin Phase 3 motion-system selection or detailed structural CAD until the
 owner disposition is recorded.
+
+## Phase 2A addendum (2026-10-06; not an acceptance)
+
+The close original A/B result triggered a focused structural follow-up. The
+original B recommendation is therefore reopened for comparison with an
+independently optimized A fixed-gantry/moving-bed concept. The follow-up is
+recorded in [EDR-007](007-phase-2a-structural-comparison.md) and
+[the Phase 2A package](../architecture/phase-2a-structural-comparison.md).
+EDR-006 remains proposed, is not accepted by this addendum, and does not
+authorize Phase 3 or production CAD.

@@ -68,3 +68,19 @@ breaks this interface.
 The API behavior used by the spike is documented by the official
 [build123d import/export guide](https://build123d.readthedocs.io/en/stable/import_export.html)
 and [assembly guide](https://build123d.readthedocs.io/en/latest/assemblies.html).
+
+## Phase 2A optimized review spike
+
+The focused follow-up uses the same pinned build123d runtime and the same
+screening envelope, but builds only A and B with
+`structural_variant="phase2a"`. It remains an architecture-only bound: the A
+integrated U/monocoque and B deep ribbed beam are review volumes, not
+printable parts. Run:
+
+```text
+<temp>\pcbCNC-phase2-build123d-venv\Scripts\python.exe -m tools.run_phase2a_study --output-dir <temp>\pcbCNC-phase2a-study-output
+```
+
+The observed Phase 2A result is A: 18 components, 340 x 290 x 220 mm, and B:
+19 components, 340 x 290 x 220 mm. Both produce non-empty STEP/STL review
+derivatives and zero unexpected solid overlaps. Outputs remain outside Git.

@@ -98,3 +98,14 @@ deflection, guide play, spindle/tool seating error, or board movement.
 - The skeleton records expected interfaces separately from unexpected solid
   overlaps; the build123d spike reports zero unexpected overlaps for A, B,
   and C.
+
+## Phase 2A optimized A/B follow-up
+
+The focused study no longer treats the generic 60 mm beam bound as the whole
+structural comparison. A uses an integrated fixed-gantry U/monocoque envelope
+with a 90 x 100 mm equivalent deep section and a low-mass moving PCB bed. B
+uses a 60 x 70 mm equivalent deep moving crossbeam with explicit separated
+side interfaces and a fixed PCB bed. The analytical contribution split,
+moving-mass force screen, racking estimate, and coupon plan are recorded in
+[the Phase 2A structural comparison](phase-2a-structural-comparison.md) and
+[its calculation record](../calculations/phase-2a-structural-calculations.md).

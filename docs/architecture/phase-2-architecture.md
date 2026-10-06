@@ -6,6 +6,16 @@
 **Boundary:** architecture and parametric skeleton only; no detailed printable
 parts, manufacturing drawings, or release STEP/STL files.
 
+## Phase 2A status note
+
+The three-way matrix and B recommendation below are the original Phase 2
+baseline. They were not owner-accepted and are not proof of the better
+PETG-first architecture. The focused [Phase 2A structural comparison](phase-2a-structural-comparison.md)
+reopened A versus B using independently optimized structural concepts. Its
+analytical result currently favors A on structural evidence, while B retains
+the fixed-PCB process and service advantage. EDR-006 remains proposed and no
+architecture freeze or Phase 3 start is authorized.
+
 ## Inputs accepted from Phase 1
 
 The owner accepted EDR-005 and the following values are the common comparison
@@ -26,7 +36,7 @@ The common screening geometry uses a preliminary tool travel of 220 x 170 x
 assumption for registration, clamp, probe, and tool-path access. It is not a
 frozen machine travel requirement.
 
-## Candidate comparison
+## Candidate comparison from the original Phase 2 baseline
 
 ### A — fixed gantry with moving Y bed
 
@@ -55,7 +65,7 @@ moving gantry. The elevated XY head introduces an extra guide stack and a
 longer tool-point path. Its additional joints, carriage overhang, and
 alignment burden make it the lowest-ranked candidate for a PETG-first machine.
 
-## Preliminary architecture decision
+## Original preliminary architecture decision
 
 Select **B, moving gantry / fixed bed**, as the preliminary Phase 2 winner.
 Keep **A, fixed gantry / moving bed**, as the runner-up and the fallback if a
@@ -83,6 +93,10 @@ and not an accepted EDR. The proposed interfaces are:
 - spindle: an envelope of approximately 52 mm diameter x 120 mm length,
   with 15 mm tool stickout and 50 mm tool-point overhang screening values;
   no spindle is selected.
+
+This B recommendation is retained here as historical baseline context. It is
+reopened for owner review by Phase 2A; the revised A/B result and evidence
+boundary are recorded in the linked Phase 2A package and EDR-007.
 
 ## PETG structural principle
 
@@ -167,4 +181,5 @@ The primary gantry/base bounds remain at or below the preferred 320 mm
 one-piece screening dimension.
 
 See [the force-loop study](phase-2-force-loop.md), [the weighted trade
-matrix](phase-2-decision-matrix.md), and [the build123d spike report](phase-2-build123d-spike.md).
+matrix](phase-2-decision-matrix.md), [the Phase 2A structural comparison](phase-2a-structural-comparison.md),
+and [the build123d spike report](phase-2-build123d-spike.md).

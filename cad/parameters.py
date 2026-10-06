@@ -369,3 +369,154 @@ PHASE2_SKELETON_PARAMETERS = Phase2SkeletonParameters(
     preferred_printed_dimension_mm=320.0,
     conditional_printed_dimension_mm=330.0,
 )
+
+
+@dataclass(frozen=True)
+class Phase2AParameters:
+    """Controlled assumptions for the focused A-versus-B structural study.
+
+    These are equivalent-section, mass, and manufacturing estimates used to
+    make the comparison reproducible. They are not measured PETG properties,
+    supplier data, or detailed part dimensions.
+    """
+
+    test_load_n: float
+    tool_point_deflection_target_mm: float
+    tool_point_deflection_acceptance_mm: float
+    tool_point_overhang_mm: float
+    effective_petg_modulus_n_per_mm2: float
+    effective_petg_poisson_ratio: float
+    torsion_half_span_mm: float
+    racking_force_offset_mm: float
+    racking_tool_arm_mm: float
+    y_guide_spacing_mm: float
+    nominal_y_acceleration_m_per_s2: float
+    guide_friction_coefficient: float
+    screw_efficiency: float
+    screw_leads_mm: tuple[float, ...]
+
+    # Architecture A: an aggressively deep stationary integrated gantry.
+    a_section_width_mm: float
+    a_section_depth_mm: float
+    a_section_wall_mm: float
+    a_beam_bottom_z_mm: float
+    a_moving_bed_support_thickness_mm: float
+    a_support_bending_length_mm: float
+    a_support_effective_second_moment_mm4: float
+    a_z_effective_stiffness_n_per_mm: float
+    a_joint_effective_stiffness_n_per_mm: float
+    a_racking_rotational_stiffness_nmm_per_rad: float
+
+    # Architecture B: a lighter moving gantry with explicit side interfaces.
+    b_section_width_mm: float
+    b_section_depth_mm: float
+    b_section_wall_mm: float
+    b_support_bending_length_mm: float
+    b_support_effective_second_moment_mm4: float
+    b_z_effective_stiffness_n_per_mm: float
+    b_joint_effective_stiffness_n_per_mm: float
+    b_racking_rotational_stiffness_nmm_per_rad: float
+
+    # Moving-mass breakdowns. The values are nominal estimates with ranges in
+    # the Phase 2A report; no item is a purchased-part fact.
+    a_moving_mass_items_kg: tuple[tuple[str, float], ...]
+    b_moving_mass_items_kg: tuple[tuple[str, float], ...]
+    a_printed_mass_items_kg: tuple[tuple[str, float], ...]
+    b_printed_mass_items_kg: tuple[tuple[str, float], ...]
+
+    # Manufacturing comparison estimates for the optimized skeleton concepts.
+    a_print_hours_range: tuple[float, float]
+    b_print_hours_range: tuple[float, float]
+    a_structural_print_count: int
+    b_structural_print_count: int
+    a_largest_print_mm: tuple[float, float, float]
+    b_largest_print_mm: tuple[float, float, float]
+    a_structural_joint_count: int
+    b_structural_joint_count: int
+    a_heat_set_insert_count: int
+    b_heat_set_insert_count: int
+    a_through_bolt_count: int
+    b_through_bolt_count: int
+    a_rail_seat_count: int
+    b_rail_seat_count: int
+    a_cable_drag_n: float
+    b_cable_drag_n: float
+
+
+PHASE2A_PARAMETERS = Phase2AParameters(
+    test_load_n=5.0,
+    tool_point_deflection_target_mm=0.020,
+    tool_point_deflection_acceptance_mm=0.030,
+    tool_point_overhang_mm=50.0,
+    effective_petg_modulus_n_per_mm2=2000.0,
+    effective_petg_poisson_ratio=0.35,
+    torsion_half_span_mm=140.0,
+    racking_force_offset_mm=100.0,
+    racking_tool_arm_mm=100.0,
+    y_guide_spacing_mm=220.0,
+    nominal_y_acceleration_m_per_s2=0.20,
+    guide_friction_coefficient=0.15,
+    screw_efficiency=0.35,
+    screw_leads_mm=(2.0, 4.0),
+    a_section_width_mm=90.0,
+    a_section_depth_mm=100.0,
+    a_section_wall_mm=4.0,
+    a_beam_bottom_z_mm=80.0,
+    a_moving_bed_support_thickness_mm=8.0,
+    a_support_bending_length_mm=160.0,
+    a_support_effective_second_moment_mm4=800000.0,
+    a_z_effective_stiffness_n_per_mm=2000.0,
+    a_joint_effective_stiffness_n_per_mm=1666.6666667,
+    a_racking_rotational_stiffness_nmm_per_rad=20000000.0,
+    b_section_width_mm=60.0,
+    b_section_depth_mm=70.0,
+    b_section_wall_mm=4.0,
+    b_support_bending_length_mm=80.0,
+    b_support_effective_second_moment_mm4=30000.0,
+    b_z_effective_stiffness_n_per_mm=1428.5714286,
+    b_joint_effective_stiffness_n_per_mm=625.0,
+    b_racking_rotational_stiffness_nmm_per_rad=10000000.0,
+    a_moving_mass_items_kg=(
+        ("PCB", 0.09),
+        ("spoilboard", 0.30),
+        ("printed moving-bed support", 0.42),
+        ("registration and workholding", 0.10),
+        ("Y carriages, screw nut, and moving hardware", 0.28),
+        ("cable and probe allowance", 0.05),
+    ),
+    b_moving_mass_items_kg=(
+        ("deep printed gantry and side interfaces", 1.65),
+        ("Y carriages, screw nut, and moving hardware", 0.35),
+        ("X rails, carriage, and screw allowance", 0.40),
+        ("Z guides, carriage, screw, and mount allowance", 0.55),
+        ("spindle screening mass", 0.80),
+        ("cables and probe allowance", 0.20),
+    ),
+    a_printed_mass_items_kg=(
+        ("integrated fixed gantry and supports", 2.20),
+        ("base and interface structure", 1.50),
+        ("moving bed support", 0.42),
+    ),
+    b_printed_mass_items_kg=(
+        ("fixed base and interface structure", 1.50),
+        ("moving gantry and side interfaces", 1.65),
+        ("fixed bed support", 0.30),
+        ("service and probe structural allowance", 0.25),
+    ),
+    a_print_hours_range=(32.0, 42.0),
+    b_print_hours_range=(28.0, 38.0),
+    a_structural_print_count=5,
+    b_structural_print_count=6,
+    a_largest_print_mm=(320.0, 100.0, 220.0),
+    b_largest_print_mm=(300.0, 80.0, 160.0),
+    a_structural_joint_count=4,
+    b_structural_joint_count=6,
+    a_heat_set_insert_count=16,
+    b_heat_set_insert_count=24,
+    a_through_bolt_count=12,
+    b_through_bolt_count=20,
+    a_rail_seat_count=4,
+    b_rail_seat_count=6,
+    a_cable_drag_n=0.50,
+    b_cable_drag_n=1.00,
+)

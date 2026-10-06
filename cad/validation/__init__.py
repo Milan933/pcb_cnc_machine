@@ -24,7 +24,7 @@ from .phase1 import (
     v_bit_isolation_width_mm,
     v_bit_width_sensitivity,
 )
-from .phase2 import check_phase2_skeleton_parameters
+from .phase2 import check_phase2_skeleton_parameters, check_phase2a_parameters
 
 __all__ = [
     "AxisCapacity",
@@ -40,6 +40,7 @@ __all__ = [
     "v_bit_isolation_width_mm",
     "v_bit_width_sensitivity",
     "check_phase2_skeleton_parameters",
+    "check_phase2a_parameters",
     "RULE_CATALOG",
     "check_printable_part",
     "check_project_parameters",

@@ -15,3 +15,20 @@ mistaken for detailed part or motion selection.
 
 The architecture package is therefore complete for owner review but is not an
 authorization to start Phase 3 or detailed structural CAD.
+
+## Phase 2A supplement evidence
+
+The same six skills were applied to the focused A/B study:
+
+| Skill | Phase 2A application | Boundary retained |
+| --- | --- | --- |
+| `pcb-cnc-architecture` | A moving-bed datum risk and B fixed-bed probing/workholding benefit are quantified alongside the tool loop | no process acceptance claim from a static model |
+| `motion-system-design` | Y moving mass, acceleration force, centered screw, guide couple, and lead/torque implications are screened | no motor, screw, rail, or controller selection |
+| `printed-structural-design` | A deep integrated U and B deep ribbed beam are compared with PETG joint/creep risks | equivalent sections are not FEA or printable geometry |
+| `cad-conventions` | Phase 2A inputs are centralized; A/B optimized bounds use named review components and the existing coordinate convention | no production CAD or manufacturing export |
+| `design-validation` | input checks, bounded review skeletons, non-empty exports, and zero unexpected overlaps are required | physical stiffness, creep, alignment, and fit remain not-ready |
+| `repository-workflow` | study outputs are external temporary derivatives; tests, candidate audit, tracked audit, and diff review are required before publication | no temp binaries, caches, or secrets in Git |
+
+The Phase 2A implementation deliberately uses a transparent standard-library
+analytical model. No opaque or non-reproducible FEA result was substituted for
+the mandatory equations.

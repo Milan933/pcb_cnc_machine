@@ -40,5 +40,7 @@ the project owner through EDR-005. It is now in Phase 2 architecture review:
 the A/B/C trade, force-loop study, preliminary skeleton, and build123d spike
 are complete in proposed EDR-006. Stock/process scope, exact hardware inputs,
 and physical acceptance evidence remain open as listed in
-requirements/open-questions.md. Phase 3 motion-system selection must not
-begin until EDR-006 is accepted.
+requirements/open-questions.md. The Phase 2A supplement is recorded in
+proposed EDR-007 and reopens the A/B structural choice. Phase 3 motion-system
+selection must not begin until EDR-006 and its Phase 2A disposition are
+reviewed.
