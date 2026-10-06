@@ -58,7 +58,7 @@ The earlier sample guidance below is retained as the Phase 4A audit trail.
 | 1 set each | Fixed and floating 8 mm bearing samples | Validate cartridge envelopes and axial-float strategy |
 | 1 each | Flexible 5-to-8 mm coupler samples | Validate bore, length, set-screw access, and axial clearance |
 | 1 sample set | M3 and M4 inserts and fasteners | Measure OD, length, pilot, insertion depth, pull-out, torque, creep, and repeated service |
-| Existing set | Owned NEMA17 motors and controller | Identify body, shaft, current, connectors, cooling, and service access |
+| Existing stock/platform | **OWNER-SUPPLIED NEMA17 motors — DO NOT BUY; OWNER-SUPPLIED Arduino Mega + CNC Shield — DO NOT REPLACE absent a validated limitation** | Use generic NEMA17 preliminary CAD interfaces; identify motor stock, exact Shield revision, installed drivers, microsteps, current/voltage capability, cooling, limits, probe, spindle PWM/control, and GRBL-compatible firmware/configuration |
 | 1 sample | Spindle or representative mount envelope | Measure diameter, mass, centerline, cable exit, heat, and clamp requirements |
 
 ## Wait for measurement, owner review, or physical evidence
@@ -66,7 +66,7 @@ The earlier sample guidance below is retained as the Phase 4A audit trail.
 | Item/class | Wait condition |
 | --- | --- |
 | Production rails, blocks, screws, nuts, bearings, couplers | Sample measurement and full-travel service mock-up |
-| Production NEMA17 or replacement motors | Identify owned hardware and verify torque/current/shaft data |
+| Production motor purchases or replacement motors | No motor purchase; consider replacement only if later validation identifies an actual limitation |
 | Spindle and final clamp | Actual diameter, mass, runout, cable/thermal envelope, and centerline |
 | Insert-specific bosses and pockets | Actual insert data plus PETG pull-out, creep, preload, and service coupons |
 | M5 inserts or through-bolts | Documented load, moment, creep, and failure-consequence justification |

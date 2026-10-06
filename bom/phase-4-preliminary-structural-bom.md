@@ -21,8 +21,8 @@ not vendor specifications. The detailed A-D matrix now lives in
 | 1 each | 5-to-8 mm flexible coupler samples | Sample/measure | Direct torque-only coupling is the accepted interface rule. | Confirm bore, length, set-screw access, and axial clearance. |
 | 1 sample set | M3 and M4 heat-set inserts, representative lengths | Coupon/measure | M3/M4 are the default interface classes. | Measure OD, length, pilot, insertion depth, tool access, pull-out, torque, creep, and repeated assembly. |
 | as needed | Fastener samples M3/M4, washers, and selective through-bolt samples | Coupon/measure | Needed to validate clamp access and geometric shear interfaces. | M5 is not a default purchase; justify only after load-path evidence. |
-| existing set | Owned NEMA17 motors | Existing/measure | The owner already has motors and must identify/measure them before final pockets. | Record model, shaft, length, current, torque, and condition. Do not buy replacements yet. |
-| existing set | Owned controller / Arduino CNC Shield / GRBL hardware | Existing/measure | Needed for interface and service review. | Record shield revision, driver carriers, firmware, supply, limit/probe/PWM behavior. |
+| existing stock | **OWNER-SUPPLIED NEMA17 motors — DO NOT BUY** | Existing/measure | Use a generic common NEMA17 interface for preliminary CAD; final axis assignment comes from characterized owner stock. | Record model, 42.3 mm mounting pattern, 40-48 mm body, 5 mm shaft screen, connector/wiring access, current, torque-at-speed, and condition. |
+| 1 intended platform | **OWNER-SUPPLIED Arduino Mega + CNC Shield — DO NOT REPLACE absent a validated limitation** | Existing/measure | Intended controller platform for the machine; only exact Shield revision and installed driver modules remain unresolved. | Record board revisions, microsteps, current/voltage capability, cooling, limits, probe, spindle PWM/control, and GRBL-compatible firmware/configuration. |
 | 1 sample | Generic low-profile workholding and spoilboard material | Process sample | Needed to review the 230 x 180 bed datum and replacement workflow. | Do not freeze vacuum perimeter or final clamp pattern. |
 
 ## Wait for measurement, owner review, or physical evidence
@@ -33,13 +33,13 @@ not vendor specifications. The detailed A-D matrix now lives in
 | Production T8x4/T8x2 screw lengths, end machining, and nuts | Straightness, critical-speed, backlash, drag, and service review | Nominal 360/330/145 mm values are packaging screens, not purchase dimensions. |
 | Fixed-end paired axial/angular-contact supports | Bearing sample fit and axial-load review | The fixed end must carry screw thrust; supplier envelopes and preload are open. |
 | Floating radial bearing supports | Sample fit and axial-float review | Both screw ends must not be axially constrained. |
-| Production NEMA17 motors or replacement motors | Identification of the owned motors and torque/current test | The mechanical envelope alone does not prove torque or connector compatibility. |
+| Production motor purchases or replacement motors | Identification of the owned motors and torque/current test | No motor purchase is authorized; replacement is conditional only if later validation identifies an actual limitation. |
 | Spindle and ER11/tooling | Spindle diameter, mass, runout, cable exit, cooling, and thermal measurement | The 52 mm mount is a maximum screening envelope, not a selected spindle. |
 | Limit switches, probe hardware, and cable chains | Electrical/interface and full-travel service mock-up | Switch type, probe datum, cable drag, and fault response remain open. |
 | M5 inserts or through-bolts | Load, creep, preload, moment, and failure-consequence justification | M5 and through-bolts are selective escalations, not defaults. |
 | Printed production parts | Measured hardware, coupons, service mock-up, physical force test, and manufacturing review | O2 has 19 PRELIMINARY review parts; no part is released. |
 | Final spoilboard, clamp, or vacuum hardware | Workholding distortion and PCB process trial | P2 has a replaceable spoilboard concept but no final workholding release. |
-| Controller/driver production wiring and enclosure | Bench I/O, cooling, noise, homing, probe, and spindle-control tests | Existing hardware is not yet identified or electrically accepted. |
+| Controller/driver production wiring and enclosure | Bench I/O, cooling, noise, homing, probe, and spindle-control tests | The Arduino Mega + CNC Shield platform is known, but exact Shield revision and installed drivers are not yet identified or electrically accepted. |
 
 ## Printed concept inventory
 
@@ -54,7 +54,8 @@ placed under `generated/*/release/`.
 
 Before a production BOM is issued, record supplier identities, quantities,
 actual dimensions, price/availability, tolerances, acceptance measurements,
-and the decision record that justifies each dependency. The production BOM is
-blocked by unresolved spindle/motor/controller/rail/screw/bearing/insert data,
+ and the decision record that justifies each dependency. The production BOM is
+ blocked by unresolved spindle/owned-motor-characterization/controller-driver/
+ rail/screw/bearing/insert data,
 PETG coupon evidence, service mock-up, and the physical 5 N force-loop test.
 EDR-013 controls the current transition.

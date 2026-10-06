@@ -35,10 +35,13 @@ T8x4/T8x4/T8x2 screws, direct drive, and fixed/floating supports. Phase 3A
 varies rail length, carriage pitch, bearing envelope, motor recess, bed
 support, end margin, service access, and package bounds only.
 
-The exact motor, spindle, controller, rail supplier/preload, screw straightness,
-nut, switch, workholding, and PETG interface remain unresolved. All dimensions
-in the Phase 3A model are review envelopes or calculated packaging choices,
-not measured manufacturing facts.
+The exact motor identity, installed driver modules, spindle, controller
+revision, rail supplier/preload, screw straightness, nut, switch, workholding,
+and PETG interface remain unresolved. The owner-supplied controller platform is
+known as Arduino Mega + CNC Shield, and the preliminary motor interface is the
+generic 42.3 mm / 5 mm / 40-48 mm NEMA17 screen with rear connector/wiring
+access. All dimensions in the Phase 3A model are review envelopes or
+calculated packaging choices, not measured manufacturing facts.
 
 ## Gate boundary
 

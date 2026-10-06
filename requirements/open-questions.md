@@ -9,11 +9,13 @@ downstream CAD must not silently choose values.
 1. What spindle and tool family will be used first? Required inputs include
    nose geometry, collet or chuck, runout specification, mass, cable exit,
    cooling, speed range, and mounting interface.
-2. Which owned NEMA 17 motors are available, and what are their rated current,
-   holding torque, torque-speed curves, shaft dimensions, and condition?
-3. What controller and GRBL variant are present? Confirm stepper-current
-   capability, available axes, limit inputs, probe input, spindle control, and
-   firmware travel / homing behavior.
+2. Which representative motors from the owner's NEMA17 stock meet the rated
+   current, torque-at-speed, shaft, connector, and condition requirements for
+   X/Y and Z?
+3. Which exact CNC Shield revision and installed driver modules are present on
+   the owner-supplied Arduino Mega + CNC Shield platform? Confirm supported
+   microsteps, motor-current capability, supply voltage, cooling, limit inputs,
+   probe input, spindle control, and GRBL-compatible firmware/configuration.
 4. What PCB size range, thickness range, panelization method, and reference
    datum must work? Include sacrificial spoilboard replacement and probing
    access.
@@ -99,10 +101,14 @@ following remain open and block motion freeze, hardware-interface freeze, and
 manufacturing-ready geometry, but do not reopen the accepted preliminary
 Phase 4/4A architecture:
 
-24. Which owned NEMA17 motor models, shaft lengths, rated current, holding
-    torque, and torque-speed curves are available?
-25. Which exact Arduino CNC Shield revision, GRBL fork, driver carrier,
-    supply voltage, limit inputs, probe input, and spindle PWM path are used?
+24. Which representative owner-supplied NEMA17 motor models, shaft lengths,
+    rated current, torque-at-speed behavior, connectors, and condition support
+    X/Y and Z assignment? This does not block the generic preliminary CAD
+    envelope, but it blocks final motor interfaces and commissioning.
+25. Which exact Arduino Mega board and CNC Shield revision, installed driver
+    carriers, GRBL-compatible firmware/configuration, supply voltage, supported
+    microsteps, limit inputs, probe input, cooling, and spindle PWM path are
+    present?
 26. Which spindle defines diameter, mass, runout, cable exit, cooling, and
     ER11/tool retention?
 27. Which MGN9/MGN12 supplier, preload, rail straightness, and measured rail
@@ -202,10 +208,12 @@ reopen the owner-accepted O2 mass/part-count baseline:
     constraint, radial support, thermal float, drag, and service requirements?
 55. Which 5 mm-to-measured-journal coupler has the lowest backlash and axial
     parasitic force without sacrificing service access?
-56. Which owned NEMA17 motors meet the X/Y >=0.45 N-m and Z >=0.55 N-m screens
-    at the available driver current and operating speed?
-57. Which Arduino CNC Shield revision, Arduino, drivers, jumpers, supply,
-    spindle output, probe input, limits, cooling, and GRBL behavior are present?
+56. Which owner-supplied NEMA17 motors meet the X/Y >=0.45 N-m and Z >=0.55
+    N-m screens at the available driver current and operating speed, with the
+    strongest electrically compatible candidate reserved for Z?
+57. Which Arduino Mega/CNC Shield revision, installed drivers, jumpers,
+    supported microsteps, supply, motor-current capability, spindle output,
+    probe input, limits, cooling, and GRBL-compatible behavior are present?
 58. Which M3/M4/M5 heat-set insert families pass measured geometry and PETG
     pull-out, torque, creep, deformation, and repeated-service coupons?
 59. Which spindle meets the PCB isolation/drilling/outline specification and

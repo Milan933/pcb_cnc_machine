@@ -60,12 +60,14 @@ reviewed and promoted by an engineering decision record.
 
 | ID | Item | Status | Design consequence |
 | --- | --- | --- | --- |
-| REQ-HW-001 | Multiple NEMA 17 stepper motors are already owned. | Known requirement | Record motor model, torque curve, shaft, current, and condition before final motion selection. |
-| REQ-HW-002 | An Arduino CNC Shield / GRBL-compatible controller is already owned. | Known requirement | Confirm supported stepper current, number of axes, limit inputs, probing input, spindle control, and firmware limits. |
+| REQ-HW-001 | A large selection of NEMA17 stepper motors originally acquired for 3D-printer use is already owned. | Known requirement | Do not purchase motors. Characterize representative stock and assign axes from measured evidence. |
+| REQ-HW-002 | An Arduino Mega + CNC Shield controller platform is already owned and intended for this machine. | Known requirement | Do not replace the controller unless later validation identifies an actual limitation; identify the exact Shield revision and installed drivers. |
 | REQ-HW-003 | A Voron 2.4 350 printer is available for PETG structural parts. | Known requirement | Measure usable build margins and establish a print-orientation validation method. |
 | REQ-HW-004 | Rails, screws, bearings, spindle, fasteners, inserts, couplers, and similar mechanical components may be purchased later. | Known requirement | Use the hardware procurement / measurement freeze before any production interface is released. |
 | REQ-HW-005 | The preliminary motion class is dual MGN12H X/Y, dual MGN9H Z, T8x4 X/Y, T8x2 Z, serviceable fixed/floating screw supports, and torque-only flexible couplers. | Owner-accepted preliminary baseline | EDR-008, EDR-009, EDR-013; exact supplier, preload, end machining, and measured dimensions remain open. |
-| REQ-HW-006 | Existing NEMA17 motors and the Arduino CNC Shield / GRBL-compatible controller shall be identified and measured before replacement purchases or final electrical/mechanical interfaces. | Owner direction | Hardware identification sheets in `requirements/hardware-procurement-measurement-freeze.md`. |
+| REQ-HW-006 | Existing NEMA17 motors and the Arduino Mega + CNC Shield platform shall be identified and measured before final electrical/mechanical interfaces or commissioning. | Owner direction | Hardware identification sheets in `requirements/hardware-procurement-measurement-freeze.md`; this does not block the generic preliminary structural CAD envelope. |
+| REQ-HW-007 | Preliminary structural CAD shall use a standardized common NEMA17 mechanical interface rather than one exact owner motor: approximately 42.3 mm mounting square, screening 5 mm shaft, common 40-48 mm body class, and rear connector/wiring access. | Owner direction | Central Phase 3 parameters and review envelopes; exact pilot, shaft engagement, body, connector, and rear-clearance values remain measured before manufacturing release. |
+| REQ-HW-008 | Final motor assignment shall come from owner stock: normal suitable characterized motors for X/Y and the strongest electrically compatible characterized motor for Z. | Owner direction | Motor identification sheet, driver/supply compatibility, torque-at-speed, temperature, and missed-step evidence. |
 
 ## CAD and deliverable requirements
 

@@ -162,20 +162,25 @@ power-off descent.
 
 ## Motor and controller acceptance envelope
 
-No owned motor is selected until its label, shaft, current, holding torque,
-condition, and torque-speed behavior are recorded. The acceptance envelope is:
+No exact owner motor is selected until its label, shaft, current, holding
+torque, condition, and torque-speed behavior are recorded. Motors are
+owner-supplied and must not be purchased at this stage. Preliminary structural
+CAD uses a standardized common NEMA17 interface; the acceptance envelope is:
 
 - 42.3 mm NEMA17 mounting square;
 - 40-48 mm body length for the initial packaging envelope;
 - 5 mm shaft with approximately 20 mm usable engagement, pending measurement;
+- rear connector, wiring bend, strain-relief, and service access for common
+  40-48 mm 3D-printer motor bodies, pending representative measurement;
 - at least 0.45 N-m holding torque for X/Y and 0.55 N-m for Z as screening
   minima, with torque at operating speed still to be verified;
 - a rated phase current that can be set safely on the identified driver with
   thermal margin; the present 0.8-1.5 A range is a test window, not a motor
   specification.
 
-The controller baseline is GRBL 1.1-compatible STEP/DIR. A4988 carriers are
-commonly limited to 1/16 microstep by the [Allegro A4988 product
+The controller platform is owner-supplied Arduino Mega + CNC Shield with a
+GRBL-compatible STEP/DIR configuration strategy. A4988 carriers are commonly
+limited to 1/16 microstep by the [Allegro A4988 product
 documentation](https://www.allegromicro.com/en/products/motor-drivers/brush-dc-motor-drivers/a4988);
 the TI DRV8825 supports up to 1/32 microstep and documents an 8.2-45 V supply
 range in its [official datasheet](https://www.ti.com/lit/ds/symlink/drv8825.pdf).
@@ -188,9 +193,10 @@ tests; 32 is not the baseline. GRBL exposes independent steps/mm `$100-$102`,
 maximum rates `$110-$112`, acceleration `$120-$122`, maximum travel
 `$130-$132`, homing `$22-$27`, and spindle `$30-$31` settings in its
 [official interface table](https://github.com/gnea/grbl/blob/master/doc/markdown/interface.md).
-The exact Arduino CNC Shield revision must be identified before wiring because
-board pinouts, probe routing, driver cooling, and spindle PWM implementation
-vary.
+The exact CNC Shield revision and installed driver modules must be identified
+before wiring because board pinouts, probe routing, driver cooling, current
+capability, and spindle PWM implementation vary. Do not replace the platform
+unless these checks demonstrate an actual limitation.
 
 ## Moving Y bed and workholding layout
 

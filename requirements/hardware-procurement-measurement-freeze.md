@@ -82,9 +82,9 @@ sample is **not-ready**, not an assumed fit.
 | C | Final workholding, clamps, tape, vacuum, or registration hardware | Support 200 x 150 PCB without bowing and leave probing/tool access | Clamp force, board contact, flatness, thickness, registration repeatability, cable/probe access | PCB datum, clamp envelope/swept volume, replacement workflow, final-pass support | No | Mandatory | Indicator/grid height map under clamp load; repeat load/unload and inspect board movement |
 | C | Production spoilboard and replacement stock | Chosen surfaced material, initial reference 230 x 180 x 12 mm | Batch thickness/flatness, resurfacing allowance, attachment and datum repeatability | Final mounting holes/slots, datum face, skim depth, replaceability | Material drawing insufficient | Mandatory | Grid measurement before/after skim and after workholding load |
 | C | Production O2 PETG parts, 19 parts | O2 structural architecture only; no final supplier-specific pockets yet | Printer conditioning, warp, layer orientation, mass, rail datum, joint creep, insert fit | Measured hardware-driven dimensions, datums, tolerances, print orientation, release metadata | No | Mandatory | Print representative coupons first; no production release before evidence gate |
-| D | Owned NEMA17 motors, at least 3 candidates plus spares | Existing motors; no purchase recommendation | Model, body length, rated current, holding torque, resistance, shaft diameter/length/flat, connector, step angle, 42.3 mm mount, bearing play, temperature | Actual body/shaft/connector envelope and torque/current selection | Label/datasheet helpful, not sufficient for unidentified motors | Mandatory | Use the identification sheet; caliper, ohmmeter, visual wiring trace, guarded low-speed bench test |
-| D | Owned Arduino CNC Shield / GRBL controller, 1 assembly | Existing Arduino CNC Shield / GRBL-compatible board; no purchase recommendation | Shield revision, Arduino type, driver carriers/models, jumpers, supply rating, current setting, cooling, spindle/PWM, probe/limits, pinout | Board envelope, connector exits, driver heatsink clearance, electrical interfaces, enclosure/service access | Board drawing/manual helpful, physical revision identification mandatory | Mandatory | Photograph/mark revision, trace pins with continuity meter, read firmware/settings, bench-test limits/probe/spindle output |
-| D | Existing driver carriers and wiring, installed set | A4988/DRV8825 remain candidates only until identified | Carrier model, current-limit method, microstep jumpers, heatsink, motor supply, wiring gauge/connectors | Driver cooling/enclosure, wire bend radius, connector access, current setting | Datasheet not enough for clone carriers | Mandatory | Read markings, continuity/pinout, measure supply/current setting, temperature test under load |
+| D | Owned NEMA17 motors, at least 3 candidates plus spares | **OWNER-SUPPLIED — DO NOT BUY**; final axis assignment comes from stock characterization | Model/label, body length, rated current, holding torque, resistance, shaft diameter/length/flat, connector, step angle, 42.3 mm mounting interface, bearing play, temperature | Generic 42.3 mm square, screening 5 mm shaft, 40-48 mm body envelope, plus rear connector/wiring access; exact values remain measured | Label/datasheet helpful, not sufficient for unidentified motors | Mandatory for final assignment/manufacturing interfaces; not required to start preliminary structural CAD | Use the identification sheet; caliper, ohmmeter, visual wiring trace, guarded low-speed bench test |
+| D | **Owner-supplied Arduino Mega + CNC Shield**, 1 intended controller platform | **OWNER-SUPPLIED — DO NOT REPLACE absent a validated limitation**; exact Shield revision and installed drivers unresolved | Shield revision, Arduino Mega board revision, driver carriers/models, jumpers, supported microsteps, supply-voltage/current capability, current setting, cooling, spindle PWM/control, probe/limits, pinout, GRBL-compatible firmware/configuration | Board envelope, connector exits, driver heatsink clearance, electrical interfaces, enclosure/service access | Board drawing/manual helpful, physical revision identification mandatory | Mandatory | Photograph/mark revision, trace pins with continuity meter, read firmware/settings, bench-test limits/probe/spindle output |
+| D | Installed driver carriers and wiring, existing set | Owner-supplied with the controller; do not buy replacement modules unless a validated limitation is found | Carrier model/marking, current-limit method, microstep jumpers, heatsink, motor supply, wiring gauge/connectors | Driver cooling/enclosure, wire bend radius, connector access, current setting | Datasheet not enough for clone carriers | Mandatory | Read markings, continuity/pinout, measure supply/current setting, temperature test under load |
 
 ### 3.1 Category decision summary
 
@@ -92,8 +92,8 @@ sample is **not-ready**, not an assumed fit.
 | --- | --- |
 | **BUY NOW** | Process-matched PETG; basic caliper/square/straightedge/feeler/thread-gauge set if absent; an indicator and simple 5 N loading set if absent. A 230 x 180 x 12 mm MDF sample is a low-regret process sample, not a final workholding release. |
 | **BUY SAMPLE NOW** | Complete accepted motion-class sample set in Section 4; T8 screw/nut candidates; fixed/floating 8 mm bearing candidates; 5-to-measured-journal couplers; M3/M4/M5 insert candidates; M3/M4/M5 fastener assortment; limit/probe and spoilboard samples. |
-| **MEASURE EXISTING HARDWARE** | All owned NEMA17 motors, the Arduino CNC Shield/Arduino/driver carriers, and existing wiring. |
-| **WAIT** | Final spindle, final collets/tools, final clamps/vacuum/workholding, production spoilboard batch, production PETG parts, final insert pockets, final fastener lengths, and any replacement motors/controller. |
+| **MEASURE EXISTING HARDWARE** | Owner-supplied NEMA17 stock, the Arduino Mega + CNC Shield platform, installed driver carriers, and existing wiring. |
+| **WAIT** | Final spindle, final collets/tools, final clamps/vacuum/workholding, production spoilboard batch, production PETG parts, final insert pockets, final fastener lengths, and any replacement hardware that later validation might justify. No motor or controller replacement is recommended now. |
 
 ## 4. Linear-rail purchase decision
 
@@ -226,21 +226,40 @@ guard clearance, and service replacement.
 
 ## 7. Owned motor and controller identification
 
-The owner already has the motors and controller. No motor or controller
-purchase is recommended in this freeze. Fill the separate
-[identification sheets](hardware-identification-sheets.md) for every candidate.
+The owner already has a large selection of NEMA17 motors and an intended
+**Arduino Mega + CNC Shield** controller platform. NEMA17 motors are
+**OWNER-SUPPLIED — DO NOT BUY**. The controller is **OWNER-SUPPLIED — DO NOT
+REPLACE** unless later electrical or motion validation identifies an actual
+limitation. Fill the separate [identification sheets](hardware-identification-sheets.md)
+for every representative motor and the controller assembly.
+
+Preliminary structural CAD uses a standardized common NEMA17 mechanical
+interface rather than one exact motor model: approximately 42.3 mm mounting
+square, screening 5 mm shaft, and a 40-48 mm body envelope. Motor mounts must
+retain rear clearance for connector exit, wiring bend radius, strain relief,
+and service access across multiple common 3D-printer motor body lengths. The
+exact rear-access dimension is not frozen until representative owner motors
+are measured. This unresolved final motor assignment does **not** block the
+preliminary structural CAD envelope; it blocks manufacturing-ready interfaces
+and commissioning only.
+
+Assign normal suitable owner motors to X/Y after characterization. Assign the
+strongest suitable owner motor to Z only if it remains electrically compatible
+with the identified driver and supply.
 
 Motor screening minimums are **>=0.45 N-m holding torque for X/Y** and
 **>=0.55 N-m for Z**. Holding torque alone is not acceptance: rated current,
 torque at operating speed, driver current, acceleration, screw efficiency,
 preload, and temperature must be checked.
 
-The controller checklist must establish shield revision, Arduino type, driver
-carrier/model, microstep jumpers, supply voltage/current, cooling, spindle
-output, probe input, limits, pinout, firmware/GRBL fork, homing direction,
-pull-off, debounce, soft limits, and alarm behavior. A4988 and DRV8825 remain
-candidate driver families only; a printed or marketplace carrier must be
-identified by its actual marking and thermal/current behavior.
+The controller checklist must establish exact CNC Shield model/revision,
+Arduino Mega board revision, installed stepper-driver modules, supported
+microstep configuration, motor-current capability, supply-voltage capability,
+cooling, spindle PWM/control outputs, probe input, limit inputs, pinout,
+GRBL-compatible firmware/configuration strategy, homing direction, pull-off,
+debounce, soft limits, and alarm behavior. A4988 and DRV8825 are only marking
+examples until the installed carriers are identified; a printed or marketplace
+carrier must be identified by its actual marking and thermal/current behavior.
 
 ## 8. Heat-set inserts and fastener schedule
 

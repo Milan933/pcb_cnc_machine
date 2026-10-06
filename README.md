@@ -52,9 +52,11 @@ machine. The design therefore prioritizes:
   stiffness.
 
 Owned hardware is treated as an input, not as a reason to force an unsuitable
-mechanical layout. The current known items are multiple NEMA 17 motors, an
-Arduino CNC Shield / GRBL-compatible controller, and a Voron 2.4 350 mm
-printer.
+mechanical layout. The current known items are a large selection of
+owner-supplied NEMA17 motors (**do not buy**), an owner-supplied **Arduino
+Mega + CNC Shield** controller platform (**do not replace absent a validated
+limitation**), and a Voron 2.4 350 mm printer. The exact Shield revision and
+installed driver modules remain identification items.
 
 ## Repository map
 

@@ -7,7 +7,7 @@
 - **Owner:** project owner / project team
 - **Inputs:** owner acceptance of EDR-011 and EDR-012, EDR-008, EDR-009,
   EDR-010, and the Phase 4A O2 review metrics
-- **Affected requirements:** REQ-HW-001 through REQ-HW-006,
+- **Affected requirements:** REQ-HW-001 through REQ-HW-008,
   REQ-MOT3-004 through REQ-MOT3-010, REQ-FAST-001 through REQ-FAST-008,
   REQ-P4-001 through REQ-P4-015, REQ-VAL-001 through REQ-VAL-003
 
@@ -31,8 +31,8 @@ The controlling implementation is:
 | --- | --- |
 | A - safe to buy now / architecture defining | Process-matched PETG, basic inspection tools, a readable dial indicator/rigid base if absent, and a simple known 5 N loading set. A 230 x 180 x 12 mm MDF board is a low-regret process sample only. |
 | B - buy sample / measure before final CAD | Complete X/Y/Z rail and carriage characterization set; T8x4/T8x2 screw and nut candidates; fixed/floating 8 mm bearing candidates; 5 mm-to-measured-journal couplers; M3/M4/M5 inserts; standard fastener samples; limit/probe samples; spoilboard material samples. |
-| C - wait until later design phase | Final spindle/collets/tools, final workholding or vacuum, production spoilboard batch, production O2 parts, final insert pockets, final fastener lengths, replacement motors/controller, guards, and enclosure. |
-| D - already owned / identify and measure | All owned NEMA17 motors, Arduino CNC Shield/Arduino, installed driver carriers, and existing wiring. No motor or controller purchase is recommended yet. |
+| C - wait until later design phase | Final spindle/collets/tools, final workholding or vacuum, production spoilboard batch, production O2 parts, final insert pockets, final fastener lengths, guards, and enclosure. Replacement motor/controller hardware is conditional only if later validation demonstrates an actual limitation; no replacement is recommended now. |
+| D - already owned / identify and measure | Owner-supplied NEMA17 stock and the intended Arduino Mega + CNC Shield platform, including installed driver carriers and wiring. **Do not buy motors. Do not replace the controller unless later validation identifies an actual limitation.** |
 
 ## Motion procurement baseline
 
@@ -71,15 +71,29 @@ These are preliminary choices for sample purchasing, not manufacturing locks.
 
 ## Owned hardware gate
 
-The owner’s motors must be assigned only after manufacturer/model, body,
-current, torque evidence, phase resistance, shaft, connector, step angle,
-mounting pattern, condition, and torque-at-speed behavior are recorded. The
-screen is >=0.45 N-m holding torque for X/Y and >=0.55 N-m for Z.
+The owner’s motors are the only motor source for the current design stage;
+motor purchases are not authorized. Preliminary structural CAD uses a generic
+NEMA17 interface: approximately 42.3 mm mounting square, screening 5 mm shaft,
+40-48 mm body class, and rear connector/wiring access for multiple common
+3D-printer motor lengths. Final axis assignment is made only after
+manufacturer/model where available, body, current, torque evidence, phase
+resistance, shaft, connector, step angle, mounting pattern, condition, and
+torque-at-speed behavior are recorded. The screen is >=0.45 N-m holding torque
+for X/Y and >=0.55 N-m for Z; holding torque alone is insufficient.
 
-The owner’s controller must be identified by shield revision, Arduino type,
-driver carriers/models, jumpers, supply/current capability, cooling, spindle
-output, probe input, limit inputs, firmware/pinout, and fault/homing behavior.
-A4988 and DRV8825 remain candidate driver families only.
+Normal suitable stock is preferred for X/Y. The strongest suitable owner motor
+is preferred for Z only when electrically compatible with the identified
+driver and supply. The unselected final motor does not block preliminary
+structural CAD, but it blocks manufacturing-ready interfaces and commissioning.
+
+The owner-supplied controller platform is **Arduino Mega + CNC Shield** and is
+intended for this machine. It must not be replaced by assumption. Identify the
+exact CNC Shield model/revision, installed stepper-driver modules, supported
+microstep configuration, motor-current capability, supply-voltage capability,
+cooling, spindle PWM/control outputs, probe input, limit inputs,
+GRBL-compatible firmware/configuration strategy, pinout, and fault/homing
+behavior. A4988 and DRV8825 are only possible module markings until physically
+identified.
 
 ## Fastening, spindle, and process gates
 
@@ -119,7 +133,7 @@ screen, not a reason to buy an inferior spindle.
 | Screw end machining or nut preload differs from the envelope. | Bearing cartridges, couplers, and backlash fail. | Buy sample blanks, measure/finish ends, and test nuts before CAD. |
 | Bearing/coupler arrangement carries axial load incorrectly. | Motor damage, Z creep, or lost position. | Fixed/floating axial test and explicit torque-only coupler rule. |
 | PETG inserts or long rail seats creep. | Datum drift, pull-out, or binding. | Size-specific coupons, conditioning, preload retention, shim/skim strategy. |
-| Owned motor/controller cannot meet current or torque needs. | Missed steps or unsafe electrical interface. | Identify and bench-test before any replacement purchase. |
+| Owned motor/controller cannot meet current, torque, or I/O needs. | Missed steps or unsafe electrical interface. | Identify and bench-test first; consider replacement only if the actual limitation is demonstrated. |
 | Spindle exceeds the 52 mm screen or has poor TIR. | Inferior process performance or mount redesign. | Keep mount replaceable and select by PCB process data, not envelope alone. |
 
 ## Gate disposition

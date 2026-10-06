@@ -75,8 +75,8 @@ INITIAL_PARAMETERS = ProjectParameters(
     frame_material="PETG",
     frame_is_predominantly_printed=True,
     owned_hardware=(
-        "multiple NEMA 17 stepper motors",
-        "Arduino CNC Shield / GRBL-compatible controller hardware",
+        "owner-supplied selection of NEMA17 stepper motors; do not purchase",
+        "owner-supplied Arduino Mega + CNC Shield controller platform; do not replace absent a validated limitation",
         "Voron 2.4 350 printer",
     ),
     coordinate_convention=(
@@ -569,10 +569,11 @@ class Phase3AxisParameters:
 class Phase3MotionParameters:
     """Central Phase 3 motion-system screening parameters.
 
-    These values describe a review layout and component classes. Exact
-    supplier, preload, rail lengths, motors, drivers, spindle, and printed
-    interfaces remain open until measured hardware and physical evidence are
-    available.
+    These values describe a review layout and component classes. The owner
+    supplies the motor stock and Arduino Mega + CNC Shield platform. Exact
+    motor identities, installed drivers, supplier, preload, rail lengths,
+    spindle, and printed interfaces remain open until measured hardware and
+    physical evidence are available.
     """
 
     working_area_mm: tuple[float, float]
@@ -600,6 +601,8 @@ class Phase3MotionParameters:
     minimum_xy_holding_torque_nm: float
     minimum_z_holding_torque_nm: float
     motor_phase_current_screening_range_a: tuple[float, float]
+    motor_interface_strategy: str
+    motor_rear_access_requirement: str
     bearing_bore_mm: float
     fixed_bearing_strategy: str
     floating_bearing_strategy: str
@@ -790,6 +793,14 @@ PHASE3_MOTION_PARAMETERS = Phase3MotionParameters(
     minimum_xy_holding_torque_nm=0.45,
     minimum_z_holding_torque_nm=0.55,
     motor_phase_current_screening_range_a=(0.8, 1.5),
+    motor_interface_strategy=(
+        "owner-supplied motor stock; generic common NEMA17 interface with approximately "
+        "42.3 mm mounting square, screening 5 mm shaft, and 40-48 mm body class"
+    ),
+    motor_rear_access_requirement=(
+        "reserve rear connector, wiring bend, strain-relief, and service access for "
+        "multiple owner motors; exact clearance remains measured/not-ready"
+    ),
     bearing_bore_mm=8.0,
     fixed_bearing_strategy="paired angular-contact or compact BK08-class fixed support; vendor and fit remain open",
     floating_bearing_strategy="8 mm radial BF08-class support with axial float; do not clamp both screw ends",
@@ -797,7 +808,11 @@ PHASE3_MOTION_PARAMETERS = Phase3MotionParameters(
     nut_strategy_xy="adjustable spring-preloaded split brass or dual-brass anti-backlash nut; replaceable and measurable",
     nut_strategy_z="adjustable preloaded anti-backlash nut only after drag and gravity-hold test; standard brass is a fallback",
     backlash_target_mm=0.030,
-    controller_family="GRBL 1.1-compatible STEP/DIR controller; exact Arduino CNC Shield revision is unresolved",
+    controller_family=(
+        "owner-supplied Arduino Mega + CNC Shield STEP/DIR platform; exact Shield "
+        "revision and installed driver modules are unresolved; GRBL-compatible "
+        "firmware/configuration remains to be verified"
+    ),
     driver_candidates=("A4988", "DRV8825"),
     driver_microstep_limits=(("A4988", 16), ("DRV8825", 32)),
     controller_required_interfaces=(
@@ -808,11 +823,14 @@ PHASE3_MOTION_PARAMETERS = Phase3MotionParameters(
         "12-24 V motor supply and verified driver cooling/current setting",
     ),
     controller_identification_checklist=(
-        "record shield revision and pinout",
-        "record GRBL fork and firmware version",
-        "identify driver carrier and current-limit method",
+        "record exact CNC Shield model/revision and pinout",
+        "record Arduino Mega board revision",
+        "record GRBL-compatible firmware fork, version, and settings",
+        "identify installed driver carriers and current-limit method",
+        "record supported microstep jumper configuration",
         "measure available motor supply voltage and current margin",
-        "verify limit, probe, spindle-enable, and PWM pins electrically",
+        "verify driver cooling and temperature under load",
+        "verify limit, probe, spindle-enable, and PWM/control pins electrically",
         "verify homing direction, pull-off, debounce, soft-limit, and alarm behavior",
     ),
     home_positions=(
@@ -830,6 +848,8 @@ PHASE3_MOTION_PARAMETERS = Phase3MotionParameters(
     ),
     reference_screw_diameter_mm=8.0,
     reference_nut_envelope_mm=(18.0, 18.0, 18.0),
+    # Review-only generic NEMA17 envelope; the 48 mm body is a screening
+    # maximum, not a single selected motor model or a manufacturing dimension.
     reference_motor_envelope_mm=(42.3, 42.3, 48.0),
     reference_bearing_support_envelopes_mm=(
         ("X", (20.0, 42.0, 30.0)),

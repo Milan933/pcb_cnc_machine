@@ -190,7 +190,7 @@ def _x_motion_components(
                 "x_nema17",
                 motor_size,
                 (motor_min_x, screw_center[1] - motor_size[1] / 2.0, screw_center[2] - motor_size[2] / 2.0),
-                "40-48 mm NEMA17 body envelope; owned motor identity remains unresolved.",
+                "Owner-supplied generic NEMA17 interface: 40-48 mm body screen with rear connector/wiring access; exact motor identity remains open.",
             ),
         )
     )
@@ -284,7 +284,7 @@ def _y_motion_components(
                 "y_nema17",
                 motor_axis_size,
                 (-motor_axis_size[0] / 2.0, motor_min_y, screw_center[2] - motor_axis_size[2] / 2.0),
-                "40-48 mm NEMA17 body envelope for the moving-bed axis.",
+                "Owner-supplied generic NEMA17 interface for the moving-bed axis: 40-48 mm body screen with rear connector/wiring access.",
             ),
             _nominal_box(
                 build123d,
@@ -398,7 +398,7 @@ def _z_motion_components(
                 "z_nema17",
                 motor_size,
                 (-motor_size[0] / 2.0, screw_center[1] - motor_size[1] / 2.0, motor_min_z),
-                "40-48 mm NEMA17 body envelope at the upper Z motor end.",
+                "Owner-supplied generic NEMA17 interface at the upper Z motor end: 40-48 mm body screen with rear connector/wiring access.",
             ),
             _nominal_box(
                 build123d,

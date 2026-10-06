@@ -46,8 +46,11 @@ For a 200-step/rev motor and 16 commanded microsteps:
 
 These are command increments only. Motor torque at speed, driver current,
 mechanical compliance, screw pitch error, backlash, and microstep nonlinearity
-determine practical motion. The exact NEMA 17 and controller are unresolved,
-so the values do not select T8x2, T8x4, or a motor.
+determine practical motion. The exact NEMA17 motor identity and installed
+controller modules are unresolved, but the owner-supplied platform is known:
+Arduino Mega + CNC Shield. Preliminary structural CAD uses the generic NEMA17
+interface; these values do not select a final motor or authorize controller
+replacement.
 
 The controller shall support independently configured rapid, cutting,
 probing, and homing rates, and shall expose usable limit and probe inputs.

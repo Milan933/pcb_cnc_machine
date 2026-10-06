@@ -9,7 +9,7 @@ from cad.motion_phase3 import (
     screw_input_torque_nm,
     steps_per_mm,
 )
-from cad.parameters import PHASE3_MOTION_PARAMETERS
+from cad.parameters import INITIAL_PARAMETERS, PHASE3_MOTION_PARAMETERS
 from cad.validation import (
     ValidationStatus,
     check_phase3_motion_parameters,
@@ -71,6 +71,16 @@ class Phase3MotionTests(unittest.TestCase):
         axes = {axis.axis: axis for axis in PHASE3_MOTION_PARAMETERS.axes}
         self.assertEqual(tuple(axes[name].travel_mm for name in ("X", "Y", "Z")), travel)
         self.assertEqual(PHASE3_MOTION_PARAMETERS.recommended_microsteps, 8)
+
+    def test_owner_hardware_boundary_and_generic_motor_interface(self) -> None:
+        self.assertIn("owner-supplied selection of NEMA17", INITIAL_PARAMETERS.owned_hardware[0])
+        self.assertIn("Arduino Mega + CNC Shield", INITIAL_PARAMETERS.owned_hardware[1])
+        self.assertEqual(PHASE3_MOTION_PARAMETERS.motor_mounting_square_mm, 42.3)
+        self.assertEqual(PHASE3_MOTION_PARAMETERS.motor_body_length_range_mm, (40.0, 48.0))
+        self.assertEqual(PHASE3_MOTION_PARAMETERS.motor_shaft_diameter_mm, 5.0)
+        self.assertIn("owner-supplied", PHASE3_MOTION_PARAMETERS.motor_interface_strategy)
+        self.assertIn("rear connector", PHASE3_MOTION_PARAMETERS.motor_rear_access_requirement)
+        self.assertIn("Arduino Mega + CNC Shield", PHASE3_MOTION_PARAMETERS.controller_family)
 
 
 if __name__ == "__main__":

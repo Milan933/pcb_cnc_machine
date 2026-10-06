@@ -24,6 +24,12 @@ PETG coupons, joint/rail-seat/bearing-pocket tests, actual hardware
 measurements, service mock-ups, and representative force-loop evidence remain
 required before hardware interfaces or production CAD can be released.
 
+The owner-supplied hardware boundary is explicit: use the existing selection
+of NEMA17 motors and the Arduino Mega + CNC Shield platform; do not purchase
+motors or replace the controller unless later electrical or motion validation
+demonstrates an actual limitation. Preliminary CAD uses a generic NEMA17
+interface with measured owner hardware required before manufacturing release.
+
 ## Canonical public repository
 
 This is an intentionally public repository. The canonical remote is:

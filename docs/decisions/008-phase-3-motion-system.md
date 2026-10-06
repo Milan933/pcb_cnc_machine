@@ -6,7 +6,7 @@
 - **Date:** 2026-10-06
 - **Owner:** project owner / project team
 - **Architecture input:** EDR-006 and EDR-007 owner disposition — Architecture A accepted as the mechanical baseline
-- **Affected requirements:** REQ-MOT-001 through REQ-MOT-006, REQ-MOT3-001 through REQ-MOT3-015, REQ-VAL-001 through REQ-VAL-003, REQ-HW-001 through REQ-HW-005
+- **Affected requirements:** REQ-MOT-001 through REQ-MOT-006, REQ-MOT3-001 through REQ-MOT3-015, REQ-VAL-001 through REQ-VAL-003, REQ-HW-001 through REQ-HW-008
 
 ## Owner-accepted motion baseline
 
@@ -23,10 +23,13 @@ fixed-gantry/moving-Y-bed machine:
   one end, radial-only float at the other, and an 8 mm generic T8 end envelope;
 - adjustable preloaded anti-backlash nuts as the X/Y default and a tested
   preloaded Z nut; flexible 5-to-8 mm couplers transmit torque only;
-- typical 40-48 mm NEMA17 packaging envelope, subject to measured motor
-  torque/current/shaft data;
-- GRBL 1.1-compatible STEP/DIR controller, starting at 8 microsteps, with the
-  exact CNC Shield and driver carrier still unresolved;
+- standardized common NEMA17 packaging interface: approximately 42.3 mm
+  mounting square, screening 5 mm shaft, 40-48 mm body class, and rear
+  connector/wiring access; final axis assignment comes from owner stock after
+  characterization;
+- owner-supplied Arduino Mega + CNC Shield STEP/DIR controller platform,
+  starting at 8 microsteps only after the installed driver carrier is
+  identified, with the exact Shield revision and driver modules unresolved;
 - X/Y/Z homing at left/negative, front/negative, and up/positive, with G54
   established from the registered PCB datum and probe.
 
@@ -72,11 +75,16 @@ preload is conditional on drag and power-off tests.
 
 ### Motor/controller
 
-The owner already has NEMA17 motors and Arduino CNC Shield/GRBL-compatible
-hardware, but no exact models are yet identified. The design uses an acceptance
-envelope rather than forcing those items into the mechanism. A4988 and DRV8825
-are driver candidates; 8 microsteps is the starting setting, not a claim that
-either installed carrier is suitable.
+The owner already has a large selection of NEMA17 motors and an Arduino Mega +
+CNC Shield controller platform intended for this machine. Motors are
+owner-supplied and must not be purchased. The structural interface uses the
+generic NEMA17 envelope rather than one exact motor model, and the final axis
+assignment is made from measured stock: normal suitable motors for X/Y and the
+strongest electrically compatible motor for Z. A4988 and DRV8825 are only
+possible carrier markings until the installed modules are identified; 8
+microsteps is a starting strategy, not a claim that the installed carrier is
+suitable. The controller is not a replacement candidate unless validation
+finds an actual limitation.
 
 ## Evidence and reasoning
 
@@ -109,8 +117,8 @@ backlash, feed, torque, or resonance claims.
 
 | Risk | Consequence | Mitigation / gate evidence |
 | --- | --- | --- |
-| Actual owned motor has lower torque or incompatible shaft/current. | Missed steps, bad coupler fit, or overheating. | Identify and measure motors; obtain torque-speed/current data before purchase. |
-| CNC Shield or GRBL fork lacks the assumed probe/PWM/limit behavior. | Unsafe homing, no height map, or no spindle control. | Record board revision/pin map; bench-test every I/O and alarm path. |
+| Actual owner motor has lower torque or incompatible shaft/current. | Missed steps, bad coupler fit, or overheating. | Characterize stock, assign by torque-at-speed/current evidence, and only consider replacement if a validated limitation remains. |
+| CNC Shield revision, installed driver, or GRBL-compatible firmware lacks the assumed probe/PWM/limit behavior. | Unsafe homing, no height map, or no spindle control. | Record board revision/pin map; bench-test every I/O and alarm path before commissioning; do not replace by assumption. |
 | Clone rail preload/play or PETG seat compliance exceeds the screen. | Tool-point deflection, chatter, or datum drift. | Measure samples; print rail-seat and joint coupons; repeat 5 N force-loop tests. |
 | T8 screw straightness/end fit lowers usable speed. | Whip, vibration, and lost steps. | Measure runout/straightness, use fixed/floating supports, commission below 70% screen. |
 | Anti-backlash preload relaxes or creates excess drag. | Backlash, heat, and missed steps. | Measure reversal, preload, drag, and wear after a cycling test. |
@@ -126,9 +134,10 @@ must not be exported to `generated/*/release/` or used as a manufacturing STL.
 
 ## Unresolved questions
 
-- Which exact owned NEMA17 motors, drivers, supply voltage, and current limits
-  are available?
-- Which exact CNC Shield revision and GRBL fork are installed?
+- Which representative owner-supplied NEMA17 motors, driver compatibility,
+  supply voltage, and current limits meet the axis screens?
+- Which exact CNC Shield revision, installed driver modules, jumper/microstep
+  state, and GRBL-compatible firmware/configuration are installed?
 - Which spindle will define diameter, mass, runout, cable exit, cooling, and
   ER11/tool retention?
 - Which rail/screw supplier, preload, straightness, and end machining pass

@@ -171,8 +171,8 @@ def phase3_gate_report(
 
     report = ValidationReport()
     for evidence in (
-        "exact owned motor identity and torque-speed/current data",
-        "exact CNC Shield revision, driver carrier, supply, and GRBL pin map",
+        "representative owner-supplied motor identity and torque-speed/current data before motion commissioning",
+        "exact Arduino Mega CNC Shield revision, installed driver carrier, supply, and GRBL-compatible pin/configuration map",
         "measured spindle diameter, mass, runout, cable exit, and tool retention",
         "measured rail preload/play and PETG rail-seat coupon result",
         "backlash, axial-play, repeatability, missed-step, and homing test records",

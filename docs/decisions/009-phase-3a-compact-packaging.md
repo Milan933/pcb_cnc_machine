@@ -31,7 +31,9 @@ Its packaging references are:
 - X/Z guide spacing remains approximately 60 mm and Y guide spacing remains
   220 mm;
 - fixed/floating 8 mm bearing topology remains unchanged;
-- NEMA17s remain direct axial drives in removable recessed pockets;
+- owner-supplied NEMA17s remain direct axial drives in removable recessed
+  pockets using the generic 42.3 mm / 5 mm / 40-48 mm preliminary interface;
+  rear connector/wiring access must remain serviceable for multiple motors;
 - no belt transmission is introduced.
 
 The owner-directed fastening strategy from EDR-010 applies to these review

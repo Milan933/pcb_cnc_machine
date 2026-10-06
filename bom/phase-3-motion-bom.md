@@ -22,9 +22,9 @@ final quantity, supplier, preload, length, and fit remain open.
 | Fixed screw support | 3 axis sets | Paired angular-contact or BK08-class, 8 mm bore | sample only | Fixed end carries axial load; exact block and fit are open. |
 | Floating screw support | 3 | BF08-class radial support, 8 mm bore | sample only | Radial-only support with axial float. |
 | Flexible coupler | 3 | 5 mm motor to 8 mm screw | sample only | Torque transmission only; never an axial bearing. |
-| NEMA17 motor | 3 | 42.3 mm square, 40-48 mm body, 5 mm shaft | owner-owned / identify first | Record model, current, torque-speed curve, shaft length, and condition. |
-| Driver carrier | 3 | A4988 or DRV8825 candidate | owner-owned / identify first | Verify carrier cooling/current limit; start at 8 microsteps. |
-| GRBL/CNC Shield controller | 1 | GRBL 1.1-compatible, exact revision open | owner-owned / identify first | Verify STEP/DIR, limits, probe, spindle enable/PWM, supply, and firmware. |
+| NEMA17 motor | owner stock; at least 3 candidates plus spares | Generic 42.3 mm square, 40-48 mm body, screening 5 mm shaft, rear connector/wiring access | **OWNER-SUPPLIED — DO NOT BUY** | Characterize representative stock; assign normal suitable motors to X/Y and the strongest electrically compatible motor to Z. Exact final motor does not block preliminary structural CAD. |
+| Driver carrier | installed set | Exact module unresolved; A4988/DRV8825 are marking examples only | **OWNER-SUPPLIED WITH CONTROLLER — DO NOT BUY absent a validated limitation** | Identify installed carriers, microsteps, current-limit method, supply, cooling, and temperature under load. |
+| GRBL/CNC Shield controller | 1 | **Arduino Mega + CNC Shield**, exact Shield revision open | **OWNER-SUPPLIED — DO NOT REPLACE absent a validated limitation** | Verify exact revision, STEP/DIR, limits, probe, spindle enable/PWM, supply, cooling, and GRBL-compatible firmware/configuration. |
 | Home/limit switch | 6 nominal | One home and one opposite hard limit per axis | do not buy final set | Board pin behavior and switch type/wiring remain open; NC is preferred if supported. |
 | Conductive probe / touch plate | 1 | Fault-detectable probe input | do not buy final unit | Verify electrical noise margin, open-circuit fault response, and map workflow. |
 | Spindle | 1 | ER11-compatible screening envelope, approx. 52 mm diameter x 120 mm length | do not buy final unit | Measure diameter, mass, runout, cable exit, cooling, and mounting interface first. |

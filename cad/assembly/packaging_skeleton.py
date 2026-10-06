@@ -218,7 +218,7 @@ def _x_components(
                 (motor_axis, motor_cross, motor_cross),
                 (-length / 2.0 - variant.x_motor_recess_mm, screw_y - motor_cross / 2.0, rail_z - motor_cross / 2.0),
                 "motion-reference",
-                "Direct axial NEMA17 envelope recessed into the side structure; cover and fastener access remain to be proven.",
+                "Direct axial owner-supplied generic NEMA17 interface recessed into the side structure; rear connector/wiring and cover access remain to be proven.",
             ),
         )
     )
@@ -303,7 +303,7 @@ def _y_components(
                 (motor_cross, motor_axis, motor_cross),
                 (-motor_cross / 2.0, motor_min_y, variant.y_motor_center_z_mm - motor_cross / 2.0),
                 "motion-reference",
-                "Direct axial NEMA17 envelope partly recessed into the front cross-member; front service cover is required.",
+                "Direct axial owner-supplied generic NEMA17 interface partly recessed into the front cross-member; rear connector/wiring and front service cover are required.",
             ),
             _named_box(
                 build123d,
@@ -411,7 +411,7 @@ def _z_components(
                 motor,
                 (-motor[0] / 2.0, screw_y - motor[1] / 2.0, motor_min_z),
                 "motion-reference",
-                "Direct axial NEMA17 envelope in a removable upper pocket; body length remains a generic 40-48 mm screen.",
+                "Direct axial owner-supplied generic NEMA17 interface in a removable upper pocket; body length remains a 40-48 mm screen and rear connector/wiring access is required.",
             ),
             _named_box(
                 build123d,

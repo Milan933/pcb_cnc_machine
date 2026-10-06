@@ -33,12 +33,12 @@ measurement methods, coupons, and release gates.
 | **B - BUY SAMPLE NOW** | 100 / 50 / 10 mixed | M3 / M4 / M5 socket-head sample screws | No final lengths; M5 is conditional. Add washers/nuts only for justified joints. |
 | **B - BUY SAMPLE NOW** | 3 + 1 | Limit switches and conductive probe sample | Measure actuation, repeatability, connector/cable envelope, and fault response. |
 | **B - BUY SAMPLE NOW** | 1 each | 230 x 180 x 12 MDF and comparison surfaced board if needed | Process samples; measure flatness after skim and workholding load. |
-| **D - MEASURE EXISTING** | At least 3 candidates | Owned NEMA17 motors | No purchase. Identify torque/current/shaft/connector and assign by measured evidence. |
-| **D - MEASURE EXISTING** | 1 assembly | Owned Arduino CNC Shield / GRBL controller, Arduino, driver carriers, wiring | No purchase. Identify revision, pinout, drivers, current, cooling, limits, probe, spindle output. |
+| **D - MEASURE EXISTING** | At least 3 candidates plus spares | **OWNER-SUPPLIED NEMA17 motor stock — DO NOT BUY** | Use a generic 42.3 mm mounting interface, screening 5 mm shaft, and 40-48 mm body envelope with rear connector/wiring access. Identify and assign by measured evidence. |
+| **D - MEASURE EXISTING** | 1 assembly | **OWNER-SUPPLIED Arduino Mega + CNC Shield — DO NOT REPLACE absent a validated limitation** | Identify exact Shield revision, installed driver modules, microsteps, motor-current/supply capability, cooling, limits, probe, spindle PWM/control, and GRBL-compatible firmware/configuration. |
 | **C - WAIT** | 1 eventual | Final spindle, collets, and PCB tools | Select against 10-30 krpm, <=0.010 mm TIR target, 50-150 W, 0.30-0.80 kg, and diameter classes; 52 mm is only a screen. |
 | **C - WAIT** | 1 eventual + spare | Final workholding, vacuum/tape/registration, production spoilboard | Requires board datum, flatness, clamp distortion, probing, and outline-cut validation. |
 | **C - WAIT** | 19 parts | Production O2 PETG structural parts | No production print until measured hardware, coupons, service mock-up, and 5 N test pass. |
-| **C - WAIT** | As required | Replacement motors/controller, final feet, cable routing, enclosure, guards | Keep unresolved until owned hardware and spindle/controller interfaces are measured. |
+| **C - WAIT** | As required | Conditional replacement hardware, final feet, cable routing, enclosure, guards | No motor/controller replacement is recommended now; consider replacement only if later electrical or motion validation identifies an actual limitation. |
 
 ## Accepted axis quantities and target references
 
@@ -51,6 +51,23 @@ measurement methods, coupons, and release gates.
 `T8x4` and `T8x2` specify lead, not pitch or starts. Record all three from
 the supplier and from the sample. The screw interface is not manufacturing-
 ready until the selected journal/end machining is measured.
+
+## Owner-supplied hardware boundary
+
+The owner has a large selection of 3D-printer NEMA17 motors and an intended
+**Arduino Mega + CNC Shield** controller platform. This matrix does not
+authorize a motor purchase or controller replacement. The preliminary CAD
+interface remains standardized around the common 42.3 mm NEMA17 mounting
+square, a screening 5 mm shaft, and a 40-48 mm body envelope. Motor pockets
+must preserve rear connector, wiring bend, strain-relief, and service access
+for multiple body lengths; the exact clearance is measured from representative
+stock before manufacturing release.
+
+Final motor assignment is evidence-based: normal suitable owner stock for X/Y
+and the strongest electrically compatible stock for Z. The exact Shield
+revision and installed driver carriers are the only controller platform
+identity items still unresolved; microstep support, current/voltage capacity,
+cooling, I/O, and GRBL-compatible firmware behavior remain verification items.
 
 ## Preliminary interface strategy
 
