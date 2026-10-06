@@ -23,6 +23,11 @@ provides:
   access, geometric location/shear transfer, M5 justification, and selective
   through-bolt justification; unresolved supplier dimensions are explicit
   not-ready warnings;
+- Phase 4 preliminary structural part-bound/orientation checks, J1/J2/J3
+  joint-contract checks, rail-seat strategy checks, accepted-P2 motion-reference
+  containment, expected-versus-unexpected structural overlap, preliminary
+  5 N contribution screening, and explicit service/physical-evidence
+  not-ready states;
 - standard-library tests that run without a CAD dependency, plus a pinned
   build123d spike for exact skeleton bounds and interference evidence.
 
@@ -48,9 +53,16 @@ engineering result and is not silently converted to a pass.
 
 Phase 3A adds P1/P2/P3 packaging calculations and temporary build123d review
 exports. The packaging pass does not accept the gate, freeze exact hardware,
-or authorize detailed printable parts or Phase 4.
+or authorize manufacturing-ready parts. The owner-accepted P2 baseline now
+feeds Phase 4 preliminary structural review.
 
 The Phase 3A fastening report can pass its review-level rule checks while
 remaining `not-ready`: actual insert OD, length, pilot, insertion depth,
 screw-clearance, and PETG coupon results are required before manufacturing
 interfaces are released.
+
+Phase 4 adds a 29-part preliminary structural concept and review assembly. Its
+automated runner may pass geometry, containment, interference, and export
+checks while the overall report remains `not-ready` for owner review, measured
+hardware, print/joint/rail-seat coupons, service mock-up, and physical 5 N
+force-loop evidence. Phase 4 acceptance and Phase 5 remain blocked.

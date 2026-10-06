@@ -2,13 +2,13 @@
 
 - **Record ID:** EDR-008
 - **Phase:** 3 - Motion-system selection
-- **Status:** proposed / owner review required
+- **Status:** owner-accepted Phase 3 motion-class baseline; physical evidence open
 - **Date:** 2026-10-06
 - **Owner:** project owner / project team
 - **Architecture input:** EDR-006 and EDR-007 owner disposition — Architecture A accepted as the mechanical baseline
 - **Affected requirements:** REQ-MOT-001 through REQ-MOT-006, REQ-MOT3-001 through REQ-MOT3-015, REQ-VAL-001 through REQ-VAL-003, REQ-HW-001 through REQ-HW-005
 
-## Decision proposed for owner review
+## Owner-accepted motion baseline
 
 Use the following component classes for the Phase 3 review layout of the
 fixed-gantry/moving-Y-bed machine:
@@ -30,7 +30,8 @@ fixed-gantry/moving-Y-bed machine:
 - X/Y/Z homing at left/negative, front/negative, and up/positive, with G54
   established from the registered PCB datum and probe.
 
-These are preliminary component-class choices. They do not freeze an exact
+These are owner-accepted component-class choices for the Phase 3/Phase 4
+interface baseline. They do not freeze an exact
 supplier, preload, rail length, screw end machining, bearing fit, nut geometry,
 motor, driver, spindle, shield, printed rail seat, or production part.
 
@@ -150,11 +151,13 @@ must not be exported to `generated/*/release/` or used as a manufacturing STL.
 - [x] Candidate and tracked repository audit paths remain part of the commit gate.
 - [ ] Exact owned hardware identified and measured.
 - [ ] Representative motion hardware and PETG interface coupons tested.
-- [ ] Phase 3 owner review completed.
+- [x] Phase 3 owner review completed; owner accepted the motion baseline on
+      2026-10-06.
 
 ## Gate
 
-This record remains **proposed**. The repository may proceed to owner review of
-the motion-class baseline and the separate Phase 2A physical validation plan.
-It must not begin Phase 4 BOM finalization, detailed structural CAD, or
-manufacturing export from this record alone.
+The owner accepted this record as the Phase 3 motion-class baseline on
+2026-10-06. Exact supplier hardware, measured dimensions, motion tests, PETG
+interface evidence, and production interfaces remain open. Phase 4
+preliminary structural concept work may proceed under EDR-011; this record
+does not authorize manufacturing release or Phase 5.

@@ -15,14 +15,18 @@ Current records:
   the owner with the Phase 2A A-baseline amendment; detailed motion remains open
 - [EDR-007: Phase 2A structural comparison](007-phase-2a-structural-comparison.md)
   - accepted as the Phase 2A boundary and baseline; physical evidence remains open
-- [EDR-008: Phase 3 motion system](008-phase-3-motion-system.md) - proposed;
-  owner review required; does not accept Phase 3 or authorize Phase 4
+- [EDR-008: Phase 3 motion system](008-phase-3-motion-system.md) - owner-
+  accepted motion-class baseline; exact hardware and physical evidence remain
+  open
 - [EDR-009: Phase 3A compact packaging](009-phase-3a-compact-packaging.md) -
-  proposed; P2 is recommended for owner review; does not accept the Phase 3A
-  gate or authorize Phase 4
+  owner-accepted P2 packaging baseline; exact dimensions and physical evidence
+  remain open
 - [EDR-010: PETG fastening and structural modularity](010-petg-fastening-strategy.md)
-  - owner-directed working strategy; insert dimensions and physical joint
-  evidence remain open; does not authorize production CAD or Phase 4
+  - owner-directed working strategy for Phase 4; insert dimensions and physical
+  joint evidence remain open; does not authorize production CAD
+- [EDR-011: Phase 4 preliminary structural concept](011-phase-4-preliminary-structural-concept.md)
+  - proposed owner review; preliminary structural CAD is authorized, but Phase
+  4 acceptance, production release, and Phase 5 remain blocked
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.

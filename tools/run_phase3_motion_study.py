@@ -69,7 +69,7 @@ def run(output_dir: Path) -> dict[str, object]:
         }
     return {
         "phase": "3-motion-system-selection",
-        "status": "proposed-owner-review",
+        "status": "owner-accepted-motion-baseline",
         "units": "mm, N, N-mm, N-m, rpm, mm/min unless noted",
         "parameter_validation_status": parameter_report.status.value,
         "parameter_validation_blocking": len(parameter_report.blocking_issues),

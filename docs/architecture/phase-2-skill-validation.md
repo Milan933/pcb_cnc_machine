@@ -46,8 +46,9 @@ affected project skills and the repository workflow:
 | `repository-workflow` | New source, tests, requirements, decision record, and documentation are audited before commit; temporary CAD environments and exports remain outside Git. | No generated manufacturing artifacts or final hardware BOM. |
 
 Verification for this supplement is `python -B -m unittest discover -s tests -v`
-(42 tests passing), the pinned build123d Phase 3A runner (P1/P2/P3 exports,
+(47 dependency-light tests passing), the pinned build123d Phase 3A runner (P1/P2/P3 exports,
 containment, and zero unexpected interferences), `python -B
 tools/repository_audit.py`, and a staged-diff review. The fastening report is
 intentionally `not-ready` with zero blocking issues until actual inserts and
-PETG coupons exist; Phase 4 remains blocked.
+PETG coupons exist; at the time of this historical Phase 3A supplement,
+Phase 4 was blocked. The current Phase 4 boundary is recorded in EDR-011.

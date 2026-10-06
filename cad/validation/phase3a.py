@@ -372,7 +372,6 @@ def phase3a_gate_report() -> ValidationReport:
 
     report = ValidationReport()
     for evidence in (
-        "owner selection of P1, P2, or P3 and confirmation that P3 travel margin is acceptable",
         "full-travel assembly mock-up proving rail, carriage, screw, motor, homing, and tool clearances",
         "service-access review proving every fixed bearing, nut, coupler, motor, and limit fastener is removable",
         "PETG rail-seat, bearing-pocket, motor-pocket, and fastener/joint coupon evidence",
@@ -382,15 +381,15 @@ def phase3a_gate_report() -> ValidationReport:
             _issue(
                 "VAL-PHASE3A-GATE-EVIDENCE",
                 ValidationStatus.NOT_READY,
-                f"Required before Phase 3A acceptance: {evidence}.",
+                f"Required before the Phase 3A physical evidence package is closed: {evidence}.",
                 evidence="Review-only packaging results do not replace physical evidence.",
             )
         )
     report.add(
         _issue(
-            "VAL-PHASE3A-NO-PHASE4",
+            "VAL-PHASE3A-PHASE4-BOUNDARY",
             ValidationStatus.PASS,
-            "Phase 4 remains blocked by the requested owner-review boundary.",
+            "P2 is owner-accepted as the Phase 3A baseline; Phase 4 preliminary structural concept work is authorized under EDR-011.",
             severity=IssueSeverity.INFO,
         )
     )

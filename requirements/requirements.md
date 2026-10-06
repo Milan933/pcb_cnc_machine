@@ -117,21 +117,48 @@ performance.
 Phase 2A PETG coupons and representative 5 N force-loop evidence remain
 required. Phase 3 adds rail-seat/play, backlash/preload, screw axial play,
 homing repeatability, missed-step, straightness/squareness, and controller
-interface tests. The proposed Phase 3 decision record is
-[EDR-008](../docs/decisions/008-phase-3-motion-system.md); it remains open for
-owner review.
+interface tests. The owner accepted the Phase 3 motion baseline on 2026-10-06
+in [EDR-008](../docs/decisions/008-phase-3-motion-system.md). Exact supplier
+hardware, measured dimensions, and physical motion evidence remain open.
 
 The owner-directed PETG fastening strategy is recorded in
 [phase-3a-fastening-strategy.md](phase-3a-fastening-strategy.md) and
 [EDR-010](../docs/decisions/010-petg-fastening-strategy.md). It applies to
-Phase 3A review interfaces and later structural CAD, but does not authorize
-production geometry or Phase 4.
+Phase 3A review interfaces and later structural CAD. The owner accepted P2 as
+the Phase 3A baseline on 2026-10-06; it authorizes the preliminary Phase 4
+concept but not production geometry or release.
+
+## Phase 4 preliminary structural concept baseline
+
+The owner-authorized Phase 4 scope is recorded in
+[phase-4-structural-concept.md](phase-4-structural-concept.md) and proposed
+[EDR-011](../docs/decisions/011-phase-4-preliminary-structural-concept.md).
+The accepted P2 reference is approximately 364 x 356 x 276 mm with a 444 x
+428 x 322 mm service footprint, a 230 x 180 x 8 mm bed support, a 230 x 180 x
+12 mm spoilboard, fixed gantry, moving Y bed, dual MGN12 X/Y guides, dual
+MGN9 Z guides, T8x4 X/Y screws, T8x2 Z screw, and 40 mm Z travel.
+
+Phase 4 may build preliminary PETG force-loop geometry, a split fixed-gantry
+beam with a provisional J1 tongue/socket, rail-seat datum concepts, a ribbed
+moving bed, service cartridges, a full review assembly, temporary STEP/STL
+exports, preliminary calculations, and a split BOM. Every mandatory printed
+part must be at or below 320 mm in both build-plate axes, preferably at or
+below 300 mm, with explicit orientation and process notes. Fasteners provide
+preload; printed geometry provides location and shear transfer.
+
+Phase 4 geometry remains PRELIMINARY. Actual rail, screw, bearing, motor,
+spindle, insert, switch, controller, probe, workholding, and PETG coupon
+dimensions remain unresolved. Phase 4 acceptance, manufacturing release, and
+Phase 5 are not authorized.
 
 ## Scope exclusions for this iteration
 
-- No detailed CNC part geometry.
+- No manufacturing-ready CNC part geometry; Phase 4 review geometry is
+  explicitly preliminary.
 - No production STEP, STL, or drawing export.
 - No final vendor rail, screw, spindle, motor, controller, workholding, or
-  probing selection; only preliminary motion component classes and reference
-  envelopes are recorded.
+  probing selection; only preliminary motion component classes, reference
+  envelopes, and concept interfaces are recorded.
+- No final insert pilot/OD/length dimensions, production fastener pattern, or
+  Phase 5 work.
 - No unverified accuracy, repeatability, deflection, feed-rate, or runout claims.

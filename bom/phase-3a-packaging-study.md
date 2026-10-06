@@ -20,5 +20,6 @@ items needed to decide whether the compact packaging envelopes are serviceable.
 | PETG rail-seat/bearing-pocket/motor-pocket/insert-joint coupons | Test set | Measure creep, insert pull-out, preload retention, edge damage, tool access, and service replacement | Required evidence |
 
 No item above authorizes production quantities, final supplier selection, or
-detailed printed structural parts. Production procurement remains a Phase 4
-decision.
+detailed printed structural parts. The Phase 4 preliminary BOM now separates
+sample/coupon purchases from wait-for-measurement items; production
+procurement remains a later release decision.

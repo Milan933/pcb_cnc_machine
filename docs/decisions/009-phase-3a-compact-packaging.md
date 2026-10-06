@@ -2,17 +2,18 @@
 
 - **Record ID:** EDR-009
 - **Phase:** 3A - compact packaging optimization
-- **Status:** proposed / owner review required
+- **Status:** owner-accepted P2 packaging baseline; physical evidence open
 - **Date:** 2026-10-06
 - **Owner:** project owner / project team
 - **Architecture input:** EDR-006 and EDR-007; Architecture A remains the baseline
 - **Motion input:** EDR-008; component classes remain the current technical baseline
 
-## Decision proposed for owner review
+## Owner-accepted packaging baseline
 
-Carry **P2 - balanced compact/serviceable** as the next packaging review
-baseline, with P1 as the serviceability fallback and P3 as an aggressive
-comparison only. Do not begin Phase 4.
+Carry **P2 - balanced compact/serviceable** as the accepted Phase 3A
+packaging baseline, with P1 as the serviceability fallback and P3 as an
+aggressive comparison only. Begin Phase 4 preliminary structural concept work
+under EDR-011.
 
 P2 is a 364 x 356 x 276 mm review body with a 444 x 428 x 322 mm service
 footprint. It preserves the 200 x 150 mm PCB area and 220 x 170 x 40 mm
@@ -109,7 +110,7 @@ a new transmission or architecture decision.
 - [x] Bed, motor, spindle, tool, limit, bearing, and Z-stack review envelopes added.
 - [x] Dependency-light tests pass.
 - [x] Pinned build123d review exports pass containment and interference checks.
-- [ ] Owner selects a packaging variant.
+- [x] Owner selects and accepts P2 as the packaging baseline on 2026-10-06.
 - [ ] Full-travel assembly and service-access mock-up passes.
 - [ ] PETG rail-seat, bearing-pocket, fastener, and motor-pocket coupons pass.
 - [ ] Actual insert family measured; pilot, insertion depth, clearance, tool
@@ -119,6 +120,9 @@ a new transmission or architecture decision.
 
 ## Gate
 
-EDR-009 remains **proposed**. The Phase 3A packaging gate is not accepted,
-Phase 3 is not frozen, and Phase 4 must not begin until the owner reviews the
-variant and the missing evidence.
+The owner accepted EDR-009 and selected P2 on 2026-10-06. The baseline is
+accepted for Phase 4 preliminary structural concept work, not as a
+manufacturing freeze. Exact hardware, full-travel/service mock-up, PETG
+coupons, measured spindle/motor/switch/bearing/screw dimensions, and
+workholding evidence remain open. Phase 4 acceptance, production exports, and
+Phase 5 remain blocked.

@@ -1,10 +1,11 @@
 # Phase 3A - compact packaging optimization
 
-**Status:** proposed owner review; Phase 3 gate remains open
+**Status:** owner-accepted P2 baseline; physical evidence and Phase 4 review gate remain open
 
-Phase 3A is a packaging review around the technically accepted Phase 3 motion
-classes. It does not authorize Phase 4, detailed PETG parts, production
-STEP/STL, exact hardware purchase, or motion-system class changes.
+Phase 3A is a packaging review around the owner-accepted Phase 3 motion
+classes. P2 is the accepted packaging baseline for Phase 4 preliminary
+structural concept work. It does not authorize manufacturing-ready PETG parts,
+production STEP/STL, exact hardware purchase, or motion-system class changes.
 
 ## Requirements
 
@@ -24,7 +25,7 @@ STEP/STL, exact hardware purchase, or motion-system class changes.
 | REQ-PKG-012 | Apply the owner-directed PETG fastening strategy: heat-set inserts by default, M3/M4/M5 hierarchy, fastener preload separated from printed geometric location/shear transfer, and selective justified through-bolts. | Central parameters, skill rules, and `cad/fastening.py` review checks |
 | REQ-PKG-013 | Seat the gantry crossmember mechanically with a tongue-and-groove, stepped socket, keyed pocket, shoulder, or interlocking rib; screws clamp the seat and do not provide sole location. | Review-only interface screen; production geometry and joint evidence remain open |
 | REQ-PKG-014 | Keep insert OD, length, pilot, insertion depth, screw clearance, boss wall, edge distance, direction, and soldering-iron/tool access explicit; do not freeze supplier-dependent pilot dimensions before measurement and coupons. | `PHASE3A_FASTENER_STRATEGY`; report remains not-ready |
-| REQ-PKG-015 | Prefer structural-part XY dimensions <=300 mm, use <=320 mm as the conservative maximum, and preserve replacement access for motion, spindle, limit, probe, and moving-bed hardware. | PETG requirements, interface screens, and service mock-up required |
+| REQ-PKG-015 | Prefer structural-part XY dimensions <=300 mm, use <=320 mm as the conservative maximum, and preserve replacement access for motion, spindle, limit, probe, and moving-bed hardware. | Phase 4 preliminary decomposition and service mock-up required |
 
 ## Frozen versus variable inputs
 
@@ -41,6 +42,8 @@ not measured manufacturing facts.
 
 ## Gate boundary
 
-Phase 3A may be accepted only after owner selection of a variant and a full
-travel/service mock-up. Phase 4 BOM finalization, detailed structural CAD, and
-manufacturing exports remain blocked.
+The owner selected and accepted P2 on 2026-10-06. Phase 3A physical evidence
+remains open, and Phase 4 is limited to preliminary structural concept CAD,
+review calculations, print planning, and a preliminary safe-to-buy/wait BOM.
+Manufacturing-ready geometry, production exports, final insert dimensions, and
+Phase 5 remain blocked.

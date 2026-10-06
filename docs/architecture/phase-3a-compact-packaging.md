@@ -97,25 +97,28 @@ and homing/limit wiring is protected.
 
 The intended additive packaging is a structural monocoque/bound with bearing
 pockets, motor recesses, heat-set insert bosses connected to ribs, rail-seat
-shoulders, and removable hardware covers. The current skeleton does not model
-those details. The largest future packaging print screens are P1 340 x 80 x
-170 mm, P2 330 x 72 x 155 mm, and P3 320 x 68 x 145 mm. The practical project
-rule prefers structural-part XY dimensions at or below 300 mm and uses 320 mm
-as the conservative maximum, so P1/P2 require explicit split/orientation and
-service review before any production part decision. A one-piece or
-near-one-piece fixed-gantry torsion box remains a packaging target, not an
-approval; indexed PETG interfaces are the fallback where the print boundary or
-service path requires modularity.
+shoulders, and removable hardware covers. The old packaging screens were P1
+340 x 80 x 170 mm, P2 330 x 72 x 155 mm, and P3 320 x 68 x 145 mm. A 330 mm
+future structural print is not automatically printable: the owner requires
+mandatory PETG structural parts at or below 320 mm in either build-plate axis,
+preferably at or below 300 mm. Phase 4 therefore decomposes the P2 concept so
+no mandatory part exceeds 320 mm; the two 300 mm Y rail carriers require
+explicit printer conditioning, datum inspection, and service review. A
+one-piece or near-one-piece fixed-gantry torsion box remains a packaging
+target, not an approval; indexed PETG interfaces are the chosen fallback where
+the print boundary or service path requires modularity.
 
 The review-level fastening contract is implemented in
 `cad/parameters.py` and checked by `cad/fastening.py`. Exact insert OD,
 length, pilot, insertion-depth, and screw-clearance values remain unresolved
 until the actual inserts are measured and coupon-tested.
 
-## Gate recommendation
+## Gate disposition and next phase
 
-Do not accept the Phase 3A gate yet. The owner should select P1/P2/P3 after a
-full-travel assembly mock-up and service-access review. The CAD and dependency-
-light checks pass, but exact motors, spindle, switches, bearing fits, screw
-straightness, PETG creep/rail-seat behavior, and workholding remain unverified.
-Phase 4 remains explicitly blocked.
+The owner accepted P2 as the Phase 3A packaging baseline on 2026-10-06 and
+authorized Phase 4 preliminary structural concept work under EDR-011. The CAD
+and dependency-light checks pass, but the physical full-travel/service
+evidence package remains open. Exact motors, spindle, switches, bearing fits,
+screw straightness, PETG creep/rail-seat behavior, and workholding remain
+unverified. Phase 4 acceptance, manufacturing release, and Phase 5 remain
+blocked.

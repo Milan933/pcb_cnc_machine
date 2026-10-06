@@ -94,9 +94,9 @@ unverified; PETG coupons and representative 5 N force-loop tests remain open.
 
 ## Phase 3 disposition boundary
 
-Phase 3 motion selection is authorized under proposed EDR-008. The following
-remain open and block motion freeze, Phase 4 BOM finalization, and detailed
-structural CAD:
+The owner accepted the Phase 3 motion-class baseline under EDR-008. The
+following remain open and block motion freeze, Phase 4 acceptance, and
+manufacturing-ready geometry, but do not block preliminary Phase 4 review:
 
 24. Which owned NEMA17 motor models, shaft lengths, rated current, holding
     torque, and torque-speed curves are available?
@@ -115,12 +115,12 @@ structural CAD:
 
 ## Phase 3A packaging disposition boundary
 
-Phase 3A keeps the motion classes as the current technical baseline but does
-not accept the packaging gate. The following packaging questions are now
-explicit:
+The owner accepted P2 as the Phase 3A packaging baseline under EDR-009. The
+following packaging questions remain explicit for physical evidence and Phase
+4 acceptance:
 
-31. Does the owner select P1, P2, or P3 after reviewing full travel, assembly,
-    service access, and the P3 reduced XY margin?
+31. Does P2 retain sufficient full-travel, assembly, service, and workholding
+    margin after measured hardware is installed, or is P1 needed as fallback?
 32. Do the corrected P1/P2/P3 rail lengths physically clear both carriage
     blocks at every end of travel with measured supplier tolerances?
 33. Does the P2 front Y motor pocket retain the calculated bed underside gap
@@ -132,13 +132,13 @@ explicit:
 36. Does a one-piece or near-one-piece fixed-gantry torsion box fit the Voron
     350 with its actual orientation, brim, insert, and rail-seat requirements?
 37. Do exact spindle, switch, cable, and motor envelopes invalidate any P2
-    clearance before detailed structural CAD is authorized?
+    clearance before manufacturing-ready structural geometry is authorized?
 
 ## PETG fastening and modularity disposition boundary
 
 The owner-directed fastening strategy is now the working rule for Phase 3A
-review interfaces. These questions remain open before any reusable interface
-is frozen for manufacture:
+and Phase 4 review interfaces. These questions remain open before any reusable
+interface is frozen for manufacture:
 
 38. Which actual M3, M4, and conditionally justified M5 heat-set insert
     families will be selected, and what are their measured OD, length, pilot,
@@ -151,8 +151,33 @@ is frozen for manufacture:
     consequence review?
 41. What boss wall, edge distance, and soldering-iron/tool-access acceptance
     values will replace the current preliminary interface screens?
-42. Which P1/P2/P3 structural parts at or above 300 mm will be split using
-    indexed PETG interfaces, and where will selective through-bolts be used?
+42. Do the Phase 4 indexed splits, especially the J1 beam and 300 mm Y rail
+    carriers, pass printability and service review, and where are selective
+    through-bolts justified?
 43. Does the complete motor, rail, carriage, screw/nut, bearing, spindle,
     limit, probe-wiring, and moving-bed service path remain replaceable without
     destroying the printed structure?
+
+## Phase 4 structural-concept disposition boundary
+
+The owner accepted the Phase 3 motion baseline and P2 Phase 3A packaging
+baseline on 2026-10-06 and authorized preliminary structural CAD review. The
+following questions remain open before Phase 4 acceptance or manufacturing
+release:
+
+44. Which actual MGN12/MGN9 rails, T8 screws/nuts, fixed/floating bearings,
+    couplers, motors, spindle, switches, probe, and fasteners fit the P2
+    reference geometry after measurement?
+45. Does the 29-part decomposition print on the actual Voron 2.4 350 with
+    acceptable warp, bridge quality, datum conditioning, and layer-load
+    orientation, especially the 300 mm Y rail carriers?
+46. Does J1 deep tongue/socket outperform J2 and J3 after PETG shear, creep,
+    clamp-preload, insertion, and repeated-disassembly coupons?
+47. Can all printed rail seats be shimmed, skimmed, or fitted with a
+    replaceable reference strip to meet parallelism and carriage-preload needs?
+48. Does the moving bed retain the PCB datum and workholding under full Y
+    sweep, spoilboard replacement, cable drag, and thermal conditioning?
+49. Does the measured 5 N tool-point test support the separated beam,
+    tower/joint, X/Z, base, rail-seat, and moving-bed compliance screen?
+50. Does owner review accept the preliminary structural concept, or require a
+    revised split, joint, bed, tower, or rail-seat strategy before Phase 5?

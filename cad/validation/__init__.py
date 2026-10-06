@@ -32,6 +32,11 @@ from .phase3a import (
     check_phase3a_packaging_variant,
     phase3a_gate_report,
 )
+from .phase4 import (
+    check_phase4_assembly,
+    check_phase4_structural_parameters,
+    phase4_gate_report,
+)
 
 __all__ = [
     "AxisCapacity",
@@ -54,6 +59,9 @@ __all__ = [
     "check_phase3a_model_containment",
     "check_phase3a_packaging_variant",
     "phase3a_gate_report",
+    "check_phase4_assembly",
+    "check_phase4_structural_parameters",
+    "phase4_gate_report",
     "check_fastener_interface",
     "check_fastening_strategy",
     "check_phase3a_fastener_interfaces",

@@ -9,7 +9,10 @@ The Phase 3A packaging sample boundary is
 measurements and coupons needed to review compact packaging; it is not a Phase
 4 production BOM.
 
-The Phase 4 BOM will finalize purchased parts, printed parts, consumables, and
-unresolved candidates after exact hardware and interfaces are measured. Every
-line should include quantity, description, status, source or specification,
-and the decision record that justifies it.
+The Phase 4 preliminary structural BOM boundary is
+[phase-4-preliminary-structural-bom.md](phase-4-preliminary-structural-bom.md).
+It separates safe sample/coupon purchases from items that must wait for actual
+hardware measurements, physical evidence, or owner review. It is not a
+production BOM. Every future production line should include quantity,
+description, status, source or specification, and the decision record that
+justifies it.

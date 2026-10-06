@@ -18,9 +18,9 @@ Use the following principle throughout the project:
 > creep, preload, or joint moment capacity makes them necessary.
 
 This direction is incorporated into the central parameter model, project
-skills, requirements, and the Phase 3A review-only validation layer. It does
-not accept the Phase 3A packaging gate, authorize production structural CAD,
-or begin Phase 4.
+skills, requirements, the Phase 3A validation layer, and the Phase 4
+preliminary structural concept. It authorizes review-level structural
+interfaces but not production structural CAD or manufacturing release.
 
 ## Standard hierarchy and interface rules
 
@@ -81,6 +81,7 @@ Required before a production interface is released:
 
 ## Decision boundary
 
-EDR-010 is a working owner direction, not physical acceptance. The exact
+EDR-010 remains a working owner direction, not physical acceptance. The exact
 insert family, structural split locations, and any through-bolt exceptions
-remain open questions. Phase 3A remains proposed and Phase 4 remains blocked.
+remain open questions. It applies to the owner-accepted P2 baseline and the
+Phase 4 preliminary concept; production interface release remains blocked.

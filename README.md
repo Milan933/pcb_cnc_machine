@@ -5,13 +5,14 @@ isolation routing, drilling, and outline cutting.
 
 ## Project status
 
-This repository is in Phase 3A: compact packaging review. Phase 1 and the
-Architecture A baseline are accepted by the project owner, and the Phase 3
-motion classes are the current technical baseline. The current deliverable
-contains the Phase 2A structural comparison, motion component trade, P1/P2/P3
-packaging study, preliminary calculations, and review-only motion/packaging
-skeletons. It still contains no detailed printable CNC parts or production
-STEP or STL files.
+This repository is in Phase 4: preliminary structural CAD concept review.
+Phase 1, the Architecture A baseline, the Phase 3 motion baseline, and the P2
+Phase 3A packaging baseline are accepted by the project owner. The current
+deliverable contains the Phase 2A structural comparison, motion component
+trade, P1/P2/P3 packaging study, 29 preliminary PETG structural concept parts,
+the P2 review assembly, joint/rail-seat studies, preliminary calculations, and
+review-only STEP/STL exports generated outside the repository. It contains no
+manufacturing-ready parts or production release files.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -31,8 +32,8 @@ boundaries are documented in
 
 The preliminary CAD recommendation is build123d. That recommendation is
 recorded in [the CAD technology decision](docs/decisions/002-cad-technology.md)
-and was exercised by the Phase 2 architecture-only spike; Phase 5 approval is
-still required.
+and was exercised by the Phase 2 architecture-only spike. Phase 4 uses the
+pinned build123d environment for review geometry only; Phase 5 has not begun.
 
 ## Design intent
 
@@ -77,12 +78,14 @@ printer.
   owner-authorized motion-system screening requirements and evidence boundary.
 - [Phase 3A packaging](requirements/phase-3a-packaging.md): compact packaging
   requirements, swept-travel rule, and gate boundary.
+- [Phase 4 structural concept](requirements/phase-4-structural-concept.md):
+  preliminary PETG force-loop, printability, serviceability, and review gate.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture, Phase 2
   trade study, Phase 2A structural comparison and physical-validation plan,
-  Phase 3 motion selection, Phase 3A compact packaging, force loops, skeleton
-  spike, and review views.
+  Phase 3 motion selection, Phase 3A compact packaging, Phase 4 structural
+  concept, force loops, skeleton spike, and review views.
 - [docs/decisions](docs/decisions): engineering decision records.
 - [bom/phase-3-motion-bom.md](bom/phase-3-motion-bom.md): sample-only motion
   class BOM and purchase boundary.
@@ -90,9 +93,9 @@ printer.
   sample-characterization boundary for compact packaging.
 - [.agents/skills](.agents/skills): project-specific engineering skills.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
-  set, including Phase 2, Phase 3, Phase 3A review-layout inputs, and the
-  owner-directed PETG insert/interface contract; it contains no detailed part
-  geometry.
+  set, including Phase 2, Phase 3, Phase 3A review-layout inputs, the Phase 4
+  structural part/interface contracts, and the owner-directed PETG insert
+  strategy.
 - [cad/fastening.py](cad/fastening.py): dependency-light PETG interface checks
   for boss material, edge distance, access, geometric shear transfer, M5, and
   through-bolt justification.
@@ -119,11 +122,12 @@ Every important value or decision must be marked as one of:
 ## Near-term next step
 
 Review proposed
-[EDR-009](docs/decisions/009-phase-3a-compact-packaging.md), select a
-packaging variant, and perform the full-travel/service mock-up. The unresolved
-spindle, controller, motor, exact rail/screw, probing, workholding, and
-physical-test questions remain visible. Phase 4 BOM finalization and detailed
-structural CAD do not begin automatically.
+[EDR-011](docs/decisions/011-phase-4-preliminary-structural-concept.md),
+inspect the temporary Phase 4 STEP/STL exports, measure the actual P2 hardware,
+and run the named PETG/joint/rail-seat/service mock-ups. The unresolved
+spindle, controller, motor, exact rail/screw, insert, probing, workholding,
+and physical-test questions remain visible. Phase 5 and manufacturing release
+do not begin automatically.
 
 ## Development interface
 
@@ -153,3 +157,8 @@ The Phase 3A packaging study uses the same external environment and is run
 with:
 
     python -m tools.run_phase3a_packaging_study --output-dir <temporary-directory>
+
+The Phase 4 preliminary structural study uses the pinned environment and
+exports only to a temporary directory:
+
+    python -m tools.run_phase4_preliminary_study --output-dir <temporary-directory>

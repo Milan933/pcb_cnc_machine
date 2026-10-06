@@ -116,7 +116,7 @@ def run(output_dir: Path) -> dict[str, object]:
         }
     return {
         "phase": "3A-compact-packaging-optimization",
-        "status": "proposed-owner-review",
+        "status": "owner-accepted-p2-baseline",
         "units": "mm, mm/min, rpm unless noted",
         "parameter_validation_status": parameter_report.status.value,
         "parameter_validation_blocking": len(parameter_report.blocking_issues),
@@ -125,7 +125,8 @@ def run(output_dir: Path) -> dict[str, object]:
         "gate_status": gate_report.status.value,
         "gate_blocking_evidence_items": len(gate_report.blocking_issues),
         "variants": variants,
-        "phase4_started": False,
+        "phase4_started": True,
+        "phase4_status": "preliminary-structural-concept-owner-review",
     }
 
 

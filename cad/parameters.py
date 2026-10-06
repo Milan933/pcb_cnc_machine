@@ -1,8 +1,9 @@
 """Central project parameters for the requirements and architecture stages.
 
-This module contains controlled planning inputs only. The Phase 2 values are
-parametric skeleton inputs and do not define detailed printable parts or
-claim that preliminary targets are final dimensions.
+This module contains controlled planning inputs and Phase 4 preliminary
+structural part/interface contracts. The Phase 2/3 values remain parametric
+skeleton inputs, and the Phase 4 records do not define manufacturing-ready
+parts or claim that preliminary targets are final dimensions.
 """
 
 from __future__ import annotations
@@ -1401,5 +1402,241 @@ PHASE3A_FASTENER_INTERFACE_SCREENS = (
         serviceable=True,
         size_justification="Use M5 only after load, creep, preload, and joint-moment evidence shows M4 is inadequate.",
         notes="Screening example only; this is not a selected production joint.",
+    ),
+)
+
+
+@dataclass(frozen=True)
+class Phase4PrintPartParameter:
+    """Preliminary printable-part contract for the Phase 4 concept."""
+
+    part_id: str
+    title: str
+    role: str
+    nominal_bbox_mm: tuple[float, float, float]
+    print_orientation: str
+    print_orientation_extents_mm: tuple[float, float, float]
+    support_requirement: str
+    brim_requirement: str
+    warping_risk: str
+    layer_load_concern: str
+    notes: str
+    status: ParameterStatus = ParameterStatus.PRELIMINARY
+    mandatory: bool = True
+
+
+@dataclass(frozen=True)
+class Phase4RailSeatParameter:
+    """Preliminary rail-seat interface and alignment method."""
+
+    seat_id: str
+    axis: str
+    rail_reference_length_mm: float
+    supported_length_mm: float
+    seat_width_mm: float
+    seat_height_mm: float
+    datum_strategy: str
+    alignment_method: str
+    post_process: str
+    status: ParameterStatus = ParameterStatus.PRELIMINARY
+
+
+@dataclass(frozen=True)
+class GantryJointConceptParameter:
+    """Qualitative comparison record for the Phase 4 gantry joint study."""
+
+    concept_id: str
+    title: str
+    load_transfer: str
+    torsional_transfer: str
+    creep_risk: str
+    insert_loading: str
+    assembly: str
+    disassembly_repeatability: str
+    printability: str
+    provisional_score: float
+    selected: bool
+    notes: str
+
+
+@dataclass(frozen=True)
+class Phase4StructuralParameters:
+    """Central inputs for the preliminary P2 structural concept."""
+
+    reference_variant_id: str
+    machine_envelope_mm: tuple[float, float, float]
+    machine_min_z_mm: float
+    machine_max_z_mm: float
+    service_footprint_mm: tuple[float, float, float]
+    preferred_structural_xy_mm: float
+    conservative_structural_xy_mm: float
+    base_top_z_mm: float
+    gantry_tower_x_centers_mm: tuple[float, float]
+    gantry_tower_width_mm: float
+    gantry_tower_depth_mm: float
+    gantry_beam_bottom_z_mm: float
+    gantry_beam_height_mm: float
+    gantry_beam_depth_mm: float
+    gantry_outer_width_mm: float
+    gantry_clear_span_mm: float
+    moving_bed_support_mm: tuple[float, float, float]
+    spoilboard_mm: tuple[float, float, float]
+    spindle_screen_diameter_mm: float
+    spindle_screen_overhang_mm: float
+    petg_density_kg_per_mm3: float
+    test_load_n: float
+    effective_petg_modulus_n_per_mm2: float
+    effective_petg_poisson_ratio: float
+    gantry_beam_section_mm: tuple[float, float, float]
+    tower_support_length_mm: float
+    tower_effective_second_moment_mm4: float
+    gantry_joint_stiffness_n_per_mm: float
+    xz_structure_stiffness_n_per_mm: float
+    base_stiffness_n_per_mm: float
+    rail_seat_stiffness_n_per_mm: float
+    moving_bed_stiffness_n_per_mm: float
+    racking_rotational_stiffness_nmm_per_rad: float
+    tool_point_overhang_mm: float
+    print_parts: tuple[Phase4PrintPartParameter, ...]
+    rail_seats: tuple[Phase4RailSeatParameter, ...]
+    joint_concepts: tuple[GantryJointConceptParameter, ...]
+    serviceable_components: tuple[str, ...]
+    assembly_sequence: tuple[str, ...]
+    evidence_status: ParameterStatus = ParameterStatus.PRELIMINARY
+
+
+def _phase4_part(
+    part_id: str,
+    title: str,
+    role: str,
+    bbox: tuple[float, float, float],
+    orientation: str,
+    support: str,
+    brim: str,
+    warping: str,
+    layer_load: str,
+    notes: str,
+    *,
+    orientation_extents: tuple[float, float, float] | None = None,
+    mandatory: bool = True,
+) -> Phase4PrintPartParameter:
+    return Phase4PrintPartParameter(
+        part_id=part_id,
+        title=title,
+        role=role,
+        nominal_bbox_mm=bbox,
+        print_orientation=orientation,
+        print_orientation_extents_mm=bbox if orientation_extents is None else orientation_extents,
+        support_requirement=support,
+        brim_requirement=brim,
+        warping_risk=warping,
+        layer_load_concern=layer_load,
+        notes=notes,
+        mandatory=mandatory,
+    )
+
+
+PHASE4_STRUCTURAL_PARAMETERS = Phase4StructuralParameters(
+    reference_variant_id="P2",
+    machine_envelope_mm=(364.0, 356.0, 276.0),
+    machine_min_z_mm=-56.0,
+    machine_max_z_mm=220.0,
+    service_footprint_mm=(444.0, 428.0, 322.0),
+    preferred_structural_xy_mm=300.0,
+    conservative_structural_xy_mm=320.0,
+    base_top_z_mm=-20.0,
+    gantry_tower_x_centers_mm=(-142.0, 142.0),
+    gantry_tower_width_mm=54.0,
+    gantry_tower_depth_mm=90.0,
+    gantry_beam_bottom_z_mm=42.0,
+    gantry_beam_height_mm=90.0,
+    gantry_beam_depth_mm=90.0,
+    gantry_outer_width_mm=344.0,
+    gantry_clear_span_mm=280.0,
+    moving_bed_support_mm=(230.0, 180.0, 8.0),
+    spoilboard_mm=(230.0, 180.0, 12.0),
+    spindle_screen_diameter_mm=52.0,
+    spindle_screen_overhang_mm=50.0,
+    petg_density_kg_per_mm3=1.27e-6,
+    test_load_n=5.0,
+    effective_petg_modulus_n_per_mm2=2000.0,
+    effective_petg_poisson_ratio=0.35,
+    gantry_beam_section_mm=(90.0, 90.0, 6.0),
+    tower_support_length_mm=62.0,
+    tower_effective_second_moment_mm4=500000.0,
+    gantry_joint_stiffness_n_per_mm=1800.0,
+    xz_structure_stiffness_n_per_mm=1800.0,
+    base_stiffness_n_per_mm=3000.0,
+    rail_seat_stiffness_n_per_mm=2500.0,
+    moving_bed_stiffness_n_per_mm=4000.0,
+    racking_rotational_stiffness_nmm_per_rad=30000000.0,
+    tool_point_overhang_mm=50.0,
+    print_parts=(
+        _phase4_part("base_front_left", "base front left segment", "closed base perimeter", (150.0, 32.0, 36.0), "flat on the 150 x 32 mm XY face", "No support; closed box bridges are avoided.", "Optional brim", "medium at the long base edges", "Keep the base perimeter wall lines in-plane with front/rear shear.", "Indexed central split; M4 inserts clamp adjacent members."),
+        _phase4_part("base_front_right", "base front right segment", "closed base perimeter", (150.0, 32.0, 36.0), "flat on the 150 x 32 mm XY face", "No support; closed box bridges are avoided.", "Optional brim", "medium at the long base edges", "Keep the base perimeter wall lines in-plane with front/rear shear.", "Mirrors the left front segment; central seam is indexed."),
+        _phase4_part("base_rear_left", "base rear left segment", "closed base perimeter", (150.0, 32.0, 36.0), "flat on the 150 x 32 mm XY face", "No support; closed box bridges are avoided.", "Optional brim", "medium at the long base edges", "Rear member carries the opposite tower and electronics datum loads.", "Indexed central split; do not use a large flat base plate."),
+        _phase4_part("base_rear_right", "base rear right segment", "closed base perimeter", (150.0, 32.0, 36.0), "flat on the 150 x 32 mm XY face", "No support; closed box bridges are avoided.", "Optional brim", "medium at the long base edges", "Rear member carries the opposite tower and electronics datum loads.", "Mirrors the left rear segment; central seam is indexed."),
+        _phase4_part("base_left_side_member", "base left side member", "closed base side torsion member", (48.0, 236.0, 36.0), "long side member on its 48 x 236 mm footprint", "No support; inspect the closed-section cavity.", "Recommended", "medium-high over the 236 mm span", "Print layers should run along the side-member load path; avoid a weak upright seam.", "Connects front/rear perimeter and left tower foot."),
+        _phase4_part("base_right_side_member", "base right side member", "closed base side torsion member", (48.0, 236.0, 36.0), "long side member on its 48 x 236 mm footprint", "No support; inspect the closed-section cavity.", "Recommended", "medium-high over the 236 mm span", "Print layers should run along the side-member load path; avoid a weak upright seam.", "Connects front/rear perimeter and right tower foot."),
+        _phase4_part("base_y_rail_carrier_left", "left Y rail carrier", "rail-seat carrier", (28.0, 300.0, 22.0), "flat on the 28 x 300 mm datum face", "No support; rail datum face is upward.", "Required for a 300 mm part", "medium-high; measure long-axis curl", "Longitudinal layers and a supported shim/reference face are required.", "300 mm preferred-boundary part; the 16 mm rail pad sits on a 22 mm ribbed load-spreading envelope and supports the left MGN12 rail."),
+        _phase4_part("base_y_rail_carrier_right", "right Y rail carrier", "rail-seat carrier", (28.0, 300.0, 22.0), "flat on the 28 x 300 mm datum face", "No support; rail datum face is upward.", "Required for a 300 mm part", "medium-high; measure long-axis curl", "Longitudinal layers and a supported shim/reference face are required.", "300 mm preferred-boundary part; the 16 mm rail pad sits on a 22 mm ribbed load-spreading envelope and supports the right MGN12 rail."),
+        _phase4_part("base_center_tie", "base center tie", "closed transverse base tie", (252.0, 24.0, 30.0), "flat on the 252 x 24 mm XY face", "No support; use chamfered transitions at side joins.", "Optional", "low-medium", "Transverse shear should follow the layer plane and tie both rail carriers.", "Keeps the base closed without a full-area plate."),
+        _phase4_part("y_motor_service_pocket", "Y motor service pocket", "removable motor interface", (70.0, 38.0, 40.0), "flat on the 70 x 38 mm XY face", "No support; cover and tool access stay open.", "Optional", "medium", "Motor reaction should enter the front base member through ribs, not an isolated boss.", "M4 insert interface; removable front cover and coupler access."),
+        _phase4_part("y_fixed_bearing_cartridge", "Y fixed bearing cartridge", "replaceable axial bearing support", (52.0, 40.0, 38.0), "flat on the 52 x 40 mm XY face", "No support; bearing pocket is post-processed.", "Optional", "medium", "Axial screw load enters a rib-connected cartridge seat.", "Fixed-end cartridge; preload and bearing dimensions remain hardware-dependent."),
+        _phase4_part("y_floating_bearing_cartridge", "Y floating bearing cartridge", "replaceable radial bearing support", (52.0, 40.0, 34.0), "flat on the 52 x 40 mm XY face", "No support; radial-only seat.", "Optional", "medium", "Allow axial float and thermal/assembly movement.", "Floating-end cartridge; do not preload the radial-only support."),
+        _phase4_part("machine_foot_front_left", "front left machine foot", "base attachment and leveling interface", (40.0, 40.0, 15.0), "flat on the 40 x 40 mm XY face", "No support", "Optional", "low", "Load must spread into the base perimeter and not peel a single layer seam.", "Concept interface for rubber/metal foot hardware."),
+        _phase4_part("machine_foot_front_right", "front right machine foot", "base attachment and leveling interface", (40.0, 40.0, 15.0), "flat on the 40 x 40 mm XY face", "No support", "Optional", "low", "Load must spread into the base perimeter and not peel a single layer seam.", "Concept interface for rubber/metal foot hardware."),
+        _phase4_part("machine_foot_rear_left", "rear left machine foot", "base attachment and leveling interface", (40.0, 40.0, 15.0), "flat on the 40 x 40 mm XY face", "No support", "Optional", "low", "Load must spread into the base perimeter and not peel a single layer seam.", "Concept interface for rubber/metal foot hardware."),
+        _phase4_part("machine_foot_rear_right", "rear right machine foot", "base attachment and leveling interface", (40.0, 40.0, 15.0), "flat on the 40 x 40 mm XY face", "No support", "Optional", "low", "Load must spread into the base perimeter and not peel a single layer seam.", "Concept interface for rubber/metal foot hardware."),
+        _phase4_part("electronics_mount_rail", "electronics attachment rail", "optional service mounting interface", (180.0, 20.0, 20.0), "flat on the 180 x 20 mm XY face", "No support", "Optional", "low", "Keep electronics separate from the primary force loop and provide cable service slack.", "Optional rear attachment; controller and driver selections remain open."),
+        _phase4_part("gantry_tower_left", "left fixed gantry tower", "closed tower and base-to-beam force loop", (54.0, 90.0, 62.0), "upright with the 54 x 90 mm base on the print bed", "No support in the hollow box concept; inspect internal cavity.", "Recommended", "medium-high; upright thermal gradient risk", "Orient layers to keep tower-to-base shear in-plane; inspect the top shoulder.", "Closed hollow tower with broad base and beam socket; the 54 mm width leaves the full 230 mm moving-bed width between the tower throats."),
+        _phase4_part("gantry_tower_right", "right fixed gantry tower", "closed tower and base-to-beam force loop", (54.0, 90.0, 62.0), "upright with the 54 x 90 mm base on the print bed", "No support in the hollow box concept; inspect internal cavity.", "Recommended", "medium-high; upright thermal gradient risk", "Orient layers to keep tower-to-base shear in-plane; inspect the top shoulder.", "Mirrors the left tower; keep tower datums matched after conditioning and retain the 230 mm bed throat."),
+        _phase4_part("gantry_beam_left", "left X torsion-box beam segment", "split fixed gantry torsion box", (180.0, 122.0, 90.0), "flat or side-supported with the 180 x 122 mm rail-pad envelope", "No support in the closed section; bridge tests required.", "Optional", "medium-high; large section and central seam", "Layers should follow the X span; the tongue carries seam shear and the box carries bending/torsion.", "J1 deep tongue segment; M4 inserts clamp the joint. The 122 mm depth includes the front rail-seat pads."),
+        _phase4_part("gantry_beam_right", "right X torsion-box beam segment", "split fixed gantry torsion box", (172.0, 122.0, 90.0), "flat or side-supported with the 172 x 122 mm rail-pad envelope", "No support in the closed section; bridge tests required.", "Optional", "medium-high; large section and central seam", "Layers should follow the X span; the socket must retain its shoulder after conditioning.", "J1 grooved segment; actual insert pockets remain unresolved. The 122 mm depth includes the front rail-seat pads."),
+        _phase4_part("x_fixed_bearing_cartridge", "X fixed bearing cartridge", "replaceable X axial support", (38.0, 70.0, 48.0), "flat on the 38 x 70 mm XY face", "No support; use a post-processed bearing datum.", "Optional", "medium", "Axial reaction must enter the tower/beam ribs, not the flexible cover.", "Removable cartridge with M4 insert interface."),
+        _phase4_part("x_floating_bearing_cartridge", "X floating bearing cartridge", "replaceable X radial support", (38.0, 70.0, 48.0), "flat on the 38 x 70 mm XY face", "No support; radial-only bearing seat.", "Optional", "medium", "Keep axial float and service access independent of the coupler.", "Removable cartridge with radial-only support."),
+        _phase4_part("x_carriage_plate", "X carriage and Z-rail backplate", "moving X/Z interface", (90.0, 34.0, 130.0), "upright on the 90 x 34 mm base with the rail ribs vertical", "No support; chamfer/fillet tall edges.", "Recommended", "medium-high; tall plate must be conditioned flat", "Orient primary Z-guide reactions in-plane with the backplate and ribs.", "Carries dual MGN9 seats, Z screw support, and spindle force loop."),
+        _phase4_part("z_carriage_plate", "Z carriage plate", "moving spindle carriage", (90.0, 44.0, 100.0), "upright on the 90 x 44 mm base", "No support; open clamp surfaces.", "Recommended", "medium", "Keep spindle moment close to the guide plane; avoid a thin cantilever nose.", "Parametric spindle-interface carrier; not sized to a selected spindle."),
+        _phase4_part("z_fixed_bearing_support", "Z fixed bearing support", "replaceable Z axial support", (70.0, 50.0, 32.0), "flat on the 70 x 50 mm XY face", "No support; post-process bearing datum.", "Optional", "medium", "Axial Z load must close into the X carriage backplate ribs.", "Removable upper fixed-bearing cartridge concept."),
+        _phase4_part("z_motor_service_cartridge", "Z motor service cartridge", "replaceable Z motor and coupler pocket", (70.0, 50.0, 45.0), "flat on the 70 x 50 mm XY face", "No support; cover removal is required.", "Optional", "medium", "Motor/coupler loads are reacted by a closed pocket and not by a thin cover.", "Top service cartridge; exact motor body/shaft remains open."),
+        _phase4_part("spindle_mount_concept", "parametric spindle mount concept", "replaceable spindle interface", (80.0, 76.0, 40.0), "upright with the 80 x 76 mm clamp footprint", "No support for ring concept; validate bridging at clamp ears.", "Optional", "medium-high near spindle heat", "Keep clamp layers circumferential and provide thermal/cable clearance.", "52 mm maximum screening bore with replaceable clamp concept; no final spindle bore."),
+        _phase4_part("moving_bed_frame", "ribbed moving Y bed frame", "low-mass PCB/spoilboard support", (230.0, 180.0, 30.0), "flat on the 230 x 180 mm bed datum", "No support; perimeter/rib bridges are coupon-dependent.", "Recommended", "medium-high over the 230 mm span", "Orient the top datum skin and ribs to resist PCB support bending; spoilboard is replaceable.", "Perimeter beams, transverse ribs, Y-nut boss, and carriage pads; not a massive solid slab. The 30 mm concept height includes the dropped centered-nut service boss; the 8 mm bed support and 12 mm spoilboard remain separate interfaces."),
+    ),
+    rail_seats=(
+        Phase4RailSeatParameter("y_left_rail_seat", "Y", 310.0, 300.0, 28.0, 16.0, "integrated thick pad with replaceable shim/reference strip", "Set one rail against a printed shoulder, shim the opposite rail, then torque from the datum outward", "Skim/scrape or shim the reference face; measure parallelism over the full 300 mm support",),
+        Phase4RailSeatParameter("y_right_rail_seat", "Y", 310.0, 300.0, 28.0, 16.0, "paired pad and adjustable parallel datum", "Use the fixed datum rail as the master and match the second rail with a dial indicator", "Post-print skim/shim required; do not trust raw PETG coplanarity",),
+        Phase4RailSeatParameter("x_lower_rail_seat", "X", 340.0, 340.0, 32.0, 14.0, "beam-integrated lower pad with shoulder", "Align against the shoulder before tightening M3 rail screws", "Measure straightness; replaceable thin metal/shim strip remains an option",),
+        Phase4RailSeatParameter("x_upper_rail_seat", "X", 340.0, 340.0, 32.0, 14.0, "beam-integrated upper pad with 60 mm vertical datum", "Reference the lower rail, then set the 60 mm vertical spacing", "Measure height and parallelism; post-process the datum if required",),
+        Phase4RailSeatParameter("z_left_rail_seat", "Z", 130.0, 130.0, 14.0, 12.0, "X-carriage rib-integrated vertical pad", "Set the first rail against the backplate datum and match the second rail", "Skim/shim the vertical pad; verify 60 mm center spacing",),
+        Phase4RailSeatParameter("z_right_rail_seat", "Z", 130.0, 130.0, 14.0, 12.0, "paired vertical pad with adjustable shim face", "Use a gauge block or measured carriage spacing before final torque", "Post-process/shim; keep the spindle centerline close to the guide plane",),
+    ),
+    joint_concepts=(
+        GantryJointConceptParameter("J1", "deep tongue-and-groove / socket", "Deep axial tongue and captured socket carry primary shear and bending reaction.", "Broad interlock resists roll and torsional slip.", "Lowest relative slip risk; broad bearing area reduces local PETG creep.", "M4 inserts clamp preload; bosses are rib-connected.", "Requires indexed beam halves and a defined insertion direction.", "High if the tongue and datum shoulders are inspected.", "Medium; bridge and socket cleanup require coupons.", 4.5, True, "Selected provisionally because it gives the clearest geometry-first load path."),
+        GantryJointConceptParameter("J2", "stepped keyed shoulder", "Large stepped shoulder carries bending with a positive key for shear.", "Good torsion resistance but more dependent on shoulder fit.", "Medium; shoulder bearing remains broad.", "M4 inserts are loaded mainly in clamp, not shear.", "Simpler assembly and easier visual inspection.", "High when the step is repeatable; less captured than J1.", "High; simpler overhang and post-processing.", 4.1, False, "Strong fallback if J1 socket printability or cleaning fails."),
+        GantryJointConceptParameter("J3", "interlocking rib / shear-key joint", "Multiple ribs share shear and bending across a keyed interface.", "Good torsion resistance through distributed keys.", "Medium-low local slip risk but more interfaces can settle.", "More insert locations and local boss loading than J1/J2.", "Assembly order and key alignment are more demanding.", "Medium; repeated disassembly depends on matched keys.", "Medium; ribs and cleanup increase print risk.", 3.6, False, "Useful alternative if a split beam needs more distributed indexing."),
+    ),
+    serviceable_components=(
+        "NEMA17 motors",
+        "fixed and floating bearing cartridges",
+        "flexible couplers",
+        "T8 lead screws and anti-backlash nuts",
+        "MGN12 X/Y rails and carriages",
+        "MGN9 Z rails and carriages",
+        "spindle mount and spindle",
+        "limit switches",
+        "probe and moving-bed wiring",
+        "replaceable spoilboard",
+    ),
+    assembly_sequence=(
+        "condition and inspect printed base members; install machine feet",
+        "join indexed front/rear base segments and fit side members",
+        "install Y rail carriers, datum strips, fixed/floating Y cartridges, and centered screw",
+        "install Y motor pocket, coupler, motor, and moving-bed rail/carriage set",
+        "install gantry towers and verify tower-to-base shoulders",
+        "assemble and insert the J1 split X beam; clamp M4 inserts after the socket seats",
+        "align X rail seats, install X rails/carriages, and fit X fixed/floating cartridges",
+        "install X carriage/Z backplate, Z rails, Z screw supports, motor cartridge, and coupler",
+        "install spindle mount, limits, probe brackets, electronics rail, and service covers",
+        "install spoilboard/workholding, verify full travel, then perform datum and clearance checks",
     ),
 )

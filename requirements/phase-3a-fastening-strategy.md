@@ -2,7 +2,9 @@
 
 **Status:** owner-directed strategy applied to review interfaces; physical
 insert, coupon, and joint evidence remain open. This document does not accept
-the Phase 3A gate, authorize detailed production CAD, or begin Phase 4.
+production CAD, or authorize manufacturing release. It is the working
+fastening strategy for the owner-accepted P2 baseline and Phase 4 preliminary
+structural concept.
 
 ## Core principle
 
@@ -90,4 +92,5 @@ dependency-light checks:
 The report status remains `not-ready` until actual insert dimensions and
 representative PETG coupon results exist, even when review-level geometric
 rules pass. The Phase 3A packaging runner reports this status alongside its
-review-only STEP/STL containment results. Phase 4 remains blocked.
+review-only STEP/STL containment results. Phase 4 preliminary structural
+concept work is authorized, but production interfaces remain blocked.

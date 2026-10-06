@@ -176,13 +176,13 @@ def phase3_gate_report(
         "measured spindle diameter, mass, runout, cable exit, and tool retention",
         "measured rail preload/play and PETG rail-seat coupon result",
         "backlash, axial-play, repeatability, missed-step, and homing test records",
-        "owner review of proposed EDR-008",
+        "physical motion evidence and owner confirmation of any changes to the accepted EDR-008 baseline",
     ):
         report.add(
             _issue(
                 "VAL-PHASE3-EVIDENCE",
                 ValidationStatus.NOT_READY,
-                f"Required before motion freeze: {evidence}.",
+                f"Required before motion freeze and physical evidence closure: {evidence}.",
             )
         )
     if not parameters.physical_motion_tests:

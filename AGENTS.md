@@ -8,19 +8,18 @@ fixed gantry with moving Y bed** baseline. B, moving gantry/fixed bed, remains
 the documented primary rejected alternative and must not be physically built
 unless the owner reopens the architecture.
 
-Phase 3 motion-system selection is authorized. Phase 3A compact packaging
-optimization is also authorized around the current motion-class baseline. Work
-may select and dimension component classes, document rail/screw/bearing/
-motor/controller interfaces, add preliminary calculations, compare packaging
-variants, and build deterministic review-only motion/packaging skeletons. It
-must not silently turn a preliminary or calculated value into a measured
-engineering fact.
+The owner accepted the Phase 3 motion baseline and the P2 Phase 3A packaging
+baseline on 2026-10-06. Phase 4 preliminary structural CAD is now authorized
+under proposed EDR-011. Work may create parametric PETG structural concept
+parts, a complete review assembly, joint and rail-seat studies, preliminary
+calculations, print planning, and a split preliminary BOM. It must not silently
+turn a preliminary or calculated value into a measured engineering fact.
 
-The current Phase 3/3A boundary does not authorize detailed printable
-structural parts, production CAD, manufacturing STL/STEP/drawing generation,
-Phase 4 BOM finalization, or acceptance of EDR-008/EDR-009. Review-only CAD
-exports must remain temporary. PETG coupons, joint/rail-seat/bearing-pocket
-tests, and representative force-loop evidence remain required.
+The Phase 4 boundary does not authorize manufacturing-ready CAD, production
+STL/STEP/drawing generation, final insert pilot dimensions, final vendor
+dimensions, or Phase 5. Review-only CAD exports must remain temporary. PETG
+coupons, joint/rail-seat/bearing-pocket tests, actual hardware measurements,
+service mock-ups, and representative force-loop evidence remain required.
 
 ## Canonical public repository
 
@@ -96,6 +95,11 @@ Never repair a contradiction by changing a lower-level file silently.
   3 extension may add nominal rails, carriages, screws, nuts, bearing-support,
   coupler, motor, spindle, and bed envelopes, but it remains a review-only
   reference model and is not a manufacturing model.
+- Phase 4 structural parts remain PRELIMINARY concepts. Every mandatory PETG
+  part must stay at or below 320 mm in both build-plate axes, preferably at or
+  below 300 mm, and must document orientation, support, brim/warping, and
+  layer/load concerns. Geometry provides location and shear; fasteners provide
+  preload.
 
 ## Coordinate convention
 

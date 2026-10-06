@@ -1,6 +1,6 @@
 # Phase 3 motion-system requirements and screening baseline
 
-This document records the owner-authorized Phase 3 screening baseline for the
+This document records the owner-accepted Phase 3 screening baseline for the
 accepted **Architecture A: fixed gantry with moving Y bed**. It selects
 component classes for a review layout; it does not freeze a supplier, preload,
 exact length, spindle, motor, controller revision, or printed interface.
@@ -40,5 +40,7 @@ The equations, parameter integrity checks, and nominal motion-layout skeleton
 are complete. The Phase 3 gate is intentionally **not ready** until the exact
 owned motors and controller are identified, representative motion hardware is
 measured, the PETG rail-seat/joint coupons are evaluated, and the motion tests
-listed in `cad/parameters.py` are recorded. This is not a claim of machine
-accuracy or an acceptance of EDR-008.
+listed in `cad/parameters.py` are recorded. The owner accepted the motion
+baseline on 2026-10-06; this is not a claim of machine accuracy or measured
+motion performance. Phase 4 may use these classes as interface references,
+but may not freeze supplier-dependent geometry.

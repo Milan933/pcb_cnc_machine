@@ -1,6 +1,6 @@
 # Phase 3 motion-system selection
 
-**Status:** proposed component-class baseline; owner review required
+**Status:** owner-accepted component-class baseline; physical evidence open
 **Date:** 2026-10-06
 **Architecture:** A — fixed PETG gantry with moving Y PCB bed
 **Decision record:** [EDR-008](../decisions/008-phase-3-motion-system.md)
@@ -13,13 +13,16 @@ rejected alternative and is not being physically built. This phase selects a
 complete preliminary motion layout before detailed structural CAD; it does not
 freeze detailed geometry or authorize production parts.
 
-The recommended reference layout is:
+The owner accepted this component-class baseline on 2026-10-06. The P2
+packaging record later corrected the review lengths to 340/310/130 mm rails and
+360/330/145 mm nominal screws; the motion classes and topology below are
+unchanged. The reference layout is:
 
 | Axis | Guide arrangement | Reference rail class | Screw lead class | Travel / reference length |
 | --- | --- | --- | --- | --- |
-| X | two rails, two long blocks per rail | MGN12H | T8x4 | 220 / 300 mm |
-| Y | two rails, two long blocks per rail | MGN12H | T8x4 | 170 / 280 mm |
-| Z | two rails, two long blocks per rail | MGN9H | T8x2 | 40 / 100 mm rail, 120 mm screw |
+| X | two rails, two long blocks per rail | MGN12H | T8x4 | 220 / 340 mm rail, 360 mm screw |
+| Y | two rails, two long blocks per rail | MGN12H | T8x4 | 170 / 310 mm rail, 330 mm screw |
+| Z | two rails, two long blocks per rail | MGN9H | T8x2 | 40 / 130 mm rail, 145 mm screw |
 
 The H blocks are long-block reference envelopes. The actual supplier, preload,
 rail straightness, end preparation, and fastener interface remain open until
