@@ -5,14 +5,16 @@ isolation routing, drilling, and outline cutting.
 
 ## Project status
 
-This repository is in Phase 4: preliminary structural CAD concept review.
+This repository is in Phase 4A: preliminary structural optimization owner
+review; Phase 4 and Phase 4A are not accepted.
 Phase 1, the Architecture A baseline, the Phase 3 motion baseline, and the P2
 Phase 3A packaging baseline are accepted by the project owner. The current
 deliverable contains the Phase 2A structural comparison, motion component
-trade, P1/P2/P3 packaging study, 29 preliminary PETG structural concept parts,
-the P2 review assembly, joint/rail-seat studies, preliminary calculations, and
-review-only STEP/STL exports generated outside the repository. It contains no
-manufacturing-ready parts or production release files.
+trade, P1/P2/P3 packaging study, the 29-part Phase 4 baseline, the O1/O2/O3
+Phase 4A comparison, the selected 19-part O2 review assembly, preliminary
+calculations, owner-review views, and temporary STEP/STL exports generated
+outside the repository. It contains no manufacturing-ready parts or production
+release files.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -80,17 +82,23 @@ printer.
   requirements, swept-travel rule, and gate boundary.
 - [Phase 4 structural concept](requirements/phase-4-structural-concept.md):
   preliminary PETG force-loop, printability, serviceability, and review gate.
+- [Phase 4A structural optimization](requirements/phase-4a-structural-optimization.md):
+  O1/O2/O3 comparison, selected O2 consolidation, print boundary, and
+  physical-evidence gate.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture, Phase 2
   trade study, Phase 2A structural comparison and physical-validation plan,
   Phase 3 motion selection, Phase 3A compact packaging, Phase 4 structural
-  concept, force loops, skeleton spike, and review views.
+  concept, Phase 4A optimization, force loops, skeleton spike, and review
+  views.
 - [docs/decisions](docs/decisions): engineering decision records.
 - [bom/phase-3-motion-bom.md](bom/phase-3-motion-bom.md): sample-only motion
   class BOM and purchase boundary.
 - [bom/phase-3a-packaging-study.md](bom/phase-3a-packaging-study.md):
   sample-characterization boundary for compact packaging.
+- [bom/phase-4a-preliminary-bom.md](bom/phase-4a-preliminary-bom.md):
+  preliminary O2 printed-part and hardware measurement boundary.
 - [.agents/skills](.agents/skills): project-specific engineering skills.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
   set, including Phase 2, Phase 3, Phase 3A review-layout inputs, the Phase 4
@@ -122,12 +130,12 @@ Every important value or decision must be marked as one of:
 ## Near-term next step
 
 Review proposed
-[EDR-011](docs/decisions/011-phase-4-preliminary-structural-concept.md),
-inspect the temporary Phase 4 STEP/STL exports, measure the actual P2 hardware,
-and run the named PETG/joint/rail-seat/service mock-ups. The unresolved
-spindle, controller, motor, exact rail/screw, insert, probing, workholding,
-and physical-test questions remain visible. Phase 5 and manufacturing release
-do not begin automatically.
+[EDR-012](docs/decisions/012-phase-4a-structural-optimization.md) and the
+selected O2 before/after package, inspect temporary Phase 4A STEP/STL exports,
+measure the actual P2 hardware, and run the named PETG/joint/rail-seat/service
+mock-ups. The unresolved spindle, controller, motor, exact rail/screw, insert,
+probing, workholding, and physical-test questions remain visible. Phase 5 and
+manufacturing release do not begin automatically.
 
 ## Development interface
 
@@ -162,3 +170,9 @@ The Phase 4 preliminary structural study uses the pinned environment and
 exports only to a temporary directory:
 
     python -m tools.run_phase4_preliminary_study --output-dir <temporary-directory>
+
+The Phase 4A optimization comparison uses the same pinned environment and
+exports only to a temporary directory:
+
+    python -m tools.run_phase4a_optimization --output-dir <temporary-directory>
+    python -m tools.generate_phase4a_owner_review

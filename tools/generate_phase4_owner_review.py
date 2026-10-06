@@ -78,6 +78,9 @@ PRIMARY_LOOP = {
     "moving_bed_frame",
 }
 
+JOINT_HIGHLIGHT_NAMES = {"gantry_beam_left", "gantry_beam_right"}
+REVIEW_BANNER = "PHASE 4 PRELIMINARY / REVIEW ONLY"
+
 SUBSYSTEM = {
     "base_front_left": "base load structure",
     "base_front_right": "base load structure",
@@ -299,7 +302,7 @@ def _item_for(component: Any, highlight: str = "normal", offset: Vec3 = (0.0, 0.
         if highlight == "force":
             base = (230, 74, 38) if name in PRIMARY_LOOP else (157, 167, 174)
         elif highlight == "joint":
-            base = (239, 87, 42) if name in {"gantry_beam_left", "gantry_beam_right"} else (176, 185, 190)
+            base = (239, 87, 42) if name in JOINT_HIGHLIGHT_NAMES else (176, 185, 190)
         edge = tuple(max(0, channel - 64) for channel in base)
         return RenderItem(name, component.shape, base, edge, offset, 2 if name in PRIMARY_LOOP else 1)
     base, edge = _reference_style(name)
@@ -393,7 +396,7 @@ def render_view(
 
     draw.rectangle((18, 16, width - 18, 62), fill=(30, 42, 51))
     draw.text((32, 28), title, fill=(245, 248, 249))
-    draw.text((width - 280, 29), "PHASE 4 PRELIMINARY / REVIEW ONLY", fill=(193, 205, 211))
+    draw.text((width - 280, 29), REVIEW_BANNER, fill=(193, 205, 211))
     legend_y = height - 54
     x = 28
     for label in legend:
