@@ -130,5 +130,6 @@ python -m tools.run_phase4_preliminary_study --output-dir <temporary-directory>
 ```
 
 The result is intentionally `not-ready` for physical evidence even when the
-automated review checks pass. Phase 4 acceptance, manufacturing release, and
-Phase 5 remain outside this concept document.
+automated review checks pass. The preliminary Phase 4 architecture is now
+owner-accepted, but manufacturing release and Phase 5 remain outside this
+concept document.

@@ -120,5 +120,5 @@ authorized Phase 4 preliminary structural concept work under EDR-011. The CAD
 and dependency-light checks pass, but the physical full-travel/service
 evidence package remains open. Exact motors, spindle, switches, bearing fits,
 screw straightness, PETG creep/rail-seat behavior, and workholding remain
-unverified. Phase 4 acceptance, manufacturing release, and Phase 5 remain
-blocked.
+unverified. The Phase 4/4A preliminary architecture is now owner-accepted;
+manufacturing release and Phase 5 remain blocked.

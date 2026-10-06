@@ -473,10 +473,12 @@ def build_metrics(model: Any) -> dict[str, Any]:
     real_low = sum(value[0] for value in expected_real_mass_kg.values())
     real_high = sum(value[1] for value in expected_real_mass_kg.values())
     return {
-        "phase": "4-preliminary-structural-owner-review",
+        "phase": "4-preliminary-structural-architecture-hardware-freeze",
+        "status": "accepted-preliminary-architecture-hardware-freeze",
         "source_variant": P.reference_variant_id,
         "owner_boundary": {
-            "phase4_accepted": False,
+            "phase4_preliminary_architecture_baseline_accepted": True,
+            "phase4_manufacturing_ready": False,
             "phase5_started": False,
             "production_release": False,
         },

@@ -1,9 +1,11 @@
 # Phase 4A structural optimization - owner-review package
 
-**Status:** proposed / owner review required
+**Status:** owner-accepted preliminary O2 structural architecture baseline
+(2026-10-06); physical validation and manufacturing interface evidence remain
+open. The 5 N deflection value is calculated, not measured.
 **Selected preliminary candidate:** O2 balanced optimization
-**Phase 4 accepted:** no
-**Phase 4A accepted:** no
+**Phase 4 preliminary architecture accepted:** yes
+**Phase 4A preliminary architecture accepted:** yes
 **Phase 5 started:** no
 **Production release:** no
 
@@ -299,13 +301,14 @@ inspection, insert and joint creep/pull-out/repeat-service tests, full-travel
 service mock-up, measured hardware fit, measured printed and moving-bed mass,
 and a separated 5 N tool-point test.
 
-## 11. Proposed gate disposition
+## 11. Gate disposition
 
-**REQUIRE PHASE4A OWNER REVIEW; DO NOT ACCEPT PHASE 4 OR PHASE 4A YET.**
+**ACCEPT O2 AS THE PRELIMINARY STRUCTURAL ARCHITECTURE BASELINE; DO NOT
+AUTHORIZE PRODUCTION CAD OR PHASE 5.**
 
-O2 is the recommended preliminary architecture for the next owner review
-because it has the best combination of force-loop simplification, critical
-part/joint reduction, stiffness screen, serviceability, alignment
-inspectability, and Voron print boundary. This recommendation does not
-authorize hardware-specific production CAD or Phase 5. EDR-012 is proposed
-and remains pending owner disposition.
+O2 is the owner-selected baseline because it has the best current combination
+of force-loop simplification, critical part/joint reduction, calculated
+stiffness screen, serviceability, alignment inspectability, and Voron print
+boundary. This acceptance does not turn the calculated deflection into a
+measurement, freeze hardware interfaces, or authorize further optimization.
+EDR-013 now controls the procurement and measurement transition.

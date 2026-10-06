@@ -1,12 +1,12 @@
 # Phase 4 - preliminary structural CAD concept
 
-**Status:** authorized for preliminary owner review; not accepted for
+**Status:** accepted as preliminary structural architecture; not accepted for
 manufacturing or Phase 5
 
 The owner accepted the Phase 3 motion baseline and the P2 Phase 3A packaging
-baseline on 2026-10-06. This document defines the controlled Phase 4 scope. It
-authorizes a coherent, printable, serviceable structural concept and review
-exports; it does not freeze supplier-dependent dimensions or release parts for
+baseline on 2026-10-06. The owner also accepted the Phase 4/4A preliminary
+structural architecture baseline. This document defines the controlled Phase 4
+scope; it does not freeze supplier-dependent dimensions or release parts for
 manufacture.
 
 ## Requirements
@@ -27,7 +27,7 @@ manufacture.
 | REQ-P4-012 | Document every structural part's status, orientation, print extents, support, brim/warping, and layer/load concerns. | Preliminary process contract | Central part parameter records and print-planning report. |
 | REQ-P4-013 | Validate full XYZ travel, bed/spindle/motor/screw/coupler/bearing/fastener/rail/limit/probe clearances, assembly sequence, component containment, and unexpected solid interference. | Automated plus physical evidence | Pinned build123d runner passes review geometry; physical mock-up remains open. |
 | REQ-P4-014 | Split the BOM into safe-to-purchase measurement/coupon items and wait-for-measurement or owner-review items. Do not treat reference envelopes as vendor dimensions. | Preliminary purchasing boundary | `bom/phase-4-preliminary-structural-bom.md`. |
-| REQ-P4-015 | Keep Phase 4 geometry PRELIMINARY. Do not generate production release files, mark parts manufacturing-ready, accept Phase 4, or begin Phase 5. | Owner gate | EDR-011, repository audit, and explicit owner review. |
+| REQ-P4-015 | Keep Phase 4 geometry PRELIMINARY. Do not generate production release files, mark parts manufacturing-ready, or begin Phase 5. | Owner gate | EDR-011/012, repository audit, measured hardware, physical coupons, and explicit release review. |
 
 ## Scope boundary
 
@@ -37,7 +37,6 @@ workholding dimensions, production insert pockets, manufacturing tolerances,
 final fastener patterns, physical structural validation, release drawings,
 release STEP/STL, and Phase 5 work.
 
-The next gate is owner review of EDR-011 with the generated report, temporary
-STEP/STL artifacts, print decomposition, joint study, rail-seat strategy,
-calculation screen, and preliminary BOM. The gate remains not-ready until the
-named physical and measurement evidence is collected.
+The next gate is the hardware procurement / measurement freeze under proposed
+EDR-013. The gate remains not-ready for production CAD until the named
+physical and measurement evidence is collected.

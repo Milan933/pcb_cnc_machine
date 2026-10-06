@@ -2,7 +2,7 @@
 
 - **Record ID:** EDR-012
 - **Phase:** 4A - structural optimization before hardware-specific CAD
-- **Status:** proposed / owner review required
+- **Status:** accepted preliminary architecture baseline; physical evidence open
 - **Date:** 2026-10-06
 - **Owner:** project owner / project team
 - **Inputs:** EDR-008, owner-accepted P2 EDR-009, owner-directed EDR-010,
@@ -11,7 +11,15 @@
   REQ-FAST-001 through REQ-FAST-008, REQ-P4-001 through REQ-P4-015, and
   REQ-VAL-001 through REQ-VAL-003
 
-## Decision proposed for owner review
+## Decision recorded on 2026-10-06
+
+The owner accepts O2 as the **preliminary structural architecture baseline**
+for Phase 4A. The owner explicitly accepts the current optimization level and
+does not authorize additional mass or part-count optimization before hardware
+procurement and measurement. The result remains a calculated review estimate,
+not measured machine stiffness or accuracy.
+
+## Accepted preliminary architecture
 
 Select O2, the balanced Phase 4A structural optimization, as the preliminary
 candidate for the next owner review. O2 consolidates the primary printed
@@ -96,9 +104,8 @@ deflection, or production printability.
 
 ## Owner gate
 
-**Proposed disposition:** require Phase 4A owner review of O2; do not accept
-Phase 4 or Phase 4A yet.
-
-Until the owner records a disposition, EDR-012 remains proposed, EDR-011
-remains proposed, production release remains blocked, and Phase 5 remains
-unstarted.
+**Recorded disposition:** accept O2 as the preliminary structural architecture
+baseline. Physical hardware measurements, coupons, service mock-up, and the
+separated 5 N force-loop test remain mandatory. EDR-012 does not make the
+printed parts manufacturing-ready, does not authorize final production CAD,
+and does not start Phase 5.

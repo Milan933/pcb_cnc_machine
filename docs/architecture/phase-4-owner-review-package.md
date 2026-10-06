@@ -1,7 +1,9 @@
 # Phase 4 owner-review package
 
-**Status:** owner review requested; EDR-011 remains proposed; Phase 4 is not
-accepted and Phase 5 has not started.
+**Status:** historical Phase 4 review package; EDR-011 is accepted as a
+preliminary architecture baseline. O2/EDR-012 supersedes this 29-part
+decomposition for the current review baseline. Physical evidence is open and
+Phase 5 has not started.
 
 This package reviews the current Phase 4 P2 structural concept without changing
 the CAD, optimizing parts, freezing hardware, or authorizing a manufacturing
@@ -504,17 +506,14 @@ used by the Phase 4 assembly; neither set is a supplier purchase lock.
 
 ### Recommendation
 
-**REQUIRE PHASE4A STRUCTURAL OPTIMIZATION** before accepting the Phase 4
-concept or beginning Phase 5. This recommendation is targeted, not a request
-to redesign blindly: first resolve the CAD-equivalent-versus-installed mass
-boundary, reconcile the spindle/X-rail reference placement, and reduce or
-standardize the highest-risk interfaces while preserving the measured force
-loop. The owner may instead explicitly accept the preliminary concept with
-those actions recorded, but this package does not change EDR-011’s status.
+**Phase 4A optimization is now accepted as the O2 preliminary structural
+architecture baseline.** The remaining actions are hardware procurement,
+measurement, coupons, and physical force-loop validation; they do not reopen
+mass or part-count optimization. This historical package does not authorize
+hardware-specific production CAD or Phase 5.
 
 ### Owner gate
 
-The requested owner disposition is still pending. Until the owner decides,
-EDR-011 remains **proposed / owner review required**, Phase 4 remains
-unaccepted, production exports remain unauthorized, and Phase 5 remains
-unstarted.
+The owner disposition was recorded on 2026-10-06. EDR-011 is **accepted as a
+preliminary architecture baseline**; production exports remain unauthorized,
+hardware interfaces remain not-ready, and Phase 5 remains unstarted.

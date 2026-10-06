@@ -93,7 +93,8 @@
   },
   "density_kg_per_mm3": 1.27e-06,
   "owner_boundary": {
-    "phase4_accepted": false,
+    "phase4_preliminary_architecture_baseline_accepted": true,
+    "phase4_manufacturing_ready": false,
     "phase5_started": false,
     "production_release": false
   },
@@ -882,7 +883,7 @@
       "warping_risk": "medium"
     }
   ],
-  "phase": "4-preliminary-structural-owner-review",
+  "phase": "4-preliminary-structural-architecture-hardware-freeze",
   "print_mass_bucket_cad_kg": {
     "closed sections": 3.30734416,
     "local interfaces": 0.8397581162121069,

@@ -126,14 +126,15 @@ def run(output_dir: Path) -> dict[str, Any]:
 
     return {
         "phase": "4-preliminary-structural-concept",
-        "status": "proposed-owner-review",
+        "status": "accepted-preliminary-architecture-hardware-freeze",
         "units": "mm, N, kg unless noted",
         "reference_variant_id": PHASE4_STRUCTURAL_PARAMETERS.reference_variant_id,
         "owner_boundary": {
             "phase3_motion_baseline_accepted": True,
             "phase3a_p2_packaging_baseline_accepted": True,
             "phase4_preliminary_structural_concept_authorized": True,
-            "phase4_accepted": False,
+            "phase4_preliminary_architecture_baseline_accepted": True,
+            "phase4_manufacturing_ready": False,
             "phase5_started": False,
             "production_release": False,
         },

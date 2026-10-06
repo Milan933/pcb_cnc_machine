@@ -5,16 +5,17 @@ isolation routing, drilling, and outline cutting.
 
 ## Project status
 
-This repository is in Phase 4A: preliminary structural optimization owner
-review; Phase 4 and Phase 4A are not accepted.
-Phase 1, the Architecture A baseline, the Phase 3 motion baseline, and the P2
-Phase 3A packaging baseline are accepted by the project owner. The current
+The owner accepted Phase 4 and Phase 4A as the preliminary structural
+architecture baseline on 2026-10-06, selecting the balanced 19-part O2 review
+architecture. The repository is now in the hardware procurement / measurement
+freeze. Phase 1, the Architecture A baseline, the Phase 3 motion baseline,
+and the P2 Phase 3A packaging baseline are also accepted. The current
 deliverable contains the Phase 2A structural comparison, motion component
 trade, P1/P2/P3 packaging study, the 29-part Phase 4 baseline, the O1/O2/O3
-Phase 4A comparison, the selected 19-part O2 review assembly, preliminary
-calculations, owner-review views, and temporary STEP/STL exports generated
-outside the repository. It contains no manufacturing-ready parts or production
-release files.
+Phase 4A comparison, the selected O2 review assembly, preliminary calculations,
+owner-review views, and temporary STEP/STL exports generated outside the
+repository. It contains no manufacturing-ready parts or production release
+files.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -129,13 +130,13 @@ Every important value or decision must be marked as one of:
 
 ## Near-term next step
 
-Review proposed
-[EDR-012](docs/decisions/012-phase-4a-structural-optimization.md) and the
-selected O2 before/after package, inspect temporary Phase 4A STEP/STL exports,
-measure the actual P2 hardware, and run the named PETG/joint/rail-seat/service
-mock-ups. The unresolved spindle, controller, motor, exact rail/screw, insert,
-probing, workholding, and physical-test questions remain visible. Phase 5 and
-manufacturing release do not begin automatically.
+Execute the [hardware procurement / measurement freeze](requirements/hardware-procurement-measurement-freeze.md)
+and proposed [EDR-013](docs/decisions/013-hardware-procurement-measurement-freeze.md):
+buy only the low-regret materials and characterization samples, identify the
+owned motors and controller, measure the motion and fastening interfaces, and
+run the named PETG/joint/rail-seat/service mock-ups. The spindle, final
+workholding, production fastener lengths, and manufacturing interfaces remain
+open. Phase 5 and manufacturing release do not begin automatically.
 
 ## Development interface
 

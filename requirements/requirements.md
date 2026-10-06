@@ -63,8 +63,9 @@ reviewed and promoted by an engineering decision record.
 | REQ-HW-001 | Multiple NEMA 17 stepper motors are already owned. | Known requirement | Record motor model, torque curve, shaft, current, and condition before final motion selection. |
 | REQ-HW-002 | An Arduino CNC Shield / GRBL-compatible controller is already owned. | Known requirement | Confirm supported stepper current, number of axes, limit inputs, probing input, spindle control, and firmware limits. |
 | REQ-HW-003 | A Voron 2.4 350 printer is available for PETG structural parts. | Known requirement | Measure usable build margins and establish a print-orientation validation method. |
-| REQ-HW-004 | Rails, screws, bearings, spindle, fasteners, inserts, couplers, and similar mechanical components may be purchased later. | Known requirement | Choose mechanically appropriate parts first; create the BOM afterward. |
-| REQ-HW-005 | MGN9, MGN12, T8x2, and T8x4 are candidates to evaluate, not selections. | Known requirement | Compare against load, stiffness, speed, packaging, contamination, and availability requirements. |
+| REQ-HW-004 | Rails, screws, bearings, spindle, fasteners, inserts, couplers, and similar mechanical components may be purchased later. | Known requirement | Use the hardware procurement / measurement freeze before any production interface is released. |
+| REQ-HW-005 | The preliminary motion class is dual MGN12H X/Y, dual MGN9H Z, T8x4 X/Y, T8x2 Z, serviceable fixed/floating screw supports, and torque-only flexible couplers. | Owner-accepted preliminary baseline | EDR-008, EDR-009, EDR-013; exact supplier, preload, end machining, and measured dimensions remain open. |
+| REQ-HW-006 | Existing NEMA17 motors and the Arduino CNC Shield / GRBL-compatible controller shall be identified and measured before replacement purchases or final electrical/mechanical interfaces. | Owner direction | Hardware identification sheets in `requirements/hardware-procurement-measurement-freeze.md`. |
 
 ## CAD and deliverable requirements
 
@@ -130,8 +131,8 @@ concept but not production geometry or release.
 
 ## Phase 4 preliminary structural concept baseline
 
-The owner-authorized Phase 4 scope is recorded in
-[phase-4-structural-concept.md](phase-4-structural-concept.md) and proposed
+The owner-accepted preliminary Phase 4 scope is recorded in
+[phase-4-structural-concept.md](phase-4-structural-concept.md) and
 [EDR-011](../docs/decisions/011-phase-4-preliminary-structural-concept.md).
 The accepted P2 reference is approximately 364 x 356 x 276 mm with a 444 x
 428 x 322 mm service footprint, a 230 x 180 x 8 mm bed support, a 230 x 180 x
@@ -148,8 +149,17 @@ preload; printed geometry provides location and shear transfer.
 
 Phase 4 geometry remains PRELIMINARY. Actual rail, screw, bearing, motor,
 spindle, insert, switch, controller, probe, workholding, and PETG coupon
-dimensions remain unresolved. Phase 4 acceptance, manufacturing release, and
-Phase 5 are not authorized.
+dimensions remain unresolved. The preliminary architecture is accepted, but
+manufacturing release and Phase 5 are not authorized.
+
+## Hardware procurement / measurement freeze
+
+The active A-D procurement, identification, measurement, coupon, and physical
+test requirements are recorded in
+[hardware-procurement-measurement-freeze.md](hardware-procurement-measurement-freeze.md)
+and [EDR-013](../docs/decisions/013-hardware-procurement-measurement-freeze.md).
+The document is the controlling pre-production interface list; it does not
+make any hardware interface manufacturing-ready.
 
 ## Scope exclusions for this iteration
 

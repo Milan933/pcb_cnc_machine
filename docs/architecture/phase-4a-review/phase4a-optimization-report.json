@@ -416,7 +416,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: owner selection of O1/O2/O3 and acceptance of the Phase 4A before/after package.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: physical evidence must confirm the owner-accepted O2 before/after package and hardware-freeze disposition.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -424,7 +424,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: measured MGN12/MGN9, T8 screw/nut, bearing, coupler, motor, spindle, insert, and fastener interfaces.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: measured MGN12/MGN9, T8 screw/nut, bearing, coupler, motor, spindle, insert, and fastener interfaces.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -432,7 +432,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: Voron 2.4 350 mm conditioning, warp, bridge, layer-load, and 300 mm Y rail-carrier coupons.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: Voron 2.4 350 mm conditioning, warp, bridge, layer-load, and 300 mm Y rail-carrier coupons.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -440,7 +440,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: rail-seat datum, skim/shim, parallelism, and carriage-preload evidence after conditioning.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: rail-seat datum, skim/shim, parallelism, and carriage-preload evidence after conditioning.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -448,7 +448,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: full-travel assembly mock-up proving bed, spindle, motor, screw, coupler, bearing, fastener, limit, probe, cable, and tool access.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: full-travel assembly mock-up proving bed, spindle, motor, screw, coupler, bearing, fastener, limit, probe, cable, and tool access.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -456,7 +456,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: 5 N tool-point test separated by gantry, base, X/Z, rail/interface, bed, and joint contributions.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: 5 N tool-point test separated by gantry, base, X/Z, rail/interface, bed, and joint contributions.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -464,7 +464,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: J1/service-joint pull-out, creep, preload-retention, and repeated-disassembly evidence.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: J1/service-joint pull-out, creep, preload-retention, and repeated-disassembly evidence.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -472,7 +472,7 @@
       {
         "component": null,
         "evidence": "Preliminary CAD and calculations do not replace physical evidence.",
-        "message": "Required before Phase 4A acceptance: measured printed-part mass, moving-bed mass, thermal/creep conditioning, spoilboard, and workholding implementation.",
+        "message": "Required before manufacturing-ready CAD or Phase 5: measured printed-part mass, moving-bed mass, thermal/creep conditioning, spoilboard, and workholding implementation.",
         "rule_id": "VAL-PHASE4A-GATE-EVIDENCE",
         "severity": "warning",
         "status": "not-ready"
@@ -480,7 +480,7 @@
       {
         "component": null,
         "evidence": null,
-        "message": "Phase 5 is not authorized; Phase 4 and Phase 4A remain at proposed owner-review status.",
+        "message": "Phase 4 and Phase 4A preliminary architecture is owner-accepted; physical evidence, production release, and Phase 5 remain closed.",
         "rule_id": "VAL-PHASE4A-NO-PHASE5",
         "severity": "info",
         "status": "pass"
@@ -535,9 +535,10 @@
   "owner_boundary": {
     "phase3_motion_baseline_accepted": true,
     "phase3a_p2_packaging_baseline_accepted": true,
-    "phase4_accepted": false,
+    "phase4_preliminary_architecture_baseline_accepted": true,
     "phase4_preliminary_concept_authorized": true,
-    "phase4a_accepted": false,
+    "phase4a_preliminary_architecture_baseline_accepted": true,
+    "phase4_manufacturing_ready": false,
     "phase5_started": false,
     "production_release": false
   },
@@ -1677,7 +1678,7 @@
   },
   "selected_variant": "O2",
   "selection_reason": "O2 is the balanced compromise: it removes the base perimeter and tower-to-beam PETG seams, retains replaceable motion and spindle hardware, keeps every print at or below the 300 mm preferred boundary, and passes the preferred 0.015 mm preliminary deflection target.",
-  "status": "proposed-owner-review",
+  "status": "accepted-preliminary-architecture-hardware-freeze",
   "units": "mm, N, kg unless noted",
   "variants": {
     "O1": {

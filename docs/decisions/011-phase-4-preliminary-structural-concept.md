@@ -2,13 +2,22 @@
 
 - **Record ID:** EDR-011
 - **Phase:** 4 - preliminary structural CAD concept
-- **Status:** proposed / owner review required
+- **Status:** accepted preliminary architecture baseline; physical evidence open
 - **Date:** 2026-10-06
 - **Owner:** project owner / project team
 - **Inputs:** EDR-006, EDR-007, owner-accepted EDR-008, owner-accepted P2 EDR-009, and owner-directed EDR-010
 - **Affected requirements:** REQ-STR-001 through REQ-STR-005, REQ-FAST-001 through REQ-FAST-008, REQ-P4-001 through REQ-P4-015, REQ-VAL-001 through REQ-VAL-003
 
-## Decision proposed for owner review
+## Decision recorded on 2026-10-06
+
+The owner accepts the Phase 4 concept as the **preliminary structural
+architecture baseline** for the accepted P2 fixed-gantry/moving-Y-bed
+architecture. This is an architecture acceptance, not a manufacturing or
+physical-performance acceptance. The 5 N result remains calculated, the
+hardware interfaces remain vendor-independent, and the named physical gates
+remain open.
+
+## Preliminary structural architecture baseline
 
 Authorize the preliminary structural concept for the accepted P2 fixed-gantry/
 moving-Y-bed baseline. The concept uses printed PETG load paths and a modular
@@ -143,9 +152,9 @@ approved.
 - [x] Preliminary 5 N contribution screen is calculated without an FEA claim.
 - [x] Dependency-light tests and pinned build123d review runner pass with no
       blocking automated issue or unexpected interference.
-- [ ] Owner reviews and accepts the Phase 4 structural concept.
-- [ ] Owner reviews the [Phase 4 owner-review package](../architecture/phase-4-owner-review-package.md)
-      and records a disposition; this link does not change the EDR status.
+- [x] Owner reviews and accepts the Phase 4 preliminary structural architecture
+      baseline on 2026-10-06.
+- [x] Owner disposition is recorded in this EDR and the O2 follow-on EDR-012.
 - [ ] Actual motion, spindle, fastener, insert, workholding, and electronics
       dimensions are measured.
 - [ ] PETG print, rail-seat, bearing-pocket, insert, and J1 joint coupons pass.
@@ -155,6 +164,8 @@ approved.
 
 ## Gate
 
-EDR-011 is **proposed**. Phase 4 preliminary structural concept work is
-authorized for owner review. Phase 4 is not accepted; production CAD,
-manufacturing release, and Phase 5 are not authorized.
+EDR-011 is **accepted as a preliminary architecture baseline**. The concept
+may be used to define the hardware procurement / measurement freeze, but no
+hardware-specific interface is manufacturing-ready. Production CAD,
+manufacturing release, and Phase 5 remain unauthorized until the physical
+evidence and subsequent owner gate are closed.

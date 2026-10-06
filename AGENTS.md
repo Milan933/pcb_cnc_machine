@@ -9,17 +9,20 @@ the documented primary rejected alternative and must not be physically built
 unless the owner reopens the architecture.
 
 The owner accepted the Phase 3 motion baseline and the P2 Phase 3A packaging
-baseline on 2026-10-06. Phase 4 preliminary structural CAD is now authorized
-under proposed EDR-011. Work may create parametric PETG structural concept
-parts, a complete review assembly, joint and rail-seat studies, preliminary
-calculations, print planning, and a split preliminary BOM. It must not silently
-turn a preliminary or calculated value into a measured engineering fact.
+baseline on 2026-10-06. On the same date, the owner accepted Phase 4 and Phase
+4A as the **preliminary structural architecture baseline** under EDR-011 and
+EDR-012, selecting the balanced O2 variant. The repository is now in the
+hardware procurement / measurement freeze recorded by proposed EDR-013.
+Further mass or part-count optimization is not authorized for this transition.
+It must not silently turn a preliminary or calculated value into a measured
+engineering fact.
 
-The Phase 4 boundary does not authorize manufacturing-ready CAD, production
-STL/STEP/drawing generation, final insert pilot dimensions, final vendor
-dimensions, or Phase 5. Review-only CAD exports must remain temporary. PETG
-coupons, joint/rail-seat/bearing-pocket tests, actual hardware measurements,
-service mock-ups, and representative force-loop evidence remain required.
+The accepted Phase 4/4A status does not authorize manufacturing-ready CAD,
+production STL/STEP/drawing generation, final insert pilot dimensions, final
+vendor dimensions, or Phase 5. Review-only CAD exports must remain temporary.
+PETG coupons, joint/rail-seat/bearing-pocket tests, actual hardware
+measurements, service mock-ups, and representative force-loop evidence remain
+required before hardware interfaces or production CAD can be released.
 
 ## Canonical public repository
 

@@ -1,11 +1,11 @@
 # Phase 4A - structural optimization requirements
 
-**Status:** authorized for preliminary owner review; not accepted for
+**Status:** accepted as preliminary O2 architecture; not accepted for
 manufacturing or Phase 5
 
-Phase 4A refines the completed Phase 4 owner-review package before
-hardware-specific CAD. It does not accept Phase 4, accept Phase 4A, freeze
-vendor hardware, or start Phase 5.
+Phase 4A records the owner-accepted O2 architecture before hardware-specific
+CAD. It does not freeze vendor hardware, mark interfaces manufacturing-ready,
+or start Phase 5.
 
 ## Baseline
 
@@ -20,7 +20,8 @@ The comparison starts from the reproducible Phase 4 P2 concept:
 - 0.012648 mm preliminary tool-point deflection at 5 N;
 - 363 x 353 x 275 mm built reference assembly bounds;
 - no unexpected CAD solid interference and 47 dependency-light tests passing;
-- Phase 4 recommendation: **REQUIRE PHASE4A STRUCTURAL OPTIMIZATION**.
+- Historical Phase 4 recommendation: **REQUIRE PHASE4A STRUCTURAL
+  OPTIMIZATION**; the owner has now accepted O2 as the preliminary baseline.
 
 The baseline critical structural register is:
 
@@ -91,7 +92,7 @@ foot, or electronics hardware.
 
 ## Evidence gate
 
-Phase 4A remains proposed until the owner reviews the before/after package and
-the following evidence exists: conditioned 300 mm PETG coupons, rail-seat and
+The preliminary architecture is accepted, but the following evidence remains
+required before production CAD: conditioned 300 mm PETG coupons, rail-seat and
 joint tests, actual hardware measurements, full-travel and service mock-up,
 and a separated 5 N force-loop measurement. Phase 5 remains closed.

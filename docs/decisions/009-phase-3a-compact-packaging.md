@@ -124,5 +124,6 @@ The owner accepted EDR-009 and selected P2 on 2026-10-06. The baseline is
 accepted for Phase 4 preliminary structural concept work, not as a
 manufacturing freeze. Exact hardware, full-travel/service mock-up, PETG
 coupons, measured spindle/motor/switch/bearing/screw dimensions, and
-workholding evidence remain open. Phase 4 acceptance, production exports, and
-Phase 5 remain blocked.
+workholding evidence remain open. The later Phase 4/4A preliminary
+architecture acceptance does not change this measurement boundary; production
+exports and Phase 5 remain blocked.

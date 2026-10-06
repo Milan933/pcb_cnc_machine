@@ -402,7 +402,7 @@ def run(output_dir: Path) -> dict[str, Any]:
     overlap_after = selected_snapshot["automated_expected_overlap_events"]
     return {
         "phase": "4A-structural-optimization",
-        "status": "proposed-owner-review",
+        "status": "accepted-preliminary-architecture-hardware-freeze",
         "units": "mm, N, kg unless noted",
         "selected_variant": SELECTED_PHASE4A_VARIANT,
         "selection_reason": (
@@ -420,8 +420,9 @@ def run(output_dir: Path) -> dict[str, Any]:
             "phase3_motion_baseline_accepted": True,
             "phase3a_p2_packaging_baseline_accepted": True,
             "phase4_preliminary_concept_authorized": True,
-            "phase4_accepted": False,
-            "phase4a_accepted": False,
+            "phase4_preliminary_architecture_baseline_accepted": True,
+            "phase4a_preliminary_architecture_baseline_accepted": True,
+            "phase4_manufacturing_ready": False,
             "phase5_started": False,
             "production_release": False,
         },

@@ -1,7 +1,7 @@
 # Phase 4A preliminary BOM and hardware boundary
 
-**Status:** owner-review and measurement list; not a production purchasing
-release
+**Status:** owner-accepted preliminary O2 architecture; procurement and
+measurement list; not a production purchasing release
 
 Phase 4A selects O2 as a preliminary printed-structure candidate. The BOM
 change is a part-decomposition change, not a supplier or hardware freeze.
@@ -38,6 +38,14 @@ The 29-part Phase 4 baseline therefore becomes 19 O2 review parts. This
 does not mean that ten hardware interfaces disappear: rails, carriages,
 screws, nuts, bearings, couplers, motors, spindle, limits, probe, cables,
 feet, and spoilboard still need access and fit evidence.
+
+## Superseded by the hardware freeze
+
+The detailed A-D matrix, per-component dimensions, identification sheets,
+measurement methods, and physical-test gates are now controlled by
+[hardware-procurement-measurement-matrix.md](hardware-procurement-measurement-matrix.md)
+and the linked [requirements freeze](../requirements/hardware-procurement-measurement-freeze.md).
+The earlier sample guidance below is retained as the Phase 4A audit trail.
 
 ## Safe to purchase or sample for measurement/coupons
 
@@ -76,5 +84,6 @@ feet, and spoilboard still need access and fit evidence.
   installation direction remain unresolved.
 
 No row in this document authorizes a production purchase order or a
-manufacturing release. Phase 4 and Phase 4A remain proposed, and Phase 5 is
-not started.
+manufacturing release. Phase 4 and Phase 4A are accepted only as preliminary
+architecture; physical evidence, manufacturing interfaces, and Phase 5 remain
+closed.

@@ -481,11 +481,11 @@ def check_phase4a_assembly(
 
 
 def phase4a_gate_report() -> ValidationReport:
-    """List evidence still required before Phase 4A or Phase 5 can advance."""
+    """List evidence required before production CAD or Phase 5 can advance."""
 
     report = ValidationReport()
     for evidence in (
-        "owner selection of O1/O2/O3 and acceptance of the Phase 4A before/after package",
+        "physical evidence must confirm the owner-accepted O2 before/after package and hardware-freeze disposition",
         "measured MGN12/MGN9, T8 screw/nut, bearing, coupler, motor, spindle, insert, and fastener interfaces",
         "Voron 2.4 350 mm conditioning, warp, bridge, layer-load, and 300 mm Y rail-carrier coupons",
         "rail-seat datum, skim/shim, parallelism, and carriage-preload evidence after conditioning",
@@ -498,7 +498,7 @@ def phase4a_gate_report() -> ValidationReport:
             _issue(
                 "VAL-PHASE4A-GATE-EVIDENCE",
                 ValidationStatus.NOT_READY,
-                f"Required before Phase 4A acceptance: {evidence}.",
+                f"Required before manufacturing-ready CAD or Phase 5: {evidence}.",
                 severity=IssueSeverity.WARNING,
                 evidence="Preliminary CAD and calculations do not replace physical evidence.",
             )
@@ -507,7 +507,7 @@ def phase4a_gate_report() -> ValidationReport:
         _issue(
             "VAL-PHASE4A-NO-PHASE5",
             ValidationStatus.PASS,
-            "Phase 5 is not authorized; Phase 4 and Phase 4A remain at proposed owner-review status.",
+            "Phase 4 and Phase 4A preliminary architecture is owner-accepted; physical evidence, production release, and Phase 5 remain closed.",
             severity=IssueSeverity.INFO,
         )
     )

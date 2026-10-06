@@ -16,3 +16,9 @@ hardware measurements, physical evidence, or owner review. It is not a
 production BOM. Every future production line should include quantity,
 description, status, source or specification, and the decision record that
 justifies it.
+
+The active transition is the [hardware procurement / measurement
+matrix](hardware-procurement-measurement-matrix.md), backed by the
+[requirements freeze](../requirements/hardware-procurement-measurement-freeze.md).
+It is the controlling A-D list for characterization purchases and owned
+hardware identification; it does not authorize manufacturing-ready CAD.

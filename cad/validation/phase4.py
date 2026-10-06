@@ -444,11 +444,11 @@ def check_phase4_assembly(model: Any) -> ValidationReport:
 
 
 def phase4_gate_report() -> ValidationReport:
-    """List evidence required before Phase 4 can be accepted or Phase 5 starts."""
+    """List evidence required before production CAD or Phase 5 can start."""
 
     report = ValidationReport()
     for evidence in (
-        "owner review of the preliminary structural CAD, part decomposition, and provisional J1 selection",
+        "physical evidence must confirm the owner-accepted preliminary structural CAD, part decomposition, and provisional J1 selection",
         "printer-specific PETG conditioning, warp, bridge, layer-load, and 300 mm rail-carrier coupons",
         "actual MGN12/MGN9, T8 screw/nut, bearing, coupler, motor, spindle, insert, and fastener dimensions",
         "rail-seat datum, skim/shim, parallelism, and carriage-preload evidence",
@@ -461,7 +461,7 @@ def phase4_gate_report() -> ValidationReport:
             _issue(
                 "VAL-PHASE4-GATE-EVIDENCE",
                 ValidationStatus.NOT_READY,
-                f"Required before Phase 4 acceptance: {evidence}.",
+                f"Required before manufacturing-ready CAD or Phase 5: {evidence}.",
                 evidence="Review geometry and calculations do not replace physical evidence.",
             )
         )
@@ -469,7 +469,7 @@ def phase4_gate_report() -> ValidationReport:
         _issue(
             "VAL-PHASE4-NO-PHASE5",
             ValidationStatus.PASS,
-            "Phase 5 is not authorized; Phase 4 remains at preliminary owner-review status.",
+            "Phase 4 preliminary architecture is owner-accepted; physical evidence, production release, and Phase 5 remain closed.",
             severity=IssueSeverity.INFO,
         )
     )

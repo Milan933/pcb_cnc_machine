@@ -346,11 +346,12 @@ def _metrics(model: Any, view_names: list[str]) -> dict[str, Any]:
     estimate = phase4a_structural_estimate(SELECTED_PHASE4A_VARIANT)
     largest = max(rows, key=lambda row: max(row["actual_bbox_mm"][:2]))
     return {
-        "phase": "4A-structural-optimization-owner-review",
+        "phase": "4A-structural-architecture-hardware-freeze",
         "source_variant": "phase4a-o2-p2",
         "owner_boundary": {
-            "phase4_accepted": False,
-            "phase4a_accepted": False,
+            "phase4_preliminary_architecture_baseline_accepted": True,
+            "phase4a_preliminary_architecture_baseline_accepted": True,
+            "phase4_manufacturing_ready": False,
             "phase5_started": False,
             "production_release": False,
         },

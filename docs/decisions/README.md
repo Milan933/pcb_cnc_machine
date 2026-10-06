@@ -25,11 +25,14 @@ Current records:
   - owner-directed working strategy for Phase 4; insert dimensions and physical
   joint evidence remain open; does not authorize production CAD
 - [EDR-011: Phase 4 preliminary structural concept](011-phase-4-preliminary-structural-concept.md)
-  - proposed owner review; preliminary structural CAD is authorized, but Phase
-  4 acceptance, production release, and Phase 5 remain blocked
+  - accepted 2026-10-06 as the preliminary structural architecture baseline;
+  physical evidence, production release, and Phase 5 remain blocked
 - [EDR-012: Phase 4A structural optimization](012-phase-4a-structural-optimization.md)
-  - proposed owner review; O2 is the recommended preliminary candidate, but
-  Phase 4/4A acceptance, production release, and Phase 5 remain blocked
+  - accepted 2026-10-06 as the preliminary O2 architecture baseline; physical
+  evidence, production release, and Phase 5 remain blocked
+- [EDR-013: Hardware procurement / measurement freeze](013-hardware-procurement-measurement-freeze.md)
+  - proposed next-stage freeze; class quantities and samples are defined, but
+  measured hardware interfaces are not manufacturing-ready
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.

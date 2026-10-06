@@ -95,8 +95,9 @@ unverified; PETG coupons and representative 5 N force-loop tests remain open.
 ## Phase 3 disposition boundary
 
 The owner accepted the Phase 3 motion-class baseline under EDR-008. The
-following remain open and block motion freeze, Phase 4 acceptance, and
-manufacturing-ready geometry, but do not block preliminary Phase 4 review:
+following remain open and block motion freeze, hardware-interface freeze, and
+manufacturing-ready geometry, but do not reopen the accepted preliminary
+Phase 4/4A architecture:
 
 24. Which owned NEMA17 motor models, shaft lengths, rated current, holding
     torque, and torque-speed curves are available?
@@ -160,10 +161,10 @@ interface is frozen for manufacture:
 
 ## Phase 4 structural-concept disposition boundary
 
-The owner accepted the Phase 3 motion baseline and P2 Phase 3A packaging
-baseline on 2026-10-06 and authorized preliminary structural CAD review. The
-following questions remain open before Phase 4 acceptance or manufacturing
-release:
+The owner accepted the Phase 3 motion baseline, P2 Phase 3A packaging
+baseline, and the Phase 4/4A preliminary structural architecture baseline on
+2026-10-06. The following questions remain open before hardware interfaces or
+manufacturing release can be accepted:
 
 44. Which actual MGN12/MGN9 rails, T8 screws/nuts, fixed/floating bearings,
     couplers, motors, spindle, switches, probe, and fasteners fit the P2
@@ -179,5 +180,39 @@ release:
     sweep, spoilboard replacement, cable drag, and thermal conditioning?
 49. Does the measured 5 N tool-point test support the separated beam,
     tower/joint, X/Z, base, rail-seat, and moving-bed compliance screen?
-50. Does owner review accept the preliminary structural concept, or require a
-    revised split, joint, bed, tower, or rail-seat strategy before Phase 5?
+50. Do the measured hardware, coupons, service mock-up, and physical 5 N test
+    support the O2 baseline, or require an owner-reviewed interface change
+    before production CAD?
+
+## Hardware procurement / measurement freeze
+
+The next controlled transition is proposed in EDR-013 and detailed in
+[hardware-procurement-measurement-freeze.md](hardware-procurement-measurement-freeze.md).
+These questions block manufacturing-ready interfaces and Phase 5, but do not
+reopen the owner-accepted O2 mass/part-count baseline:
+
+51. Which exact MGN12/MGN9 supplier, clone grade, rail body height, hole pitch,
+    end offset, carriage pattern, preload, and play meet the measured seat and
+    travel requirements?
+52. Are 340/310/130 mm rails available with a valid drawing, or should the
+    nearest longer standard rails be retained until the final seat is measured?
+53. Which T8x4/T8x2 blank or machined screw lengths, starts, end journals,
+    straightness, and nuts meet the <=0.030 mm backlash target?
+54. Which fixed/floating 8 mm bearing samples meet bidirectional axial
+    constraint, radial support, thermal float, drag, and service requirements?
+55. Which 5 mm-to-measured-journal coupler has the lowest backlash and axial
+    parasitic force without sacrificing service access?
+56. Which owned NEMA17 motors meet the X/Y >=0.45 N-m and Z >=0.55 N-m screens
+    at the available driver current and operating speed?
+57. Which Arduino CNC Shield revision, Arduino, drivers, jumpers, supply,
+    spindle output, probe input, limits, cooling, and GRBL behavior are present?
+58. Which M3/M4/M5 heat-set insert families pass measured geometry and PETG
+    pull-out, torque, creep, deformation, and repeated-service coupons?
+59. Which spindle meets the PCB isolation/drilling/outline specification and
+    what mount adaptation is needed if its body is not within the 52 mm screen?
+60. Which spoilboard material and workholding method preserve the 230 x 180 x
+    12 mm replaceable process datum under board load and resurfacing?
+61. Does the full measured assembly retain rail/screw/bearing/motor/spindle/
+    limit/probe/cable access throughout X/Y/Z travel and service sequence?
+62. Does the separated measured 5 N tool-point test support the analytical
+    screen without treating 0.009410 mm as measured machine performance?

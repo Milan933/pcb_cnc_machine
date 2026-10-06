@@ -42,8 +42,9 @@
     "print_orientation": "flat on a 150 x 300 mm XY footprint; rail datum upward"
   },
   "owner_boundary": {
-    "phase4_accepted": false,
-    "phase4a_accepted": false,
+    "phase4_preliminary_architecture_baseline_accepted": true,
+    "phase4a_preliminary_architecture_baseline_accepted": true,
+    "phase4_manufacturing_ready": false,
     "phase5_started": false,
     "production_release": false
   },
@@ -391,7 +392,7 @@
       "warping_risk": "medium"
     }
   ],
-  "phase": "4A-structural-optimization-owner-review",
+  "phase": "4A-structural-architecture-hardware-freeze",
   "primary_loop_part_count": 9,
   "review_views": [
     "01-complete-isometric.png",

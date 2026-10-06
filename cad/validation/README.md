@@ -52,7 +52,7 @@ invalid inputs or unexpected CAD overlaps; a target miss is reported as an
 engineering result and is not silently converted to a pass.
 
 Phase 3A adds P1/P2/P3 packaging calculations and temporary build123d review
-exports. The packaging pass does not accept the gate, freeze exact hardware,
+exports. The packaging pass does not freeze exact hardware,
 or authorize manufacturing-ready parts. The owner-accepted P2 baseline now
 feeds Phase 4 preliminary structural review.
 
@@ -63,6 +63,7 @@ interfaces are released.
 
 Phase 4 adds a 29-part preliminary structural concept and review assembly. Its
 automated runner may pass geometry, containment, interference, and export
-checks while the overall report remains `not-ready` for owner review, measured
-hardware, print/joint/rail-seat coupons, service mock-up, and physical 5 N
-force-loop evidence. Phase 4 acceptance and Phase 5 remain blocked.
+checks while the overall report remains `not-ready` for measured hardware,
+print/joint/rail-seat coupons, service mock-up, and physical 5 N force-loop
+evidence. The preliminary architecture is owner-accepted; manufacturing
+release and Phase 5 remain blocked.

@@ -2,11 +2,12 @@
 
 **Status:** review and measurement list; not a production purchasing release
 
-This BOM follows the owner-accepted P2 packaging and Phase 4 structural
-concept. It deliberately separates low-risk items that can be bought for
-measurement/coupon work from items that must wait for exact dimensions,
-physical evidence, or owner acceptance. Reference envelopes are not vendor
-specifications.
+This BOM follows the owner-accepted P2 packaging and the owner-accepted
+preliminary Phase 4/4A structural architecture. It deliberately separates
+low-risk items that can be bought for measurement/coupon work from items that
+must wait for exact dimensions or physical evidence. Reference envelopes are
+not vendor specifications. The detailed A-D matrix now lives in
+[hardware-procurement-measurement-matrix.md](hardware-procurement-measurement-matrix.md).
 
 ## Safe to purchase now for measurement, coupons, or controlled review
 
@@ -28,7 +29,7 @@ specifications.
 
 | Item / class | Wait condition | Reason |
 | --- | --- | --- |
-| Production MGN12/MGN9 rail and carriage quantities | Sample measurement and Phase 4 owner review | Exact supplier, preload, straightness, hole pattern, and rail-seat fit are unresolved. |
+| Production MGN12/MGN9 rail and carriage quantities | Sample measurement and hardware-freeze review | Exact supplier, preload, straightness, hole pattern, and rail-seat fit are unresolved. |
 | Production T8x4/T8x2 screw lengths, end machining, and nuts | Straightness, critical-speed, backlash, drag, and service review | Nominal 360/330/145 mm values are packaging screens, not purchase dimensions. |
 | Fixed-end paired axial/angular-contact supports | Bearing sample fit and axial-load review | The fixed end must carry screw thrust; supplier envelopes and preload are open. |
 | Floating radial bearing supports | Sample fit and axial-float review | Both screw ends must not be axially constrained. |
@@ -36,7 +37,7 @@ specifications.
 | Spindle and ER11/tooling | Spindle diameter, mass, runout, cable exit, cooling, and thermal measurement | The 52 mm mount is a maximum screening envelope, not a selected spindle. |
 | Limit switches, probe hardware, and cable chains | Electrical/interface and full-travel service mock-up | Switch type, probe datum, cable drag, and fault response remain open. |
 | M5 inserts or through-bolts | Load, creep, preload, moment, and failure-consequence justification | M5 and through-bolts are selective escalations, not defaults. |
-| Printed production parts | EDR-011 acceptance, measured hardware, coupons, and manufacturing review | Current 29 parts are PRELIMINARY review geometry only. |
+| Printed production parts | Measured hardware, coupons, service mock-up, physical force test, and manufacturing review | O2 has 19 PRELIMINARY review parts; no part is released. |
 | Final spoilboard, clamp, or vacuum hardware | Workholding distortion and PCB process trial | P2 has a replaceable spoilboard concept but no final workholding release. |
 | Controller/driver production wiring and enclosure | Bench I/O, cooling, noise, homing, probe, and spindle-control tests | Existing hardware is not yet identified or electrically accepted. |
 
@@ -55,4 +56,5 @@ Before a production BOM is issued, record supplier identities, quantities,
 actual dimensions, price/availability, tolerances, acceptance measurements,
 and the decision record that justifies each dependency. The production BOM is
 blocked by unresolved spindle/motor/controller/rail/screw/bearing/insert data,
-PETG coupon evidence, service mock-up, and owner acceptance of EDR-011.
+PETG coupon evidence, service mock-up, and the physical 5 N force-loop test.
+EDR-013 controls the current transition.
