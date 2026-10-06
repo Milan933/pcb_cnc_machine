@@ -81,4 +81,6 @@ Phase 2A removes C from the focused structural comparison, independently
 optimizes A and B for predominantly PETG geometry, and uses a revised matrix
 without a second bending criterion that would double-count the total
 deflection result. The current result is A 78.0 and B 75.2, but this is still
-proposed evidence pending representative printed coupons and owner review.
+The owner accepted A as the mechanical architecture baseline on 2026-10-06,
+while representative printed coupons and force-loop evidence remain open.
+These calculated values are not measured performance.

@@ -582,10 +582,10 @@ def find_interferences(model: SkeletonModel, tolerance_mm3: float = 1e-6) -> tup
 
     findings: list[dict[str, Any]] = []
     for index, first in enumerate(model.components):
-        if first.category in {"reference", "process-envelope"}:
+        if first.category in {"reference", "motion-reference", "process-envelope"}:
             continue
         for second in model.components[index + 1 :]:
-            if second.category in {"reference", "process-envelope"}:
+            if second.category in {"reference", "motion-reference", "process-envelope"}:
                 continue
             pair = frozenset((first.name, second.name))
             volume = _intersection_volume(first.shape, second.shape)

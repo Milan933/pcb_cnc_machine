@@ -1,0 +1,3 @@
+# Phase 3 uses the same isolated, review-only build123d environment as the
+# Phase 2 skeleton. Keep the environment outside the repository.
+-r cad-phase-2.txt

@@ -2,17 +2,22 @@
 
 ## Current boundary
 
-The repository is in Phase 2: Architecture. EDR-005 is accepted by the
-project owner and EDR-006 contains the proposed architecture for owner review.
-Work in this phase may compare complete mechanical architectures, document
-force loops and interface envelopes, add preliminary calculations, and build
-the deterministic architecture-only CAD skeleton and implementation spike.
-It must not silently turn an unresolved choice into an engineering fact.
+The repository has completed Phase 2 architecture review. EDR-005 is accepted
+by the project owner, and EDR-006/EDR-007 record the owner-accepted **A:
+fixed gantry with moving Y bed** baseline. B, moving gantry/fixed bed, remains
+the documented primary rejected alternative and must not be physically built
+unless the owner reopens the architecture.
 
-Do not begin Phase 3 motion-system selection, detailed printable structural
-parts, production CAD, or manufacturing STL/STEP/drawing generation until the
-Phase 2 decision record has been reviewed and its gate is passed. Do not begin
-Phase 3 as part of this task.
+Phase 3 motion-system selection is authorized. Work may select and dimension
+component classes, document rail/screw/bearing/motor/controller interfaces,
+add preliminary calculations, and build the deterministic review-only motion
+layout skeleton. It must not silently turn a preliminary or calculated value
+into a measured engineering fact.
+
+The current Phase 3 boundary does not authorize detailed printable structural
+parts, production CAD, manufacturing STL/STEP/drawing generation, Phase 4 BOM
+finalization, or acceptance of EDR-008. PETG coupons, joint/rail-seat tests,
+and representative force-loop evidence remain required.
 
 ## Canonical public repository
 
@@ -69,8 +74,10 @@ Never repair a contradiction by changing a lower-level file silently.
   decision, alternatives, reasoning, risks, and unresolved questions.
 - Validation should fail closed when required evidence is absent.
 - The Phase 2 skeleton may contain only axis centerlines, envelopes,
-  carriage boxes, screw references, and structural bounding volumes. It is
-  not a manufacturing model.
+  carriage boxes, screw references, and structural bounding volumes. The Phase
+  3 extension may add nominal rails, carriages, screws, nuts, bearing-support,
+  coupler, motor, spindle, and bed envelopes, but it remains a review-only
+  reference model and is not a manufacturing model.
 
 ## Coordinate convention
 

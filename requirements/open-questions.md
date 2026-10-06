@@ -86,10 +86,29 @@ claims until they have an owner and evidence:
 
 ## Phase 2 disposition
 
-The original Phase 2 study proposed B, moving gantry / fixed bed, with A as the
-explicit fallback. Phase 2A is a proposed supplement: its equivalent-section
-screen currently favors A structurally, while B retains the fixed-PCB datum,
-probing, workholding, and service advantages. Exact rails, screws, spindle,
-motors, controller, probe, workholding implementation, PETG process, and
-physical validation remain open. EDR-006 and proposed EDR-007 are owner review
-gates; Phase 3 must not begin until the disposition is recorded.
+The owner accepted A, fixed gantry / moving Y bed, as the mechanical
+architecture baseline on 2026-10-06. B, moving gantry / fixed bed, remains the
+documented primary rejected alternative and must not be physically built unless
+the owner reopens the architecture. The Phase 2A calculated values remain
+unverified; PETG coupons and representative 5 N force-loop tests remain open.
+
+## Phase 3 disposition boundary
+
+Phase 3 motion selection is authorized under proposed EDR-008. The following
+remain open and block motion freeze, Phase 4 BOM finalization, and detailed
+structural CAD:
+
+24. Which owned NEMA17 motor models, shaft lengths, rated current, holding
+    torque, and torque-speed curves are available?
+25. Which exact Arduino CNC Shield revision, GRBL fork, driver carrier,
+    supply voltage, limit inputs, probe input, and spindle PWM path are used?
+26. Which spindle defines diameter, mass, runout, cable exit, cooling, and
+    ER11/tool retention?
+27. Which MGN9/MGN12 supplier, preload, rail straightness, and measured rail
+    seat fit will be accepted?
+28. Which T8 screw straightness, end machining, nut class, preload, and wear
+    results meet the <=0.030 mm backlash target?
+29. Which switch/probe wiring and moving-bed cable routing preserve fault
+    response and homing repeatability?
+30. Do the Phase 2A PETG joints and the 1.24 kg moving-bed estimate survive
+    conditioning, workholding load, and repeated motion tests?

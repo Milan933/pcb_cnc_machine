@@ -35,12 +35,14 @@ collection step is named.
 
 ## Current phase
 
-The repository has completed the foundation pass and Phase 1 is accepted by
-the project owner through EDR-005. It is now in Phase 2 architecture review:
-the A/B/C trade, force-loop study, preliminary skeleton, and build123d spike
-are complete in proposed EDR-006. Stock/process scope, exact hardware inputs,
-and physical acceptance evidence remain open as listed in
-requirements/open-questions.md. The Phase 2A supplement is recorded in
-proposed EDR-007 and reopens the A/B structural choice. Phase 3 motion-system
-selection must not begin until EDR-006 and its Phase 2A disposition are
-reviewed.
+The repository has completed the foundation pass and Phase 1. The owner has
+reviewed EDR-006 with EDR-007 and accepted **A: fixed gantry with moving Y
+bed** as the mechanical architecture baseline; B remains the documented
+primary rejected alternative. The repository is now in Phase 3 motion-system
+selection review under proposed EDR-008.
+
+Phase 3 may select and dimension component classes, document interfaces and
+calculations, and build the review-only motion skeleton. Exact hardware
+identity, supplier/preload, spindle, PETG rail-seat evidence, and physical
+motion tests remain open. Phase 4 BOM finalization, detailed structural CAD,
+and manufacturing exports do not begin from the proposed Phase 3 record alone.

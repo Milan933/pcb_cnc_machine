@@ -1,6 +1,6 @@
 # Phase 2 architecture study
 
-**Status:** proposed architecture package; owner review required
+**Status:** accepted Architecture A baseline; original B recommendation retained as historical comparison
 **Date:** 2026-10-06
 **Units:** millimetres unless stated otherwise
 **Boundary:** architecture and parametric skeleton only; no detailed printable
@@ -9,12 +9,13 @@ parts, manufacturing drawings, or release STEP/STL files.
 ## Phase 2A status note
 
 The three-way matrix and B recommendation below are the original Phase 2
-baseline. They were not owner-accepted and are not proof of the better
-PETG-first architecture. The focused [Phase 2A structural comparison](phase-2a-structural-comparison.md)
-reopened A versus B using independently optimized structural concepts. Its
-analytical result currently favors A on structural evidence, while B retains
-the fixed-PCB process and service advantage. EDR-006 remains proposed and no
-architecture freeze or Phase 3 start is authorized.
+baseline. They are retained as historical comparison, not as the current
+selection. The focused [Phase 2A structural comparison](phase-2a-structural-comparison.md)
+reopened A versus B using independently optimized structural concepts. The
+owner accepted A: fixed gantry with moving Y bed on 2026-10-06. B remains the
+documented primary rejected alternative and must not be physically built unless
+the owner reopens the architecture. Detailed motion hardware and structural
+geometry remain open for Phase 3 and later evidence.
 
 ## Inputs accepted from Phase 1
 
@@ -182,4 +183,6 @@ one-piece screening dimension.
 
 See [the force-loop study](phase-2-force-loop.md), [the weighted trade
 matrix](phase-2-decision-matrix.md), [the Phase 2A structural comparison](phase-2a-structural-comparison.md),
-and [the build123d spike report](phase-2-build123d-spike.md).
+and [the build123d spike report](phase-2-build123d-spike.md). The owner
+disposition is recorded in [EDR-006](../decisions/006-phase-2-architecture.md)
+and [EDR-007](../decisions/007-phase-2a-structural-comparison.md).

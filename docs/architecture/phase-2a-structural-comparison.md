@@ -1,13 +1,18 @@
 # Phase 2A focused structural comparison: A versus B
 
-**Status:** proposed supplement; owner review required
+**Status:** accepted Phase 2A baseline amendment; physical evidence remains open
 **Date:** 2026-10-06
-**Scope:** focused Phase 2A comparison only; no Phase 3, production CAD, or
-architecture acceptance
+**Scope:** focused Phase 2A comparison only; Phase 3 is now owner-authorized,
+but production CAD remains out of scope
 **Units:** millimetres, newtons, kilograms, and seconds unless stated
 otherwise
 
 ## Decision boundary
+
+The opening comparison below is the historical pre-owner-review proposal.
+The owner disposition is recorded in EDR-007: A is the accepted system
+baseline, B is the documented rejected alternative, and physical evidence
+remains open.
 
 The original Phase 2 matrix was close: A scored 73.6 and B scored 77.0. That
 result was a screening judgment, not proof that B is the better
@@ -16,10 +21,10 @@ predominantly-PETG structure. Phase 2A reopens only A versus B with the same
 spindle envelope, guide-reference layout, PETG-first constraints, and 5 N
 load philosophy. C is deliberately not part of this study.
 
-The result below is a calculated structural screen. It is not an FEA result,
-a measured stiffness value, or an authorization to freeze the architecture.
-EDR-006 remains proposed. EDR-007 records this supplement and also remains
-proposed.
+The result below is a calculated structural screen. It is not an FEA result or
+a measured stiffness value. The owner accepted A as the mechanical baseline;
+the physical coupons and force-loop tests remain open. EDR-007 records the
+boundary and does not accept Phase 3 or production CAD.
 
 ## Executive result
 
@@ -346,7 +351,7 @@ The command must pass Phase 2 and Phase 2A input validation, create non-empty
 review exports for A and B, and report zero unexpected solid overlaps. It does
 not create production geometry or publish temporary artifacts.
 
-The architecture cannot freeze from this package alone. Confidence is
+The architecture baseline is frozen only at the system level. Confidence is
 **low-to-moderate** for the comparative direction and **low** for the absolute
 millimetre values. The assumptions most likely to change the result are PETG
 print orientation and conditioning, actual rail-seat and joint stiffness,

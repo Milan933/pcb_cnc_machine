@@ -87,12 +87,32 @@ their source documents and are not physically verified:
 | AT-* | [Acceptance-test plan](phase-1-acceptance-tests.md) for future physical validation. |
 
 These documents distinguish calculated screening values from requirements
-that need a physical coupon or machine test. They do not select a spindle,
-rail, screw, motor, controller, or axis architecture.
+that need a physical coupon or machine test. They do not claim measured
+performance.
+
+## Phase 3 motion-system baseline
+
+The owner-authorized Phase 3 screening requirements and evidence boundary are
+recorded in [phase-3-motion-system.md](phase-3-motion-system.md). The current
+review layout uses Architecture A, dual MGN12H-class X/Y guides, dual MGN9H
+class Z guides, T8x4 X/Y screws, T8x2 Z screw, fixed/floating screw supports,
+preloaded anti-backlash nut classes, an identified NEMA17 acceptance envelope,
+and a GRBL-compatible 8-microstep starting configuration. These are
+preliminary component classes, not final purchased parts or measured
+performance.
+
+Phase 2A PETG coupons and representative 5 N force-loop evidence remain
+required. Phase 3 adds rail-seat/play, backlash/preload, screw axial play,
+homing repeatability, missed-step, straightness/squareness, and controller
+interface tests. The proposed Phase 3 decision record is
+[EDR-008](../docs/decisions/008-phase-3-motion-system.md); it remains open for
+owner review.
 
 ## Scope exclusions for this iteration
 
 - No detailed CNC part geometry.
 - No production STEP, STL, or drawing export.
-- No final rail, screw, spindle, motor, controller, workholding, or probing selection.
+- No final vendor rail, screw, spindle, motor, controller, workholding, or
+  probing selection; only preliminary motion component classes and reference
+  envelopes are recorded.
 - No unverified accuracy, repeatability, deflection, feed-rate, or runout claims.

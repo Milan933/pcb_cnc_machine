@@ -2,7 +2,10 @@
 
 - **Record ID:** EDR-007
 - **Phase:** 2 - Architecture supplement
-- **Status:** proposed / owner review required
+- **Status:** accepted by owner as a Phase 2A amendment; physical evidence remains open
+
+The original proposal text below is retained as historical pre-review context.
+The owner disposition later in this record is current.
 - **Date:** 2026-10-06
 - **Owner:** project team
 - **Affected requirements:** REQ-ARCH-001 through REQ-ARCH-005,
@@ -86,10 +89,21 @@ The full method is in
 - [x] Architecture-only optimized A/B review skeleton and interference policy implemented.
 - [x] No production CAD or manufacturing STEP/STL generated.
 - [ ] Representative coupons and A/B 5 N force-loop tests completed.
-- [ ] Owner reviews EDR-006 together with this proposed supplement.
+- [x] Owner reviewed EDR-006 together with this supplement and selected A as the mechanical baseline.
 
-## Gate
+## Owner disposition (2026-10-06)
 
-This record remains **proposed**. The architecture cannot freeze and Phase 3
-cannot begin until the owner disposition is recorded and the required
-physical evidence is reviewed.
+The owner accepted the Phase 2A evidence boundary and selected **A: fixed
+gantry with moving Y bed** as the mechanical architecture baseline. The
+calculated A/B values remain analytical screening values; they are not
+measured PETG or machine performance. The required coupons and representative
+5 N force-loop tests remain open and must be carried into the structural and
+motion validation plan.
+
+B remains documented as the primary rejected alternative. Do not physically
+build B unless the owner reopens the architecture. Phase 3 motion selection is
+authorized, but no detailed structural geometry, production export, or Phase
+3 decision acceptance is implied.
+
+The Phase 2A amendment is therefore **accepted as a boundary and baseline**;
+its physical-validation checklist is not marked complete.

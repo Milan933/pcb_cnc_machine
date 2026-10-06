@@ -5,11 +5,12 @@ isolation routing, drilling, and outline cutting.
 
 ## Project status
 
-This repository is in Phase 2: Architecture review. Phase 1 is accepted by
-the project owner; the current deliverable contains the original three-way
-screen plus a focused Phase 2A A-versus-B PETG structural comparison,
-preliminary calculations, and architecture-only review skeletons. It still
-contains no detailed printable CNC parts or production STEP or STL files.
+This repository is in Phase 3: Motion-system selection review. Phase 1 and the
+Architecture A baseline are accepted by the project owner; the current
+deliverable contains the Phase 2A structural comparison, motion component
+trade, preliminary calculations, and a review-only motion-layout skeleton. It
+still contains no detailed printable CNC parts or production STEP or STL
+files.
 
 The project is experimental until physical validation is complete. Existing
 documentation and checks must not be read as claims of measured accuracy,
@@ -68,16 +69,20 @@ printer.
   working-area comparison.
 - [Phase 1 acceptance tests](requirements/phase-1-acceptance-tests.md):
   future physical test definitions.
+- [Phase 3 motion system](requirements/phase-3-motion-system.md):
+  owner-authorized motion-system screening requirements and evidence boundary.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture, Phase 2
   trade study, Phase 2A structural comparison and physical-validation plan,
-  force loops, skeleton spike, and review views.
+  Phase 3 motion selection, force loops, skeleton spike, and review views.
 - [docs/decisions](docs/decisions): engineering decision records.
+- [bom/phase-3-motion-bom.md](bom/phase-3-motion-bom.md): sample-only motion
+  class BOM and purchase boundary.
 - [.agents/skills](.agents/skills): project-specific engineering skills.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
-  set, including Phase 2 skeleton envelopes; it contains no detailed part
-  geometry.
+  set, including Phase 2 and Phase 3 review-layout inputs; it contains no
+  detailed part geometry.
 - [cad/validation](cad/validation): dependency-light validation interfaces and
   foundation checks.
 - [generated](generated): reserved for reviewed manufacturing outputs.
@@ -100,12 +105,10 @@ Every important value or decision must be marked as one of:
 
 ## Near-term next step
 
-Review or rework proposed [EDR-006](docs/decisions/006-phase-2-architecture.md)
-together with the Phase 2A supplement
-[EDR-007](docs/decisions/007-phase-2a-structural-comparison.md). The unresolved
-spindle, controller, motor, exact rail/screw, probing, workholding, and
-physical-test questions remain visible. Phase 3 motion selection and detailed
-structural CAD do not begin automatically.
+Review proposed [EDR-008](docs/decisions/008-phase-3-motion-system.md). The
+unresolved spindle, controller, motor, exact rail/screw, probing, workholding,
+and physical-test questions remain visible. Phase 4 BOM finalization and
+detailed structural CAD do not begin automatically.
 
 ## Development interface
 
@@ -126,3 +129,7 @@ manufacturing release files.
 The focused A/B study uses the same external environment and is run with:
 
     python -m tools.run_phase2a_study --output-dir <temporary-directory>
+
+The Phase 3 motion study uses the same external environment and is run with:
+
+    python -m tools.run_phase3_motion_study --output-dir <temporary-directory>

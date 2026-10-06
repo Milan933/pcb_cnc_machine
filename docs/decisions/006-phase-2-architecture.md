@@ -2,7 +2,10 @@
 
 - **Record ID:** EDR-006
 - **Phase:** 2 - Architecture
-- **Status:** proposed / owner review required
+- **Status:** accepted by owner with Phase 2A amendment; historical proposal retained
+
+The original decision proposal below is retained as historical evidence. The
+owner disposition at the end of this record is the current Phase 2 decision.
 - **Date:** 2026-10-06
 - **Owner:** project team
 - **Affected requirements:** REQ-ARCH-001 through REQ-ARCH-005, REQ-FN-003,
@@ -111,20 +114,40 @@ intentional interfaces. No manufacturing STL or release export was created.
 - [x] Weighted matrix and sensitivity check implemented and tested.
 - [x] Architecture-only build123d skeleton, exports, bounds, and interference policy tested.
 - [x] No production STL/STEP/detailed printable part generated or published.
-- [ ] Owner reviews and accepts or reworks EDR-006.
+- [x] Owner reviewed the original proposal together with EDR-007 and recorded the A baseline disposition below.
 
-## Phase gate
+## Phase gate (historical pre-disposition state)
 
-This record remains **proposed**. Owner review is the Phase 2 gate. Do not
-begin Phase 3 motion-system selection or detailed structural CAD until the
-owner disposition is recorded.
+The preceding proposal required owner review. That review and the Phase 2A
+disposition are now recorded below; the accepted baseline still does not
+authorize detailed structural CAD or manufacturing exports.
 
-## Phase 2A addendum (2026-10-06; not an acceptance)
+## Phase 2A addendum (2026-10-06; historical pre-disposition text)
 
 The close original A/B result triggered a focused structural follow-up. The
 original B recommendation is therefore reopened for comparison with an
 independently optimized A fixed-gantry/moving-bed concept. The follow-up is
 recorded in [EDR-007](007-phase-2a-structural-comparison.md) and
 [the Phase 2A package](../architecture/phase-2a-structural-comparison.md).
-EDR-006 remains proposed, is not accepted by this addendum, and does not
-authorize Phase 3 or production CAD.
+At the time this addendum was written, EDR-006 remained proposed and Phase 3
+was not authorized. The owner disposition below supersedes that temporary
+pre-review boundary.
+
+## Owner disposition (2026-10-06)
+
+The owner reviewed the original Phase 2 proposal together with EDR-007 and
+accepted **A: fixed gantry with moving Y bed** as the mechanical architecture
+baseline. **B: moving gantry with fixed bed** remains the documented primary
+rejected alternative and is not to be physically built unless the owner
+reopens the architecture.
+
+The architecture is frozen only at the system-mechanical level. Detailed
+geometry, guide class, screw lead, bearing arrangement, spindle, dimensions,
+interfaces, motor/controller identity, and production parts remain open for
+Phase 3 and later evidence. The Phase 2A values remain calculated screening
+results, not measured machine results. PETG coupons, joint/rail-seat tests,
+and representative 5 N force-loop evidence remain required.
+
+This disposition authorizes Phase 3 motion-system selection and its
+review-only parameter/skeleton work. It does not accept the Phase 3 decision
+record, authorize detailed structural CAD, or authorize production STEP/STL.

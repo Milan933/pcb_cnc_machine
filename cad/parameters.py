@@ -296,7 +296,7 @@ class Phase2SkeletonParameters:
     the Phase 2 review and later motion, BOM, and structural evidence.
     """
 
-    # The owner accepted the B working-area baseline; tool travel is a
+    # The owner accepted the B working-area option; tool travel is a
     # separate preliminary packaging assumption with 10 mm nominal access on
     # each working-area edge.
     working_area_mm: tuple[float, float]
@@ -519,4 +519,355 @@ PHASE2A_PARAMETERS = Phase2AParameters(
     b_rail_seat_count=6,
     a_cable_drag_n=0.50,
     b_cable_drag_n=1.00,
+)
+
+
+@dataclass(frozen=True)
+class RailClassParameters:
+    """Vendor-reference envelope for a rail class, not a purchase lock."""
+
+    family: str
+    block_type: str
+    assembly_width_mm: float
+    assembly_height_mm: float
+    block_length_mm: float
+    dynamic_load_kn: float
+    static_load_kn: float
+    rated_moment_mr_nm: float
+    rated_moment_mp_nm: float
+    rated_moment_my_nm: float
+    block_mass_kg: float
+    rail_mass_kg_per_m: float
+    rail_mounting_bolt: str
+    availability_class: str
+    source_url: str
+
+
+@dataclass(frozen=True)
+class Phase3AxisParameters:
+    """Preliminary axis-level motion layout and transmission inputs."""
+
+    axis: str
+    travel_mm: float
+    rail_class: str
+    rail_count: int
+    carriages_per_rail: int
+    rail_center_spacing_mm: float
+    rail_length_mm: float
+    screw_lead_mm: float
+    screw_length_mm: float
+    screw_unsupported_length_mm: float
+    screw_design_force_n: float
+    commissioning_feed_mm_min: float
+    home_direction: str
+    fixed_bearing_location: str
+    floating_bearing_location: str
+
+
+@dataclass(frozen=True)
+class Phase3MotionParameters:
+    """Central Phase 3 motion-system screening parameters.
+
+    These values describe a review layout and component classes. Exact
+    supplier, preload, rail lengths, motors, drivers, spindle, and printed
+    interfaces remain open until measured hardware and physical evidence are
+    available.
+    """
+
+    working_area_mm: tuple[float, float]
+    screened_travel_mm: tuple[float, float, float]
+    moving_bed_support_mm: tuple[float, float, float]
+    spoilboard_envelope_mm: tuple[float, float, float]
+    pcb_edge_margin_mm: tuple[float, float]
+    nominal_moving_bed_mass_kg: float
+    tool_point_test_load_n: float
+    tool_point_overhang_mm: float
+    rail_classes: tuple[RailClassParameters, ...]
+    axes: tuple[Phase3AxisParameters, ...]
+    screw_candidate_leads_mm: tuple[float, ...]
+    screw_root_diameter_mm: float
+    screw_youngs_modulus_n_per_mm2: float
+    screw_density_kg_per_mm3: float
+    screw_efficiency: float
+    critical_speed_margin: float
+    motor_steps_per_revolution: int
+    recommended_microsteps: int
+    motor_mounting_square_mm: float
+    motor_body_length_range_mm: tuple[float, float]
+    motor_shaft_diameter_mm: float
+    motor_shaft_engagement_mm: float
+    minimum_xy_holding_torque_nm: float
+    minimum_z_holding_torque_nm: float
+    motor_phase_current_screening_range_a: tuple[float, float]
+    bearing_bore_mm: float
+    fixed_bearing_strategy: str
+    floating_bearing_strategy: str
+    coupler_strategy: str
+    nut_strategy_xy: str
+    nut_strategy_z: str
+    backlash_target_mm: float
+    controller_family: str
+    driver_candidates: tuple[str, ...]
+    driver_microstep_limits: tuple[tuple[str, int], ...]
+    controller_required_interfaces: tuple[str, ...]
+    controller_identification_checklist: tuple[str, ...]
+    home_positions: tuple[tuple[str, str], ...]
+    machine_coordinate_definition: str
+    work_coordinate_definition: str
+    machine_envelope_mm: tuple[float, float, float]
+    service_footprint_mm: tuple[float, float, float]
+    rail_reference_envelopes_mm: tuple[tuple[str, tuple[float, float]], ...]
+    reference_screw_diameter_mm: float
+    reference_nut_envelope_mm: tuple[float, float, float]
+    reference_motor_envelope_mm: tuple[float, float, float]
+    reference_bearing_support_envelopes_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    reference_lower_bearing_support_envelope_mm: tuple[float, float, float]
+    reference_coupler_envelopes_mm: tuple[tuple[str, tuple[float, float, float]], ...]
+    spindle_mount_envelope_mm: tuple[float, float, float]
+    x_rail_center_y_mm: float
+    x_rail_center_z_mm: float
+    y_rail_center_z_mm: float
+    z_rail_center_y_mm: float
+    z_rail_base_z_mm: float
+    z_screw_center_offset_y_mm: float
+    y_carriage_center_offsets_mm: tuple[float, float]
+    reference_end_clearance_mm: float
+    reference_lower_support_overlap_mm: float
+    reference_motor_clearance_mm: float
+    spindle_mount_min_z_mm: float
+    physical_motion_tests: tuple[str, ...]
+    source_urls: tuple[str, ...]
+
+
+PHASE3_RAIL_CLASSES = (
+    RailClassParameters(
+        family="MGN9",
+        block_type="C",
+        assembly_width_mm=20.0,
+        assembly_height_mm=10.0,
+        block_length_mm=30.0,
+        dynamic_load_kn=2.01,
+        static_load_kn=2.84,
+        rated_moment_mr_nm=13.05,
+        rated_moment_mp_nm=8.97,
+        rated_moment_my_nm=8.97,
+        block_mass_kg=0.012,
+        rail_mass_kg_per_m=0.38,
+        rail_mounting_bolt="M3x8",
+        availability_class="low-cost / widely available; clone variation requires inspection",
+        source_url="https://www.hiwin.com/wp-content/uploads/Linear_Guideway-E-2.pdf",
+    ),
+    RailClassParameters(
+        family="MGN9",
+        block_type="H",
+        assembly_width_mm=20.0,
+        assembly_height_mm=10.0,
+        block_length_mm=39.9,
+        dynamic_load_kn=2.50,
+        static_load_kn=3.93,
+        rated_moment_mr_nm=19.71,
+        rated_moment_mp_nm=21.47,
+        rated_moment_my_nm=21.47,
+        block_mass_kg=0.020,
+        rail_mass_kg_per_m=0.38,
+        rail_mounting_bolt="M3x8",
+        availability_class="low-cost / widely available; clone variation requires inspection",
+        source_url="https://www.hiwin.com/wp-content/uploads/Linear_Guideway-E-2.pdf",
+    ),
+    RailClassParameters(
+        family="MGN12",
+        block_type="C",
+        assembly_width_mm=27.0,
+        assembly_height_mm=13.0,
+        block_length_mm=35.0,
+        dynamic_load_kn=2.84,
+        static_load_kn=3.92,
+        rated_moment_mr_nm=25.48,
+        rated_moment_mp_nm=13.72,
+        rated_moment_my_nm=13.72,
+        block_mass_kg=0.025,
+        rail_mass_kg_per_m=0.65,
+        rail_mounting_bolt="M3x8",
+        availability_class="medium-cost / widely available; clone variation requires inspection",
+        source_url="https://www.hiwin.com/wp-content/uploads/Linear_Guideway-E-2.pdf",
+    ),
+    RailClassParameters(
+        family="MGN12",
+        block_type="H",
+        assembly_width_mm=27.0,
+        assembly_height_mm=13.0,
+        block_length_mm=47.6,
+        dynamic_load_kn=4.27,
+        static_load_kn=5.90,
+        rated_moment_mr_nm=38.40,
+        rated_moment_mp_nm=37.49,
+        rated_moment_my_nm=37.49,
+        block_mass_kg=0.047,
+        rail_mass_kg_per_m=0.65,
+        rail_mounting_bolt="M3x8",
+        availability_class="medium-cost / widely available; clone variation requires inspection",
+        source_url="https://www.hiwin.com/wp-content/uploads/Linear_Guideway-E-2.pdf",
+    ),
+)
+
+
+PHASE3_MOTION_PARAMETERS = Phase3MotionParameters(
+    working_area_mm=(200.0, 150.0),
+    screened_travel_mm=(220.0, 170.0, 40.0),
+    moving_bed_support_mm=(240.0, 190.0, 8.0),
+    spoilboard_envelope_mm=(240.0, 190.0, 12.0),
+    pcb_edge_margin_mm=(20.0, 20.0),
+    nominal_moving_bed_mass_kg=1.24,
+    tool_point_test_load_n=5.0,
+    tool_point_overhang_mm=50.0,
+    rail_classes=PHASE3_RAIL_CLASSES,
+    axes=(
+        Phase3AxisParameters(
+            axis="X",
+            travel_mm=220.0,
+            rail_class="MGN12H",
+            rail_count=2,
+            carriages_per_rail=2,
+            rail_center_spacing_mm=60.0,
+            rail_length_mm=300.0,
+            screw_lead_mm=4.0,
+            screw_length_mm=300.0,
+            screw_unsupported_length_mm=300.0,
+            screw_design_force_n=50.0,
+            commissioning_feed_mm_min=600.0,
+            home_direction="negative X / left",
+            fixed_bearing_location="left motor end",
+            floating_bearing_location="right end",
+        ),
+        Phase3AxisParameters(
+            axis="Y",
+            travel_mm=170.0,
+            rail_class="MGN12H",
+            rail_count=2,
+            carriages_per_rail=2,
+            rail_center_spacing_mm=220.0,
+            rail_length_mm=280.0,
+            screw_lead_mm=4.0,
+            screw_length_mm=280.0,
+            screw_unsupported_length_mm=280.0,
+            screw_design_force_n=50.0,
+            commissioning_feed_mm_min=700.0,
+            home_direction="negative Y / front; moving bed travels with Y",
+            fixed_bearing_location="front motor end",
+            floating_bearing_location="rear end",
+        ),
+        Phase3AxisParameters(
+            axis="Z",
+            travel_mm=40.0,
+            rail_class="MGN9H",
+            rail_count=2,
+            carriages_per_rail=2,
+            rail_center_spacing_mm=60.0,
+            rail_length_mm=100.0,
+            screw_lead_mm=2.0,
+            screw_length_mm=120.0,
+            screw_unsupported_length_mm=120.0,
+            screw_design_force_n=50.0,
+            commissioning_feed_mm_min=1200.0,
+            home_direction="positive Z / up",
+            fixed_bearing_location="upper motor end",
+            floating_bearing_location="lower radial support",
+        ),
+    ),
+    screw_candidate_leads_mm=(2.0, 4.0),
+    screw_root_diameter_mm=6.2,
+    screw_youngs_modulus_n_per_mm2=200000.0,
+    screw_density_kg_per_mm3=7.85e-6,
+    screw_efficiency=0.35,
+    critical_speed_margin=0.70,
+    motor_steps_per_revolution=200,
+    recommended_microsteps=8,
+    motor_mounting_square_mm=42.3,
+    motor_body_length_range_mm=(40.0, 48.0),
+    motor_shaft_diameter_mm=5.0,
+    motor_shaft_engagement_mm=20.0,
+    minimum_xy_holding_torque_nm=0.45,
+    minimum_z_holding_torque_nm=0.55,
+    motor_phase_current_screening_range_a=(0.8, 1.5),
+    bearing_bore_mm=8.0,
+    fixed_bearing_strategy="paired angular-contact or compact BK08-class fixed support; vendor and fit remain open",
+    floating_bearing_strategy="8 mm radial BF08-class support with axial float; do not clamp both screw ends",
+    coupler_strategy="flexible 5 mm motor to 8 mm screw coupler; torque transmission only, never an axial bearing",
+    nut_strategy_xy="adjustable spring-preloaded split brass or dual-brass anti-backlash nut; replaceable and measurable",
+    nut_strategy_z="adjustable preloaded anti-backlash nut only after drag and gravity-hold test; standard brass is a fallback",
+    backlash_target_mm=0.030,
+    controller_family="GRBL 1.1-compatible STEP/DIR controller; exact Arduino CNC Shield revision is unresolved",
+    driver_candidates=("A4988", "DRV8825"),
+    driver_microstep_limits=(("A4988", 16), ("DRV8825", 32)),
+    controller_required_interfaces=(
+        "three independent STEP/DIR axis channels",
+        "X/Y/Z homing and hard-limit inputs",
+        "conductive probe input with fault-safe wiring",
+        "spindle enable and PWM or documented external speed control",
+        "12-24 V motor supply and verified driver cooling/current setting",
+    ),
+    controller_identification_checklist=(
+        "record shield revision and pinout",
+        "record GRBL fork and firmware version",
+        "identify driver carrier and current-limit method",
+        "measure available motor supply voltage and current margin",
+        "verify limit, probe, spindle-enable, and PWM pins electrically",
+        "verify homing direction, pull-off, debounce, soft-limit, and alarm behavior",
+    ),
+    home_positions=(
+        ("X", "negative / left end"),
+        ("Y", "negative / front end of moving bed"),
+        ("Z", "positive / upper safe end"),
+    ),
+    machine_coordinate_definition="After homing, MCS is anchored by the three switch datums. With standard GRBL homing, negative-home X/Y report approximately -$27 after pull-off and increase away from the switches; positive-home Z reports approximately $132+$27 at the upper switch and decreases toward the bed. Soft limits are enabled only after switch locations and travel are measured.",
+    work_coordinate_definition="G54 work zero is set on the registered PCB datum, normally the front-left board corner in X/Y and the probed copper or board surface in Z. Cutting remains a negative-Z work move from the surface.",
+    machine_envelope_mm=(400.0, 400.0, 310.0),
+    service_footprint_mm=(520.0, 520.0, 370.0),
+    rail_reference_envelopes_mm=(
+        ("MGN9H", (9.0, 1.8)),
+        ("MGN12H", (12.0, 2.5)),
+    ),
+    reference_screw_diameter_mm=8.0,
+    reference_nut_envelope_mm=(18.0, 18.0, 18.0),
+    reference_motor_envelope_mm=(42.3, 42.3, 48.0),
+    reference_bearing_support_envelopes_mm=(
+        ("X", (20.0, 42.0, 30.0)),
+        ("Y", (42.0, 20.0, 30.0)),
+        ("Z", (42.0, 42.0, 20.0)),
+    ),
+    reference_lower_bearing_support_envelope_mm=(30.0, 30.0, 16.0),
+    reference_coupler_envelopes_mm=(
+        ("X", (24.0, 20.0, 20.0)),
+        ("Y", (20.0, 24.0, 20.0)),
+        ("Z", (20.0, 20.0, 24.0)),
+    ),
+    spindle_mount_envelope_mm=(52.0, 52.0, 20.0),
+    x_rail_center_y_mm=-48.0,
+    x_rail_center_z_mm=130.0,
+    y_rail_center_z_mm=-19.0,
+    z_rail_center_y_mm=-20.0,
+    z_rail_base_z_mm=80.0,
+    z_screw_center_offset_y_mm=-16.0,
+    y_carriage_center_offsets_mm=(-50.0, 50.0),
+    reference_end_clearance_mm=10.0,
+    reference_lower_support_overlap_mm=2.0,
+    reference_motor_clearance_mm=2.0,
+    spindle_mount_min_z_mm=118.0,
+    physical_motion_tests=(
+        "rail-seat flatness and carriage play after preload",
+        "screw backlash and reversal hysteresis in both directions",
+        "anti-backlash nut preload, drag, and wear after cycling",
+        "fixed-end axial play and floating-end thermal movement",
+        "homing repeatability and switch fault response",
+        "missed-step margin at commissioning feed and acceleration",
+        "axis straightness, squareness, and calibrated absolute error",
+        "5 N tool-point deflection in X/Y/Z with the selected spindle envelope",
+    ),
+    source_urls=(
+        "https://www.hiwin.com/wp-content/uploads/Linear_Guideway-E-2.pdf",
+        "https://www.allegromicro.com/en/products/motor-drivers/brush-dc-motor-drivers/a4988",
+        "https://www.ti.com/lit/ds/symlink/drv8825.pdf",
+        "https://github.com/gnea/grbl/blob/master/doc/markdown/settings.md?plain=1",
+        "https://github.com/gnea/grbl/blob/master/doc/markdown/interface.md",
+    ),
 )

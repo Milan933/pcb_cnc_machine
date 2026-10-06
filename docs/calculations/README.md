@@ -54,3 +54,7 @@ The current Phase 1 equations and screening calculations are in
 The focused A/B equivalent-section, joint, dynamic, racking, and sensitivity
 calculations are in
 [phase-2a-structural-calculations.md](phase-2a-structural-calculations.md).
+
+The Phase 3 screw resolution, torque, guide-reaction, and critical-speed
+screen is in
+[phase-3-motion-calculations.md](phase-3-motion-calculations.md).
