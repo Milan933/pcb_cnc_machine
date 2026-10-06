@@ -1,0 +1,73 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local secrets and credentials. Public examples may be explicitly re-added.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+credentials
+credentials.*
+credentials-*
+secrets
+secrets.*
+secrets-*
+*.secret
+*.token
+
+# Python environments and local build state.
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+.cache/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Machine-specific and IDE state.
+.idea/workspace.xml
+.idea/**/workspace.xml
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+*.log
+
+# Generated manufacturing and drawing outputs are deliberately kept out of source control.
+# Temporary outputs remain ignored. Reviewed release files may be placed in the
+# explicitly designated release subdirectories and committed after validation.
+generated/step/*
+!generated/step/.gitkeep
+!generated/step/release/
+!generated/step/release/**
+generated/stl/*
+!generated/stl/.gitkeep
+!generated/stl/release/
+!generated/stl/release/**
+generated/drawings/*
+!generated/drawings/.gitkeep
+!generated/drawings/release/
+!generated/drawings/release/**
+
+# Local CAD viewer and editor state.
+.cadquery/
+.build123d/
