@@ -1,6 +1,6 @@
 ---
 name: design-validation
-description: Define and implement fail-closed validation for PCB CNC travel, clearances, interfaces, printed-part fit, and assembly evidence.
+description: Define and implement fail-closed validation for PCB CNC travel, clearances, interfaces, printed-part fit, and assembly evidence on top of the generic mechanical CAD review framework.
 ---
 
 # Design validation
@@ -9,6 +9,15 @@ Use this skill to create validation rules, geometry adapters, test fixtures,
 or review reports for the PCB CNC. Validation is evidence about a particular
 parameter set and model revision; it is not a replacement for engineering
 judgment or a physical test.
+
+## Scope and dependency boundary
+
+This is the PCB-CNC validation overlay. Use
+`.agents/skills/cad-design-review/SKILL.md` for the generic human-review gate,
+load-path sanity checks, assembly review, and evidence language. The rules in
+this file retain CNC-specific travel, spindle, PCB, PETG, controller, and
+manufacturing-release requirements and must not be generalized to unrelated
+mechanisms without a deliberate review.
 
 ## Validation policy
 

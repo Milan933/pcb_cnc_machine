@@ -1,6 +1,6 @@
 ---
 name: motion-system-design
-description: Select and review CNC axes, guides, screws, motors, bearings, couplers, limits, and homing using travel, stiffness, speed, load, and service requirements.
+description: Select and review PCB-CNC axes, guides, screws, motors, bearings, couplers, limits, and homing using CNC travel, stiffness, speed, load, and service requirements.
 ---
 
 # Motion-system design
@@ -8,6 +8,14 @@ description: Select and review CNC axes, guides, screws, motors, bearings, coupl
 Use this skill to compare motion-system candidates and integrate them into a
 PCB CNC architecture. Candidate names are not selections. Select from
 requirements and evidence.
+
+## Scope and dependency boundary
+
+This is the PCB-CNC motion overlay. Load
+`.agents/skills/motion-mechanism-design/SKILL.md` for generic mechanism,
+constraint, bearing, transmission, actuator, and motion-envelope reasoning.
+This file retains the CNC-specific axis, NEMA17, screw, PCB travel, limit, and
+homing requirements.
 
 ## Selection sequence
 

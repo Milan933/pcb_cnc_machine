@@ -111,6 +111,9 @@ installed driver modules remain identification items.
 - [bom/phase-4a-preliminary-bom.md](bom/phase-4a-preliminary-bom.md):
   preliminary O2 printed-part and hardware measurement boundary.
 - [.agents/skills](.agents/skills): project-specific engineering skills.
+- [Generic mechanical CAD skill framework](.agents/skills/mechanical-cad-framework.md):
+  reusable datum, interface, assembly, FDM, joint, motion, hardware, review,
+  and engineering-visualization methodology used by the CNC overlays.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
   set, including Phase 2, Phase 3, Phase 3A review-layout inputs, the Phase 4
   structural part/interface contracts, and the owner-directed PETG insert

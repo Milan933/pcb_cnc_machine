@@ -9,6 +9,14 @@ Use this skill when selecting or reviewing the machine-level architecture.
 It applies before detailed part geometry and whenever a mechanical choice
 changes the tool-point force loop, PCB datum, or process capability.
 
+## Scope and dependency boundary
+
+This skill is intentionally retained as a PCB-CNC-specific overlay. It adds
+FR4 isolation routing, drilling, outline cutting, PCB workholding, probing,
+height mapping, spindle, and process-datum requirements to the generic
+mechanical architecture and review skills. It should not be used as a generic
+machine-design template.
+
 ## Primary design objective
 
 Optimize the machine for FR4 isolation routing, PCB drilling, and PCB outline

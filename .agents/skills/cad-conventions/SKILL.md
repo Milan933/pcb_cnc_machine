@@ -1,12 +1,21 @@
 ---
 name: cad-conventions
-description: Establish and enforce the parametric CAD architecture, coordinates, naming, reusable interfaces, assembly placement, and STEP/STL export conventions for the PCB CNC.
+description: Apply the PCB-CNC-specific parametric CAD architecture, coordinates, naming, reusable interfaces, assembly placement, and STEP/STL export conventions after the generic mechanical CAD method is loaded.
 ---
 
 # CAD conventions
 
 Use this skill whenever creating or reviewing CAD source, a part module, an
 assembly, an export script, or a geometry-facing validation adapter.
+
+## Scope and dependency boundary
+
+This is a PCB-CNC overlay, not the generic mechanical design method. Load
+`.agents/skills/mechanical-cad-design/SKILL.md` for function-to-geometry,
+datums, load paths, and feature reasoning; load the generic assembly, FDM,
+joint, hardware, motion, rendering, and review skills as needed. The rules
+below preserve this project's coordinate, source-layout, naming, export, and
+owner-hardware conventions.
 
 ## Technology direction
 

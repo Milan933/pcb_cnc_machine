@@ -1,6 +1,6 @@
 ---
 name: printed-structural-design
-description: Design and review load-bearing PETG machine structures for stiffness, creep resistance, printability, and durable fastener and rail interfaces.
+description: Design and review load-bearing PETG PCB-CNC structures for stiffness, creep resistance, printability, and durable fastener and rail interfaces using the generic FDM and joint skills as a foundation.
 ---
 
 # Printed structural design
@@ -8,6 +8,16 @@ description: Design and review load-bearing PETG machine structures for stiffnes
 Use this skill for printed PETG frames, gantries, carriages, mounts, rail
 supports, and structural joints. It is not a license to treat printed
 plastic as dimensionally stable metal.
+
+## Scope and dependency boundary
+
+This is the PCB-CNC structural overlay. Load
+`.agents/skills/design-for-3d-printing/SKILL.md` for generic FDM process and
+printability reasoning and
+`.agents/skills/mechanical-joints-fasteners/SKILL.md` for generic joint/load
+transfer reasoning. The project-specific rules below retain PETG machine
+structure, rail/gantry interfaces, Voron 2.4 print-boundary assumptions, and
+CNC service requirements.
 
 ## Material behavior
 
