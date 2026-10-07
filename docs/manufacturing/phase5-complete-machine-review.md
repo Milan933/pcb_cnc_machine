@@ -1,109 +1,116 @@
-# Phase 5 complete virtual-machine owner review package
+# Phase 5 master-assembly-first owner review
 
-Status: generated review candidate; overall maturity `PROTOTYPE-STL`.
+Status: generated virtual-machine candidate; `PROTOTYPE-STL`.
 
-This package converts the accepted Phase 4A O2 architecture into a coherent
-virtual fixed-gantry PCB CNC machine. It is intentionally complete before the
-physical first-part review, but it is not a hardware-validated or released
-machine.
+The complete assembled CNC is the primary design object. The printable PETG
+parts are derived from its hardware relationships and load paths. The previous
+envelope-only STL set is superseded and must not be printed or released.
 
-## What is being reviewed
+## Review scope
 
-- fixed gantry with a moving Y bed;
-- 19 actual fused PETG structural solids, inventoried as PCNC-P001 through
-  PCNC-P019;
-- dual MGN12-class X/Y guide envelopes, dual MGN9-class Z guide envelopes,
-  T8x4 X/Y and T8x2 Z screw envelopes;
-- nominal 200 x 150 mm PCB area, 220 x 170 x 40 mm tool-point screening travel;
-- parametric NEMA17 motor envelope and owner-stock motor strategy;
-- owner Arduino Mega + CNC Shield controller envelope, without inventing its
-  shield revision or driver pinout;
-- replaceable spoilboard, workholding, conductive probe, limits, service loops,
-  and electronics mounting space;
-- ordered assembly guide, coordinate system, preliminary fastener schedule,
-  wiring architecture, BOM, and local export manifest.
+- fixed gantry with moving Y bed and 200 x 150 mm PCB work area;
+- 20 derived PETG structural solids, including a dedicated rear Y floating-
+  bearing bridge;
+- local derived models for MGN12/MGN9 guide classes, T8 screws/nuts, 608
+  bearings, couplers, generic owner-stock NEMA17 motors, Arduino Mega,
+  provisional CNC Shield, ER11 spindle candidate, switches, probe, and
+  representative fastener;
+- complete named master assembly with 68 components, support/fastening
+  records, service loops, workholding, controller access, and cable volumes;
+- actual individual STL/STEP candidates, complete master STEP, and a master
+  visualization STL suitable for opening in OrcaSlicer;
+- 16 review views covering assembled, subsystem, exploded, printed-only,
+  hardware-only, and motion-extreme states.
 
-## Dimensions and inventory
+## Current virtual dimensions
 
-| Item | Current virtual-CAD value | Status |
+| Item | Current value | Evidence status |
 | --- | ---: | --- |
-| Master service-envelope X/Y/Z | 479 x 475 x 273 mm | calculated from virtual envelopes |
+| Master envelope X/Y/Z | 370 x 406 x 320 mm | calculated virtual envelope |
 | PCB work area | 200 x 150 mm | accepted screening requirement |
-| Tool-point travel | 220 x 170 x 40 mm | preliminary packaging target |
-| Spoilboard | 230 x 180 x 12 mm | provisional purchased interface |
-| Printable structural parts | 19 | controlled inventory |
-| Master components | 70 | 19 printed + 51 hardware/process envelopes |
-| PETG solid-equivalent estimate | approximately 5.72 kg | calculated; not slicer mass |
-| Motor interface | 42.3 mm NEMA17 class, 5 mm shaft screen, 40–48 mm body | owner-stock screening assumption |
-| Spindle screen | 25/40/52 mm body classes, 0.30–0.80 kg | provisional envelope |
+| Tool-point screening travel | 220 x 170 x 40 mm | preliminary packaging target |
+| Printed-part screening bound | 320 mm maximum | automated candidate check |
+| Structural candidates | 20 | local fused PETG solids |
+| Master components | 68 | 20 structural plus hardware/process models |
+| Motor interface | 42.3 mm NEMA17 class; 5 mm shaft screen; 40-48 mm body | generic owner-stock interface |
+| Spindle representation | SycoTec 5045 AC-ER11 local 45 x 140 mm envelope | reference candidate only |
 
-The solid-equivalent PETG estimate is higher than the earlier Phase 4A
-analytical printed-mass range because this pass measures the CAD solids at a
-nominal material density. It must not be read as expected slicer mass or as a
-structural-performance result.
+The 320 mm master Z extent is an assembly envelope, not a claim that the
+owner's printer can produce it as one part. The longest structural parts are
+the conditional 320 mm base sides; all individual candidate solids are
+screened against the conservative 320 mm bound. Verify usable Voron 350
+volume and long-axis process distortion before any print.
 
-## Files and review views
+## Reproducible package
 
-The generator command is:
+Run the pinned CAD environment:
 
 ```text
 C:\Users\milan\pcbCNC-cad-env\Scripts\python.exe -m tools.generate_phase5_complete_machine
 ```
 
-The generated files are local development artifacts under
-`generated/stl/phase5-complete-machine/`,
-`generated/step/phase5-complete-machine/`, and
-`generated/drawings/phase5-complete-machine/`. The tracked manifest is
-[phase5-complete-machine-manifest.json](phase5-complete-machine-manifest.json).
+The package is written to:
 
-Review the 19 individual STL files in OrcaSlicer, then inspect these views:
+- [`generated/stl/phase5-complete-machine/`](../../generated/stl/phase5-complete-machine/)
+  for individual candidates and `pcb_cnc_master_assembly.stl`;
+- [`generated/step/phase5-complete-machine/`](../../generated/step/phase5-complete-machine/)
+  for individual candidates and `pcb_cnc_master_assembly.step`;
+- [`generated/drawings/phase5-complete-machine/`](../../generated/drawings/phase5-complete-machine/)
+  for 16 review views;
+- [`phase5-complete-machine-manifest.json`](phase5-complete-machine-manifest.json)
+  for inventory, source, hardware register, support audit, exports, and
+  validation.
 
-1. [complete front isometric](../../generated/drawings/phase5-complete-machine/01-complete-front-isometric.png)
-2. [complete rear isometric](../../generated/drawings/phase5-complete-machine/02-complete-rear-isometric.png)
-3. [top](../../generated/drawings/phase5-complete-machine/03-top.png)
-4. [front](../../generated/drawings/phase5-complete-machine/04-front.png)
-5. [side](../../generated/drawings/phase5-complete-machine/05-side.png)
-6. [exploded machine](../../generated/drawings/phase5-complete-machine/06-exploded-machine.png)
-7. [exploded base/Y](../../generated/drawings/phase5-complete-machine/07-exploded-base-y.png)
-8. [exploded gantry/X](../../generated/drawings/phase5-complete-machine/08-exploded-gantry-x.png)
-9. [exploded Z/spindle](../../generated/drawings/phase5-complete-machine/09-exploded-z-spindle.png)
-10. [electronics and cable service](../../generated/drawings/phase5-complete-machine/10-electronics-cable.png)
-11. [PCB and workholding](../../generated/drawings/phase5-complete-machine/11-pcb-workholding.png)
-12. [motion envelope](../../generated/drawings/phase5-complete-machine/12-motion-envelope.png)
+No `release/` output is created.
 
-## Validation result
+## Review views
 
-The complete batch passed the blocking automated checks:
+1. [master front isometric](../../generated/drawings/phase5-complete-machine/01-master-front-isometric.png)
+2. [master rear isometric](../../generated/drawings/phase5-complete-machine/02-master-rear-isometric.png)
+3. [left side](../../generated/drawings/phase5-complete-machine/03-left-side.png)
+4. [right side](../../generated/drawings/phase5-complete-machine/04-right-side.png)
+5. [top](../../generated/drawings/phase5-complete-machine/05-top.png)
+6. [front](../../generated/drawings/phase5-complete-machine/06-front.png)
+7. [rear](../../generated/drawings/phase5-complete-machine/07-rear.png)
+8. [base and Y detail](../../generated/drawings/phase5-complete-machine/08-base-y-detail.png)
+9. [gantry and X detail](../../generated/drawings/phase5-complete-machine/09-gantry-x-detail.png)
+10. [X/Z/spindle detail](../../generated/drawings/phase5-complete-machine/10-xz-spindle-detail.png)
+11. [electronics and service](../../generated/drawings/phase5-complete-machine/11-electronics-detail.png)
+12. [PCB and workholding](../../generated/drawings/phase5-complete-machine/12-workholding-detail.png)
+13. [exploded assembly](../../generated/drawings/phase5-complete-machine/13-exploded-assembly.png)
+14. [printed parts only](../../generated/drawings/phase5-complete-machine/14-printed-parts-only.png)
+15. [hardware only](../../generated/drawings/phase5-complete-machine/15-hardware-only.png)
+16. [motion extremes](../../generated/drawings/phase5-complete-machine/16-motion-extremes.png)
 
-- exact 19-part inventory;
-- valid single-solid structural candidates;
-- conservative 320 mm print-envelope check;
-- complete named assembly with master STEP/STL derivatives;
-- classified nominal structural overlap screen;
-- eight-corner X/Y/Z travel screen, including exact BRep checks for the
-  critical bed/gantry cases;
-- local file generation and non-empty export checks.
+Exploded and subsystem views intentionally offset or filter components. Use
+the master isometric/front/rear/top views and the support-audit table when
+judging whether a component is physically supported.
 
-The overall report remains `not-ready` because the following are intentionally
-open:
+## Automated result
 
-- physical printability, dimensional inspection, PETG creep and joint tests;
-- measured rail, screw, bearing, coupler, insert, foot, and spindle interfaces;
-- exact CNC Shield revision, installed drivers, microsteps, current, voltage,
-  cooling, limits, probe, spindle output, and GRBL-compatible mapping;
-- representative owner NEMA17 characterization and final axis assignment;
-- exact cable bend radius, connector placement, and electrical safety review;
-- rail alignment, gantry squareness, bed leveling, spindle tram, and first
-  PCB process validation.
+The blocking checks pass for the current virtual batch:
 
-## Owner decision prompt
+- declared structural inventory and single-solid/320 mm checks;
+- complete assembly names, uniqueness, support/fastening records, and master
+  shape validity;
+- exact BRep structural overlap classification;
+- eight X/Y/Z travel corners, including spindle/gantry, bed/gantry,
+  Y-end-support, Z-motor registration, and Z-motor/gantry screens;
+- non-empty STL/STEP derivatives.
 
-**Do I want to build this?**
+The report remains `not-ready` by design. Physical printability, measured
+hardware fit, PETG creep/joint evidence, rail alignment, controller/driver
+identification, spindle runout, cable bend radius, homing, and commissioning
+are still open. No part is `HARDWARE-VALIDATED` or `RELEASED`.
 
-If yes, the next controlled action is to review the complete STL/STEP package,
-identify and measure the owner hardware, and choose the first physical PETG
-coupons/parts. A “yes” to this virtual package does not make the interfaces
-released. A “no” should identify the architecture or service issue to revise
-before printing.
+## Owner review decision
 
-No part in this package is `HARDWARE-VALIDATED` or `RELEASED`.
+This package is ready for owner structural review of the complete virtual
+machine and its derived printable candidates. It is not authorization to
+print the superseded STL set or to manufacture/release the current candidates
+without the measurement and physical-evidence gates.
+
+See the [hardware model register](hardware-model-register.md),
+[support audit](master-assembly-support-audit.md),
+[assembly guide](../../docs/assembly/assembly-guide.md), and
+[EDR-016](../decisions/016-phase-5-master-assembly-first-redesign.md).

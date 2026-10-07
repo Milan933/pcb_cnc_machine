@@ -22,8 +22,9 @@ matrix](hardware-procurement-measurement-matrix.md), backed by the
 [requirements freeze](../requirements/hardware-procurement-measurement-freeze.md).
 It is the controlling A-D list for characterization purchases and owned
 hardware identification. EDR-014 authorizes the historical two-part Phase 5
-candidate sub-gate; EDR-015 authorizes the complete virtual-machine review but
-does not authorize a production BOM, purchase order, or manufacturing release.
+candidate sub-gate; EDR-016 authorizes the master-assembly-first virtual-machine
+review but does not authorize a production BOM, purchase order, or
+manufacturing release.
 The complete virtual-machine review BOM is
 [phase5-complete-machine-bom.md](phase5-complete-machine-bom.md). It retains
 the owner-supplied Arduino Mega + CNC Shield and owner NEMA17 stock as

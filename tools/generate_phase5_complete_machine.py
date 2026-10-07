@@ -1,4 +1,4 @@
-"""Build, validate, export, and describe the complete Phase 5 machine."""
+"""Build, validate, export, and describe the Phase 5 master machine."""
 
 from __future__ import annotations
 
@@ -12,13 +12,10 @@ from typing import Any
 
 import build123d
 
-from cad.assembly.phase5_complete_assembly import build_phase5_complete_assembly
-from cad.parameters import PHASE5_COMPLETE_PARAMETERS
-from cad.parts.phase5_complete_structural import (
-    PHASE5_COMPLETE_PART_DEFINITIONS,
-    PHASE5_COMPLETE_PART_IDS,
-    build_phase5_complete_structural_parts,
-)
+from cad.assembly.master_machine import build_master_machine
+from cad.hardware.master_hardware import hardware_model_register_dicts
+from cad.parameters import PHASE5_MASTER_PARAMETERS
+from cad.parts.master_structural import MASTER_PART_DEFINITIONS, MASTER_PART_IDS, build_master_structural_parts
 from cad.validation.phase5_complete import (
     check_phase5_complete_assembly,
     check_phase5_complete_export_files,
@@ -31,11 +28,7 @@ from cad.validation.phase5_complete import (
 
 def _bbox(shape: Any) -> dict[str, tuple[float, float, float]]:
     box = shape.bounding_box()
-    return {
-        "min": tuple(float(value) for value in box.min),
-        "max": tuple(float(value) for value in box.max),
-        "size": tuple(float(value) for value in box.size),
-    }
+    return {"min": tuple(float(value) for value in box.min), "max": tuple(float(value) for value in box.max), "size": tuple(float(value) for value in box.size)}
 
 
 def _shape_is_valid(shape: Any) -> bool:
@@ -67,29 +60,18 @@ def _git_state() -> dict[str, Any]:
 
 
 def _issue_dict(issue: Any) -> dict[str, Any]:
-    return {
-        "rule_id": issue.rule_id,
-        "status": issue.status.value,
-        "severity": issue.severity.value,
-        "message": issue.message,
-        "component": issue.component,
-        "evidence": issue.evidence,
-    }
+    return {"rule_id": issue.rule_id, "status": issue.status.value, "severity": issue.severity.value, "message": issue.message, "component": issue.component, "evidence": issue.evidence}
 
 
 def _report_dict(report: Any) -> dict[str, Any]:
-    return {
-        "status": report.status.value,
-        "passed": report.passed,
-        "issues": [_issue_dict(issue) for issue in report.issues],
-    }
+    return {"status": report.status.value, "passed": report.passed, "issues": [_issue_dict(issue) for issue in report.issues]}
 
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-root", type=Path, default=Path("generated"))
     parser.add_argument("--manifest", type=Path, default=Path("docs/manufacturing/phase5-complete-machine-manifest.json"))
-    parser.add_argument("--skip-images", action="store_true", help="Skip local PNG rendering; CAD exports and manifest are still generated.")
+    parser.add_argument("--skip-images", action="store_true", help="Skip review PNG rendering; CAD exports and manifest are still generated.")
     return parser
 
 
@@ -97,10 +79,7 @@ def _render_images(manifest_path: Path, drawing_dir: Path) -> list[Path]:
     launcher = shutil.which("py")
     if not launcher:
         raise RuntimeError("The local system Python launcher 'py' is required for the dependency-light PNG renderer.")
-    subprocess.run(
-        [launcher, "tools/render_phase5_complete_review.py", "--manifest", str(manifest_path), "--output-dir", str(drawing_dir)],
-        check=True,
-    )
+    subprocess.run([launcher, "tools/render_master_machine_review.py", "--manifest", str(manifest_path), "--output-dir", str(drawing_dir)], check=True)
     return sorted(drawing_dir.glob("*.png"))
 
 
@@ -112,9 +91,25 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
     scene_dir = drawing_dir / "scene-stl"
     for directory in (stl_dir, step_dir, drawing_dir, scene_dir):
         directory.mkdir(parents=True, exist_ok=True)
+    # The owner explicitly requested a regenerated review package.  Remove
+    # only stale direct review PNGs and disposable scene meshes in this named
+    # generated batch; source CAD and tracked manufacturing derivatives are
+    # replaced below from the new master assembly.
+    for stale_path in drawing_dir.glob("*.png"):
+        stale_path.unlink()
+    for stale_path in scene_dir.glob("*.stl"):
+        stale_path.unlink()
+    # Do not leave the superseded envelope-only master derivative beside the
+    # new master-assembly-first package.
+    for stale_path in (
+        stl_dir / "pcb_cnc_complete_assembly.stl",
+        step_dir / "pcb_cnc_complete_assembly.step",
+    ):
+        if stale_path.exists():
+            stale_path.unlink()
 
-    parts = build_phase5_complete_structural_parts()
-    assembly = build_phase5_complete_assembly()
+    parts = build_master_structural_parts()
+    assembly = build_master_machine()
     reports = {
         "structural_parts": check_phase5_complete_structural_parts(parts),
         "assembly": check_phase5_complete_assembly(assembly),
@@ -124,11 +119,11 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
     }
     blocking = [name for name, report in reports.items() if not report.passed]
     if blocking:
-        raise RuntimeError(f"Complete Phase 5 validation failed: {blocking}")
+        raise RuntimeError(f"Master-machine validation failed: {blocking}")
 
     part_records: list[dict[str, Any]] = []
     export_records: dict[str, str] = {}
-    for definition in PHASE5_COMPLETE_PART_DEFINITIONS:
+    for definition in MASTER_PART_DEFINITIONS:
         shape = parts[definition.part_id]
         stl_path = stl_dir / f"{definition.part_id}.stl"
         step_path = step_dir / f"{definition.part_id}.step"
@@ -151,7 +146,7 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
                 "support_strategy": definition.support_strategy,
                 "bbox_mm": _bbox(shape),
                 "volume_mm3": volume_mm3,
-                "estimated_mass_kg": volume_mm3 * PHASE5_COMPLETE_PARAMETERS.petg_density_kg_per_mm3,
+                "estimated_mass_kg": volume_mm3 * PHASE5_MASTER_PARAMETERS.petg_density_kg_per_mm3,
                 "shape_valid": _shape_is_valid(shape),
                 "solid_count": _solid_count(shape),
                 "stl": _display_path(stl_path),
@@ -160,23 +155,17 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
             }
         )
 
-    assembly_step = step_dir / "pcb_cnc_complete_assembly.step"
-    assembly_stl = stl_dir / "pcb_cnc_complete_assembly.stl"
+    assembly_step = step_dir / "pcb_cnc_master_assembly.step"
+    assembly_stl = stl_dir / "pcb_cnc_master_assembly.stl"
     build123d.export_step(assembly.master_shape, assembly_step)
     build123d.export_stl(assembly.master_shape, assembly_stl, tolerance=0.02, angular_tolerance=0.3)
-    export_records["complete_assembly_step"] = _display_path(assembly_step)
-    export_records["complete_assembly_stl_visualization"] = _display_path(assembly_stl)
+    export_records["master_assembly_step"] = _display_path(assembly_step)
+    export_records["master_assembly_stl_visualization"] = _display_path(assembly_stl)
 
-    export_paths = {
-        name: Path(path)
-        for name, path in (
-            (key, output_root.parent / value if not Path(value).is_absolute() else Path(value))
-            for key, value in export_records.items()
-        )
-    }
+    export_paths = {name: Path(path) for name, path in export_records.items()}
     export_report = check_phase5_complete_export_files(export_paths)
     if not export_report.passed:
-        raise RuntimeError("Complete Phase 5 export validation failed")
+        raise RuntimeError("Master-machine export validation failed")
     reports["exports"] = export_report
 
     scene_records: list[dict[str, Any]] = []
@@ -189,88 +178,104 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
                 "category": component.category,
                 "stl": _display_path(scene_path),
                 "provisional": component.provisional,
+                "supporting_part": component.supporting_part,
+                "fastening_method": component.fastening_method,
+                "confidence": component.confidence,
+                "notes": component.notes,
             }
         )
 
     manifest_path = manifest_path.resolve()
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
     manifest: dict[str, Any] = {
-        "phase": "5-manufacturing-cad",
-        "phase_state": "phase-5-complete-virtual-machine",
+        "phase": "5-master-assembly-redesign",
+        "phase_state": "phase-5-master-assembly-first",
         "batch": "phase5-complete-machine",
-        "status": "complete-virtual-machine-candidate-owner-review",
+        "status": "complete-master-machine-candidate-owner-structural-review",
         "maturity": "PROTOTYPE-STL",
         "units": "mm",
-        "owner_authorization": {
-            "authorized": True,
+        "owner_direction": {
+            "master_assembly_is_primary_design_object": True,
+            "previous_stl_set_print_release": "blocked pending master-assembly review",
             "baseline_commit": "afe2e14089467321b323d74f928a7ab4c5ffdc1f",
-            "scope": "complete virtual machine, all printable structural candidates, local derivatives, and owner review package",
         },
+        "methodology": [
+            "credible hardware references and local interface models",
+            "complete master mechanical assembly",
+            "travel and support/fastening audit",
+            "derived coherent PETG structure",
+            "printable split and joint interfaces",
+            "regenerated STL/STEP derivatives",
+            "reconstruction validation from derived parts plus hardware models",
+        ],
         "source": {
-            "module_structural": "cad/parts/phase5_complete_structural.py",
-            "module_assembly": "cad/assembly/phase5_complete_assembly.py",
+            "module_structural": "cad/parts/master_structural.py",
+            "module_assembly": "cad/assembly/master_machine.py",
+            "module_hardware": "cad/hardware/master_hardware.py",
             **_git_state(),
         },
         "coordinate_system": {
-            "convention": PHASE5_COMPLETE_PARAMETERS.coordinate_convention,
-            "machine_origin": PHASE5_COMPLETE_PARAMETERS.machine_origin,
-            "work_origin": PHASE5_COMPLETE_PARAMETERS.work_origin,
-            "work_area_mm": PHASE5_COMPLETE_PARAMETERS.work_area_mm,
-            "usable_travel_mm": PHASE5_COMPLETE_PARAMETERS.usable_travel_mm,
-            "travel_min_tool_point_mm": PHASE5_COMPLETE_PARAMETERS.travel_min_mm,
-            "travel_max_tool_point_mm": PHASE5_COMPLETE_PARAMETERS.travel_max_mm,
+            "convention": PHASE5_MASTER_PARAMETERS.coordinate_convention,
+            "machine_origin": PHASE5_MASTER_PARAMETERS.machine_origin,
+            "work_origin": PHASE5_MASTER_PARAMETERS.work_origin,
+            "work_area_mm": PHASE5_MASTER_PARAMETERS.work_area_mm,
+            "usable_travel_mm": PHASE5_MASTER_PARAMETERS.usable_travel_mm,
+            "travel_min_tool_point_mm": PHASE5_MASTER_PARAMETERS.travel_min_mm,
+            "travel_max_tool_point_mm": PHASE5_MASTER_PARAMETERS.travel_max_mm,
         },
-        "parameters": asdict(PHASE5_COMPLETE_PARAMETERS),
+        "parameters": asdict(PHASE5_MASTER_PARAMETERS),
+        "hardware_model_register": hardware_model_register_dicts(),
         "part_count": len(part_records),
-        "part_ids": list(PHASE5_COMPLETE_PART_IDS),
+        "part_ids": list(MASTER_PART_IDS),
         "parts": part_records,
         "complete_assembly": {
             "component_count": len(assembly.components),
             "printed_structural_count": len(assembly.structural_components),
-            "hardware_envelope_count": len(assembly.hardware_components),
+            "hardware_model_count": len(assembly.hardware_components),
             "bbox_mm": _bbox(assembly.master_shape),
             "nominal_travel_state": assembly.travel_state,
             "master_step": _display_path(assembly_step),
             "master_stl_visualization": _display_path(assembly_stl),
             "expected_interference_pairs": [sorted(pair) for pair in assembly.expected_interference_pairs],
+            "support_audit": list(assembly.support_audit),
             "component_names": [component.name for component in assembly.components],
         },
         "exports": export_records,
+        "validation": {name: _report_dict(report) for name, report in reports.items()},
         "scene_components": scene_records,
         "review_images": [],
-        "hardware_boundary": {
-            "controller": "OWNER-SUPPLIED — ARDUINO MEGA + CNC SHIELD",
-            "motors": "OWNER-SUPPLIED — DO NOT BUY; standardized generic NEMA17 interface",
-            "motor_screening": {
-                "frame_mm": PHASE5_COMPLETE_PARAMETERS.nema17_frame_mm,
-                "shaft_diameter_mm": PHASE5_COMPLETE_PARAMETERS.nema17_shaft_diameter_mm,
-                "body_length_range_mm": PHASE5_COMPLETE_PARAMETERS.nema17_body_length_range_mm,
-                "final_assignment": "X/Y suitable owner-stock motors; strongest electrically compatible owner-stock motor for Z after characterization",
-            },
-            "unresolved_identification": [
-                "exact CNC Shield model/revision",
-                "installed stepper-driver type and microstep/current/voltage/cooling capability",
-                "limit, probe, and spindle PWM/control pin mapping after shield identification",
-                "representative final NEMA17 labels, body lengths, shafts, current, resistance, pinout, and condition",
-                "measured MGN rail, T8 screw/nut/bearing/coupler, fastener, insert, foot, and spindle interfaces",
-            ],
+        "spindle_candidate": {
+            "represented": "SycoTec 5045 AC-ER11",
+            "housing_diameter_mm": PHASE5_MASTER_PARAMETERS.spindle_candidate_diameter_mm,
+            "local_length_envelope_mm": PHASE5_MASTER_PARAMETERS.spindle_candidate_length_mm,
+            "er11_max_tool_mm": PHASE5_MASTER_PARAMETERS.er11_max_tool_mm,
+            "status": "REFERENCE-CAD / candidate; final spindle remains unselected",
         },
-        "validation": {name: _report_dict(report) for name, report in reports.items()},
+        "print_split_strategy": {
+            "preferred_xy_mm": PHASE5_MASTER_PARAMETERS.preferred_printed_dimension_mm,
+            "conservative_xy_mm": PHASE5_MASTER_PARAMETERS.conservative_printed_dimension_mm,
+            "justified_conditional_part": "base_left_integrated/base_right_integrated at 320 mm Y to preserve the 310 mm Y rail seat",
+            "principles": ["load-path-first split", "keyed/shouldered joints", "serviceable hardware access", "PETG creep and rail datum control"],
+        },
         "review_package": {
             "assembly_guide": "docs/assembly/assembly-guide.md",
             "coordinate_system": "docs/assembly/coordinate-system.md",
             "wiring_control": "docs/assembly/wiring-control-integration.md",
             "fastener_schedule": "docs/assembly/fastener-schedule.md",
             "bom": "bom/phase5-complete-machine-bom.md",
+            "hardware_register": "docs/manufacturing/hardware-model-register.md",
+            "support_audit": "docs/manufacturing/master-assembly-support-audit.md",
             "review_report": "docs/manufacturing/phase5-complete-machine-review.md",
         },
         "open_items_before_hardware_validation": [
-            "owner reviews all STL files in OrcaSlicer and selects print profiles/orientations",
-            "physical first prints and dimensional inspection of critical force-loop parts",
-            "measure representative rails, screws, bearings, inserts, feet, spindle, and controller hardware",
-            "perform rail alignment, gantry squareness, bed leveling, spindle tram, and full service mock-up",
-            "identify exact CNC Shield revision and driver modules before final wiring/pin configuration",
-            "characterize representative owner-stock NEMA17 motors before final axis assignment",
+            "do not print or release the previous STL set; owner reviews this regenerated master-derived set first",
+            "measure actual MGN rails/carriages and confirm hole/pitch/preload",
+            "measure T8 screws, nuts, fixed/floating bearings, and couplers",
+            "identify exact CNC Shield revision, drivers, microsteps, current, voltage, cooling, and I/O mapping",
+            "characterize representative owner-stock NEMA17 motors before axis assignment",
+            "select/measure final spindle, clamp, cable exit, cooling, and runout",
+            "measure limit switches, conductive probe, inserts, fasteners, and cable bend radii",
+            "perform physical first prints, fit/alignment, service, homing, and tool-point tests",
             "do not label any part HARDWARE-VALIDATED or RELEASED from this virtual pass",
         ],
     }
@@ -287,21 +292,7 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
 def main() -> int:
     args = _parser().parse_args()
     manifest = generate(args.output_root, args.manifest, skip_images=args.skip_images)
-    print(
-        json.dumps(
-            {
-                "status": manifest["status"],
-                "maturity": manifest["maturity"],
-                "part_count": manifest["part_count"],
-                "assembly_component_count": manifest["complete_assembly"]["component_count"],
-                "assembly_bbox_mm": manifest["complete_assembly"]["bbox_mm"],
-                "manifest": _display_path(Path(args.manifest)),
-                "review_images": manifest["review_images"],
-                "validation_status": {name: value["status"] for name, value in manifest["validation"].items()},
-            },
-            indent=2,
-        )
-    )
+    print(json.dumps({"status": manifest["status"], "maturity": manifest["maturity"], "part_count": manifest["part_count"], "component_count": manifest["complete_assembly"]["component_count"], "master_bbox_mm": manifest["complete_assembly"]["bbox_mm"], "manifest": _display_path(Path(args.manifest)), "review_image_count": len(manifest["review_images"]), "validation_status": {name: value["status"] for name, value in manifest["validation"].items()}}, indent=2))
     return 0
 
 

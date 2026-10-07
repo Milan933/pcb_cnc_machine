@@ -3,6 +3,12 @@
 Status: owner-hardware integration architecture; exact shield revision and
 driver pinout are intentionally unresolved.
 
+The complete master includes an Arduino Mega board envelope, a provisional CNC
+Shield/driver stack, a driver-cooling clearance volume, a controller service
+loop, and cable-management volumes. These are review geometry from the
+[hardware model register](../manufacturing/hardware-model-register.md), not a
+frozen enclosure or pin map.
+
 ## Known controller boundary
 
 The intended controller is the owner-supplied **Arduino Mega + CNC Shield**.

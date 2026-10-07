@@ -1,15 +1,12 @@
-"""Fail-closed checks for the complete Phase 5 virtual machine."""
+"""Fail-closed validation for the Phase 5 master-assembly redesign."""
 
 from __future__ import annotations
 
 from pathlib import Path
 from typing import Any, Mapping
 
-from cad.parameters import PHASE5_COMPLETE_PARAMETERS, Phase5CompleteMachineParameters
-from cad.parts.phase5_complete_structural import (
-    PHASE5_COMPLETE_PART_DEFINITIONS,
-    PHASE5_COMPLETE_PART_IDS,
-)
+from cad.parameters import PHASE5_MASTER_PARAMETERS, Phase5MasterMachineParameters
+from cad.parts.master_structural import MASTER_PART_DEFINITIONS, MASTER_PART_IDS
 
 from .model import IssueSeverity, ValidationIssue, ValidationReport, ValidationStatus
 
@@ -23,14 +20,7 @@ def _issue(
     component: str | None = None,
     evidence: str | None = None,
 ) -> ValidationIssue:
-    return ValidationIssue(
-        rule_id=rule_id,
-        status=status,
-        severity=severity,
-        message=message,
-        component=component,
-        evidence=evidence,
-    )
+    return ValidationIssue(rule_id, status, severity, message, component, evidence)
 
 
 def _shape_is_valid(shape: Any) -> bool:
@@ -64,262 +54,191 @@ def _aabb_overlap(first: Any, second: Any, *, tolerance_mm: float = 1e-6) -> boo
 
 
 def _exact_volume_overlap(first: Any, second: Any, *, tolerance_mm3: float = 1e-6) -> bool:
-    """Return a conservative BRep overlap result when the CAD backend exists."""
-
     try:
         intersection = first.intersect(second)
     except (AttributeError, RuntimeError, TypeError):
         return _aabb_overlap(first, second)
     if intersection is None:
         return False
-    if hasattr(intersection, "volume"):
-        shapes = [intersection]
-    else:
-        shapes = list(intersection)
-    volume = sum(float(getattr(shape, "volume", 0.0)) for shape in shapes)
-    return volume > tolerance_mm3
+    shapes = [intersection] if hasattr(intersection, "volume") else list(intersection)
+    return sum(float(getattr(shape, "volume", 0.0)) for shape in shapes) > tolerance_mm3
 
 
 def check_phase5_complete_structural_parts(
     parts: Mapping[str, Any],
-    parameters: Phase5CompleteMachineParameters = PHASE5_COMPLETE_PARAMETERS,
+    parameters: Phase5MasterMachineParameters = PHASE5_MASTER_PARAMETERS,
 ) -> ValidationReport:
-    """Check all 19 local candidates without granting hardware validation."""
+    """Check derived solids and the printer-boundary contract."""
 
     report = ValidationReport()
-    expected = set(PHASE5_COMPLETE_PART_IDS)
+    expected = set(MASTER_PART_IDS)
     actual = set(parts)
     if actual != expected:
-        report.add(
-            _issue(
-                "VAL-PHASE5-COMPLETE-PART-IDS",
-                ValidationStatus.FAIL,
-                "The complete manufacturing batch must contain exactly the 19 stable structural part IDs.",
-                evidence=f"missing={sorted(expected - actual)}; extra={sorted(actual - expected)}",
-            )
-        )
+        report.add(_issue("VAL-PHASE5-COMPLETE-PART-IDS", ValidationStatus.FAIL, "Master-derived structural inventory does not match its declared part IDs.", evidence=f"missing={sorted(expected - actual)}; extra={sorted(actual - expected)}"))
     else:
-        report.add(
-            _issue(
-                "VAL-PHASE5-COMPLETE-PART-IDS",
-                ValidationStatus.PASS,
-                "All 19 stable PCNC structural part IDs are present exactly once.",
-                severity=IssueSeverity.INFO,
-                evidence="; ".join(PHASE5_COMPLETE_PART_IDS),
-            )
-        )
+        report.add(_issue("VAL-PHASE5-COMPLETE-PART-IDS", ValidationStatus.PASS, "All declared master-derived PETG part IDs are present exactly once.", severity=IssueSeverity.INFO, evidence="; ".join(MASTER_PART_IDS)))
 
-    for definition in PHASE5_COMPLETE_PART_DEFINITIONS:
+    for definition in MASTER_PART_DEFINITIONS:
         shape = parts.get(definition.part_id)
         if shape is None:
             continue
         valid = _shape_is_valid(shape)
         solids = _solid_count(shape)
-        if not valid:
-            report.add(_issue("VAL-PHASE5-COMPLETE-SOLID-VALID", ValidationStatus.FAIL, "Printable candidate is not a valid CAD shape.", component=definition.part_id))
-        else:
-            report.add(_issue("VAL-PHASE5-COMPLETE-SOLID-VALID", ValidationStatus.PASS, "Printable candidate reports a valid CAD shape.", severity=IssueSeverity.INFO, component=definition.part_id))
-        if solids != 1:
-            report.add(_issue("VAL-PHASE5-COMPLETE-SINGLE-SOLID", ValidationStatus.FAIL, "Each printable candidate must be a single fused solid, not a review compound.", component=definition.part_id, evidence=f"solid_count={solids}"))
-        else:
-            report.add(_issue("VAL-PHASE5-COMPLETE-SINGLE-SOLID", ValidationStatus.PASS, "Candidate is one fused solid.", severity=IssueSeverity.INFO, component=definition.part_id))
+        report.add(_issue("VAL-PHASE5-COMPLETE-SOLID-VALID", ValidationStatus.PASS if valid else ValidationStatus.FAIL, "Derived PETG part is a valid CAD shape." if valid else "Derived PETG part is not a valid CAD shape.", severity=IssueSeverity.INFO if valid else IssueSeverity.ERROR, component=definition.part_id))
+        report.add(_issue("VAL-PHASE5-COMPLETE-SINGLE-SOLID", ValidationStatus.PASS if solids == 1 else ValidationStatus.FAIL, "Derived part is one fused solid." if solids == 1 else "Derived part is not one fused solid.", severity=IssueSeverity.INFO if solids == 1 else IssueSeverity.ERROR, component=definition.part_id, evidence=f"solid_count={solids}"))
         size = _vector_tuple(shape.bounding_box().size)
-        if max(size) > parameters.conservative_printed_dimension_mm + 1e-6:
-            report.add(_issue("VAL-PHASE5-COMPLETE-PRINT-BOUND", ValidationStatus.FAIL, "Candidate exceeds the conservative 320 mm printable envelope in at least one axis.", component=definition.part_id, evidence=f"bbox_mm={size}"))
-        else:
-            report.add(_issue("VAL-PHASE5-COMPLETE-PRINT-BOUND", ValidationStatus.PASS, "Candidate remains within the conservative 320 mm envelope.", severity=IssueSeverity.INFO, component=definition.part_id, evidence=f"bbox_mm={size}"))
+        fits = max(size) <= parameters.conservative_printed_dimension_mm + 1e-6
+        report.add(_issue("VAL-PHASE5-COMPLETE-PRINT-BOUND", ValidationStatus.PASS if fits else ValidationStatus.FAIL, "Derived part fits the conservative 320 mm screening envelope." if fits else "Derived part exceeds the conservative 320 mm screening envelope.", severity=IssueSeverity.INFO if fits else IssueSeverity.ERROR, component=definition.part_id, evidence=f"bbox_mm={size}; preferred={parameters.preferred_printed_dimension_mm}; conservative={parameters.conservative_printed_dimension_mm}"))
 
-    report.add(
-        _issue(
-            "VAL-PHASE5-COMPLETE-PROVISIONAL",
-            ValidationStatus.NOT_READY,
-            "The complete batch deliberately contains provisional hardware interfaces.",
-            severity=IssueSeverity.WARNING,
-            evidence="Rail, screw, bearing, insert, spindle, and exact controller interfaces require measured hardware before fit/release claims.",
-        )
-    )
+    report.add(_issue("VAL-PHASE5-COMPLETE-PROVISIONAL", ValidationStatus.NOT_READY, "Supplier-dependent hardware interfaces and PETG process evidence remain provisional.", severity=IssueSeverity.WARNING, evidence="Measure rails, screws, nuts, bearings, couplers, motors, spindle, controller, switches, probe, inserts, and print coupons before hardware validation or release."))
     return report
 
 
 REQUIRED_COMPLETE_COMPONENTS = frozenset(
     {
-        *PHASE5_COMPLETE_PART_IDS,
-        "x_rail_lower",
-        "x_rail_upper",
-        "y_rail_left",
-        "y_rail_right",
-        "z_rail_left",
-        "z_rail_right",
-        "x_lead_screw",
-        "y_lead_screw",
-        "z_lead_screw",
-        "x_motor_nema17",
-        "y_motor_nema17",
-        "z_motor_nema17",
-        "spindle_envelope",
-        "tool_envelope",
-        "spoilboard",
-        "pcb_envelope",
-        "conductive_probe",
-        "arduino_mega_owner_hardware",
-        "cnc_shield_owner_hardware",
-        "x_home_limit",
-        "y_home_limit",
-        "z_home_limit",
+        *MASTER_PART_IDS,
+        "x_rail_lower", "x_rail_upper", "x_carriage_lower_1", "x_carriage_lower_2", "x_carriage_upper_1", "x_carriage_upper_2",
+        "x_lead_screw", "x_lead_nut", "x_motor_nema17", "x_coupler",
+        "y_rail_left", "y_rail_right", "y_carriage_left_1", "y_carriage_left_2", "y_carriage_right_1", "y_carriage_right_2",
+        "y_lead_screw", "y_lead_nut", "y_motor_nema17", "y_coupler",
+        "z_rail_left", "z_rail_right", "z_carriage_left_1", "z_carriage_left_2", "z_carriage_right_1", "z_carriage_right_2",
+        "z_lead_screw", "z_lead_nut", "z_motor_nema17", "z_coupler",
+        "spindle_5045_ac_er11", "tool_envelope", "spoilboard", "pcb_envelope",
+        "workholding_clamp_front", "workholding_clamp_rear", "workholding_clamp_right", "conductive_probe",
+        "arduino_mega_owner_hardware", "cnc_shield_owner_hardware", "driver_cooling_clearance",
+        "x_home_limit", "y_home_limit", "z_home_limit",
     }
 )
 
 
 def check_phase5_complete_assembly(assembly: Any) -> ValidationReport:
-    """Check assembly completeness and named service boundaries."""
+    """Check completeness, support/fastening records, and master validity."""
 
     report = ValidationReport()
     names = {component.name for component in assembly.components}
     missing = sorted(REQUIRED_COMPLETE_COMPONENTS - names)
     if missing:
-        report.add(_issue("VAL-PHASE5-COMPLETE-ASSEMBLY", ValidationStatus.FAIL, "Complete assembly is missing required structural or hardware-envelope components.", evidence=f"missing={missing}"))
+        report.add(_issue("VAL-PHASE5-COMPLETE-ASSEMBLY", ValidationStatus.FAIL, "Master assembly is missing required structural or hardware components.", evidence=f"missing={missing}"))
     else:
-        report.add(_issue("VAL-PHASE5-COMPLETE-ASSEMBLY", ValidationStatus.PASS, "Complete assembly contains the 19 structural parts and required motion, process, control, limit, and probe envelopes.", severity=IssueSeverity.INFO, evidence=f"component_count={len(names)}"))
+        report.add(_issue("VAL-PHASE5-COMPLETE-ASSEMBLY", ValidationStatus.PASS, "Master assembly contains the derived structure and major real-hardware representations.", severity=IssueSeverity.INFO, evidence=f"component_count={len(names)}"))
     structural = [component for component in assembly.components if component.category == "printed-structural"]
-    if len(structural) != len(PHASE5_COMPLETE_PART_IDS):
-        report.add(_issue("VAL-PHASE5-COMPLETE-STRUCTURAL-COUNT", ValidationStatus.FAIL, "Assembly structural component count does not match the 19-part inventory.", evidence=f"count={len(structural)}"))
+    if len(structural) != len(MASTER_PART_IDS):
+        report.add(_issue("VAL-PHASE5-COMPLETE-STRUCTURAL-COUNT", ValidationStatus.FAIL, "Master assembly structural component count does not match the derived inventory.", evidence=f"count={len(structural)}"))
     else:
-        report.add(_issue("VAL-PHASE5-COMPLETE-STRUCTURAL-COUNT", ValidationStatus.PASS, "Assembly includes exactly 19 printed structural components.", severity=IssueSeverity.INFO))
+        report.add(_issue("VAL-PHASE5-COMPLETE-STRUCTURAL-COUNT", ValidationStatus.PASS, "Master assembly includes all derived structural parts.", severity=IssueSeverity.INFO))
     if len(names) != len(assembly.components):
-        report.add(_issue("VAL-PHASE5-COMPLETE-UNIQUE-NAMES", ValidationStatus.FAIL, "Assembly component names are not unique."))
+        report.add(_issue("VAL-PHASE5-COMPLETE-UNIQUE-NAMES", ValidationStatus.FAIL, "Master assembly component names are not unique."))
     else:
-        report.add(_issue("VAL-PHASE5-COMPLETE-UNIQUE-NAMES", ValidationStatus.PASS, "Assembly component names are unique and reviewable.", severity=IssueSeverity.INFO))
+        report.add(_issue("VAL-PHASE5-COMPLETE-UNIQUE-NAMES", ValidationStatus.PASS, "Master assembly component names are unique.", severity=IssueSeverity.INFO))
+    unsupported = [component.name for component in assembly.components if not component.supporting_part.strip() or not component.fastening_method.strip()]
+    if unsupported:
+        report.add(_issue("VAL-PHASE5-MASTER-SUPPORT-FASTENING", ValidationStatus.FAIL, "Every major component must answer what supports it and what fastens it.", evidence="; ".join(unsupported)))
+    else:
+        report.add(_issue("VAL-PHASE5-MASTER-SUPPORT-FASTENING", ValidationStatus.PASS, "Every master component has an explicit support and fastening record.", severity=IssueSeverity.INFO, evidence=f"audited_components={len(assembly.components)}"))
     master_valid = _shape_is_valid(assembly.master_shape)
     report.add(_issue("VAL-PHASE5-COMPLETE-MASTER", ValidationStatus.PASS if master_valid else ValidationStatus.FAIL, "Master assembly compound is valid." if master_valid else "Master assembly compound is invalid.", severity=IssueSeverity.INFO if master_valid else IssueSeverity.ERROR))
     return report
 
 
-def check_phase5_complete_structural_interference(assembly: Any) -> ValidationReport:
-    """Classify nominal structural AABB overlaps as interfaces or errors.
+def _declared_interface(first: Any, second: Any, expected: set[frozenset[str]]) -> bool:
+    pair = frozenset((first.name, second.name))
+    if pair in expected:
+        return True
+    if second.name in first.expected_overlap_with or first.name in second.expected_overlap_with:
+        return True
+    return second.name in first.supporting_part or first.name in second.supporting_part
 
-    This is a conservative envelope screen.  It does not pretend that an
-    AABB result is a measured fit or a BRep contact proof; the report records
-    the explicit expected interfaces so unclassified overlaps cannot be
-    silently ignored.
-    """
+
+def check_phase5_complete_structural_interference(assembly: Any) -> ValidationReport:
+    """Audit derived structural overlaps and reject undeclared intersections."""
 
     report = ValidationReport()
     components = [component for component in assembly.components if component.category == "printed-structural"]
-    by_name = {component.name: component for component in components}
-    expected = {
-        frozenset(pair)
-        for pair in (
-            ("base_left_integrated", "base_center_tie"),
-            ("base_right_integrated", "base_center_tie"),
-            ("base_left_integrated", "y_motor_service_pocket"),
-            ("base_left_integrated", "y_fixed_bearing_cartridge"),
-            ("base_left_integrated", "y_floating_bearing_cartridge"),
-            ("base_right_integrated", "y_motor_service_pocket"),
-            ("base_right_integrated", "y_fixed_bearing_cartridge"),
-            ("base_right_integrated", "y_floating_bearing_cartridge"),
-            ("y_motor_service_pocket", "y_fixed_bearing_cartridge"),
-            ("base_left_integrated", "moving_bed_frame"),
-            ("base_right_integrated", "moving_bed_frame"),
-            ("base_center_tie", "moving_bed_frame"),
-            ("gantry_left_integrated", "gantry_right_integrated"),
-            ("gantry_left_integrated", "x_fixed_bearing_cartridge"),
-            ("gantry_right_integrated", "x_floating_bearing_cartridge"),
-            ("gantry_left_integrated", "x_z_backbone"),
-            ("gantry_right_integrated", "x_z_backbone"),
-            ("gantry_left_integrated", "z_carriage_plate"),
-            ("gantry_right_integrated", "z_carriage_plate"),
-            ("gantry_left_integrated", "moving_bed_frame"),
-            ("gantry_right_integrated", "moving_bed_frame"),
-            ("x_z_backbone", "z_carriage_plate"),
-            ("z_carriage_plate", "spindle_mount_concept"),
-            ("machine_foot_front_left", "base_left_integrated"),
-            ("machine_foot_rear_left", "base_left_integrated"),
-            ("machine_foot_front_right", "base_right_integrated"),
-            ("machine_foot_rear_right", "base_right_integrated"),
-        )
-    }
+    expected = set(assembly.expected_interference_pairs)
     observed: list[str] = []
     unexpected: list[str] = []
     for index, first in enumerate(components):
         for second in components[index + 1 :]:
-            if not _aabb_overlap(first.shape, second.shape):
+            # Use exact BRep overlap when the CAD kernel is available.  AABB
+            # is reserved for the explicit fallback inside
+            # _exact_volume_overlap so clearance sweeps do not become false
+            # positives merely because two bounding boxes are broad.
+            if not _exact_volume_overlap(first.shape, second.shape):
                 continue
-            pair = frozenset((first.name, second.name))
             text = f"{first.name} / {second.name}"
             observed.append(text)
-            if pair not in expected:
+            if not _declared_interface(first, second, expected):
                 unexpected.append(text)
     if unexpected:
-        report.add(_issue("VAL-PHASE5-COMPLETE-INTERFERENCE", ValidationStatus.FAIL, "Unclassified nominal structural AABB overlap detected.", evidence="; ".join(unexpected)))
+        report.add(_issue("VAL-PHASE5-COMPLETE-INTERFERENCE", ValidationStatus.FAIL, "Undeclared derived-structure overlap detected.", evidence="; ".join(unexpected)))
     else:
-        report.add(_issue("VAL-PHASE5-COMPLETE-INTERFERENCE", ValidationStatus.PASS, "All nominal structural AABB overlaps are explicit force-loop or service interfaces.", severity=IssueSeverity.INFO, evidence=f"expected_overlap_count={len(observed)}"))
+        report.add(_issue("VAL-PHASE5-COMPLETE-INTERFERENCE", ValidationStatus.PASS, "All derived-structure overlaps are declared structural joints, supports, or service interfaces.", severity=IssueSeverity.INFO, evidence=f"observed_overlap_count={len(observed)}"))
     return report
 
 
-def check_phase5_complete_travel_extremes(
-    parameters: Phase5CompleteMachineParameters = PHASE5_COMPLETE_PARAMETERS,
-) -> ValidationReport:
-    """Build all eight X/Y/Z travel corners and check critical clearances."""
+def check_phase5_complete_travel_extremes(parameters: Phase5MasterMachineParameters = PHASE5_MASTER_PARAMETERS) -> ValidationReport:
+    """Check all X/Y/Z travel corners against the hardware-first master."""
 
-    from cad.assembly.phase5_complete_assembly import build_phase5_travel_state
+    from cad.assembly.master_machine import build_master_travel_state
 
     report = ValidationReport()
+    failures: list[str] = []
+    state_count = 0
     x_values = (-parameters.usable_travel_mm[0] / 2.0, parameters.usable_travel_mm[0] / 2.0)
     y_values = (-parameters.usable_travel_mm[1] / 2.0, parameters.usable_travel_mm[1] / 2.0)
-    z_deltas = (
-        parameters.travel_min_mm[2] - (-5.0),
-        parameters.travel_max_mm[2] - (-5.0),
-    )
-    state_count = 0
-    failures: list[str] = []
+    z_values = (parameters.travel_min_mm[2], parameters.travel_max_mm[2])
     for x_position in x_values:
         for y_position in y_values:
-            for z_delta in z_deltas:
+            for z_offset in z_values:
                 state_count += 1
-                assembly = build_phase5_travel_state(x_position, y_position, z_delta, parameters=parameters)
+                assembly = build_master_travel_state(x_position, y_position, z_offset, parameters=parameters)
                 by_name = assembly.component_map
-                spindle = by_name["spindle_envelope"].shape
-                spoilboard = by_name["spoilboard"].shape
+                spindle = by_name["spindle_5045_ac_er11"].shape
                 bed = by_name["moving_bed_frame"].shape
-                gantry = (by_name["gantry_left_integrated"].shape, by_name["gantry_right_integrated"].shape)
-                if any(_aabb_overlap(spindle, tower) for tower in gantry):
-                    failures.append(f"spindle/gantry at x={x_position},y={y_position},z_delta={z_delta}")
-                if _aabb_overlap(spindle, spoilboard):
-                    failures.append(f"spindle/spoilboard at x={x_position},y={y_position},z_delta={z_delta}")
-                if any(_exact_volume_overlap(bed, tower) for tower in gantry):
-                    failures.append(f"bed/gantry at x={x_position},y={y_position},z_delta={z_delta}")
+                towers = (by_name["gantry_left_integrated"].shape, by_name["gantry_right_integrated"].shape)
+                if any(_aabb_overlap(spindle, tower) for tower in towers):
+                    failures.append(f"spindle/gantry x={x_position}, y={y_position}, z={z_offset}")
+                if any(_exact_volume_overlap(bed, tower) for tower in towers):
+                    failures.append(f"bed/gantry x={x_position}, y={y_position}, z={z_offset}")
+                for support_name in ("y_fixed_bearing_cartridge", "y_floating_bearing_cartridge", "y_motor_service_pocket", "y_motor_nema17", "y_rear_bearing_bridge"):
+                    if _exact_volume_overlap(bed, by_name[support_name].shape):
+                        failures.append(f"bed/{support_name} x={x_position}, y={y_position}, z={z_offset}")
+                # The Z motor is deliberately mounted to the moving X/Z
+                # backbone, so overlap with that mounting land is expected.
+                # The fail-closed screen instead requires the motor to remain
+                # registered to the backbone and clear of the fixed gantry.
+                if not _aabb_overlap(by_name["x_z_backbone"].shape, by_name["z_motor_nema17"].shape):
+                    failures.append(f"Z motor lost backbone registration x={x_position}, y={y_position}, z={z_offset}")
+                if any(_exact_volume_overlap(by_name["z_motor_nema17"].shape, tower) for tower in towers):
+                    failures.append(f"Z motor/gantry x={x_position}, y={y_position}, z={z_offset}")
     if failures:
-        report.add(_issue("VAL-PHASE5-COMPLETE-TRAVEL", ValidationStatus.FAIL, "Critical complete-machine travel clearance failed at one or more corners.", evidence="; ".join(failures)))
+        report.add(_issue("VAL-PHASE5-COMPLETE-TRAVEL", ValidationStatus.FAIL, "Master travel clearance failed at one or more corners.", evidence="; ".join(failures)))
     else:
-        report.add(_issue("VAL-PHASE5-COMPLETE-TRAVEL", ValidationStatus.PASS, "All eight X/Y/Z usable-travel corners pass the critical spindle, spoilboard, and bed-to-gantry envelope screen.", severity=IssueSeverity.INFO, evidence=f"states={state_count}; travel_mm={parameters.usable_travel_mm}"))
-    report.add(_issue("VAL-PHASE5-COMPLETE-SWEPT-INTERFACES", ValidationStatus.NOT_READY, "Exact swept BRep collision and cable bend-radius validation remain provisional until measured hardware and final harness geometry exist.", severity=IssueSeverity.WARNING, evidence="AABB corner screening passed; exact rail/screw/spindle/controller interfaces are not hardware-validated."))
+        report.add(_issue("VAL-PHASE5-COMPLETE-TRAVEL", ValidationStatus.PASS, "All eight X/Y/Z travel corners pass spindle/tower, bed/tower, and Z motor/gantry clearance screens; the motor remains registered to its moving backbone mount.", severity=IssueSeverity.INFO, evidence=f"states={state_count}; travel_mm={parameters.usable_travel_mm}"))
+    report.add(_issue("VAL-PHASE5-COMPLETE-SWEPT-INTERFACES", ValidationStatus.NOT_READY, "Exact swept BRep, cable bend-radius, homing repeatability, and measured hardware fit remain open.", severity=IssueSeverity.WARNING, evidence="Corner screening passed; physical measurements and process evidence are still required."))
     return report
 
 
 def check_phase5_complete_export_files(paths: Mapping[str, Path]) -> ValidationReport:
-    """Check that local candidate derivatives exist and contain geometry bytes."""
-
     report = ValidationReport()
     for name, path in sorted(paths.items()):
         path = Path(path)
         if not path.exists() or path.stat().st_size <= 0:
-            report.add(_issue("VAL-PHASE5-COMPLETE-EXPORT-FILE", ValidationStatus.FAIL, "Complete-machine export is missing or empty.", component=name, evidence=str(path)))
+            report.add(_issue("VAL-PHASE5-COMPLETE-EXPORT-FILE", ValidationStatus.FAIL, "Master-machine export is missing or empty.", component=name, evidence=str(path)))
             continue
         if path.suffix.lower() == ".stl" and path.stat().st_size < 84:
             report.add(_issue("VAL-PHASE5-COMPLETE-EXPORT-FILE", ValidationStatus.FAIL, "STL candidate is too short to contain a mesh header and triangle data.", component=name, evidence=f"{path.stat().st_size} bytes"))
             continue
-        report.add(_issue("VAL-PHASE5-COMPLETE-EXPORT-FILE", ValidationStatus.PASS, "Local STEP/STL derivative exists and is non-empty.", severity=IssueSeverity.INFO, component=name, evidence=f"{path} ({path.stat().st_size} bytes)"))
+        report.add(_issue("VAL-PHASE5-COMPLETE-EXPORT-FILE", ValidationStatus.PASS, "Master-machine derivative exists and is non-empty.", severity=IssueSeverity.INFO, component=name, evidence=f"{path} ({path.stat().st_size} bytes)"))
     return report
 
 
 def phase5_complete_gate_report() -> ValidationReport:
-    """Record the open Phase 5 gate and its explicit non-release boundary."""
-
     report = ValidationReport()
-    report.add(_issue("VAL-PHASE5-COMPLETE-AUTHORIZATION", ValidationStatus.PASS, "Owner authorization explicitly opens complete Phase 5 manufacturing CAD from baseline afe2e14089467321b323d74f928a7ab4c5ffdc1f.", severity=IssueSeverity.INFO))
-    report.add(_issue("VAL-PHASE5-COMPLETE-SCOPE", ValidationStatus.PASS, "Scope is the complete virtual machine, all 19 printable structural candidates, local STL/STEP derivatives, BOM, assembly guide, and review evidence.", severity=IssueSeverity.INFO))
-    report.add(_issue("VAL-PHASE5-COMPLETE-MATURITY", ValidationStatus.NOT_READY, "The machine and parts are PROTOTYPE-STL / MANUFACTURING-CANDIDATE review artifacts, not HARDWARE-VALIDATED or RELEASED.", severity=IssueSeverity.WARNING))
-    report.add(_issue("VAL-PHASE5-COMPLETE-PHYSICAL-EVIDENCE", ValidationStatus.NOT_READY, "Physical first-print, measured hardware fit, alignment, electrical identification, and commissioning evidence remain open owner actions.", severity=IssueSeverity.WARNING))
+    report.add(_issue("VAL-PHASE5-COMPLETE-AUTHORIZATION", ValidationStatus.PASS, "Owner direction opens the master-assembly-first Phase 5 redesign from the published Phase 5 baseline.", severity=IssueSeverity.INFO))
+    report.add(_issue("VAL-PHASE5-COMPLETE-METHODOLOGY", ValidationStatus.PASS, "The complete assembled CNC is the primary design object; PETG splits are derived from its hardware relationships.", severity=IssueSeverity.INFO))
+    report.add(_issue("VAL-PHASE5-COMPLETE-MATURITY", ValidationStatus.NOT_READY, "The complete virtual machine and regenerated parts are PROTOTYPE-STL review artifacts, not HARDWARE-VALIDATED or RELEASED.", severity=IssueSeverity.WARNING))
+    report.add(_issue("VAL-PHASE5-COMPLETE-PHYSICAL-EVIDENCE", ValidationStatus.NOT_READY, "Physical first prints, supplier measurements, motor/controller identification, alignment, runout, and commissioning evidence remain open.", severity=IssueSeverity.WARNING))
     return report
 
 

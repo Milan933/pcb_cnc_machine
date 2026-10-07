@@ -1,23 +1,15 @@
-# Parametric parts
+# Parametric structural parts
 
-Phase 4 now contains `phase4_structural.py`, a deterministic preliminary PETG
-structural concept builder for the owner-accepted P2 baseline. It creates 29
-named review parts: segmented closed base members, rail carriers, service
-cartridges, feet, hollow towers, split torsion-box beam segments, X/Z
-carriages, spindle mount concept, and ribbed moving bed.
+`master_structural.py` contains the active Phase 5 source geometry. It derives
+20 local fused PETG solids from the hardware-first master layout: real walls,
+ribs, webs, rail seats, bearing cartridges, split gantry joints, service
+pockets, controller support, a low Y drive, and a dedicated rear Y bearing
+bridge.
 
-These Phase 4/4A parts are PRELIMINARY review geometry, not manufacturing-
-ready parts. Supplier-dependent holes, insert pilot dimensions, exact bearing
-pockets, spindle bore, tolerances, and final fastener patterns remain
-unresolved. The separate `phase5_structural.py` module contains the historical
-first two fused base candidates. The active `phase5_complete_structural.py`
-module contains all 19 actual local fused structural candidates. Their rail,
-screw, bearing, insert, spindle, and controller-dependent interfaces are
-explicitly `PROVISIONAL_HARDWARE_DIMENSION` and their maturity is
-`PROTOTYPE-STL`.
+Parts are generated in their local print frames. World placement belongs to
+`cad/assembly/master_machine.py`. All supplier-dependent holes, bearing
+retainers, insert pilots, spindle bores, and final fastener sizes remain
+`PROVISIONAL_HARDWARE_DIMENSION`; candidate maturity is `PROTOTYPE-STL`.
 
-When a part module changes, keep the builder deterministic, use centralized
-parameters or a documented calculation, declare its coordinate frame, and
-preserve individual temporary STEP/STL export coverage. Complete-machine
-assembly placement remains owned by `cad/assembly/phase5_complete_assembly.py`;
-do not bake world placement into local printable parts.
+The compatibility module `phase5_complete_structural.py` preserves the old
+import path but delegates to the master-derived source.

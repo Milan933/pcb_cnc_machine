@@ -1,83 +1,80 @@
-# Phase 5 complete-machine BOM and procurement boundary
+# Phase 5 master-assembly BOM and procurement boundary
 
 Status: virtual-machine review BOM; not a production purchasing release.
 
-The complete model contains 19 printed PETG structural parts. Exact rail,
-screw, bearing, insert, spindle, shield, and driver interfaces remain
-provisional. The owner’s motors and controller are explicitly not purchase
-items.
+The active master contains 20 derived PETG structural parts. The inventory
+and local dimensions are generated in
+[`phase5-complete-machine-manifest.json`](../docs/manufacturing/phase5-complete-machine-manifest.json).
+Source/confidence/reuse status for reference hardware is in the
+[hardware model register](../docs/manufacturing/hardware-model-register.md).
 
-## PRINTED — PETG
+## Printed PETG candidate inventory
 
-| Qty | Part number | Part ID | Role | Maturity |
-| ---: | --- | --- | --- | --- |
-| 1 | PCNC-P001 | `base_left_integrated` | left base/Y rail/tower load path | PROTOTYPE-STL |
-| 1 | PCNC-P002 | `base_right_integrated` | right base/Y rail/tower load path | PROTOTYPE-STL |
-| 1 | PCNC-P003 | `base_center_tie` | transverse base shear tie | PROTOTYPE-STL |
-| 1 | PCNC-P004 | `y_motor_service_pocket` | Y motor/coupler service mount | PROTOTYPE-STL |
-| 1 | PCNC-P005 | `y_fixed_bearing_cartridge` | Y fixed bearing support | PROTOTYPE-STL |
-| 1 | PCNC-P006 | `y_floating_bearing_cartridge` | Y floating bearing support | PROTOTYPE-STL |
-| 4 | PCNC-P007..P010 | machine feet | leveling/support interfaces | PROTOTYPE-STL |
-| 1 | PCNC-P011 | `electronics_mount_rail` | controller/cable service rail | PROTOTYPE-STL |
-| 1 | PCNC-P012 | `gantry_left_integrated` | left tower/X beam segment | PROTOTYPE-STL |
-| 1 | PCNC-P013 | `gantry_right_integrated` | right tower/X beam socket segment | PROTOTYPE-STL |
-| 2 | PCNC-P014/P015 | X bearing cartridges | X screw supports | PROTOTYPE-STL |
-| 1 | PCNC-P016 | `x_z_backbone` | X carriage and Z guide backbone | PROTOTYPE-STL |
-| 1 | PCNC-P017 | `z_carriage_plate` | moving Z/spindle interface | PROTOTYPE-STL |
-| 1 | PCNC-P018 | `spindle_mount_concept` | modular spindle clamp | PROTOTYPE-STL |
-| 1 | PCNC-P019 | `moving_bed_frame` | moving Y bed and nut/carriage frame | PROTOTYPE-STL |
+| Qty | Part | Role | Maturity |
+| ---: | --- | --- | --- |
+| 1 | PCNC-P001 `base_left_integrated` | left base/Y rail/tower load path | PROTOTYPE-STL |
+| 1 | PCNC-P002 `base_right_integrated` | right base/Y rail/tower load path | PROTOTYPE-STL |
+| 1 | PCNC-P003 `base_center_tie` | indexed base shear tie | PROTOTYPE-STL |
+| 1 | PCNC-P004 `y_motor_service_pocket` | low Y motor/coupler service mount | PROTOTYPE-STL |
+| 1 | PCNC-P005 `y_fixed_bearing_cartridge` | low fixed Y bearing housing | PROTOTYPE-STL |
+| 1 | PCNC-P006 `y_floating_bearing_cartridge` | low floating Y bearing housing | PROTOTYPE-STL |
+| 1 | PCNC-P007 `y_rear_bearing_bridge` | rear floating-bearing support bridge | PROTOTYPE-STL |
+| 4 | PCNC-P008..P011 machine feet | leveling/support interfaces | PROTOTYPE-STL |
+| 1 | PCNC-P012 `electronics_mount_rail` | controller/cable service rail | PROTOTYPE-STL |
+| 1 | PCNC-P013 `gantry_left_integrated` | left tower/X beam segment | PROTOTYPE-STL |
+| 1 | PCNC-P014 `gantry_right_integrated` | right tower/X beam socket segment | PROTOTYPE-STL |
+| 2 | PCNC-P015/P016 X bearing cartridges | X screw supports | PROTOTYPE-STL |
+| 1 | PCNC-P017 `x_z_backbone` | X carriage and Z guide backbone | PROTOTYPE-STL |
+| 1 | PCNC-P018 `z_carriage_plate` | moving Z/spindle interface | PROTOTYPE-STL |
+| 1 | PCNC-P019 `spindle_mount_concept` | modular spindle clamp | PROTOTYPE-STL |
+| 1 | PCNC-P020 `moving_bed_frame` | moving Y bed, carriages, and nut frame | PROTOTYPE-STL |
 
-The current solid-equivalent estimate from the CAD volumes is approximately
-5.72 kg at the documented PETG density. This is not a printed mass claim:
-slicer infill, shells, modifiers, supports, process waste, and inserts will
-change the actual result.
+All parts are local parametric solids with
+`PROVISIONAL_HARDWARE_DIMENSION` interfaces. Their generated STEP/STL files
+are candidate review artifacts, not manufacturing release files.
 
-## OWNER-SUPPLIED — DO NOT BUY
+## Owner-supplied hardware - do not buy
 
-| Qty | Item | Use / identification status |
-| ---: | --- | --- |
-| stock selection | NEMA17 stepper motors | Use existing stock. Screen generic 42.3 mm frame, 5 mm shaft, 40–48 mm body envelope; characterize candidates before final X/Y/Z assignment. |
-| 1 | Arduino Mega + CNC Shield | Intended controller platform. Identify exact shield revision, installed drivers, microsteps, current/voltage/cooling, inputs/outputs, and firmware mapping. Do not replace absent a validated limitation. |
-| 1 | Voron 2.4 350 printer | Owner print capability; confirm usable volume and process settings. |
+| Item | Status and use |
+| --- | --- |
+| Existing NEMA17 motor stock | **OWNER-SUPPLIED - DO NOT BUY.** Use the generic 42.3 mm frame, approximately 31 mm mounting pitch, screening 5 mm shaft, 40-48 mm body, and rear connector/wiring envelope. Characterize stock before X/Y/Z assignment. |
+| Arduino Mega + CNC Shield | **OWNER-SUPPLIED - DO NOT REPLACE** absent a validated technical limitation. Exact Shield revision and installed drivers remain unresolved. Verify microsteps, current/voltage capability, cooling, limits, probe, spindle PWM/control, and GRBL-compatible firmware mapping. |
+| Voron 2.4 350 printer | Owner print capability; verify actual usable volume and long-axis process limits. |
 
-## BUY AFTER MEASUREMENT — motion and interfaces
+Final motor strategy: normal suitable owner-stock motors for X/Y, and the
+strongest electrically compatible owner-stock motor for Z. Do not infer
+holding torque from physical size.
 
-| Qty / class | Item | Measurement gate |
-| --- | --- | --- |
-| 2 | MGN12-class X rails, approximately 340 mm | width, hole pitch, height, preload, straightness, end margin |
-| 2 | MGN12-class Y rails, approximately 310 mm | same; full parallelism and printed seat/shim plan |
-| 4 | MGN12H X carriage blocks | measured body and mounting pattern |
-| 4 | MGN12H Y carriage blocks | measured body and mounting pattern |
-| 2 | MGN9-class Z rails, approximately 130 mm | rail/block height and spacing |
-| 4 | MGN9H Z carriage blocks | measured body and mounting pattern |
-| 1 | T8x4 X screw and nut | straightness, nut envelope, backlash, service stack |
-| 1 | T8x4 Y screw and nut | same |
-| 1 | T8x2 Z screw and nut | same; axial load and nut alignment |
-| 3 | fixed/floating bearing sets | bore, flange, axial-float arrangement |
-| 3 | flexible 5-to-8 mm couplers | bores, length, set-screw access, axial clearance |
-| sample set | M3/M4 inserts and screws | OD, length, pilot, insertion depth, pull-out, creep, torque, tool access |
-| sample set | feet, washers, leveling/support hardware | grip, table interface, adjustment and access |
-| 1 representative | spindle / controller | diameter, mass, length, ER11/tooling, cable exit, heat, runout and clamp interface |
+## Reference hardware to identify/measure
 
-## BUY AFTER MEASUREMENT — process and safety
+| Qty/class | Master representation | Current reference geometry | Measurement gate |
+| --- | --- | --- | --- |
+| 2 | MGN12 X rails and 4 MGN12H blocks | 330 mm X guide span | section, hole stations, preload/play, straightness, carriage fit |
+| 2 | MGN12 Y rails and 4 MGN12H blocks | 310 mm Y rail length | same, including bed parallelism and printed seat/shim plan |
+| 2 | MGN9 Z rails and 4 MGN9H blocks | 130 mm Z rail length | height, spacing, preload/play, carriage fit |
+| 1 | T8x4 X screw/nut | 310 mm non-helical envelope | lead/pitch/starts, journals, runout, nut/backlash |
+| 1 | T8x4 Y screw/nut | 340 mm non-helical envelope | same plus low drive datum and axial stack |
+| 1 | T8x2 Z screw/nut | 155 mm non-helical envelope | gravity hold, drag, backlash, fixed/floating support |
+| 3 axis sets | 608 fixed/floating bearing arrangements | 8 x 22 x 7 mm class | actual bearing stack, retainers, axial float |
+| 3 | 5-to-8 mm couplers | 20 x 30 mm reference envelope | bore, length, set-screw access, axial parasitic force |
+| samples | M3/M4 inserts and fasteners | provisional bosses/through interfaces | OD, length, pilot, pull-out, creep, torque, tool access |
+| 1 candidate | ER11 spindle | local 45 x 140 mm SycoTec candidate | diameter, mass, length, cable/heat, runout, clamp fit |
+| samples | limits, probe, clamps, spoilboard | local service/process envelopes | actuation, repeatability, cable, flatness, distortion, replacement |
 
-- replaceable 230 x 180 x 12 mm spoilboard stock and mounting hardware;
-- PCB registration, low-profile clamps, or vacuum/workholding hardware;
-- normally-closed limit switches, probe hardware, cable, strain relief, and
-  drag/service-loop components;
-- suitable motor/spindle power supplies, fusing, emergency stop, and guarded
-  spindle control components after electrical review;
-- hardware-specific printed inserts/standoffs only after the actual insert and
-  controller board geometry is measured.
+No unmeasured row authorizes a production purchase. The exact CNC Shield and
+driver modules are identification items, not a recommendation to replace the
+owner controller. New stepper motors are not a procurement item.
 
-## OPTIONAL
+## Process and safety items after identification
 
-- removable rail shim/reference strips;
-- sacrificial bed skins and calibration coupons;
-- spindle guard or chip shield after thermal and visibility review;
-- additional probe fixture or removable PCB registration frame;
-- cable-chain hardware if the free-loop design is not sufficient.
+- conditioned PETG for rail-seat, joint, insert, and bed coupons;
+- M3/M4 hardware, measured inserts, washers, captive nuts, and strain relief;
+- replaceable spoilboard and low-profile PCB registration/workholding;
+- shielded motor/limit/probe/spindle-control cable, fusing, emergency-stop,
+  spindle inhibit, and protective-earth hardware as required by electrical
+  review;
+- guards/chip shielding and final enclosure details after thermal and service
+  review.
 
-No category above authorizes a production order for unmeasured hardware. The
-next procurement action is identification and measurement, not motor purchase
-or controller replacement.
+The next action is hardware identification and controlled coupon testing, not
+motor purchase, controller replacement, or release of the candidate CAD.

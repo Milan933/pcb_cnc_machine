@@ -1,56 +1,72 @@
-# Phase 5 complete-machine manufacturing CAD
+# Phase 5 master-assembly-first manufacturing CAD
 
 **Status:** owner-authorized virtual-machine phase; candidate outputs only
 
-This document extends the first base-pair requirements in
-[phase-5-manufacturing-cad.md](phase-5-manufacturing-cad.md). The owner
-explicitly opened complete Phase 5 from baseline
+The owner opened Phase 5 from baseline
 `afe2e14089467321b323d74f928a7ab4c5ffdc1f` and directed the project to finish
-the coherent virtual machine before physical part review.
+the complete assembled machine before physical part review. The master
+assembly is primary; printable splits are derived from it.
 
 ## Required outputs
 
-1. A central coordinate, work-origin, travel, envelope, motor, spindle, and
-   provisional-interface parameter contract.
-2. All 19 accepted O2 structural identities as actual local fused solids with
-   real walls, ribs, webs, gussets, rail seats, service openings, and fastening
-   interfaces appropriate to each part.
-3. A named complete assembly containing the fixed structure, moving bed,
-   rails, carriages, screws, nuts, bearings, couplers, motors, spindle,
-   workholding, PCB envelope, probe, limits, electronics, cable routes, feet,
-   and service clearances.
-4. A deterministic eight-corner full-travel check for X/Y/Z and an explicit
-   expected-interference register. Critical bed/gantry checks must use exact
-   solid intersections when the CAD backend is available, not only an AABB.
-5. A stable PCNC-P001 through PCNC-P019 inventory with material, quantity,
-   maturity, local print orientation, support strategy, bounding box, mass
-   estimate, interfaces, and local STL/STEP paths.
-6. Individual STL/STEP derivatives and a complete assembly STEP plus a
-   visualization STL under ignored `generated/` development paths.
-7. Twelve review images, a 30-step or more assembly guide, coordinate/datum
-   instructions, alignment procedures, preliminary fastener schedule, wiring
-   architecture, BOM categories, and a risk/open-item review package.
+1. A central coordinate, work-origin, travel, envelope, motor, spindle,
+   controller, and provisional-interface parameter contract.
+2. Credible local hardware/interface models with source, permission/reuse,
+   confidence, and measurement status tracked.
+3. A complete master assembly containing fixed structure, moving bed, rails,
+   carriages, screws, nuts, bearings, couplers, owner-stock motor envelopes,
+   spindle candidate, workholding, PCB, probe, limits, Arduino Mega + CNC
+   Shield, cooling/service volumes, cable routes, and fastener references.
+4. A derived continuous PETG structure with real walls, ribs, rail seats,
+   keyed/shouldered split joints, bearing supports, controller support, and
+   fastening/load-path interfaces. The inventory may change when the master
+   requires a support part; the active inventory is 20 parts.
+5. A deterministic eight-corner X/Y/Z travel and clearance screen, exact
+   BRep structural-overlap classification, support/fastening audit, and
+   reconstruction from the derived parts plus hardware models.
+6. Individual STL/STEP derivatives, a complete master STEP, a visualization
+   STL, and 16 review images suitable for owner review and OrcaSlicer
+   inspection.
+7. Updated inventory, hardware register, BOM, assembly guide, coordinate
+   instructions, fastener schedule, wiring/controller record, support audit,
+   traceability, manifest, tests, and EDR.
 
-## Fixed architecture and hardware assumptions
+## Fixed architecture and owner hardware
 
 - fixed gantry, moving Y bed, 200 x 150 mm PCB work area;
-- dual MGN12-class X/Y guides, dual MGN9-class Z guides;
+- dual MGN12-class X/Y guides and dual MGN9-class Z guides;
 - T8x4 X/Y and T8x2 Z screening screw classes;
-- owner-supplied NEMA17 stock, generic 42.3 mm frame, 5 mm shaft screening,
-  40–48 mm body envelope and rear connector clearance;
-- owner-supplied Arduino Mega + CNC Shield; exact shield revision and drivers
-  remain unresolved and no replacement is assumed;
-- spindle 10–30 krpm screening, practical 12–26 krpm, ER11 preferred,
-  25/40/52 mm body classes and 0.30–0.80 kg screening mass.
+- **OWNER-SUPPLIED NEMA17 stock - DO NOT BUY**; use a generic 42.3 mm
+  interface, screening 5 mm shaft, 40-48 mm common body, and rear connector
+  clearance; assign X/Y normal suitable stock and Z the strongest electrically
+  compatible stock after characterization;
+- **OWNER-SUPPLIED Arduino Mega + CNC Shield - DO NOT REPLACE** absent a
+  validated limitation; exact Shield revision and driver modules remain open;
+- verify Shield microsteps, current/voltage capability, cooling, limit inputs,
+  probe input, spindle PWM/control outputs, and GRBL-compatible firmware;
+- spindle remains a realistic ER11 candidate/interface until actual hardware,
+  mass, cable, heat, and runout are measured.
 
-## Maturity and release rules
+## Manufacturing boundary
 
-Complete geometry may be test-printed and sliced while an interface is marked
-`PROVISIONAL_HARDWARE_DIMENSION`. That status blocks `HARDWARE-VALIDATED` and
-`RELEASED` maturity. Physical print inspection, measured hardware fit,
-alignment, PETG process coupons, electrical identification, service mock-up,
-and commissioning evidence are separate gates.
+Hardware-dependent interfaces are explicitly
+`PROVISIONAL_HARDWARE_DIMENSION`. This permits test-printable candidate STL
+and STEP generation but blocks `HARDWARE-VALIDATED` and `RELEASED` maturity.
+No third-party CAD is redistributed where permission is unclear; local derived
+models are the repository source.
 
-Development outputs remain outside `generated/*/release/`. A later release
-must have a source revision, measured interface records, validation report,
-owner review disposition, and explicit release authorization.
+All structural candidates must be valid one-solid shapes and fit the
+conservative 320 mm individual-part screening envelope. The two base sides
+are conditional 320 mm Y prints needed to preserve the 310 mm Y rail seat;
+verify the owner's Voron 350 usable volume and long-axis process distortion.
+
+The current generator is:
+
+```text
+C:\Users\milan\pcbCNC-cad-env\Scripts\python.exe -m tools.generate_phase5_complete_machine
+```
+
+Outputs remain under `generated/*/phase5-complete-machine/`, never a
+`release/` directory. The next gate is owner structural review followed by
+hardware identification, coupons, physical first prints, fit/alignment,
+electrical verification, and commissioning evidence.

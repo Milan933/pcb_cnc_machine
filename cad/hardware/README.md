@@ -1,16 +1,17 @@
 # Hardware representations
 
-Hardware models are not selected yet. The Phase 3 motion skeleton represents
-functional reference envelopes and mounting interfaces for rails, screws,
-bearings, motors, spindle, fasteners, inserts, switches, and couplers without
-hiding their source or uncertainty. These envelopes are not production parts.
+`master_hardware.py` is the local derived hardware layer for the Phase 5
+master assembly. It contains dimensionally controlled interface/envelope
+builders for the guide, screw, bearing, coupler, motor, controller, spindle,
+limit, probe, and fastener classes.
 
-Reusable PETG threads use the central M3/M4/M5 hierarchy. Heat-set insert
-families are represented as measured-later interfaces: outer diameter, length,
-pilot range, insertion depth, screw clearance, boss wall, edge distance,
-insertion direction, and soldering-iron/tool access are controlled parameters,
-but supplier-dependent dimensions remain unresolved until the actual inserts
-and representative PETG coupons are selected. Fastener envelopes provide
-preload; printed shoulders, keys, pockets, registrations, or ribs provide
-location and shear. Through-bolts are conditional structural escalations, not
-default locating pins.
+These are not silently downloaded supplier models. Source URLs, confidence,
+classification, and repository reuse treatment are recorded in
+[`docs/manufacturing/hardware-model-register.md`](../../docs/manufacturing/hardware-model-register.md)
+and `HARDWARE_MODEL_REGISTER`. Supplier-dependent geometry remains
+`REFERENCE-CAD`, `ENVELOPE-ONLY`, or `PROVISIONAL` until the actual hardware is
+identified and measured.
+
+The owner controller is recorded as **OWNER-SUPPLIED Arduino Mega + CNC
+Shield**. Existing NEMA17 stock is **OWNER-SUPPLIED - DO NOT BUY**; the local
+motor model is a generic 42.3 mm interface with rear connector clearance.

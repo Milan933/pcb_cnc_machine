@@ -1787,3 +1787,163 @@ PHASE5_COMPLETE_PARAMETERS = Phase5CompleteMachineParameters(
         "spindle body diameter, length, mounting and cable exit",
     ),
 )
+
+
+@dataclass(frozen=True)
+class Phase5MasterMachineParameters:
+    """Hardware-first master-assembly contract for the Phase 5 redesign.
+
+    The values describe one dimensionally credible virtual machine.  Values
+    derived from supplier drawings are still reference dimensions until the
+    owner's actual components are measured.  Printable-part boundaries are
+    derived from this machine-level layout rather than defining it.
+    """
+
+    units: str
+    coordinate_convention: tuple[str, str, str]
+    machine_origin: str
+    work_origin: str
+    work_area_mm: tuple[float, float]
+    pcb_nominal_thickness_mm: float
+    usable_travel_mm: tuple[float, float, float]
+    travel_min_mm: tuple[float, float, float]
+    travel_max_mm: tuple[float, float, float]
+    overall_envelope_target_mm: tuple[float, float, float]
+
+    # Master hardware layout.
+    base_length_mm: float
+    base_side_width_mm: float
+    base_side_height_mm: float
+    base_left_placement_mm: tuple[float, float, float]
+    base_right_placement_mm: tuple[float, float, float]
+    y_rail_length_mm: float
+    y_rail_center_x_mm: tuple[float, float]
+    y_rail_start_y_mm: float
+    y_rail_z_mm: float
+    x_rail_length_mm: float
+    x_rail_z_mm: tuple[float, float]
+    x_rail_y_mm: float
+    z_rail_length_mm: float
+    z_rail_center_spacing_mm: float
+    z_rail_y_mm: float
+    z_rail_start_z_mm: float
+    x_screw_length_mm: float
+    x_screw_y_mm: float
+    x_screw_z_mm: float
+    y_screw_length_mm: float
+    y_screw_x_mm: float
+    y_screw_z_mm: float
+    z_screw_length_mm: float
+    z_screw_x_mm: float
+    z_screw_y_mm: float
+    screw_journal_diameter_mm: float
+    screw_nominal_diameter_mm: float
+    x_y_screw_lead_mm: float
+    z_screw_lead_mm: float
+
+    # Owner hardware and reference hardware interfaces.
+    nema17_frame_mm: float
+    nema17_mounting_pitch_mm: float
+    nema17_shaft_diameter_mm: float
+    nema17_shaft_projection_mm: float
+    nema17_body_length_range_mm: tuple[float, float]
+    arduino_mega_board_mm: tuple[float, float, float]
+    cnc_shield_provisional_board_mm: tuple[float, float, float]
+    spindle_candidate_diameter_mm: float
+    spindle_candidate_length_mm: float
+    spindle_candidate_mass_kg: float
+    spindle_classes_mm: tuple[float, ...]
+    er11_max_tool_mm: float
+    bearing_designation: str
+    bearing_bore_mm: float
+    bearing_outer_diameter_mm: float
+    bearing_width_mm: float
+    coupler_outer_diameter_mm: float
+    coupler_length_mm: float
+    coupler_motor_bore_mm: float
+    coupler_screw_bore_mm: float
+
+    # PETG manufacturing boundary and explicit uncertainty.
+    preferred_printed_dimension_mm: float
+    conservative_printed_dimension_mm: float
+    petg_density_kg_per_mm3: float
+    provisional_interfaces: tuple[str, ...]
+
+
+PHASE5_MASTER_PARAMETERS = Phase5MasterMachineParameters(
+    units="mm",
+    coordinate_convention=(
+        "X: left to right, positive right",
+        "Y: front to back, positive rear",
+        "Z: work datum upward, positive up",
+    ),
+    machine_origin="MCS at the centre of the nominal PCB top surface: (0, 0, 0)",
+    work_origin="G54/front-left PCB datum at (-100, -75, 0); probing may refine Z",
+    work_area_mm=(200.0, 150.0),
+    pcb_nominal_thickness_mm=1.6,
+    usable_travel_mm=(220.0, 170.0, 40.0),
+    travel_min_mm=(-110.0, -85.0, -25.0),
+    travel_max_mm=(110.0, 85.0, 15.0),
+    overall_envelope_target_mm=(390.0, 410.0, 280.0),
+    base_length_mm=320.0,
+    base_side_width_mm=90.0,
+    base_side_height_mm=55.0,
+    base_left_placement_mm=(-170.0, -160.0, -60.0),
+    base_right_placement_mm=(80.0, -160.0, -60.0),
+    y_rail_length_mm=310.0,
+    y_rail_center_x_mm=(-120.0, 120.0),
+    y_rail_start_y_mm=-155.0,
+    y_rail_z_mm=-16.0,
+    x_rail_length_mm=330.0,
+    x_rail_z_mm=(90.0, 130.0),
+    x_rail_y_mm=-48.0,
+    z_rail_length_mm=130.0,
+    z_rail_center_spacing_mm=60.0,
+    z_rail_y_mm=-68.0,
+    z_rail_start_z_mm=45.0,
+    x_screw_length_mm=310.0,
+    x_screw_y_mm=-62.0,
+    x_screw_z_mm=112.0,
+    y_screw_length_mm=340.0,
+    y_screw_x_mm=0.0,
+    y_screw_z_mm=-70.0,
+    z_screw_length_mm=155.0,
+    z_screw_x_mm=0.0,
+    z_screw_y_mm=-5.0,
+    screw_journal_diameter_mm=7.0,
+    screw_nominal_diameter_mm=8.0,
+    x_y_screw_lead_mm=4.0,
+    z_screw_lead_mm=2.0,
+    nema17_frame_mm=42.3,
+    nema17_mounting_pitch_mm=31.0,
+    nema17_shaft_diameter_mm=5.0,
+    nema17_shaft_projection_mm=20.0,
+    nema17_body_length_range_mm=(40.0, 48.0),
+    arduino_mega_board_mm=(101.52, 53.3, 1.6),
+    cnc_shield_provisional_board_mm=(100.0, 60.0, 18.0),
+    spindle_candidate_diameter_mm=45.0,
+    spindle_candidate_length_mm=140.0,
+    spindle_candidate_mass_kg=1.6,
+    spindle_classes_mm=(25.0, 40.0, 52.0),
+    er11_max_tool_mm=8.0,
+    bearing_designation="608-2RSH reference envelope",
+    bearing_bore_mm=8.0,
+    bearing_outer_diameter_mm=22.0,
+    bearing_width_mm=7.0,
+    coupler_outer_diameter_mm=20.0,
+    coupler_length_mm=30.0,
+    coupler_motor_bore_mm=5.0,
+    coupler_screw_bore_mm=8.0,
+    preferred_printed_dimension_mm=300.0,
+    conservative_printed_dimension_mm=320.0,
+    petg_density_kg_per_mm3=1.27e-6,
+    provisional_interfaces=(
+        "Arduino Mega + CNC Shield revision, driver modules, I/O mapping, and cooling",
+        "owner-stock NEMA17 identity, connector orientation, current, and shaft details",
+        "actual MGN rail manufacturer, preload, hole countersink, and measured rail datums",
+        "actual T8 screw end journals, anti-backlash nut architecture, and preload",
+        "actual 608 or alternate fixed/floating bearing stack and retainers",
+        "actual spindle selection, axial length, connector, cooling, and cable exit",
+        "actual limit switch variant, probe hardware, inserts, fasteners, and cable bend radii",
+    ),
+)

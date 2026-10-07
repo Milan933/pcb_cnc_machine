@@ -14,6 +14,9 @@ electrical behavior still require measurement. Those items block final
 electrical/mechanical interfaces and commissioning, but an unselected final
 motor does not block the preliminary structural CAD envelope.
 
+The Phase 5 local reference/envelope source and reuse decisions are tracked in
+the [hardware model register](../docs/manufacturing/hardware-model-register.md).
+
 ## NEMA17 motor sheet
 
 Create one copy of this table for each motor, including spares.

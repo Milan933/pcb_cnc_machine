@@ -12,7 +12,7 @@ record have been reviewed.
 | 3A. Compact packaging | Fit the accepted motion classes, full travel, bed, spindle, motors, supports, and service envelopes. | P1/P2/P3 packaging study, P2 baseline, EDR. | A packaging baseline is selected or the blocker is explicit. |
 | 4. Preliminary structural CAD concept | Develop the printed PETG force-loop parts, split joints, rail seats, moving bed, service interfaces, print plans, calculations, and preliminary BOM. | Parametric review geometry, assembly, joint study, printability evidence plan, calculations, preliminary BOM, EDR. | Owner review accepts the concept or records rework; no production release is implied. |
 | 4B. Hardware procurement / measurement freeze | Convert the accepted vendor-independent motion and fastening classes into measured sample interfaces and procurement gates. | A-D procurement matrix, hardware identification sheets, measurement plan, coupons, EDR. | Measured interfaces and physical evidence are complete enough for a new owner decision; manufacturing-ready CAD is still a later gate. |
-| 5. Manufacturing CAD complete virtual machine | Convert all 19 accepted O2 identities into actual fused, parametric, printable PETG candidates and integrate the complete virtual machine before physical part review. | Complete source parts, assembly, coordinate system, STL/STEP derivatives, review images, BOM, fastener/wiring/assembly docs, manifest, validation, EDR-015. | Owner can inspect/slice the complete candidate; no release or hardware-validation claim. |
+| 5. Manufacturing CAD complete virtual machine | Build the complete master assembly from credible hardware/interface models, then derive the printable PETG structure and split joints before physical part review. | Master source assembly, derived structural inventory, hardware/source register, coordinate system, STL/STEP derivatives, 16 review images, BOM, support/fastener/wiring/assembly docs, manifest, validation, EDR-016. | Owner can inspect/slice the complete candidate; no release or hardware-validation claim. |
 | 6. Physical first-print and hardware identification | Measure owner hardware, print controlled coupons/parts, and compare provisional interfaces. | Hardware records, dimensional inspection, PETG coupons, rail/insert/bearing tests, alignment evidence. | Interfaces are measured enough for a new owner decision. |
 | 7. Assembly and commissioning validation | Integrate measured motion, spindle, workholding, probing, guards, cables, and service access. | Measured complete assembly, interference report, wiring/configuration record, commissioning EDR. | Required clearances, access, and electrical behavior pass. |
 | 8. Automated validation | Run the rule catalog against the assembly and exports. | Validation report, test results, exceptions, EDR. | No unreviewed errors; warnings have owners. |
@@ -43,15 +43,16 @@ bed** as the mechanical architecture baseline; B remains the documented
 primary rejected alternative. The owner accepted the Phase 3 motion baseline,
 the P2 Phase 3A packaging baseline, and the Phase 4/4A preliminary structural
 architecture baseline on 2026-10-06. The repository is now in complete Phase 5
-virtual-machine manufacturing CAD under EDR-015. Hardware procurement and
+master-assembly-first manufacturing CAD under EDR-016. Hardware procurement and
 measurement remain an evidence stream under EDR-013, not a reason to withhold
 useful public engineering artifacts.
 
 The O2 structure is accepted as preliminary architecture only. The owner has
-now authorized complete Phase 5 virtual manufacturing CAD under EDR-015. All
-19 structural candidates, the complete virtual assembly, local derivatives,
-and review package are available. Exact hardware identity, supplier/preload,
-spindle, insert dimensions, PETG rail-seat/bearing-pocket evidence,
-full-travel service access, and physical force-loop tests remain open. The
-complete candidate is `PROTOTYPE-STL`; release exports and hardware validation
-remain blocked pending measured evidence and owner review.
+now authorized complete Phase 5 virtual manufacturing CAD under EDR-016. The
+master assembly, 20 derived structural candidates, local hardware/interface
+models, derivatives, and review package are available. Exact hardware
+identity, supplier/preload, spindle, insert dimensions, PETG rail-seat/
+bearing-pocket evidence, full-travel service access, and physical force-loop
+tests remain open. The complete candidate is `PROTOTYPE-STL`; release exports
+and hardware validation remain blocked pending measured evidence and owner
+review.

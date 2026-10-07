@@ -15,10 +15,11 @@ from cad.validation import (
 
 
 class Phase5CompleteMachineTests(unittest.TestCase):
-    def test_complete_inventory_is_exactly_nineteen_stable_parts(self) -> None:
-        self.assertEqual(len(PHASE5_COMPLETE_PART_IDS), 19)
+    def test_complete_inventory_includes_dedicated_y_end_support(self) -> None:
+        self.assertEqual(len(PHASE5_COMPLETE_PART_IDS), 20)
+        self.assertIn("y_rear_bearing_bridge", PHASE5_COMPLETE_PART_IDS)
         self.assertEqual(tuple(item.part_id for item in PHASE5_COMPLETE_PART_DEFINITIONS), PHASE5_COMPLETE_PART_IDS)
-        self.assertEqual(tuple(item.part_number for item in PHASE5_COMPLETE_PART_DEFINITIONS), tuple(f"PCNC-P{index:03d}" for index in range(1, 20)))
+        self.assertEqual(tuple(item.part_number for item in PHASE5_COMPLETE_PART_DEFINITIONS), tuple(f"PCNC-P{index:03d}" for index in range(1, 21)))
         self.assertTrue(all(item.material == "PETG" for item in PHASE5_COMPLETE_PART_DEFINITIONS))
         self.assertTrue(all(item.interface_status == "PROVISIONAL_HARDWARE_DIMENSION" for item in PHASE5_COMPLETE_PART_DEFINITIONS))
 

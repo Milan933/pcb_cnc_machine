@@ -1,23 +1,25 @@
 # Manufacturing-CAD review artifacts
 
-The Phase 5 base-pair batch is retained as the historical first real printable
-structural output. The active complete-machine pass is the real printable
-19-part structural output. Run the pinned build123d environment with:
+The active Phase 5 package is master-assembly-first. The complete CNC is
+constructed from credible hardware references and local derived interface
+models; the PETG parts are then derived from that assembly. The superseded
+envelope-only STL set must not be printed or released.
 
-    python -m tools.generate_phase5_complete_machine
+Run the pinned build123d environment with:
 
-The historical base-pair generator writes candidate files to the ignored paths
-`generated/stl/phase5-base-pair/` and `generated/step/phase5-base-pair/`.
-The complete-machine generator records its source revision, dimensions,
-maturity, and validation results in `phase5-complete-machine-manifest.json`.
+    C:\Users\milan\pcbCNC-cad-env\Scripts\python.exe -m tools.generate_phase5_complete_machine
 
-The complete-machine generator writes individual candidates to the versioned
-engineering-artifact paths
-`generated/stl/phase5-complete-machine/` and
-`generated/step/phase5-complete-machine/`, plus versioned review images under
-`generated/drawings/phase5-complete-machine/`.
+The generator writes 20 individual candidate STEP/STL files, a complete
+master STEP and visualization STL, 16 review PNGs, scene meshes, and the
+tracked [manifest](phase5-complete-machine-manifest.json). Current outputs are
+under:
 
-These outputs are `PROTOTYPE-STL` review artifacts. They are intentionally not
-placed in a `release/` directory and are not manufacturing-ready or
-hardware-validated. The tracked owner package is
-[phase5-complete-machine-review.md](phase5-complete-machine-review.md).
+- `generated/stl/phase5-complete-machine/`;
+- `generated/step/phase5-complete-machine/`;
+- `generated/drawings/phase5-complete-machine/`.
+
+These are `PROTOTYPE-STL` / manufacturing-CAD review artifacts. They are not
+`HARDWARE-VALIDATED`, `RELEASED`, or placed in a `release/` directory. See the
+[owner review](phase5-complete-machine-review.md),
+[hardware register](hardware-model-register.md), and
+[support audit](master-assembly-support-audit.md).

@@ -16,7 +16,7 @@ to:
 
 The remaining 17 O2 parts were initially held at this sub-gate. The owner’s
 later explicit Phase 5 authorization supersedes that stop and is recorded in
-EDR-015; the complete-machine requirements now control active work.
+EDR-016; the complete-machine requirements now control active work.
 
 ## Manufacturing-CAD requirements
 
@@ -96,5 +96,6 @@ parallelism, post-processing, insert/fastener strategy, and service access must
 be recorded as evidence rather than inferred from the mesh.
 
 The first-print review did not authorize the remaining structural parts under
-the original sub-gate. EDR-015 now authorizes the complete virtual candidate
-pass, while physical evidence, measured interfaces, and release remain open.
+the original sub-gate. EDR-016 now authorizes the complete master-assembly
+candidate pass, while physical evidence, measured interfaces, and release
+remain open.

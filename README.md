@@ -6,10 +6,11 @@ isolation routing, drilling, and outline cutting.
 ## Project status
 
 The owner accepted Phase 4 and Phase 4A as the preliminary structural
-architecture baseline on 2026-10-06, selecting the balanced 19-part O2 review
-architecture. The owner has now authorized complete Phase 5 virtual-machine
-manufacturing CAD: all 19 O2 structural part identities have real source
-geometry, a named complete assembly, and local candidate STEP/STL derivatives.
+architecture baseline on 2026-10-06. The owner has now authorized complete
+Phase 5 virtual-machine manufacturing CAD from baseline
+`afe2e14089467321b323d74f928a7ab4c5ffdc1f`: the complete master assembly is
+primary, and 20 derived structural identities have real source geometry,
+named hardware relationships, and local candidate STEP/STL derivatives.
 Phase 1, the Architecture A
 baseline, the Phase 3 motion baseline, and the P2 Phase 3A packaging baseline
 are also accepted. The complete candidate is `PROTOTYPE-STL` only; it contains
@@ -92,8 +93,9 @@ installed driver modules remain identification items.
   first real integrated-base pair, candidate export boundary, and owner-review
   stop gate.
 - [Phase 5 complete-machine manufacturing CAD](requirements/phase-5-complete-machine.md):
-  complete 19-part virtual machine, travel/interference checks, export and
-  review-package contract.
+  master-assembly-first 20-part virtual machine, hardware register,
+  support/fastening audit, travel/interference checks, export and review
+  package contract.
 - [docs/engineering-workflow.md](docs/engineering-workflow.md): the mandatory
   ten-phase workflow and phase gates.
 - [docs/architecture](docs/architecture): system-level architecture, Phase 2
@@ -117,7 +119,13 @@ installed driver modules remain identification items.
   fused, parametric integrated-base pair with explicitly provisional hardware
   openings.
 - [cad/parts/phase5_complete_structural.py](cad/parts/phase5_complete_structural.py):
-  all 19 local fused PETG candidate solids.
+  compatibility path to the master-derived local fused PETG candidate solids.
+- [cad/hardware/master_hardware.py](cad/hardware/master_hardware.py): local
+  hardware/interface models and source/confidence register.
+- [cad/parts/master_structural.py](cad/parts/master_structural.py): master-
+  derived PETG source solids.
+- [cad/assembly/master_machine.py](cad/assembly/master_machine.py): complete
+  hardware-first master assembly and travel states.
 - [cad/assembly/phase5_complete_assembly.py](cad/assembly/phase5_complete_assembly.py):
   complete named structural, motion, process, control, and service assembly.
 - [cad/fastening.py](cad/fastening.py): dependency-light PETG interface checks

@@ -4,6 +4,9 @@
 **Baseline:** owner-accepted preliminary Phase 4/4A O2 architecture
 **Detail:** [hardware procurement / measurement freeze](../requirements/hardware-procurement-measurement-freeze.md)
 
+The active Phase 5 source/confidence/reuse record is the
+[hardware model register](../docs/manufacturing/hardware-model-register.md).
+
 This is the short purchase-order view. The linked requirement document is the
 controlling record for dimensions, tolerances, drawing sufficiency, physical
 measurement methods, coupons, and release gates.

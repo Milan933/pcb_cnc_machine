@@ -39,9 +39,11 @@ Current records:
   - owner-authorized first real printable batch; `PROTOTYPE-STL` only, with
     provisional hardware interfaces and an explicit stop for owner review
 - [EDR-015: Phase 5 complete virtual machine](015-phase-5-complete-virtual-machine.md)
-  - owner-authorized continuation through the complete virtual machine and
-    all 19 candidate structural parts; physical evidence, measured interfaces,
-    and release remain open
+  - owner-authorized continuation through the complete virtual machine; the
+    master-first redesign is superseded by EDR-016
+- [EDR-016: Phase 5 master assembly first and hardware-model redesign](016-phase-5-master-assembly-first-redesign.md)
+  - active owner-authorized methodology; 20 derived candidate parts, 68
+    master components, measured interfaces and release remain open
 
 The ten-phase workflow requires a reviewed record for each phase. Future phase
 records are intentionally not fabricated before their evidence exists.
