@@ -7,6 +7,7 @@ This framework is the reusable mechanical-design layer for Codex in this reposit
 | Skill | Role | Depends on |
 | --- | --- | --- |
 | `mechanical-cad-design` | Function-to-geometry method, datums, interfaces, load paths, parametric feature hierarchy | none; foundation |
+| `precision-mechanical-cad` | Precision specialization for fits, tolerances, GD&T reasoning, master models, machining, inspection, and maturity gates | mechanical-cad-design; assembly, joints, hardware, and review branches as applicable |
 | `mechanical-assembly-design` | Support, location, fastening, DOF, assembly order, service, and load-chain reasoning | mechanical-cad-design |
 | `design-for-3d-printing` | Functional FDM orientation, section design, supports, tolerance, splits, and inspection | mechanical-cad-design |
 | `mechanical-joints-fasteners` | Preload, shear, tension, bending, inserts, bolts, keys, and joint access | mechanical-cad-design; design-for-3d-printing when polymer is involved |
@@ -18,17 +19,16 @@ This framework is the reusable mechanical-design layer for Codex in this reposit
 ## Dependency graph
 
 ```text
-                         mechanical-cad-design
-                       /          |            \
-                      /           |             \
- design-for-3d-printing   mechanical-assembly-design   cad-hardware-integration
-             |                    |          \             |
-             v                    v           \            v
- mechanical-joints-fasteners  motion-mechanism-design  cad-rendering-visualization
-                                      \          /             |
-                                       \        /              |
-                                        v      v               |
-                                      cad-design-review <------+
+mechanical-cad-design
+├── precision-mechanical-cad
+├── mechanical-assembly-design
+├── design-for-3d-printing
+├── mechanical-joints-fasteners
+├── motion-mechanism-design
+├── cad-hardware-integration
+└── cad-rendering-visualization
+
+all applicable branches ──→ cad-design-review
 ```
 
 The graph is a loading guide, not a requirement to load every skill for every task. Start with the foundation, add only the branches the design needs, and always add design review before a readiness or release claim.
@@ -92,4 +92,4 @@ For build123d, use local `Plane`/`Axis`/`Location` frames, reusable builders, ex
 
 ## Later CNC application
 
-When the CNC redesign resumes, load `mechanical-cad-design`, `mechanical-assembly-design`, `design-for-3d-printing`, `mechanical-joints-fasteners`, `motion-mechanism-design`, `cad-hardware-integration`, and `cad-design-review` as required, then add the existing CNC overlays. Begin again at requirements, datums, hardware interfaces, and force-loop layout. Do not reuse current geometry merely because it passes a solid or bounding-box test.
+When the CNC redesign resumes, load `mechanical-cad-design`, `precision-mechanical-cad`, `mechanical-assembly-design`, `design-for-3d-printing`, `mechanical-joints-fasteners`, `motion-mechanism-design`, `cad-hardware-integration`, and `cad-design-review` as required, then add the existing CNC overlays. Begin again at requirements, datums, hardware interfaces, and force-loop layout. Do not reuse current geometry merely because it passes a solid or bounding-box test.

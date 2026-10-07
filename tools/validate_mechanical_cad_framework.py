@@ -11,6 +11,7 @@ SKILL_ROOT = ROOT / ".agents" / "skills"
 
 GENERIC_SKILLS = (
     "mechanical-cad-design",
+    "precision-mechanical-cad",
     "mechanical-assembly-design",
     "design-for-3d-printing",
     "mechanical-joints-fasteners",
@@ -87,6 +88,78 @@ def validate_framework(root: Path = ROOT) -> list[str]:
         for token in ("REFACTOR", "KEEP", "CNC-SPECIFIC OVERLAY", "Cross-skill workflow"):
             if token not in text:
                 errors.append(f"architecture missing classification/workflow token: {token}")
+
+    precision = skill_root / "precision-mechanical-cad"
+    precision_references = (
+        precision / "references" / "engineering-references.md",
+        precision / "references" / "anti-patterns.md",
+        precision / "references" / "examples-and-exercises.md",
+    )
+    for path in precision_references:
+        if not path.is_file():
+            errors.append(f"missing precision skill reference: {path.relative_to(root)}")
+    if precision.is_dir():
+        precision_text = (precision / "SKILL.md").read_text(encoding="utf-8")
+        for token in (
+            "GD&T",
+            "TOLERANCES",
+            "fits",
+            "MANUFACTURING-CANDIDATE",
+            "VALIDATED",
+            "RELEASED",
+            "build123d",
+            "CNC milling",
+            "FDM",
+            "Design for inspection",
+        ):
+            if token not in precision_text:
+                errors.append(f"precision skill missing topic: {token}")
+    precision_anti_path = precision / "references" / "anti-patterns.md"
+    if precision_anti_path.is_file():
+        precision_anti_text = precision_anti_path.read_text(encoding="utf-8")
+        for pattern in (
+            "MAGIC BOX",
+            "FLOATING COMPONENT",
+            "VISUAL-ONLY ASSEMBLY",
+            "UNSUPPORTED RAIL",
+            "COUPLER-AS-BEARING",
+            "BOLTS-AS-DOWELS",
+            "IMPOSSIBLE FASTENER ACCESS",
+            "TRAPPED COMPONENT",
+            "DECORATIVE RIB",
+            "ARBITRARY SPLIT",
+            "INFILL-AS-ENGINEERING",
+            "UNVERIFIED DIMENSION",
+            "FALSE PRECISION",
+            "OVERCONSTRAINED MECHANISM",
+            "UNDERCONSTRAINED MECHANISM",
+            "UNMANUFACTURABLE POCKET",
+            "IMPOSSIBLE TOOL ACCESS",
+            "TOLERANCE-BY-GUESSING",
+            "TESTS-PASS-THEREFORE-DESIGN-IS-GOOD",
+        ):
+            if pattern not in precision_anti_text:
+                errors.append(f"precision anti-pattern missing: {pattern}")
+    precision_examples_path = precision / "references" / "examples-and-exercises.md"
+    if precision_examples_path.is_file():
+        precision_examples_text = precision_examples_path.read_text(encoding="utf-8")
+        for example in (
+            "NEMA17 motor bracket",
+            "Bearing housing",
+            "Linear-rail mounting structure",
+            "Shaft supported by two bearings",
+            "Two-part structural assembly",
+            "CNC-machined aluminum plate",
+            "FDM structural bracket",
+            "Electronics enclosure",
+            "A. Precision NEMA17 mounting plate",
+            "B. Shaft supported by two bearings with axial location",
+            "C. Linear rail mounted to a structural beam",
+            "D. CNC-machined bearing block",
+            "E. FDM structural bracket with heat-set inserts",
+        ):
+            if example not in precision_examples_text:
+                errors.append(f"precision example/exercise missing: {example}")
 
     if anti_patterns.is_file():
         text = anti_patterns.read_text(encoding="utf-8")

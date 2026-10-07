@@ -114,6 +114,9 @@ installed driver modules remain identification items.
 - [Generic mechanical CAD skill framework](.agents/skills/mechanical-cad-framework.md):
   reusable datum, interface, assembly, FDM, joint, motion, hardware, review,
   and engineering-visualization methodology used by the CNC overlays.
+- [Precision mechanical CAD skill](.agents/skills/precision-mechanical-cad/SKILL.md):
+  general-purpose tolerances, fits, GD&T, manufacturing, inspection, and
+  maturity-gate specialization.
 - [cad/parameters.py](cad/parameters.py): the central preliminary parameter
   set, including Phase 2, Phase 3, Phase 3A review-layout inputs, the Phase 4
   structural part/interface contracts, and the owner-directed PETG insert
