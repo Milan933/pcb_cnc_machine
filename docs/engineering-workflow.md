@@ -42,8 +42,10 @@ reviewed EDR-006 with EDR-007 and accepted **A: fixed gantry with moving Y
 bed** as the mechanical architecture baseline; B remains the documented
 primary rejected alternative. The owner accepted the Phase 3 motion baseline,
 the P2 Phase 3A packaging baseline, and the Phase 4/4A preliminary structural
-architecture baseline on 2026-10-06. The repository is now in the hardware
-procurement / measurement freeze under proposed EDR-013.
+architecture baseline on 2026-10-06. The repository is now in complete Phase 5
+virtual-machine manufacturing CAD under EDR-015. Hardware procurement and
+measurement remain an evidence stream under EDR-013, not a reason to withhold
+useful public engineering artifacts.
 
 The O2 structure is accepted as preliminary architecture only. The owner has
 now authorized complete Phase 5 virtual manufacturing CAD under EDR-015. All

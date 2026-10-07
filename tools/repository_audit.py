@@ -72,6 +72,7 @@ BINARY_SUFFIXES = {
     ".jpg",
     ".jpeg",
     ".png",
+    ".webp",
     ".stl",
     ".step",
     ".stp",

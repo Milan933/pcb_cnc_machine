@@ -18,8 +18,8 @@ transition. It must not silently turn a preliminary or calculated value into a
 measured engineering fact.
 
 Phase 5 is now open through the complete virtual machine. All 19 O2 structural
-parts have actual parametric source geometry and local ignored STL/STEP
-candidates may be generated for owner review. The complete named assembly,
+parts have actual parametric source geometry and useful current STL/STEP
+candidates may be versioned for public engineering review. The complete named assembly,
 motion/process/control envelopes, BOM, assembly guide, fastener schedule,
 wiring architecture, and review views are in scope. Every unmeasured hardware
 interface remains explicitly provisional, and no part or assembly may be
@@ -46,11 +46,15 @@ publication, or release task, read
 Verify the configured remote before pushing. Do not force-push, rewrite
 published history, delete remote branches or tags, or publish secrets.
 
-The public repository may contain reviewed source, documentation, requirements,
-decision records, validation, tests, BOM data, and explicitly approved
-manufacturing artifacts. It must not contain credentials, private keys,
-machine-specific secrets, local caches, virtual environments, or unrelated
-personal files. Use the repository audit before a commit intended for push.
+The public repository is an open engineering project. The machine design is
+not confidential. It may contain parametric CAD, STL/STEP exports, assembly
+exports, PNG/JPG/WebP renders, drawings, BOMs, procurement lists, fastener
+schedules, assembly/wiring guides, manifests, validation reports, test results,
+and documentation useful to build, inspect, reproduce, or document the
+machine. It must not contain credentials, private keys, machine-specific
+secrets, local caches, virtual environments, unrelated confidential material,
+or private personal information. Use the repository audit before a commit
+intended for push; normal public project attribution is not itself a finding.
 
 ## Source of truth
 
@@ -61,7 +65,8 @@ Use the following order when resolving project intent:
 3. approved engineering decision records in docs/decisions;
 4. centralized values in cad/parameters.py;
 5. the project skills in .agents/skills;
-6. implementation details in part and assembly modules.
+6. the owner’s public-repository policy in `docs/repository-workflow.md`;
+7. implementation details in part and assembly modules.
 
 If two sources disagree, stop and record the conflict in a decision record.
 Never repair a contradiction by changing a lower-level file silently.
@@ -136,13 +141,22 @@ Before changing geometry or selecting hardware:
 4. run the applicable validation and tests;
 5. summarize new risks and unresolved decisions.
 
-Keep generated artifacts out of source control unless they are explicitly
-reviewed manufacturing deliverables. Prefer small, inspectable modules over
-large scripts with hidden placement or export behavior.
+Keep disposable generated artifacts out of source control, but version useful
+engineering deliverables when they help build, inspect, reproduce, or document
+the machine. Do not exclude STL, STEP, PNG, JPG, WebP, or similar artifacts
+merely because they are generated or binary. Prefer small, inspectable modules
+over large scripts with hidden placement or export behavior.
 
 - Source-of-truth parametric CAD is normally tracked. Temporary exports remain
-  ignored. Reviewed release exports may be committed only under the designated
-  generated/*/release/ directories after validation and review.
+  ignored. Current useful Phase 5 deliverables are allowlisted under
+  `generated/stl/phase5-complete-machine/`,
+  `generated/step/phase5-complete-machine/`, and the direct review images in
+  `generated/drawings/phase5-complete-machine/`. Scene meshes and disposable
+  intermediate files remain ignored. Release exports retain their separate
+  maturity boundary.
+- Future normal CNC engineering artifacts may be committed without repeated
+  owner permission, subject to validation, audit, and genuine-sensitive-data
+  checks.
 - A fresh clone must eventually be able to install dependencies, run
   validation, generate the assembly, export STEP/STL, and run tests without
   undocumented files outside the repository.

@@ -1,6 +1,9 @@
 # Repository and publication workflow
 
-This project is intentionally public.
+This project is intentionally public. This is an open engineering project:
+the CNC machine design is not confidential, and normal CAD, manufacturing,
+render, BOM, drawing, and build-documentation artifacts are intended to be
+publishable.
 
 - Local working repository: D:\pcbCNC
 - Canonical public remote:
@@ -18,8 +21,14 @@ The public repository may contain:
 - requirements, calculations, architecture, and engineering decision records;
 - validation code and tests;
 - BOM data;
-- reviewed STEP/STL files and drawings;
+- STL, STEP, complete-assembly STEP, visualization STL, and reviewed
+  engineering renders;
+- manufacturing and dimensional drawings, exploded views, and assembly
+  diagrams;
 - assembly instructions and slicer recommendations;
+- procurement lists, fastener schedules, wiring diagrams, manifests,
+  validation reports, test results, JSON/CSV engineering data, and
+  configuration examples without secrets;
 - photos and diagrams explicitly approved for publication.
 
 It must not contain secrets, private keys, credentials, authentication
@@ -32,14 +41,29 @@ or unrelated personal files.
 | Class | Default location / state | Publication rule |
 | --- | --- | --- |
 | Source of truth | CAD source, docs, requirements, validation, tests | Normally tracked. |
-| Development artifact | Local cache or temporary generated export | Normally ignored and never published automatically. |
-| Validated manufacturing artifact | Reviewed STEP/STL/drawing | Publish only after relevant validation and review. |
+| Useful versioned engineering artifact | Current printable STL/STEP, assembly exports, renders, drawings, manifests | Normally tracked when useful to build, inspect, reproduce, or document the machine. |
+| Disposable development artifact | Temporary exports, scene meshes, caches, viewer state, logs, scratch files | Normally ignored. |
+| Validated manufacturing artifact | Reviewed STEP/STL/drawing with evidence | Track in the reviewed location; maturity and evidence must remain explicit. |
 | Release artifact | generated/step/release, generated/stl/release, generated/drawings/release | Requires source revision, manifest, validation result, and review. |
 
-The default generated directories remain ignored so an exploratory export
-cannot become a public file by accident. The release subdirectories are
-explicit publication locations, but placing a file there is not a substitute
-for review.
+Generated engineering artifacts are not prohibited merely because they are
+binary. The default generated directories remain ignored so an exploratory
+export cannot become public by accident, while useful deliverables are
+allowlisted deliberately in `.gitignore`. For the current Phase 5 pass, the
+versioned paths are:
+
+- `generated/stl/phase5-complete-machine/`;
+- `generated/step/phase5-complete-machine/`; and
+- PNG/JPG/WebP files directly under
+  `generated/drawings/phase5-complete-machine/`.
+
+The drawing directory’s `scene-stl/` render inputs remain disposable. Release
+directories remain a separate maturity boundary; tracking a useful candidate
+does not make it released or hardware-validated.
+
+Future normal CNC engineering artifacts do not require repeated owner
+permission. They still require the audit, relevant validation, and the same
+genuine-sensitive-data boundary.
 
 ## Pre-commit and pre-push sequence
 
@@ -57,9 +81,12 @@ for review.
 7. Push only when explicitly authorized for the current task.
 8. Compare the local commit SHA with the remote branch SHA after pushing.
 
-If a suspicious credential is found, stop immediately. Do not commit or push;
-remove or quarantine the file through an authorized, separately reviewed
-action, and report only the path and category.
+If a suspicious credential or private personal information is found, stop
+immediately. Do not commit or push; remove or quarantine the file through an
+authorized, separately reviewed action, and report only the path and category.
+The audit must not treat STL, STEP, PNG/JPG/WebP, machine dimensions, BOM
+entries, public vendor/product names, or engineering measurements as findings
+by themselves.
 
 ## Reproducibility
 

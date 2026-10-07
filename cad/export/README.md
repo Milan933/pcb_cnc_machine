@@ -25,5 +25,5 @@ artifacts.
 The active complete-machine generator is
 `tools/generate_phase5_complete_machine.py`. It exports 19 local printable
 STEP/STL pairs, `pcb_cnc_complete_assembly.step`, a visualization STL, a
-tracked manifest, and twelve ignored local review images. The complete pass is
-still `PROTOTYPE-STL`; no generated file is placed in a release directory.
+tracked manifest, and twelve versioned local review images. The complete pass
+is still `PROTOTYPE-STL`; no generated file is placed in a release directory.

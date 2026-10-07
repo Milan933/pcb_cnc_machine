@@ -125,7 +125,8 @@ installed driver modules remain identification items.
   through-bolt justification.
 - [cad/validation](cad/validation): dependency-light validation interfaces and
   foundation checks.
-- [generated](generated): reserved for reviewed manufacturing outputs.
+- [generated](generated): useful versioned Phase 5 engineering artifacts and
+  separately controlled disposable/release output paths.
 - [tools/repository_audit.py](tools/repository_audit.py): non-leaking
   publication-boundary audit.
 
@@ -187,14 +188,16 @@ exports only to a temporary directory:
 
     python -m tools.run_phase4_preliminary_study --output-dir <temporary-directory>
 
-The authorized Phase 5 base-pair batch uses the pinned environment and writes
-candidate derivatives only under the ignored `generated/stl/` and
-`generated/step/` subdirectories:
+The authorized complete Phase 5 pass uses the pinned environment and writes
+useful current derivatives under the allowlisted
+`generated/stl/phase5-complete-machine/` and
+`generated/step/phase5-complete-machine/` directories, with review PNGs under
+`generated/drawings/phase5-complete-machine/`:
 
-    python -m tools.generate_phase5_base_pair
+    python -m tools.generate_phase5_complete_machine
 
 The generated candidates are `PROTOTYPE-STL` review artifacts, not release
-files.
+files. Temporary scene meshes and caches remain ignored.
 
 The Phase 4A optimization comparison uses the same pinned environment and
 exports only to a temporary directory:

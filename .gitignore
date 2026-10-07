@@ -52,9 +52,10 @@ temp/
 Thumbs.db
 *.log
 
-# Generated manufacturing and drawing outputs are deliberately kept out of source control.
-# Temporary outputs remain ignored. Reviewed release files may be placed in the
-# explicitly designated release subdirectories and committed after validation.
+# Generated outputs default to ignored so temporary/intermediate work cannot be
+# published accidentally. Useful reviewed engineering artifacts may be
+# explicitly allowlisted below; generated/binary does not by itself mean
+# disposable or prohibited.
 generated/step/*
 !generated/step/.gitkeep
 !generated/step/release/
@@ -67,6 +68,20 @@ generated/drawings/*
 !generated/drawings/.gitkeep
 !generated/drawings/release/
 !generated/drawings/release/**
+
+# Owner-authorized current Phase 5 engineering deliverables. These are useful
+# versioned artifacts, not production-release claims. The complete-machine
+# scene STL files under drawings/scene-stl remain disposable render inputs.
+!generated/step/phase5-complete-machine/
+!generated/step/phase5-complete-machine/**
+!generated/stl/phase5-complete-machine/
+!generated/stl/phase5-complete-machine/**
+!generated/drawings/phase5-complete-machine/
+!generated/drawings/phase5-complete-machine/*.png
+!generated/drawings/phase5-complete-machine/*.jpg
+!generated/drawings/phase5-complete-machine/*.jpeg
+!generated/drawings/phase5-complete-machine/*.webp
+generated/drawings/phase5-complete-machine/scene-stl/
 
 # Local CAD viewer and editor state.
 .cadquery/

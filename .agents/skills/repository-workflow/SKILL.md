@@ -14,6 +14,12 @@ remote:
 
 ## Public-repository boundary
 
+This is an open engineering project. The CNC machine design is not
+confidential. Normal parametric CAD, STL/STEP exports, complete assembly
+exports, PNG/JPG/WebP renders, drawings, BOMs, wiring/assembly documents,
+manifests, validation reports, and test results are intended to be
+publishable when useful to build, inspect, reproduce, or document the machine.
+
 Assume every committed file is visible to the public. Allowed content
 includes source-of-truth parametric CAD, engineering documentation,
 requirements, decision records, validation code, tests, BOM data, reviewed
@@ -47,11 +53,18 @@ or error summary. Report only the path and the finding category.
 5. Run the relevant tests and validation. A failed test or suspicious
    credential finding is a stop condition.
 6. Inspect the staged diff, including file modes and unexpectedly large or
-   binary files. Do not add generated development artifacts merely because
-   they exist locally.
+   binary files. Do not add disposable generated development artifacts merely
+   because they exist locally; useful engineering artifacts are allowed when
+   the current project policy allowlists or intentionally stages them.
 
 If a suspicious value is found: stop, do not commit, do not push, and report
 only the file and reason.
+
+The audit must detect genuine secrets, credentials, private keys, and private
+personal information. It must not treat STL, STEP, PNG/JPG/WebP, machine
+dimensions, BOM entries, public vendor/product references, or engineering
+measurements as suspicious merely because they are binary or public project
+content.
 
 ## Git initialization and commits
 
@@ -75,17 +88,30 @@ Keep these classes distinct:
 
 1. **Source of truth**: parametric CAD, requirements, decisions, validation,
    tests, and documentation. Normally version controlled.
-2. **Development artifacts**: temporary STEP/STL exports, caches, viewer state,
-   and local logs. Normally ignored and not published.
-3. **Validated manufacturing artifacts**: reviewed STEP/STL/drawings with
+2. **Useful versioned engineering artifacts**: current printable STL/STEP,
+   assembly exports, renders, drawings, manifests, and related files useful to
+   build, inspect, reproduce, or document the machine. Normally tracked when
+   intentionally selected.
+3. **Disposable development artifacts**: temporary exports, scene meshes,
+   caches, viewer state, and local logs. Normally ignored.
+4. **Validated manufacturing artifacts**: reviewed STEP/STL/drawings with
    validation evidence and a known source revision.
-4. **Release artifacts**: validated files intentionally published under
+5. **Release artifacts**: validated files intentionally published under
    generated/step/release/, generated/stl/release/, or
    generated/drawings/release/, with a manifest and review record.
 
-The release subdirectories are publication exceptions to the default generated
-file ignore rules. Their presence alone is not approval: validation and
-review are still required. Do not force-add temporary exports.
+The default generated paths remain protected, while useful current artifacts
+may be targeted by narrow `.gitignore` allowlists. For the current Phase 5
+pass, the versioned paths are `generated/stl/phase5-complete-machine/`,
+`generated/step/phase5-complete-machine/`, and direct PNG/JPG/WebP files in
+`generated/drawings/phase5-complete-machine/`. Its `scene-stl/` render inputs
+remain disposable. Release subdirectories are a separate maturity boundary;
+tracking a candidate does not make it released or hardware-validated. Never
+force-add temporary exports.
+
+Future normal CNC engineering artifacts do not require repeated owner
+permission. They still require relevant validation and the genuine-sensitive-
+data audit.
 
 ## Push and remote verification
 
