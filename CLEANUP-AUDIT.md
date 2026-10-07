@@ -83,3 +83,19 @@ The intended tree contains only the Git metadata, generic root hygiene and
 orientation files, this audit record, and the preserved
 `precision-mechanical-cad` skill. No replacement CAD framework is part of this
 cleanup.
+
+## Corrective inventory
+
+After the cleanup commit, a hidden-file inventory found four regular files at
+`.agents/skills/` that were not shown by the initial directory-only listing:
+
+- `mechanical-cad-framework.md`
+- `mechanical-cad-anti-patterns.md`
+- `mechanical-cad-references.md`
+- `mechanical-cad-validation-exercises.md`
+
+They were introduced by the earlier generic-CAD framework commit and their
+framework graph explicitly depended on the deleted skills. They were therefore
+classified as CNC-derived infrastructure rather than as supporting material
+for `precision-mechanical-cad`, and removed in the follow-up cleanup commit.
+The preserved skill directory remains unchanged.
