@@ -1,4 +1,0 @@
-# Pinned implementation-spike dependency for Python 3.10+.
-# This is the review skeleton environment, not a claim that production CAD is
-# ready. Install in an isolated virtual environment outside the repository.
-build123d==0.12.0

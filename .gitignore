@@ -1,3 +1,4 @@
+# Python caches and test/build state
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -5,8 +6,25 @@ __pycache__/
 .mypy_cache/
 .coverage
 htmlcov/
+build/
+dist/
 
-# Local secrets and credentials. Public examples may be explicitly re-added.
+# Local environments and temporary files
+.venv/
+venv/
+env/
+ENV/
+.cache/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Credentials and private local material
 .env
 .env.*
 !.env.example
@@ -23,24 +41,7 @@ secrets-*
 *.secret
 *.token
 
-# Python environments and local build state.
-.venv/
-venv/
-env/
-ENV/
-build/
-dist/
-.cache/
-tmp/
-temp/
-*.tmp
-*.temp
-*.bak
-*.swp
-*.swo
-*~
-
-# Machine-specific and IDE state.
+# Local editor and operating-system state
 .idea/workspace.xml
 .idea/**/workspace.xml
 .vscode/settings.json
@@ -51,38 +52,3 @@ temp/
 .DS_Store
 Thumbs.db
 *.log
-
-# Generated outputs default to ignored so temporary/intermediate work cannot be
-# published accidentally. Useful reviewed engineering artifacts may be
-# explicitly allowlisted below; generated/binary does not by itself mean
-# disposable or prohibited.
-generated/step/*
-!generated/step/.gitkeep
-!generated/step/release/
-!generated/step/release/**
-generated/stl/*
-!generated/stl/.gitkeep
-!generated/stl/release/
-!generated/stl/release/**
-generated/drawings/*
-!generated/drawings/.gitkeep
-!generated/drawings/release/
-!generated/drawings/release/**
-
-# Owner-authorized current Phase 5 engineering deliverables. These are useful
-# versioned artifacts, not production-release claims. The complete-machine
-# scene STL files under drawings/scene-stl remain disposable render inputs.
-!generated/step/phase5-complete-machine/
-!generated/step/phase5-complete-machine/**
-!generated/stl/phase5-complete-machine/
-!generated/stl/phase5-complete-machine/**
-!generated/drawings/phase5-complete-machine/
-!generated/drawings/phase5-complete-machine/*.png
-!generated/drawings/phase5-complete-machine/*.jpg
-!generated/drawings/phase5-complete-machine/*.jpeg
-!generated/drawings/phase5-complete-machine/*.webp
-generated/drawings/phase5-complete-machine/scene-stl/
-
-# Local CAD viewer and editor state.
-.cadquery/
-.build123d/
