@@ -5,6 +5,11 @@ master assembly. It contains dimensionally controlled interface/envelope
 builders for the guide, screw, bearing, coupler, motor, controller, spindle,
 limit, probe, and fastener classes.
 
+The persistent public hardware-library API is under
+[`cad/library/`](../library/). Its stable wrappers are what the master
+assembly imports; this module remains the compatibility implementation and
+legacy source register during the migration.
+
 These are not silently downloaded supplier models. Source URLs, confidence,
 classification, and repository reuse treatment are recorded in
 [`docs/manufacturing/hardware-model-register.md`](../../docs/manufacturing/hardware-model-register.md)

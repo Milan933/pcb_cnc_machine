@@ -122,6 +122,9 @@ installed driver modules remain identification items.
   compatibility path to the master-derived local fused PETG candidate solids.
 - [cad/hardware/master_hardware.py](cad/hardware/master_hardware.py): local
   hardware/interface models and source/confidence register.
+- [cad/library](cad/library): persistent hardware CAD library, stable model
+  IDs, provenance manifest, project-generated reference models, and
+  third-party publication notice.
 - [cad/parts/master_structural.py](cad/parts/master_structural.py): master-
   derived PETG source solids.
 - [cad/assembly/master_machine.py](cad/assembly/master_machine.py): complete
@@ -168,6 +171,7 @@ The current foundation can be checked with:
 
     python -B -m unittest discover -s tests -v
     python -B tools/repository_audit.py
+    python -B tools/validate_hardware_library.py
 
 The architecture-only build123d spike is run in an external virtual
 environment using the pinned dependency in

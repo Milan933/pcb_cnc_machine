@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Mapping
 
+from cad.library.registry import hardware_library_entries
 from cad.parameters import PHASE5_MASTER_PARAMETERS, Phase5MasterMachineParameters
 from cad.parts.master_structural import MASTER_PART_DEFINITIONS, MASTER_PART_IDS
 
@@ -137,6 +138,17 @@ def check_phase5_complete_assembly(assembly: Any) -> ValidationReport:
         report.add(_issue("VAL-PHASE5-MASTER-SUPPORT-FASTENING", ValidationStatus.PASS, "Every master component has an explicit support and fastening record.", severity=IssueSeverity.INFO, evidence=f"audited_components={len(assembly.components)}"))
     master_valid = _shape_is_valid(assembly.master_shape)
     report.add(_issue("VAL-PHASE5-COMPLETE-MASTER", ValidationStatus.PASS if master_valid else ValidationStatus.FAIL, "Master assembly compound is valid." if master_valid else "Master assembly compound is invalid.", severity=IssueSeverity.INFO if master_valid else IssueSeverity.ERROR))
+    known_model_ids = {entry["component_id"] for entry in hardware_library_entries()}
+    unknown_model_ids = sorted({component.hardware_model_id for component in assembly.components if component.hardware_model_id and component.hardware_model_id not in known_model_ids})
+    if unknown_model_ids:
+        report.add(_issue("VAL-PHASE5-HARDWARE-LIBRARY-ID", ValidationStatus.FAIL, "Master assembly references an unknown persistent hardware model ID.", evidence="; ".join(unknown_model_ids)))
+    else:
+        report.add(_issue("VAL-PHASE5-HARDWARE-LIBRARY-ID", ValidationStatus.PASS, "All assigned master hardware model IDs resolve in the persistent library manifest.", severity=IssueSeverity.INFO, evidence=f"model_ids={len({component.hardware_model_id for component in assembly.components if component.hardware_model_id})}"))
+    library_source_without_id = sorted(component.name for component in assembly.components if component.source == "cad/library/parametric_models.py" and not component.hardware_model_id)
+    if library_source_without_id:
+        report.add(_issue("VAL-PHASE5-HARDWARE-LIBRARY-COVERAGE", ValidationStatus.FAIL, "A library-sourced assembly component has no stable hardware model ID.", evidence="; ".join(library_source_without_id)))
+    else:
+        report.add(_issue("VAL-PHASE5-HARDWARE-LIBRARY-COVERAGE", ValidationStatus.PASS, "Every library-sourced assembly component carries a stable hardware model ID.", severity=IssueSeverity.INFO))
     return report
 
 

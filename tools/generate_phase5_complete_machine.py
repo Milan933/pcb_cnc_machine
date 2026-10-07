@@ -13,6 +13,7 @@ from typing import Any
 import build123d
 
 from cad.assembly.master_machine import build_master_machine
+from cad.library import HARDWARE_LIBRARY_MANIFEST_PATH, hardware_library_manifest_dict
 from cad.hardware.master_hardware import hardware_model_register_dicts
 from cad.parameters import PHASE5_MASTER_PARAMETERS
 from cad.parts.master_structural import MASTER_PART_DEFINITIONS, MASTER_PART_IDS, build_master_structural_parts
@@ -181,6 +182,7 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
                 "supporting_part": component.supporting_part,
                 "fastening_method": component.fastening_method,
                 "confidence": component.confidence,
+                "hardware_model_id": component.hardware_model_id,
                 "notes": component.notes,
             }
         )
@@ -224,6 +226,8 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
             "travel_max_tool_point_mm": PHASE5_MASTER_PARAMETERS.travel_max_mm,
         },
         "parameters": asdict(PHASE5_MASTER_PARAMETERS),
+        "hardware_library_manifest": _display_path(HARDWARE_LIBRARY_MANIFEST_PATH),
+        "hardware_library": hardware_library_manifest_dict(),
         "hardware_model_register": hardware_model_register_dicts(),
         "part_count": len(part_records),
         "part_ids": list(MASTER_PART_IDS),
@@ -239,6 +243,8 @@ def generate(output_root: Path, manifest_path: Path, *, skip_images: bool = Fals
             "expected_interference_pairs": [sorted(pair) for pair in assembly.expected_interference_pairs],
             "support_audit": list(assembly.support_audit),
             "component_names": [component.name for component in assembly.components],
+            "hardware_model_ids": list(assembly.hardware_model_ids),
+            "hardware_library_manifest": _display_path(HARDWARE_LIBRARY_MANIFEST_PATH),
         },
         "exports": export_records,
         "validation": {name: _report_dict(report) for name, report in reports.items()},

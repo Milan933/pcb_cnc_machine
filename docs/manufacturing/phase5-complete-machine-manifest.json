@@ -23,7 +23,7 @@
     "module_structural": "cad/parts/master_structural.py",
     "module_assembly": "cad/assembly/master_machine.py",
     "module_hardware": "cad/hardware/master_hardware.py",
-    "revision": "b38555bad15d1856ad7cc5e1259caa5c8e0c3916",
+    "revision": "c4b9c7d8b8baf1019d232b15e97b3fd856117d7f",
     "working_tree_dirty_at_generation": true
   },
   "coordinate_system": {
@@ -177,6 +177,417 @@
       "actual 608 or alternate fixed/floating bearing stack and retainers",
       "actual spindle selection, axial length, connector, cooling, and cable exit",
       "actual limit switch variant, probe hardware, inserts, fasteners, and cable bend radii"
+    ]
+  },
+  "hardware_library_manifest": "cad/library/hardware-model-manifest.json",
+  "hardware_library": {
+    "schema_version": 1,
+    "manifest_type": "persistent-hardware-cad-library",
+    "units": "mm",
+    "authoritative": true,
+    "library_policy": "Original third-party CAD is vendored only when redistribution permission is clear. Otherwise the local parametric model is authoritative for project assembly use.",
+    "provenance_summary": {
+      "external_cad_models_discovered": 6,
+      "external_cad_models_downloaded": 0,
+      "external_cad_models_legally_committed": 0,
+      "external_cad_models_not_committed_due_license_or_access_uncertainty": 5,
+      "project_generated_reference_models": 14,
+      "notes": "The six discovered offerings are HIWIN MGN12H, HIWIN MGN9H, Arduino Mega CAD resources, SycoTec 5045 AC-ER11 STEP, Omron D2F CAD access, and MISUMI 5x8 coupling CAD. No external binary CAD was acquired in this task; every active library entry has a committed project-generated parametric model or provisional envelope."
+    },
+    "entries": [
+      {
+        "component_id": "HW-LM-MGN12H-REF",
+        "category": "linear_motion",
+        "description": "MGN12 rail and MGN12H carriage reference/interface model",
+        "manufacturer": "HIWIN",
+        "part_number": "MGN12H / MGN12",
+        "source_url": "https://hiwin-linearmotion.com/images/products/linear-guide/mg-series/mg.pdf",
+        "source_type": "official manufacturer dimensional catalog; manufacturer CAD availability recorded",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_mgn12_rail; cad/library/parametric_models.py::build_mgn12_carriage",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated geometry from attributed public dimensions; original supplier CAD terms not established",
+        "redistribution_allowed": null,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Reference dimensions checked against official catalog; owner rail and preload not physically verified",
+        "critical_dimensions": {
+          "rail_section_mm": "12 x 8",
+          "carriage_mm": "27 x 13 x 45.4",
+          "nominal_hole_pitch_mm": 25
+        },
+        "confidence_classification": "REFERENCE-CAD",
+        "master_component_patterns": [
+          "x_rail_*",
+          "x_carriage_*",
+          "y_rail_*",
+          "y_carriage_*"
+        ],
+        "notes": "Use for clearance, mounting, and rail-seat design only until the owner's actual rails are measured."
+      },
+      {
+        "component_id": "HW-LM-MGN9H-REF",
+        "category": "linear_motion",
+        "description": "MGN9 rail and MGN9H carriage reference/interface model",
+        "manufacturer": "HIWIN",
+        "part_number": "MGN9H / MGN9",
+        "source_url": "https://hiwin-linearmotion.com/images/products/linear-guide/mg-series/mg.pdf",
+        "source_type": "official manufacturer dimensional catalog; manufacturer CAD availability recorded",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_mgn9_rail; cad/library/parametric_models.py::build_mgn9_carriage",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated geometry from attributed public dimensions; original supplier CAD terms not established",
+        "redistribution_allowed": null,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Reference dimensions checked against official catalog; exact owner rail variant and preload not verified",
+        "critical_dimensions": {
+          "rail_class": "9 mm nominal",
+          "carriage_mm": "20 x 10 x 39.9",
+          "hole_pattern": "screening envelope only"
+        },
+        "confidence_classification": "REFERENCE-CAD",
+        "master_component_patterns": [
+          "z_rail_*",
+          "z_carriage_left_*",
+          "z_carriage_right_*"
+        ],
+        "notes": "The exact MGN9 variant remains a commissioning identification item."
+      },
+      {
+        "component_id": "HW-LS-T8X4-ENV",
+        "category": "leadscrews",
+        "description": "Non-helical T8x4 X/Y leadscrew and journal envelope",
+        "manufacturer": "Unselected supplier",
+        "part_number": "T8x4",
+        "source_url": "",
+        "source_type": "project motion requirement and common component class",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_t8x4_screw",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated envelope; no external CAD acquired",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Nominal class recorded; end journals and purchased screw not measured",
+        "critical_dimensions": {
+          "nominal_diameter_mm": 8,
+          "lead_mm": 4,
+          "screened_journal_diameter_mm": 7
+        },
+        "confidence_classification": "ENVELOPE-ONLY",
+        "master_component_patterns": [
+          "x_lead_screw",
+          "y_lead_screw"
+        ],
+        "notes": "Threads are intentionally not helically modeled."
+      },
+      {
+        "component_id": "HW-LS-T8X2-ENV",
+        "category": "leadscrews",
+        "description": "Non-helical T8x2 Z leadscrew and journal envelope",
+        "manufacturer": "Unselected supplier",
+        "part_number": "T8x2",
+        "source_url": "",
+        "source_type": "project motion requirement and common component class",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_t8x2_screw",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated envelope; no external CAD acquired",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Nominal class recorded; end journals and purchased screw not measured",
+        "critical_dimensions": {
+          "nominal_diameter_mm": 8,
+          "lead_mm": 2,
+          "screened_journal_diameter_mm": 7
+        },
+        "confidence_classification": "ENVELOPE-ONLY",
+        "master_component_patterns": [
+          "z_lead_screw"
+        ],
+        "notes": "The Z transmission remains an interface candidate, not a purchased-part claim."
+      },
+      {
+        "component_id": "HW-LN-T8-ABN-REF",
+        "category": "leadnuts",
+        "description": "T8 anti-backlash nut body, flange, and bore reference envelope",
+        "manufacturer": "Unselected supplier",
+        "part_number": "T8x2/T8x4 anti-backlash family",
+        "source_url": "",
+        "source_type": "architecture candidate",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_t8_antibacklash_nut",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated envelope; no external CAD acquired",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Support envelope modeled; flange, preload, hole spacing, and supplier body not measured",
+        "critical_dimensions": {
+          "body_mm": "24 x 24 x 24",
+          "flange_mm": "40 x 30 x 6",
+          "bore_screen_mm": 9
+        },
+        "confidence_classification": "PROVISIONAL",
+        "master_component_patterns": [
+          "x_lead_nut",
+          "y_lead_nut",
+          "z_lead_nut"
+        ],
+        "notes": "Used for support and clearance, not supplier-specific fit."
+      },
+      {
+        "component_id": "HW-BRG-608-REF",
+        "category": "bearings",
+        "description": "608-class fixed/floating bearing annular reference model",
+        "manufacturer": "SKF reference class",
+        "part_number": "608-2RSH / 608 class",
+        "source_url": "https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-608-2RSH",
+        "source_type": "official manufacturer product dimensions",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_608_reference_bearing",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated annular model from public dimensions; no SKF CAD redistributed",
+        "redistribution_allowed": null,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Nominal bore/OD/width recorded; actual bearing seals and stack not physically verified",
+        "critical_dimensions": {
+          "bore_mm": 8,
+          "outside_diameter_mm": 22,
+          "width_mm": 7
+        },
+        "confidence_classification": "REFERENCE-CAD",
+        "master_component_patterns": [
+          "x_*bearing_cartridge",
+          "y_*bearing_cartridge"
+        ],
+        "notes": "The master uses this ID to define the bearing-cartridge interface; final fixed/floating stack remains measured hardware."
+      },
+      {
+        "component_id": "HW-CPL-5X8-REF",
+        "category": "couplers",
+        "description": "5 mm motor to 8 mm screw flexible coupling reference envelope",
+        "manufacturer": "MISUMI reference family",
+        "part_number": "GSACL20-5-8 / 5x8 class",
+        "source_url": "https://my.misumi-ec.com/vona2/detail/110302557220/?list=PageCategory",
+        "source_type": "official distributor product page and CAD access",
+        "original_filename": "Configured CAD archive not retrieved",
+        "local_model_path": "cad/library/parametric_models.py::build_5x8_flexible_coupler",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated envelope; MISUMI CAD terms do not clearly grant public redistribution of downloaded CAD",
+        "redistribution_allowed": null,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "5/8 mm bore class and representative envelope recorded; actual bore, length, and set-screw access not measured",
+        "critical_dimensions": {
+          "outside_diameter_mm": 20,
+          "length_mm": 30,
+          "bores_mm": "5 / 8"
+        },
+        "confidence_classification": "REFERENCE-CAD",
+        "master_component_patterns": [
+          "x_coupler",
+          "y_coupler",
+          "z_coupler"
+        ],
+        "notes": "Coupler carries torque only; it is not an axial bearing."
+      },
+      {
+        "component_id": "HW-MOTOR-NEMA17-REF",
+        "category": "motors",
+        "description": "Generic owner-stock NEMA17 mechanical interface and wiring envelope",
+        "manufacturer": "Owner stock / unselected manufacturers",
+        "part_number": "42.3 mm NEMA17 class",
+        "source_url": "",
+        "source_type": "owner requirement and common 3D-printer interface",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_nema17_reference",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated generic interface; no third-party CAD copied",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Mechanical screening envelope recorded; owner motor identity, current, connector, and torque not verified",
+        "critical_dimensions": {
+          "frame_mm": 42.3,
+          "mounting_pitch_mm": 31,
+          "shaft_diameter_mm": 5,
+          "body_length_range_mm": "40-48"
+        },
+        "confidence_classification": "ENVELOPE-ONLY",
+        "master_component_patterns": [
+          "x_motor_nema17",
+          "y_motor_nema17",
+          "z_motor_nema17"
+        ],
+        "notes": "OWNER-SUPPLIED - DO NOT BUY. Final axis assignment follows characterization."
+      },
+      {
+        "component_id": "HW-CTRL-ARDUINO-MEGA-REF",
+        "category": "electronics",
+        "description": "Arduino Mega 2560 mechanical board and connector envelope",
+        "manufacturer": "Arduino",
+        "part_number": "Mega 2560 Rev3",
+        "source_url": "https://docs.arduino.cc/hardware/mega-2560",
+        "source_type": "official open-hardware board page and datasheet",
+        "original_filename": "Official CAD files available from Arduino; no original file retrieved",
+        "local_model_path": "cad/library/parametric_models.py::build_arduino_mega_reference",
+        "model_format": "Python/build123d parametric source",
+        "license": "Arduino hardware references are published as open hardware; this entry uses project-generated mechanical geometry with attribution",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Board size and major connector envelopes checked against official documentation; owner board revision not physically verified",
+        "critical_dimensions": {
+          "pcb_mm": "101.52 x 53.3 x 1.6",
+          "connector_access": "USB, power, headers, and shield stack"
+        },
+        "confidence_classification": "REFERENCE-CAD",
+        "master_component_patterns": [
+          "arduino_mega_owner_hardware"
+        ],
+        "notes": "OWNER-SUPPLIED controller platform component; do not replace by assumption."
+      },
+      {
+        "component_id": "HW-CTRL-CNC-SHIELD-PROV",
+        "category": "electronics",
+        "description": "Owner Arduino Mega CNC Shield provisional board, driver, terminal, and cooling envelope",
+        "manufacturer": "Owner hardware / revision unknown",
+        "part_number": "Arduino Mega CNC Shield - exact revision unresolved",
+        "source_url": "",
+        "source_type": "owner hardware identification record",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_cnc_shield_provisional",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated provisional envelope; no external CAD claimed",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Unknown board revision and installed driver modules; physical identification required",
+        "critical_dimensions": {
+          "provisional_board_mm": "100 x 60 x 18",
+          "unresolved": "revision, drivers, microsteps, current, voltage, cooling, I/O"
+        },
+        "confidence_classification": "PROVISIONAL",
+        "master_component_patterns": [
+          "cnc_shield_owner_hardware"
+        ],
+        "notes": "OWNER-SUPPLIED - DO NOT REPLACE absent a validated technical limitation."
+      },
+      {
+        "component_id": "HW-SPINDLE-5045-ER11-001",
+        "category": "spindle",
+        "description": "SycoTec 5045 AC-ER11 spindle candidate reference envelope",
+        "manufacturer": "SycoTec",
+        "part_number": "5045 AC-ER11 / 2002 5400",
+        "source_url": "https://sycotec.eu/en/product/5045-ac-er11/",
+        "source_type": "official manufacturer product page with STEP download",
+        "original_filename": "HF-Motorspindle-5045-AC-ER11-60.07.stp",
+        "local_model_path": "cad/library/parametric_models.py::build_spindle_5045_er11_reference",
+        "model_format": "Python/build123d parametric source",
+        "license": "Official STEP was not redistributed because public reuse permission was not established",
+        "redistribution_allowed": null,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "45 mm housing, ER11, 8 mm maximum tool, and 1.6 kg candidate data checked against official page; local axial envelope remains provisional",
+        "critical_dimensions": {
+          "housing_diameter_mm": 45,
+          "local_length_mm": 140,
+          "max_tool_diameter_mm": 8,
+          "mass_kg": 1.6
+        },
+        "confidence_classification": "REFERENCE-CAD",
+        "master_component_patterns": [
+          "spindle_5045_ac_er11"
+        ],
+        "notes": "Candidate only; actual spindle, cable, cooling, runout, and clamp length remain open."
+      },
+      {
+        "component_id": "HW-SW-D2F-REF",
+        "category": "switches",
+        "description": "Omron D2F family lever-switch body and actuation envelope",
+        "manufacturer": "Omron",
+        "part_number": "D2F family",
+        "source_url": "https://components.omron.com/sg-en/products/switches/D2F",
+        "source_type": "official product page and dimensional datasheet; CAD requires member access",
+        "original_filename": "D2F CAD data (member download; exact filename not retrieved)",
+        "local_model_path": "cad/library/parametric_models.py::build_omron_d2f_reference",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated envelope; member CAD redistribution terms not established",
+        "redistribution_allowed": null,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Family dimensions checked against official datasheet; exact lever/terminal variant remains unselected",
+        "critical_dimensions": {
+          "body_mm": "12.8 x 6.5 x 5.8",
+          "mounting_hole_diameter_mm": 2,
+          "actuator": "lever/plunger family envelope"
+        },
+        "confidence_classification": "REFERENCE-CAD",
+        "master_component_patterns": [
+          "x_home_limit",
+          "y_home_limit",
+          "z_home_limit"
+        ],
+        "notes": "Actuation direction and connector termination require commissioning."
+      },
+      {
+        "component_id": "HW-PROBE-CONDUCTIVE-REF",
+        "category": "probe",
+        "description": "Conductive touch plate/probe and cable-access process envelope",
+        "manufacturer": "Unselected supplier",
+        "part_number": "Conductive probe concept",
+        "source_url": "",
+        "source_type": "project process concept",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_conductive_probe_reference",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated process geometry; no external CAD acquired",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Mechanical access envelope only; electrical probe hardware and circuit not selected",
+        "critical_dimensions": {
+          "plate_mm": "25 x 25 x 2",
+          "cable_access": "local terminal and cable envelope"
+        },
+        "confidence_classification": "PROVISIONAL",
+        "master_component_patterns": [
+          "conductive_probe"
+        ],
+        "notes": "Included to reserve process access without claiming a selected probe device."
+      },
+      {
+        "component_id": "HW-FST-M4-REF",
+        "category": "fasteners",
+        "description": "Representative M4 shaft, head, and washer envelope",
+        "manufacturer": "Standard hardware class",
+        "part_number": "M4 representative fastener",
+        "source_url": "",
+        "source_type": "project fastener envelope",
+        "original_filename": null,
+        "local_model_path": "cad/library/parametric_models.py::build_m4_fastener_reference",
+        "model_format": "Python/build123d parametric source",
+        "license": "Project-generated envelope; exact fastener vendor and length remain open",
+        "redistribution_allowed": true,
+        "sha256": null,
+        "retrieved_date": "2026-10-07",
+        "verification_status": "Nominal M4 clearance and washer/head screening only",
+        "critical_dimensions": {
+          "shaft_diameter_mm": 4,
+          "shaft_length_mm": 18,
+          "head_diameter_mm": 8,
+          "washer_diameter_mm": 10
+        },
+        "confidence_classification": "ENVELOPE-ONLY",
+        "master_component_patterns": [
+          "representative_m4_fastener"
+        ],
+        "notes": "Visible review reference; not a procurement part number or released fastener schedule."
+      }
     ]
   },
   "hardware_model_register": [
@@ -1260,409 +1671,477 @@
         "component": "base_left_integrated",
         "supporting_part": "machine_foot_front_left + machine_foot_rear_left",
         "fastening_method": "M4 heat-set/through interface at feet; printed base shoulder carries shear",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "base_right_integrated",
         "supporting_part": "machine_foot_front_right + machine_foot_rear_right",
         "fastening_method": "M4 heat-set/through interface at feet; printed base shoulder carries shear",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "base_center_tie",
         "supporting_part": "base_left_integrated + base_right_integrated",
         "fastening_method": "M4 inserts/through-bolts; end keys carry location and shear",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "y_motor_service_pocket",
         "supporting_part": "base_center_tie + front base datums",
         "fastening_method": "M4 structural joint; face shoulder carries motor reaction",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "y_fixed_bearing_cartridge",
         "supporting_part": "base_center_tie + base rail-end datum",
         "fastening_method": "M4 retainers around 608 bearing pair; housing carries radial load",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": "HW-BRG-608-REF"
       },
       {
         "component": "y_floating_bearing_cartridge",
         "supporting_part": "y_rear_bearing_bridge + left-base rear datum",
         "fastening_method": "M4 retainer around 608 bearing; housing permits axial float",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": "HW-BRG-608-REF"
       },
       {
         "component": "y_rear_bearing_bridge",
         "supporting_part": "base_left_integrated rear datum",
         "fastening_method": "M4 through-bolts into the left base side; bridge carries radial reaction",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "machine_foot_front_left",
         "supporting_part": "support surface",
         "fastening_method": "M4 through-bolt and washer to base",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "machine_foot_front_right",
         "supporting_part": "support surface",
         "fastening_method": "M4 through-bolt and washer to base",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "machine_foot_rear_left",
         "supporting_part": "support surface",
         "fastening_method": "M4 through-bolt and washer to base",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "machine_foot_rear_right",
         "supporting_part": "support surface",
         "fastening_method": "M4 through-bolt and washer to base",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "electronics_mount_rail",
         "supporting_part": "base_left_integrated + base_right_integrated rear datum",
         "fastening_method": "M4 base joint plus M3 controller slots",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "gantry_left_integrated",
         "supporting_part": "base_left_integrated",
         "fastening_method": "M4 base preload; keyed beam tongue carries beam shear",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "gantry_right_integrated",
         "supporting_part": "base_right_integrated",
         "fastening_method": "M4 base preload; keyed beam socket carries beam shear",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "x_fixed_bearing_cartridge",
         "supporting_part": "gantry_left_integrated",
         "fastening_method": "M4 bearing housing fasteners; gantry seat carries reaction",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": "HW-BRG-608-REF"
       },
       {
         "component": "x_floating_bearing_cartridge",
         "supporting_part": "gantry_right_integrated",
         "fastening_method": "M4 bearing housing fasteners; radial seat preserves float",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": "HW-BRG-608-REF"
       },
       {
         "component": "x_z_backbone",
         "supporting_part": "x_carriages and X guide plane",
         "fastening_method": "M3 carriage fasteners; rail shoulders carry alignment",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "z_carriage_plate",
         "supporting_part": "z carriages on x_z_backbone",
         "fastening_method": "M3 carriage fasteners; Z backplate carries moment",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "spindle_mount_concept",
         "supporting_part": "z_carriage_plate replaceable clamp land",
         "fastening_method": "M4 removable clamp bolts; ring and rear plate carry shear",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "moving_bed_frame",
         "supporting_part": "Y carriages on y rails",
         "fastening_method": "M3/M4 carriage and nut fasteners; bed ribs carry load",
-        "confidence": "local parametric source"
+        "confidence": "local parametric source",
+        "hardware_model_id": ""
       },
       {
         "component": "x_rail_lower",
         "supporting_part": "gantry_left_integrated + gantry_right_integrated",
         "fastening_method": "M3 rail fasteners through rail holes; printed shoulders carry alignment",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "x_carriage_lower_1",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M3 carriage screws into backbone inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "x_carriage_lower_2",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M3 carriage screws into backbone inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "x_rail_upper",
         "supporting_part": "gantry_left_integrated + gantry_right_integrated",
         "fastening_method": "M3 rail fasteners through rail holes; printed shoulders carry alignment",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "x_carriage_upper_1",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M3 carriage screws into backbone inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "x_carriage_upper_2",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M3 carriage screws into backbone inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "x_lead_screw",
         "supporting_part": "x_fixed_bearing_cartridge + x_floating_bearing_cartridge",
         "fastening_method": "Fixed/floating 608 bearing stack; coupler carries torque only",
-        "confidence": "T8 envelope"
+        "confidence": "T8 envelope",
+        "hardware_model_id": "HW-LS-T8X4-ENV"
       },
       {
         "component": "x_lead_nut",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M4 nut-flange fasteners; printed pocket carries reaction",
-        "confidence": "nut envelope"
+        "confidence": "nut envelope",
+        "hardware_model_id": "HW-LN-T8-ABN-REF"
       },
       {
         "component": "x_motor_nema17",
         "supporting_part": "x_fixed_bearing_cartridge",
         "fastening_method": "NEMA17 M3/M4 face fasteners; face pilot locates motor",
-        "confidence": "generic NEMA17 interface"
+        "confidence": "generic NEMA17 interface",
+        "hardware_model_id": "HW-MOTOR-NEMA17-REF"
       },
       {
         "component": "x_coupler",
         "supporting_part": "x_fixed_bearing_cartridge + x_motor_nema17",
         "fastening_method": "Two-bore clamp screws; no axial support",
-        "confidence": "MISUMI reference envelope"
+        "confidence": "MISUMI reference envelope",
+        "hardware_model_id": "HW-CPL-5X8-REF"
       },
       {
         "component": "y_rail_left",
         "supporting_part": "base_left_integrated + base_right_integrated",
         "fastening_method": "M3 rail fasteners through reference holes; continuous PETG shoulder carries alignment",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "y_carriage_left_1",
         "supporting_part": "moving_bed_frame",
         "fastening_method": "M3 carriage screws into bed inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "y_carriage_left_2",
         "supporting_part": "moving_bed_frame",
         "fastening_method": "M3 carriage screws into bed inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "y_rail_right",
         "supporting_part": "base_left_integrated + base_right_integrated",
         "fastening_method": "M3 rail fasteners through reference holes; continuous PETG shoulder carries alignment",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "y_carriage_right_1",
         "supporting_part": "moving_bed_frame",
         "fastening_method": "M3 carriage screws into bed inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "y_carriage_right_2",
         "supporting_part": "moving_bed_frame",
         "fastening_method": "M3 carriage screws into bed inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN12H-REF"
       },
       {
         "component": "y_lead_screw",
         "supporting_part": "y_fixed_bearing_cartridge + y_floating_bearing_cartridge",
         "fastening_method": "Fixed/floating 608 bearing stack; coupler carries torque only",
-        "confidence": "T8 envelope"
+        "confidence": "T8 envelope",
+        "hardware_model_id": "HW-LS-T8X4-ENV"
       },
       {
         "component": "y_lead_nut",
         "supporting_part": "moving_bed_frame",
         "fastening_method": "M4 nut-flange fasteners; bed boss carries reaction",
-        "confidence": "nut envelope"
+        "confidence": "nut envelope",
+        "hardware_model_id": "HW-LN-T8-ABN-REF"
       },
       {
         "component": "y_motor_nema17",
         "supporting_part": "y_motor_service_pocket",
         "fastening_method": "NEMA17 M3/M4 face fasteners; face pilot locates motor",
-        "confidence": "generic NEMA17 interface"
+        "confidence": "generic NEMA17 interface",
+        "hardware_model_id": "HW-MOTOR-NEMA17-REF"
       },
       {
         "component": "y_coupler",
         "supporting_part": "y_motor_service_pocket + y_fixed_bearing_cartridge",
         "fastening_method": "Two-bore clamp screws; no axial support",
-        "confidence": "MISUMI reference envelope"
+        "confidence": "MISUMI reference envelope",
+        "hardware_model_id": "HW-CPL-5X8-REF"
       },
       {
         "component": "z_rail_left",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M2/M3 rail fasteners; printed vertical shoulder carries alignment",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN9H-REF"
       },
       {
         "component": "z_carriage_left_1",
         "supporting_part": "z_carriage_plate",
         "fastening_method": "M2/M3 carriage screws into Z plate inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN9H-REF"
       },
       {
         "component": "z_carriage_left_2",
         "supporting_part": "z_carriage_plate",
         "fastening_method": "M2/M3 carriage screws into Z plate inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN9H-REF"
       },
       {
         "component": "z_rail_right",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M2/M3 rail fasteners; printed vertical shoulder carries alignment",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN9H-REF"
       },
       {
         "component": "z_carriage_right_1",
         "supporting_part": "z_carriage_plate",
         "fastening_method": "M2/M3 carriage screws into Z plate inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN9H-REF"
       },
       {
         "component": "z_carriage_right_2",
         "supporting_part": "z_carriage_plate",
         "fastening_method": "M2/M3 carriage screws into Z plate inserts",
-        "confidence": "HIWIN reference dimensions"
+        "confidence": "HIWIN reference dimensions",
+        "hardware_model_id": "HW-LM-MGN9H-REF"
       },
       {
         "component": "z_lead_screw",
         "supporting_part": "x_z_backbone fixed drive support",
         "fastening_method": "Fixed upper bearing and floating lower support; coupler carries torque only",
-        "confidence": "T8 envelope"
+        "confidence": "T8 envelope",
+        "hardware_model_id": "HW-LS-T8X2-ENV"
       },
       {
         "component": "z_lead_nut",
         "supporting_part": "z_carriage_plate",
         "fastening_method": "M4 nut-flange fasteners; Z plate boss carries reaction",
-        "confidence": "nut envelope"
+        "confidence": "nut envelope",
+        "hardware_model_id": "HW-LN-T8-ABN-REF"
       },
       {
         "component": "z_motor_nema17",
         "supporting_part": "x_z_backbone upper motor land",
         "fastening_method": "NEMA17 face fasteners; pilot locates motor",
-        "confidence": "generic NEMA17 interface"
+        "confidence": "generic NEMA17 interface",
+        "hardware_model_id": "HW-MOTOR-NEMA17-REF"
       },
       {
         "component": "z_coupler",
         "supporting_part": "x_z_backbone + z_motor_nema17",
         "fastening_method": "Two-bore clamp screws; no axial support",
-        "confidence": "MISUMI reference envelope"
+        "confidence": "MISUMI reference envelope",
+        "hardware_model_id": "HW-CPL-5X8-REF"
       },
       {
         "component": "spindle_5045_ac_er11",
         "supporting_part": "spindle_mount_concept",
         "fastening_method": "Two removable M4 clamp rings; clamp geometry carries radial/shear load",
-        "confidence": "SycoTec official reference"
+        "confidence": "SycoTec official reference",
+        "hardware_model_id": "HW-SPINDLE-5045-ER11-001"
       },
       {
         "component": "tool_envelope",
         "supporting_part": "spindle and ER11 tool interface",
         "fastening_method": "ER11 collet; actual tool selection remains open",
-        "confidence": "process envelope"
+        "confidence": "process envelope",
+        "hardware_model_id": ""
       },
       {
         "component": "spoilboard",
         "supporting_part": "moving_bed_frame",
         "fastening_method": "M4 countersunk/through fasteners into bed inserts; edge shoulders locate it",
-        "confidence": "project envelope"
+        "confidence": "project envelope",
+        "hardware_model_id": ""
       },
       {
         "component": "pcb_envelope",
         "supporting_part": "spoilboard",
         "fastening_method": "Low-profile edge clamps and registration datums",
-        "confidence": "process requirement"
+        "confidence": "process requirement",
+        "hardware_model_id": ""
       },
       {
         "component": "workholding_clamp_front",
         "supporting_part": "spoilboard",
         "fastening_method": "M3/M4 clamp screw into replaceable insert or nut; clamp toe retains PCB edge",
-        "confidence": "process envelope"
+        "confidence": "process envelope",
+        "hardware_model_id": ""
       },
       {
         "component": "workholding_clamp_rear",
         "supporting_part": "spoilboard",
         "fastening_method": "M3/M4 clamp screw into replaceable insert or nut; clamp toe retains PCB edge",
-        "confidence": "process envelope"
+        "confidence": "process envelope",
+        "hardware_model_id": ""
       },
       {
         "component": "workholding_clamp_right",
         "supporting_part": "spoilboard",
         "fastening_method": "M3/M4 clamp screw into replaceable insert or nut; clamp toe retains PCB edge",
-        "confidence": "process envelope"
+        "confidence": "process envelope",
+        "hardware_model_id": ""
       },
       {
         "component": "conductive_probe",
         "supporting_part": "spoilboard",
         "fastening_method": "M3 bracket/clip and removable probe cable",
-        "confidence": "process concept"
+        "confidence": "process concept",
+        "hardware_model_id": "HW-PROBE-CONDUCTIVE-REF"
       },
       {
         "component": "arduino_mega_owner_hardware",
         "supporting_part": "electronics_mount_rail",
         "fastening_method": "M3 slotted mounting holes; board standoffs are replaceable",
-        "confidence": "Arduino official reference"
+        "confidence": "Arduino official reference",
+        "hardware_model_id": "HW-CTRL-ARDUINO-MEGA-REF"
       },
       {
         "component": "cnc_shield_owner_hardware",
         "supporting_part": "arduino_mega_owner_hardware + electronics_mount_rail",
         "fastening_method": "Mega header stack plus flexible M3 support slots",
-        "confidence": "provisional owner hardware"
+        "confidence": "provisional owner hardware",
+        "hardware_model_id": "HW-CTRL-CNC-SHIELD-PROV"
       },
       {
         "component": "driver_cooling_clearance",
         "supporting_part": "electronics_mount_rail",
         "fastening_method": "Open airflow volume; final fan/vent provision follows driver identification",
-        "confidence": "provisional owner hardware"
+        "confidence": "provisional owner hardware",
+        "hardware_model_id": ""
       },
       {
         "component": "controller_service_loop",
         "supporting_part": "electronics_mount_rail",
         "fastening_method": "M3 printed anchor clips and strain relief",
-        "confidence": "layout provision"
+        "confidence": "layout provision",
+        "hardware_model_id": ""
       },
       {
         "component": "x_home_limit",
         "supporting_part": "gantry_left_integrated",
         "fastening_method": "M3 switch bracket; lever is actuated by X carriage stop",
-        "confidence": "Omron family reference"
+        "confidence": "Omron family reference",
+        "hardware_model_id": "HW-SW-D2F-REF"
       },
       {
         "component": "y_home_limit",
         "supporting_part": "base_left_integrated + base_center_tie",
         "fastening_method": "M3 switch bracket; bed flag actuates lever",
-        "confidence": "Omron family reference"
+        "confidence": "Omron family reference",
+        "hardware_model_id": "HW-SW-D2F-REF"
       },
       {
         "component": "z_home_limit",
         "supporting_part": "x_z_backbone",
         "fastening_method": "M3 switch bracket; Z carriage flag actuates lever",
-        "confidence": "Omron family reference"
+        "confidence": "Omron family reference",
+        "hardware_model_id": "HW-SW-D2F-REF"
       },
       {
         "component": "x_moving_cable_loop",
         "supporting_part": "gantry_left_integrated + x_z_backbone",
         "fastening_method": "M3 anchor clips; bend-radius volume kept clear",
-        "confidence": "layout provision"
+        "confidence": "layout provision",
+        "hardware_model_id": ""
       },
       {
         "component": "y_moving_cable_loop",
         "supporting_part": "moving_bed_frame + electronics_mount_rail",
         "fastening_method": "M3 anchor clips and strain relief",
-        "confidence": "layout provision"
+        "confidence": "layout provision",
+        "hardware_model_id": ""
       },
       {
         "component": "representative_m4_fastener",
         "supporting_part": "base_left_integrated",
         "fastening_method": "Representative M4 through-bolt/washer envelope",
-        "confidence": "standard fastener envelope"
+        "confidence": "standard fastener envelope",
+        "hardware_model_id": "HW-FST-M4-REF"
       }
     ],
     "component_names": [
@@ -1734,7 +2213,24 @@
       "x_moving_cable_loop",
       "y_moving_cable_loop",
       "representative_m4_fastener"
-    ]
+    ],
+    "hardware_model_ids": [
+      "HW-BRG-608-REF",
+      "HW-CPL-5X8-REF",
+      "HW-CTRL-ARDUINO-MEGA-REF",
+      "HW-CTRL-CNC-SHIELD-PROV",
+      "HW-FST-M4-REF",
+      "HW-LM-MGN12H-REF",
+      "HW-LM-MGN9H-REF",
+      "HW-LN-T8-ABN-REF",
+      "HW-LS-T8X2-ENV",
+      "HW-LS-T8X4-ENV",
+      "HW-MOTOR-NEMA17-REF",
+      "HW-PROBE-CONDUCTIVE-REF",
+      "HW-SPINDLE-5045-ER11-001",
+      "HW-SW-D2F-REF"
+    ],
+    "hardware_library_manifest": "cad/library/hardware-model-manifest.json"
   },
   "exports": {
     "base_left_integrated_stl": "generated/stl/phase5-complete-machine/base_left_integrated.stl",
@@ -2326,6 +2822,22 @@
           "message": "Master assembly compound is valid.",
           "component": null,
           "evidence": null
+        },
+        {
+          "rule_id": "VAL-PHASE5-HARDWARE-LIBRARY-ID",
+          "status": "pass",
+          "severity": "info",
+          "message": "All assigned master hardware model IDs resolve in the persistent library manifest.",
+          "component": null,
+          "evidence": "model_ids=14"
+        },
+        {
+          "rule_id": "VAL-PHASE5-HARDWARE-LIBRARY-COVERAGE",
+          "status": "pass",
+          "severity": "info",
+          "message": "Every library-sourced assembly component carries a stable hardware model ID.",
+          "component": null,
+          "evidence": null
         }
       ]
     },
@@ -2755,6 +3267,7 @@
       "supporting_part": "machine_foot_front_left + machine_foot_rear_left",
       "fastening_method": "M4 heat-set/through interface at feet; printed base shoulder carries shear",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2765,6 +3278,7 @@
       "supporting_part": "machine_foot_front_right + machine_foot_rear_right",
       "fastening_method": "M4 heat-set/through interface at feet; printed base shoulder carries shear",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2775,6 +3289,7 @@
       "supporting_part": "base_left_integrated + base_right_integrated",
       "fastening_method": "M4 inserts/through-bolts; end keys carry location and shear",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2785,6 +3300,7 @@
       "supporting_part": "base_center_tie + front base datums",
       "fastening_method": "M4 structural joint; face shoulder carries motor reaction",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2795,6 +3311,7 @@
       "supporting_part": "base_center_tie + base rail-end datum",
       "fastening_method": "M4 retainers around 608 bearing pair; housing carries radial load",
       "confidence": "local parametric source",
+      "hardware_model_id": "HW-BRG-608-REF",
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2805,6 +3322,7 @@
       "supporting_part": "y_rear_bearing_bridge + left-base rear datum",
       "fastening_method": "M4 retainer around 608 bearing; housing permits axial float",
       "confidence": "local parametric source",
+      "hardware_model_id": "HW-BRG-608-REF",
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2815,6 +3333,7 @@
       "supporting_part": "base_left_integrated rear datum",
       "fastening_method": "M4 through-bolts into the left base side; bridge carries radial reaction",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2825,6 +3344,7 @@
       "supporting_part": "support surface",
       "fastening_method": "M4 through-bolt and washer to base",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2835,6 +3355,7 @@
       "supporting_part": "support surface",
       "fastening_method": "M4 through-bolt and washer to base",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2845,6 +3366,7 @@
       "supporting_part": "support surface",
       "fastening_method": "M4 through-bolt and washer to base",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2855,6 +3377,7 @@
       "supporting_part": "support surface",
       "fastening_method": "M4 through-bolt and washer to base",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2865,6 +3388,7 @@
       "supporting_part": "base_left_integrated + base_right_integrated rear datum",
       "fastening_method": "M4 base joint plus M3 controller slots",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2875,6 +3399,7 @@
       "supporting_part": "base_left_integrated",
       "fastening_method": "M4 base preload; keyed beam tongue carries beam shear",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2885,6 +3410,7 @@
       "supporting_part": "base_right_integrated",
       "fastening_method": "M4 base preload; keyed beam socket carries beam shear",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2895,6 +3421,7 @@
       "supporting_part": "gantry_left_integrated",
       "fastening_method": "M4 bearing housing fasteners; gantry seat carries reaction",
       "confidence": "local parametric source",
+      "hardware_model_id": "HW-BRG-608-REF",
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2905,6 +3432,7 @@
       "supporting_part": "gantry_right_integrated",
       "fastening_method": "M4 bearing housing fasteners; radial seat preserves float",
       "confidence": "local parametric source",
+      "hardware_model_id": "HW-BRG-608-REF",
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2915,6 +3443,7 @@
       "supporting_part": "x_carriages and X guide plane",
       "fastening_method": "M3 carriage fasteners; rail shoulders carry alignment",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2925,6 +3454,7 @@
       "supporting_part": "z carriages on x_z_backbone",
       "fastening_method": "M3 carriage fasteners; Z backplate carries moment",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2935,6 +3465,7 @@
       "supporting_part": "z_carriage_plate replaceable clamp land",
       "fastening_method": "M4 removable clamp bolts; ring and rear plate carry shear",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2945,6 +3476,7 @@
       "supporting_part": "Y carriages on y rails",
       "fastening_method": "M3/M4 carriage and nut fasteners; bed ribs carry load",
       "confidence": "local parametric source",
+      "hardware_model_id": null,
       "notes": "Derived from master hardware layout; supplier-dependent fit remains provisional."
     },
     {
@@ -2955,6 +3487,7 @@
       "supporting_part": "gantry_left_integrated + gantry_right_integrated",
       "fastening_method": "M3 rail fasteners through rail holes; printed shoulders carry alignment",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12 rail reference section and 25 mm hole pitch; actual rail/preload must be measured."
     },
     {
@@ -2965,6 +3498,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M3 carriage screws into backbone inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H carriage envelope."
     },
     {
@@ -2975,6 +3509,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M3 carriage screws into backbone inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H carriage envelope."
     },
     {
@@ -2985,6 +3520,7 @@
       "supporting_part": "gantry_left_integrated + gantry_right_integrated",
       "fastening_method": "M3 rail fasteners through rail holes; printed shoulders carry alignment",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12 rail reference section and 25 mm hole pitch; actual rail/preload must be measured."
     },
     {
@@ -2995,6 +3531,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M3 carriage screws into backbone inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H carriage envelope."
     },
     {
@@ -3005,6 +3542,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M3 carriage screws into backbone inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H carriage envelope."
     },
     {
@@ -3015,6 +3553,7 @@
       "supporting_part": "x_fixed_bearing_cartridge + x_floating_bearing_cartridge",
       "fastening_method": "Fixed/floating 608 bearing stack; coupler carries torque only",
       "confidence": "T8 envelope",
+      "hardware_model_id": "HW-LS-T8X4-ENV",
       "notes": "Non-helical T8x4 representation; journal dimensions remain provisional."
     },
     {
@@ -3025,6 +3564,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M4 nut-flange fasteners; printed pocket carries reaction",
       "confidence": "nut envelope",
+      "hardware_model_id": "HW-LN-T8-ABN-REF",
       "notes": "Anti-backlash architecture candidate; actual nut flange must be measured."
     },
     {
@@ -3035,6 +3575,7 @@
       "supporting_part": "x_fixed_bearing_cartridge",
       "fastening_method": "NEMA17 M3/M4 face fasteners; face pilot locates motor",
       "confidence": "generic NEMA17 interface",
+      "hardware_model_id": "HW-MOTOR-NEMA17-REF",
       "notes": "Owner-stock motor; 40-48 mm body and connector clearance are modeled."
     },
     {
@@ -3045,6 +3586,7 @@
       "supporting_part": "x_fixed_bearing_cartridge + x_motor_nema17",
       "fastening_method": "Two-bore clamp screws; no axial support",
       "confidence": "MISUMI reference envelope",
+      "hardware_model_id": "HW-CPL-5X8-REF",
       "notes": "Representative 5/8 mm coupler envelope."
     },
     {
@@ -3055,6 +3597,7 @@
       "supporting_part": "base_left_integrated + base_right_integrated",
       "fastening_method": "M3 rail fasteners through reference holes; continuous PETG shoulder carries alignment",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12 rail reference section; rail datum and preload are not owner-measured."
     },
     {
@@ -3065,6 +3608,7 @@
       "supporting_part": "moving_bed_frame",
       "fastening_method": "M3 carriage screws into bed inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H moving-bed carriage envelope."
     },
     {
@@ -3075,6 +3619,7 @@
       "supporting_part": "moving_bed_frame",
       "fastening_method": "M3 carriage screws into bed inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H moving-bed carriage envelope."
     },
     {
@@ -3085,6 +3630,7 @@
       "supporting_part": "base_left_integrated + base_right_integrated",
       "fastening_method": "M3 rail fasteners through reference holes; continuous PETG shoulder carries alignment",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12 rail reference section; rail datum and preload are not owner-measured."
     },
     {
@@ -3095,6 +3641,7 @@
       "supporting_part": "moving_bed_frame",
       "fastening_method": "M3 carriage screws into bed inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H moving-bed carriage envelope."
     },
     {
@@ -3105,6 +3652,7 @@
       "supporting_part": "moving_bed_frame",
       "fastening_method": "M3 carriage screws into bed inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN12H-REF",
       "notes": "MGN12H moving-bed carriage envelope."
     },
     {
@@ -3115,6 +3663,7 @@
       "supporting_part": "y_fixed_bearing_cartridge + y_floating_bearing_cartridge",
       "fastening_method": "Fixed/floating 608 bearing stack; coupler carries torque only",
       "confidence": "T8 envelope",
+      "hardware_model_id": "HW-LS-T8X4-ENV",
       "notes": "Non-helical T8x4 representation."
     },
     {
@@ -3125,6 +3674,7 @@
       "supporting_part": "moving_bed_frame",
       "fastening_method": "M4 nut-flange fasteners; bed boss carries reaction",
       "confidence": "nut envelope",
+      "hardware_model_id": "HW-LN-T8-ABN-REF",
       "notes": "Anti-backlash architecture candidate."
     },
     {
@@ -3135,6 +3685,7 @@
       "supporting_part": "y_motor_service_pocket",
       "fastening_method": "NEMA17 M3/M4 face fasteners; face pilot locates motor",
       "confidence": "generic NEMA17 interface",
+      "hardware_model_id": "HW-MOTOR-NEMA17-REF",
       "notes": "Owner-stock motor with rear connector/wiring clearance."
     },
     {
@@ -3145,6 +3696,7 @@
       "supporting_part": "y_motor_service_pocket + y_fixed_bearing_cartridge",
       "fastening_method": "Two-bore clamp screws; no axial support",
       "confidence": "MISUMI reference envelope",
+      "hardware_model_id": "HW-CPL-5X8-REF",
       "notes": "Representative 5/8 mm coupler envelope."
     },
     {
@@ -3155,6 +3707,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M2/M3 rail fasteners; printed vertical shoulder carries alignment",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN9H-REF",
       "notes": "MGN9 reference rail and H carriage envelope."
     },
     {
@@ -3165,6 +3718,7 @@
       "supporting_part": "z_carriage_plate",
       "fastening_method": "M2/M3 carriage screws into Z plate inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN9H-REF",
       "notes": "MGN9H carriage envelope."
     },
     {
@@ -3175,6 +3729,7 @@
       "supporting_part": "z_carriage_plate",
       "fastening_method": "M2/M3 carriage screws into Z plate inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN9H-REF",
       "notes": "MGN9H carriage envelope."
     },
     {
@@ -3185,6 +3740,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M2/M3 rail fasteners; printed vertical shoulder carries alignment",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN9H-REF",
       "notes": "MGN9 reference rail and H carriage envelope."
     },
     {
@@ -3195,6 +3751,7 @@
       "supporting_part": "z_carriage_plate",
       "fastening_method": "M2/M3 carriage screws into Z plate inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN9H-REF",
       "notes": "MGN9H carriage envelope."
     },
     {
@@ -3205,6 +3762,7 @@
       "supporting_part": "z_carriage_plate",
       "fastening_method": "M2/M3 carriage screws into Z plate inserts",
       "confidence": "HIWIN reference dimensions",
+      "hardware_model_id": "HW-LM-MGN9H-REF",
       "notes": "MGN9H carriage envelope."
     },
     {
@@ -3215,6 +3773,7 @@
       "supporting_part": "x_z_backbone fixed drive support",
       "fastening_method": "Fixed upper bearing and floating lower support; coupler carries torque only",
       "confidence": "T8 envelope",
+      "hardware_model_id": "HW-LS-T8X2-ENV",
       "notes": "Non-helical T8x2 representation."
     },
     {
@@ -3225,6 +3784,7 @@
       "supporting_part": "z_carriage_plate",
       "fastening_method": "M4 nut-flange fasteners; Z plate boss carries reaction",
       "confidence": "nut envelope",
+      "hardware_model_id": "HW-LN-T8-ABN-REF",
       "notes": "Anti-backlash architecture candidate."
     },
     {
@@ -3235,6 +3795,7 @@
       "supporting_part": "x_z_backbone upper motor land",
       "fastening_method": "NEMA17 face fasteners; pilot locates motor",
       "confidence": "generic NEMA17 interface",
+      "hardware_model_id": "HW-MOTOR-NEMA17-REF",
       "notes": "Strongest electrically compatible owner-stock motor is selected after characterization."
     },
     {
@@ -3245,6 +3806,7 @@
       "supporting_part": "x_z_backbone + z_motor_nema17",
       "fastening_method": "Two-bore clamp screws; no axial support",
       "confidence": "MISUMI reference envelope",
+      "hardware_model_id": "HW-CPL-5X8-REF",
       "notes": "Representative 5/8 mm coupler envelope."
     },
     {
@@ -3255,6 +3817,7 @@
       "supporting_part": "spindle_mount_concept",
       "fastening_method": "Two removable M4 clamp rings; clamp geometry carries radial/shear load",
       "confidence": "SycoTec official reference",
+      "hardware_model_id": "HW-SPINDLE-5045-ER11-001",
       "notes": "45 mm ER11 candidate; official CAD remains external because redistribution rights are unclear."
     },
     {
@@ -3265,6 +3828,7 @@
       "supporting_part": "spindle and ER11 tool interface",
       "fastening_method": "ER11 collet; actual tool selection remains open",
       "confidence": "process envelope",
+      "hardware_model_id": null,
       "notes": "Tool point covers the -25 to +11 mm Z screening range; cutter remains unselected."
     },
     {
@@ -3275,6 +3839,7 @@
       "supporting_part": "moving_bed_frame",
       "fastening_method": "M4 countersunk/through fasteners into bed inserts; edge shoulders locate it",
       "confidence": "project envelope",
+      "hardware_model_id": null,
       "notes": "Replaceable spoilboard envelope."
     },
     {
@@ -3285,6 +3850,7 @@
       "supporting_part": "spoilboard",
       "fastening_method": "Low-profile edge clamps and registration datums",
       "confidence": "process requirement",
+      "hardware_model_id": null,
       "notes": "Nominal PCB work area."
     },
     {
@@ -3295,6 +3861,7 @@
       "supporting_part": "spoilboard",
       "fastening_method": "M3/M4 clamp screw into replaceable insert or nut; clamp toe retains PCB edge",
       "confidence": "process envelope",
+      "hardware_model_id": null,
       "notes": "Low-profile workholding reference."
     },
     {
@@ -3305,6 +3872,7 @@
       "supporting_part": "spoilboard",
       "fastening_method": "M3/M4 clamp screw into replaceable insert or nut; clamp toe retains PCB edge",
       "confidence": "process envelope",
+      "hardware_model_id": null,
       "notes": "Low-profile workholding reference."
     },
     {
@@ -3315,6 +3883,7 @@
       "supporting_part": "spoilboard",
       "fastening_method": "M3/M4 clamp screw into replaceable insert or nut; clamp toe retains PCB edge",
       "confidence": "process envelope",
+      "hardware_model_id": null,
       "notes": "Low-profile workholding reference."
     },
     {
@@ -3325,6 +3894,7 @@
       "supporting_part": "spoilboard",
       "fastening_method": "M3 bracket/clip and removable probe cable",
       "confidence": "process concept",
+      "hardware_model_id": "HW-PROBE-CONDUCTIVE-REF",
       "notes": "Conductive touch plate and cable-entry concept."
     },
     {
@@ -3335,6 +3905,7 @@
       "supporting_part": "electronics_mount_rail",
       "fastening_method": "M3 slotted mounting holes; board standoffs are replaceable",
       "confidence": "Arduino official reference",
+      "hardware_model_id": "HW-CTRL-ARDUINO-MEGA-REF",
       "notes": "Owner-supplied Arduino Mega representation; connector access is modeled."
     },
     {
@@ -3345,6 +3916,7 @@
       "supporting_part": "arduino_mega_owner_hardware + electronics_mount_rail",
       "fastening_method": "Mega header stack plus flexible M3 support slots",
       "confidence": "provisional owner hardware",
+      "hardware_model_id": "HW-CTRL-CNC-SHIELD-PROV",
       "notes": "OWNER HARDWARE MUST BE IDENTIFIED: exact shield revision and driver modules are unknown."
     },
     {
@@ -3355,6 +3927,7 @@
       "supporting_part": "electronics_mount_rail",
       "fastening_method": "Open airflow volume; final fan/vent provision follows driver identification",
       "confidence": "provisional owner hardware",
+      "hardware_model_id": null,
       "notes": "Clearance volume, not a physical part."
     },
     {
@@ -3365,6 +3938,7 @@
       "supporting_part": "electronics_mount_rail",
       "fastening_method": "M3 printed anchor clips and strain relief",
       "confidence": "layout provision",
+      "hardware_model_id": null,
       "notes": "USB, power, motor, limit, probe, and spindle-control service corridor."
     },
     {
@@ -3375,6 +3949,7 @@
       "supporting_part": "gantry_left_integrated",
       "fastening_method": "M3 switch bracket; lever is actuated by X carriage stop",
       "confidence": "Omron family reference",
+      "hardware_model_id": "HW-SW-D2F-REF",
       "notes": "Known actuation direction remains to be commissioned."
     },
     {
@@ -3385,6 +3960,7 @@
       "supporting_part": "base_left_integrated + base_center_tie",
       "fastening_method": "M3 switch bracket; bed flag actuates lever",
       "confidence": "Omron family reference",
+      "hardware_model_id": "HW-SW-D2F-REF",
       "notes": "Known actuation direction remains to be commissioned."
     },
     {
@@ -3395,6 +3971,7 @@
       "supporting_part": "x_z_backbone",
       "fastening_method": "M3 switch bracket; Z carriage flag actuates lever",
       "confidence": "Omron family reference",
+      "hardware_model_id": "HW-SW-D2F-REF",
       "notes": "Known actuation direction remains to be commissioned."
     },
     {
@@ -3405,6 +3982,7 @@
       "supporting_part": "gantry_left_integrated + x_z_backbone",
       "fastening_method": "M3 anchor clips; bend-radius volume kept clear",
       "confidence": "layout provision",
+      "hardware_model_id": null,
       "notes": "Moving X/Z harness corridor, not a decorative line."
     },
     {
@@ -3415,6 +3993,7 @@
       "supporting_part": "moving_bed_frame + electronics_mount_rail",
       "fastening_method": "M3 anchor clips and strain relief",
       "confidence": "layout provision",
+      "hardware_model_id": null,
       "notes": "Moving-bed motor, limit, and probe harness corridor."
     },
     {
@@ -3425,6 +4004,7 @@
       "supporting_part": "base_left_integrated",
       "fastening_method": "Representative M4 through-bolt/washer envelope",
       "confidence": "standard fastener envelope",
+      "hardware_model_id": "HW-FST-M4-REF",
       "notes": "Visible reference only; exact length and washer stack remain provisional."
     }
   ],

@@ -15,6 +15,8 @@ envelope-only STL set is superseded and must not be printed or released.
   bearings, couplers, generic owner-stock NEMA17 motors, Arduino Mega,
   provisional CNC Shield, ER11 spindle candidate, switches, probe, and
   representative fastener;
+- persistent hardware library with stable IDs, source provenance, reuse
+  status, and deterministic project-generated builder paths;
 - complete named master assembly with 68 components, support/fastening
   records, service loops, workholding, controller access, and cable volumes;
 - actual individual STL/STEP candidates, complete master STEP, and a master
@@ -58,8 +60,10 @@ The package is written to:
 - [`generated/drawings/phase5-complete-machine/`](../../generated/drawings/phase5-complete-machine/)
   for 16 review views;
 - [`phase5-complete-machine-manifest.json`](phase5-complete-machine-manifest.json)
-  for inventory, source, hardware register, support audit, exports, and
-  validation.
+  for inventory, source, hardware library/register, support audit, exports,
+  and validation;
+- [`../../cad/library/hardware-model-manifest.json`](../../cad/library/hardware-model-manifest.json)
+  for the authoritative reusable hardware registry.
 
 No `release/` output is created.
 
@@ -111,6 +115,7 @@ print the superseded STL set or to manufacture/release the current candidates
 without the measurement and physical-evidence gates.
 
 See the [hardware model register](hardware-model-register.md),
+[persistent hardware library](../../cad/library/README.md),
 [support audit](master-assembly-support-audit.md),
 [assembly guide](../../docs/assembly/assembly-guide.md), and
 [EDR-016](../decisions/016-phase-5-master-assembly-first-redesign.md).

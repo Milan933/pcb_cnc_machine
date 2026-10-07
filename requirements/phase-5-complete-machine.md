@@ -11,8 +11,9 @@ assembly is primary; printable splits are derived from it.
 
 1. A central coordinate, work-origin, travel, envelope, motor, spindle,
    controller, and provisional-interface parameter contract.
-2. Credible local hardware/interface models with source, permission/reuse,
-   confidence, and measurement status tracked.
+2. A persistent hardware CAD library with stable IDs and local
+   hardware/interface models with source, permission/reuse, confidence, and
+   measurement status tracked in `cad/library/hardware-model-manifest.json`.
 3. A complete master assembly containing fixed structure, moving bed, rails,
    carriages, screws, nuts, bearings, couplers, owner-stock motor envelopes,
    spindle candidate, workholding, PCB, probe, limits, Arduino Mega + CNC
@@ -27,9 +28,9 @@ assembly is primary; printable splits are derived from it.
 6. Individual STL/STEP derivatives, a complete master STEP, a visualization
    STL, and 16 review images suitable for owner review and OrcaSlicer
    inspection.
-7. Updated inventory, hardware register, BOM, assembly guide, coordinate
-   instructions, fastener schedule, wiring/controller record, support audit,
-   traceability, manifest, tests, and EDR.
+7. Updated inventory, hardware library/register, BOM, assembly guide,
+   coordinate instructions, fastener schedule, wiring/controller record,
+   support audit, traceability, manifests, tests, and EDR.
 
 ## Fixed architecture and owner hardware
 
